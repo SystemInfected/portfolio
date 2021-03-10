@@ -1,27 +1,30 @@
-import React, { useEffect, useMemo, useState } from 'react'
-import { Node, createEditor } from 'slate'
-import { Slate, Editable, withReact } from 'slate-react'
-
+import React, { useState, useEffect } from 'react'
+import TextEditor from './components/TextEditor'
 import './App.scss'
 
 const App = () => {
-  const editor = useMemo(() => withReact(createEditor()), [])
-  // Add the initial value when setting up our state.
-  const [value, setValue] = useState<Node[]>([
+  const text = [
     {
       type: 'paragraph',
       children: [{ text: 'A line of text in a paragraphs.' }],
     },
-  ])
+  ]
+
+  const [ text2, setText ] = useState([]);
+  const toolbar = [
+    'basics',
+    'lists',
+    'links'
+  ]
+
+  useEffect(() => {
+
+  });
 
   return (
-    <Slate
-      editor={editor}
-      value={value}
-      onChange={newValue => setValue(newValue)}
-    >
-      <Editable />
-    </Slate>
+    <>
+      <TextEditor editorText={text} toolbar={toolbar} />
+    </>
   )
 }
 

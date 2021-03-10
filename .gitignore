@@ -11,6 +11,9 @@
 # production
 /build
 
+# instructions
+README NODE.md
+
 # misc
 .DS_Store
 .env.local

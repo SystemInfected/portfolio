@@ -34,13 +34,13 @@ const App = () => {
         <nav>
           <ul>
             <li>
-              <Link to="/editor">Editortest</Link>
+              <Link to="/portfolio/editor">Editortest</Link>
             </li>
           </ul>
         </nav>
 
         <Switch>
-          <Route path="/editor">
+          <Route path="/portfolio/editor">
             <>
             <h1>Editortest</h1>
             <TextEditor editorText={text} toolbar={toolbar} />

@@ -1,0 +1,11 @@
+{
+	"extends": ["prettier"],
+	"plugins": ["prettier"],
+	"rules": {
+		"prettier/prettier": 2,
+		"array-element-newline": ["error", "always"],
+		"array-bracket-newline": ["error", "always"],
+		"function-call-argument-newline": ["error", "always"],
+		"object-curly-newline": ["error", "always"]
+	}
+}

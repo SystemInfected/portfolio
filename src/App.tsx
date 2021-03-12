@@ -1,55 +1,78 @@
-import React, { useState, useEffect } from 'react'
+import React /*useCallback*/ from "react";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
-} from 'react-router-dom'
+  //Link
+} from "react-router-dom";
 
-import TextEditor from './components/TextEditor'
-import './App.scss'
+import TextEditor from "./components/TextEditor";
+import "./App.scss";
 
 const App = () => {
   const text = [
     {
-      type: 'paragraph',
-      children: [{ text: 'A line of text in a paragraphs.' }],
+      type: "paragraph",
+      children: [
+        { text: "An opening paragraph with a " },
+        {
+          type: "link",
+          url: "https://example.com",
+          children: [{ text: "link" }],
+        },
+        { text: " in it." },
+      ],
     },
-  ]
+    {
+      type: "quote",
+      children: [{ text: "A wise quote." }],
+    },
+    {
+      type: "paragraph",
+      children: [{ text: "A closing paragraph!" }],
+    },
+  ];
 
-  const [ text2, setText ] = useState([]);
-  const toolbar = [
-    'basics',
-    'lists',
-    'links'
-  ]
+  const toolbar = ["basics", "lists", "links"];
 
-  useEffect(() => {
+  /*useEffect(() => {
 
-  });
+  })*/
+
+  const myCallback = (dataFromChild: any) => {
+    console.log(dataFromChild);
+  };
+
+  /*<nav>
+    <ul>
+      <li>
+        <Link to="/portfolio/editor">Editortest</Link>
+      </li>
+    </ul>
+  </nav>*/
 
   return (
     <Router>
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/portfolio/editor">Editortest</Link>
-            </li>
-          </ul>
-        </nav>
-
-        <Switch>
-          <Route path="/portfolio/editor">
-            <>
-            <h1>Editortest</h1>
-            <TextEditor editorText={text} toolbar={toolbar} />
-            </>
-          </Route>
-        </Switch>
-      </div>
+      <Switch>
+        <Route path="/">
+          <>
+            <Header />
+          </>
+        </Route>
+      </Switch>
+      <Switch>
+        <Route path="/portfolio/editor">
+          <>
+            <TextEditor
+              editorText={text}
+              toolbar={toolbar}
+              newText={myCallback}
+            />
+          </>
+        </Route>
+      </Switch>
     </Router>
-  )
-}
+  );
+};
 
-export default App
+export default App;

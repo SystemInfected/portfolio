@@ -1,5 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import Header from './components/Header'
 
 import './App.scss'
 
@@ -9,7 +10,7 @@ const App = () => {
 			<Switch>
 				<Route path="/">
 					<>
-						<h1>Test</h1>
+						<Header />
 					</>
 				</Route>
 			</Switch>

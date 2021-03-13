@@ -1,6 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import Header from './components/Header'
+import Hero from './components/Hero'
 
 import './css/Main.scss'
 
@@ -10,7 +10,7 @@ const App = () => {
 			<Switch>
 				<Route path="/">
 					<>
-						<Header />
+						<Hero />
 					</>
 				</Route>
 			</Switch>

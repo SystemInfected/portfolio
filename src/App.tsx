@@ -2,7 +2,7 @@ import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import Header from './components/Header'
 
-import './App.scss'
+import './css/Main.scss'
 
 const App = () => {
 	return (

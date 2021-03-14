@@ -1,7 +1,8 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import Hero from './components/Hero'
 
-import './App.scss'
+import './css/Main.scss'
 
 const App = () => {
 	return (
@@ -9,7 +10,7 @@ const App = () => {
 			<Switch>
 				<Route path="/">
 					<>
-						<h1>Test</h1>
+						<Hero />
 					</>
 				</Route>
 			</Switch>

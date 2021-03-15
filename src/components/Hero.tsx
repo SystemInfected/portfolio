@@ -1,16 +1,21 @@
 import styled from 'styled-components'
 import { color, font } from '../css/variables'
+import Portraits from './Portraits'
 
 const Hero = () => {
 	return (
 		<HeaderContainer>
 			<Header>
-				<strong>Hi!</strong>
+				Hi!
 				<br />
 				My name is Sebastian, I'm a graphic designer and web developer.
 			</Header>
-			<PortraitIllustration>Illustration</PortraitIllustration>
-			<PortraitNodes>Nodes</PortraitNodes>
+			<PortraitIllustration>
+				<Portraits illustration />
+			</PortraitIllustration>
+			<PortraitNodes>
+				<Portraits nodes />
+			</PortraitNodes>
 		</HeaderContainer>
 	)
 }
@@ -22,9 +27,10 @@ const HeaderContainer = styled.div`
 	width: 100vw;
 	height: 100vh;
 	display: flex;
-	align-items: center;
+	align-items: flex-end;
 	justify-content: center;
 `
+
 const Header = styled.h1`
 	position: absolute;
 	top: 14vh;
@@ -33,18 +39,14 @@ const Header = styled.h1`
 	font-size: clamp(2.2rem, 2.5vw, 3.2rem);
 	font-weight: 100;
 	letter-spacing: 0.02rem;
-	padding: 0 4rem;
+	padding: 0 2.5em;
 	z-index: 80;
-	strong {
-		font-weight: 800;
-		letter-spacing: 0.1rem;
-	}
 `
+
 const Portrait = styled.div`
-	position: absolute;
-	bottom: 0;
 	height: 70vh;
 `
+
 const PortraitIllustration = styled(Portrait)`
 	margin-right: 5px;
 `

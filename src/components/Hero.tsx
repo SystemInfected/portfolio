@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { color, font } from '../css/variables'
-import Portraits from './Portraits'
+import { ReactComponent as Illustration } from '../assets/images/portrait_illustration.svg'
+import { ReactComponent as Nodes } from '../assets/images/portrait_nodes.svg'
 
 const Hero = () => {
 	return (
@@ -8,13 +9,14 @@ const Hero = () => {
 			<Header>
 				Hi!
 				<br />
-				My name is Sebastian, I'm a graphic designer and web developer.
+				My name is Sebastian, I'm a <NoWrap>graphic designer</NoWrap> and{' '}
+				<NoWrap>web developer.</NoWrap>
 			</Header>
 			<PortraitIllustration>
-				<Portraits illustration />
+				<Illustration />
 			</PortraitIllustration>
 			<PortraitNodes>
-				<Portraits nodes />
+				<Nodes />
 			</PortraitNodes>
 		</HeaderContainer>
 	)
@@ -43,14 +45,37 @@ const Header = styled.h1`
 	z-index: 80;
 `
 
+const NoWrap = styled.span`
+	white-space: nowrap;
+`
+
 const Portrait = styled.div`
-	height: 70vh;
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	align-items: flex-end;
+	overflow: hidden;
+	svg {
+		height: 90%;
+		flex-shrink: 0;
+	}
 `
 
 const PortraitIllustration = styled(Portrait)`
 	margin-right: 5px;
+	justify-content: flex-end;
 `
 
 const PortraitNodes = styled(Portrait)`
+	justify-content: flex-start;
 	margin-left: 5px;
+	background: radial-gradient(
+		ellipse at left bottom,
+		rgba(${color.mainColorLightRGB}, 0.4) 0%,
+		rgba(${color.mainColorLightRGB}, 0.3) 3%,
+		rgba(0, 0, 0, 0) 50%
+	);
+	background-position: left bottom;
+	background-size: 150% 98%;
+	background-repeat: no-repeat;
 `

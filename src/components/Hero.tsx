@@ -56,14 +56,23 @@ const Portrait = styled.div`
 	align-items: flex-end;
 	overflow: hidden;
 	svg {
-		height: 90%;
+		height: clamp(85%, 70vw, 115%);
 		flex-shrink: 0;
 	}
 `
 
 const PortraitIllustration = styled(Portrait)`
-	margin-right: 5px;
 	justify-content: flex-end;
+	margin-right: 5px;
+	/*background: radial-gradient(
+		ellipse at right bottom,
+		rgba(${color.mainColorLightRGB}, 0.25) 0%,
+		rgba(${color.mainColorLightRGB}, 0.2) 8%,
+		rgba(0, 0, 0, 0) 50%
+	);
+	background-position: right bottom;
+	background-size: 170% 95%;
+	background-repeat: no-repeat;*/
 `
 
 const PortraitNodes = styled(Portrait)`
@@ -71,11 +80,11 @@ const PortraitNodes = styled(Portrait)`
 	margin-left: 5px;
 	background: radial-gradient(
 		ellipse at left bottom,
-		rgba(${color.mainColorLightRGB}, 0.4) 0%,
-		rgba(${color.mainColorLightRGB}, 0.3) 3%,
+		rgba(${color.mainColorLightRGB}, 0.25) 0%,
+		rgba(${color.mainColorLightRGB}, 0.2) 8%,
 		rgba(0, 0, 0, 0) 50%
 	);
 	background-position: left bottom;
-	background-size: 150% 98%;
+	background-size: 170% 95%;
 	background-repeat: no-repeat;
 `

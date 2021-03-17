@@ -7,7 +7,7 @@ const Hero = () => {
 	return (
 		<HeaderContainer>
 			<Header>
-				Hi!
+				Hi,
 				<br />
 				My name is Sebastian, I'm a <NoWrap>graphic designer</NoWrap> and{' '}
 				<NoWrap>web developer.</NoWrap>

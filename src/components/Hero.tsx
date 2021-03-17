@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import { color, font } from '../css/variables'
 import { ReactComponent as Illustration } from '../assets/images/portrait_illustration.svg'
 import { ReactComponent as Nodes } from '../assets/images/portrait_nodes.svg'
+import AnimatedNodes from './AnimatedNodes'
 
 const Hero = () => {
 	return (
@@ -17,6 +18,7 @@ const Hero = () => {
 			</PortraitIllustration>
 			<PortraitNodes>
 				<Nodes />
+				<AnimatedNodes />
 			</PortraitNodes>
 		</HeaderContainer>
 	)
@@ -31,6 +33,7 @@ const HeaderContainer = styled.div`
 	display: flex;
 	align-items: flex-end;
 	justify-content: center;
+	margin-bottom: 100px;
 `
 
 const Header = styled.h1`
@@ -64,15 +67,6 @@ const Portrait = styled.div`
 const PortraitIllustration = styled(Portrait)`
 	justify-content: flex-end;
 	margin-right: 5px;
-	/*background: radial-gradient(
-		ellipse at right bottom,
-		rgba(${color.mainColorLightRGB}, 0.25) 0%,
-		rgba(${color.mainColorLightRGB}, 0.2) 8%,
-		rgba(0, 0, 0, 0) 50%
-	);
-	background-position: right bottom;
-	background-size: 170% 95%;
-	background-repeat: no-repeat;*/
 `
 
 const PortraitNodes = styled(Portrait)`
@@ -87,4 +81,9 @@ const PortraitNodes = styled(Portrait)`
 	background-position: left bottom;
 	background-size: 170% 95%;
 	background-repeat: no-repeat;
+	canvas {
+		height: clamp(85%, 70vw, 115%);
+		flex-shrink: 0;
+		position: absolute;
+	}
 `

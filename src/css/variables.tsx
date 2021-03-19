@@ -9,3 +9,8 @@ export const font = {
 	headingsFont: `'Oswald', 'Helvetica Neue', sans-serif`,
 	standardFont: `'Raleway', 'Helvetica Neue', sans-serif`,
 }
+
+export const breakpoint = {
+	tablet: `768px`,
+	mobile: `480px`,
+}

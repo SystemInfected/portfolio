@@ -1,7 +1,6 @@
 import styled from 'styled-components'
-import { color, font } from '../css/variables'
+import { color, font, breakpoint } from '../css/variables'
 import { ReactComponent as Illustration } from '../assets/images/portrait_illustration.svg'
-import { ReactComponent as Nodes } from '../assets/images/portrait_nodes.svg'
 import AnimatedNodes from './AnimatedNodes'
 
 const Hero = () => {
@@ -17,7 +16,6 @@ const Hero = () => {
 				<Illustration />
 			</PortraitIllustration>
 			<PortraitNodes>
-				<Nodes />
 				<AnimatedNodes />
 			</PortraitNodes>
 		</HeaderContainer>
@@ -46,6 +44,12 @@ const Header = styled.h1`
 	letter-spacing: 0.02rem;
 	padding: 0 2.5em;
 	z-index: 80;
+	@media screen and (max-width: ${breakpoint.tablet}) {
+		top: 10vh;
+	}
+	@media screen and (max-width: ${breakpoint.mobile}) {
+		top: 5vh;
+	}
 `
 
 const NoWrap = styled.span`
@@ -58,15 +62,15 @@ const Portrait = styled.div`
 	display: flex;
 	align-items: flex-end;
 	overflow: hidden;
-	svg {
-		height: clamp(85%, 70vw, 115%);
-		flex-shrink: 0;
-	}
 `
 
 const PortraitIllustration = styled(Portrait)`
 	justify-content: flex-end;
 	margin-right: 5px;
+	svg {
+		height: clamp(85%, 70vw, 115%);
+		flex-shrink: 0;
+	}
 `
 
 const PortraitNodes = styled(Portrait)`
@@ -84,6 +88,5 @@ const PortraitNodes = styled(Portrait)`
 	canvas {
 		height: clamp(85%, 70vw, 115%);
 		flex-shrink: 0;
-		position: absolute;
 	}
 `

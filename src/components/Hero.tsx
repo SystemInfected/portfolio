@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import styled from 'styled-components'
 import { color, font, breakpoint } from '../css/variables'
 import { ReactComponent as Illustration } from '../assets/images/portrait_illustration.svg'
@@ -5,7 +6,7 @@ import AnimatedNodes from './AnimatedNodes'
 
 const Hero = () => {
 	return (
-		<HeaderContainer>
+		<HeaderContainer id="header-container">
 			<Header>
 				Hi,
 				<br />
@@ -35,6 +36,7 @@ const HeaderContainer = styled.div`
 `
 
 const Header = styled.h1`
+	display: none;
 	position: absolute;
 	top: 14vh;
 	color: ${color.mainColorLight};

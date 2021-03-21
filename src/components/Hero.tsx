@@ -87,6 +87,7 @@ const PortraitNodes = styled(Portrait)`
 	background-position: left bottom;
 	background-size: 170% 95%;
 	background-repeat: no-repeat;
+	-webkit-user-select: none;
 	canvas {
 		height: clamp(85%, 70vw, 115%);
 		flex-shrink: 0;

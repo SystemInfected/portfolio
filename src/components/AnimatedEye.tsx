@@ -3,49 +3,8 @@ import React, { useRef, useEffect } from 'react'
 const AnimatedEye = (props) => {
 	const canvasRef = useRef<HTMLCanvasElement>(null)
 
-	let eyePos = { x: 0, y: 0 }
-
-	const draw = (ctx, frameCount, newMousePos) => {
+	const draw = (ctx, eyePos, frameCount) => {
 		ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height)
-
-		if (
-			newMousePos.x > 50 &&
-			newMousePos.x < 500 &&
-			newMousePos.y < 500 &&
-			newMousePos.y > -500
-		) {
-			eyePos.x = 20
-		} else if (
-			newMousePos.x < -50 &&
-			newMousePos.x > -500 &&
-			newMousePos.y < 500 &&
-			newMousePos.y > -500
-		) {
-			eyePos.x = -20
-		} else if (newMousePos.x == undefined) {
-			eyePos.x = 0
-		} else {
-			eyePos.x = 0
-		}
-		if (
-			newMousePos.y > 50 &&
-			newMousePos.y < 500 &&
-			newMousePos.x < 500 &&
-			newMousePos.x > -500
-		) {
-			eyePos.y = 20
-		} else if (
-			newMousePos.y < -50 &&
-			newMousePos.y > -500 &&
-			newMousePos.x < 500 &&
-			newMousePos.x > -500
-		) {
-			eyePos.y = -10
-		} else if (newMousePos.y == undefined) {
-			eyePos.x = 0
-		} else {
-			eyePos.y = 0
-		}
 
 		//Eye background
 		ctx.beginPath()
@@ -97,7 +56,7 @@ const AnimatedEye = (props) => {
 		ctx.closePath()
 	}
 
-	let newMousePos = { y: undefined, x: undefined }
+	let newMousePos = { y: 0, x: 0 }
 
 	useEffect(() => {
 		const canvas = canvasRef.current
@@ -123,10 +82,10 @@ const AnimatedEye = (props) => {
 
 					newMousePos = { x: mouseX, y: mouseY }
 				})
-				canvas.addEventListener('mouseout', (event) => {
-					newMousePos = { x: undefined, y: undefined }
+				headerContainer.addEventListener('mouseout', (event: any) => {
+					newMousePos = { x: 0, y: 0 }
 				})
-				canvas.addEventListener('touchstart', (event) => {
+				headerContainer.addEventListener('touchmove', (event: any) => {
 					let canvasXMultiplier =
 						canvas.width / canvas.getBoundingClientRect().width
 					let canvasYMultiplier =
@@ -140,24 +99,114 @@ const AnimatedEye = (props) => {
 
 					newMousePos = { x: mouseX, y: mouseY }
 				})
-				canvas.addEventListener('touchend', (event) => {
-					newMousePos = { x: undefined, y: undefined }
+				headerContainer.addEventListener('touchend', (event: any) => {
+					newMousePos = { x: 0, y: 0 }
 				})
-				canvas.addEventListener('touchcancel', (event) => {
-					newMousePos = { x: undefined, y: undefined }
+				headerContainer.addEventListener('touchcancel', (event: any) => {
+					newMousePos = { x: 0, y: 0 }
 				})
-				canvas.addEventListener('touchleave', (event) => {
-					newMousePos = { x: undefined, y: undefined }
+				headerContainer.addEventListener('touchleave', (event: any) => {
+					newMousePos = { x: 0, y: 0 }
 				})
 			}
 		}
 
 		let frameCount = 0
 		let animationFrameId: number
+		let mousePosCheck = { x: 0, y: 0 }
+		let mousePosDoubleCheck = { x: 0, y: 0 }
+		let updatedEyePos = { x: 0, y: 0 }
+		const eyeSpeed = 3
 		const render = () => {
-			frameCount++
+			if (newMousePos) {
+				if (mousePosCheck == newMousePos && frameCount > 0) {
+					mousePosDoubleCheck = mousePosCheck
+					frameCount = -180
+				}
+				if (
+					mousePosDoubleCheck == newMousePos &&
+					frameCount > -50 &&
+					frameCount < 0
+				) {
+					if (updatedEyePos.x > 3) {
+						updatedEyePos.x = updatedEyePos.x - eyeSpeed
+					} else if (updatedEyePos.x < -3) {
+						updatedEyePos.x = updatedEyePos.x + eyeSpeed
+					}
+					if (updatedEyePos.y > 3) {
+						updatedEyePos.y = updatedEyePos.y - eyeSpeed
+					} else if (updatedEyePos.y < -3) {
+						updatedEyePos.y = updatedEyePos.y + eyeSpeed
+					}
+				} else {
+					frameCount++
+					if (
+						newMousePos.x > 50 &&
+						newMousePos.x < 900 &&
+						newMousePos.y < 700 &&
+						newMousePos.y > -500
+					) {
+						if (updatedEyePos.x < 20) {
+							updatedEyePos.x = updatedEyePos.x + eyeSpeed
+						}
+					} else if (
+						newMousePos.x < -50 &&
+						newMousePos.x > -900 &&
+						newMousePos.y < 700 &&
+						newMousePos.y > -500
+					) {
+						if (updatedEyePos.x > -20) {
+							updatedEyePos.x = updatedEyePos.x - eyeSpeed
+						}
+					} else if (newMousePos.x == 0) {
+						if (updatedEyePos.x > 3) {
+							updatedEyePos.x = updatedEyePos.x - eyeSpeed
+						} else if (updatedEyePos.x < -3) {
+							updatedEyePos.x = updatedEyePos.x + eyeSpeed
+						}
+					} else {
+						if (updatedEyePos.x > 3) {
+							updatedEyePos.x = updatedEyePos.x - eyeSpeed
+						} else if (updatedEyePos.x < -3) {
+							updatedEyePos.x = updatedEyePos.x + eyeSpeed
+						}
+					}
+					if (
+						newMousePos.y > 50 &&
+						newMousePos.y < 700 &&
+						newMousePos.x < 900 &&
+						newMousePos.x > -900
+					) {
+						if (updatedEyePos.y < 20) {
+							updatedEyePos.y = updatedEyePos.y + eyeSpeed
+						}
+					} else if (
+						newMousePos.y < -50 &&
+						newMousePos.y > -500 &&
+						newMousePos.x < 900 &&
+						newMousePos.x > -900
+					) {
+						if (updatedEyePos.y > -10) {
+							updatedEyePos.y = updatedEyePos.y - eyeSpeed
+						}
+					} else if (newMousePos.y == 0) {
+						if (updatedEyePos.y > 3) {
+							updatedEyePos.y = updatedEyePos.y - eyeSpeed
+						} else if (updatedEyePos.y < -3) {
+							updatedEyePos.y = updatedEyePos.y + eyeSpeed
+						}
+					} else {
+						if (updatedEyePos.y > 3) {
+							updatedEyePos.y = updatedEyePos.y - eyeSpeed
+						} else if (updatedEyePos.y < -3) {
+							updatedEyePos.y = updatedEyePos.y + eyeSpeed
+						}
+					}
+					mousePosCheck = newMousePos
+				}
+			}
 
-			draw(context, frameCount, newMousePos)
+			draw(context, updatedEyePos, frameCount)
 			animationFrameId = window.requestAnimationFrame(render)
 		}
 		render()

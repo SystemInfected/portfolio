@@ -37,7 +37,6 @@ const HeaderContainer = styled.div`
 `
 
 const Header = styled.h1`
-	display: none;
 	position: absolute;
 	top: 14vh;
 	color: ${color.mainColorLight};
@@ -71,6 +70,7 @@ const PortraitIllustration = styled(Portrait)`
 	justify-content: flex-end;
 	margin-right: 5px;
 	position: relative;
+	-webkit-user-select: none;
 	svg {
 		height: clamp(85%, 70vw, 115%);
 		flex-shrink: 0;

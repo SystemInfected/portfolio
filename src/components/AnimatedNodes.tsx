@@ -579,12 +579,16 @@ const AnimatedNodes = (props) => {
 					canvas.width / canvas.getBoundingClientRect().width
 				let canvasYMultiplier =
 					canvas.height / canvas.getBoundingClientRect().height
-				let mouseX =
+				let mouseX: any =
 					(event.x - canvas.getBoundingClientRect().x) * canvasXMultiplier
-				let mouseY =
+				let mouseY: any =
 					(event.y - canvas.getBoundingClientRect().y) * canvasYMultiplier
 
 				mousePos = { x: mouseX, y: mouseY }
+			})
+			canvas.addEventListener('mouseout', (event) => {
+				event.preventDefault()
+				mousePos = { x: undefined, y: undefined }
 			})
 
 			canvas.addEventListener('touchmove', (event) => {
@@ -592,10 +596,10 @@ const AnimatedNodes = (props) => {
 					canvas.width / canvas.getBoundingClientRect().width
 				let canvasYMultiplier =
 					canvas.height / canvas.getBoundingClientRect().height
-				let mouseX =
+				let mouseX: any =
 					(event.touches[0].clientX - canvas.getBoundingClientRect().x) *
 					canvasXMultiplier
-				let mouseY =
+				let mouseY: any =
 					(event.touches[0].clientY - canvas.getBoundingClientRect().y) *
 					canvasYMultiplier
 
@@ -606,10 +610,10 @@ const AnimatedNodes = (props) => {
 					canvas.width / canvas.getBoundingClientRect().width
 				let canvasYMultiplier =
 					canvas.height / canvas.getBoundingClientRect().height
-				let mouseX =
+				let mouseX: any =
 					(event.touches[0].clientX - canvas.getBoundingClientRect().x) *
 					canvasXMultiplier
-				let mouseY =
+				let mouseY: any =
 					(event.touches[0].clientY - canvas.getBoundingClientRect().y) *
 					canvasYMultiplier
 
@@ -669,7 +673,7 @@ const randPos = (
 	mousePos: any,
 	interact: boolean = true
 ) => {
-	let distance = 80
+	let distance = 100
 	let newValueX = valueX + speedX * 0.5
 	let newValueY = valueY + speedY * 0.5
 

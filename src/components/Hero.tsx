@@ -1,8 +1,8 @@
-import { useEffect } from 'react'
 import styled from 'styled-components'
 import { color, font, breakpoint } from '../css/variables'
-import { ReactComponent as Illustration } from '../assets/images/portrait_illustration.svg'
+import { ReactComponent as IllustrationForeground } from '../assets/images/portrait_illustration_foreground.svg'
 import AnimatedNodes from './AnimatedNodes'
+import AnimatedEye from './AnimatedEye'
 
 const Hero = () => {
 	return (
@@ -14,7 +14,8 @@ const Hero = () => {
 				<NoWrap>web developer.</NoWrap>
 			</Header>
 			<PortraitIllustration>
-				<Illustration />
+				<AnimatedEye />
+				<IllustrationForeground />
 			</PortraitIllustration>
 			<PortraitNodes>
 				<AnimatedNodes />
@@ -69,9 +70,15 @@ const Portrait = styled.div`
 const PortraitIllustration = styled(Portrait)`
 	justify-content: flex-end;
 	margin-right: 5px;
+	position: relative;
 	svg {
 		height: clamp(85%, 70vw, 115%);
 		flex-shrink: 0;
+		position: absolute;
+	}
+	canvas {
+		height: clamp(85%, 70vw, 115%);
+		position: absolute;
 	}
 `
 

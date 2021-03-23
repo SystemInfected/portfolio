@@ -1,19 +1,17 @@
 import styled from 'styled-components'
 import { color, font, breakpoint } from '../css/variables'
 import { ReactComponent as IllustrationForeground } from '../assets/images/portrait_illustration_foreground.svg'
+import { ReactComponent as IllustrationEye } from '../assets/images/portrait_illustration_eye.svg'
 import AnimatedNodes from './AnimatedNodes'
 import AnimatedEye from './AnimatedEye'
 
 const Hero = () => {
 	return (
 		<HeaderContainer id="header-container">
-			<Header>
-				Hi,
-				<br />
-				My name is Sebastian, I'm a <NoWrap>graphic designer</NoWrap> and{' '}
-				<NoWrap>web developer.</NoWrap>
-			</Header>
+			<Header>Graphic Designer</Header>
+			<Header>Web Developer</Header>
 			<PortraitIllustration>
+				<IllustrationEye />
 				<AnimatedEye />
 				<IllustrationForeground />
 			</PortraitIllustration>
@@ -38,24 +36,45 @@ const HeaderContainer = styled.div`
 
 const Header = styled.h1`
 	position: absolute;
-	top: 14vh;
+	top: 0.5em;
+	left: 0.5em;
 	color: ${color.mainColorLight};
 	font-family: ${font.headingsFont};
-	font-size: clamp(2.2rem, 2.5vw, 3.2rem);
+	font-size: clamp(5rem, 5.5vw, 14rem);
 	font-weight: 100;
+	text-transform: uppercase;
 	letter-spacing: 0.02rem;
-	padding: 0 2.5em;
 	z-index: 80;
-	@media screen and (max-width: ${breakpoint.tablet}) {
-		top: 10vh;
+	line-height: 1;
+	&:last-of-type {
+		left: auto;
+		right: 0.5em;
+		text-align: right;
 	}
-	@media screen and (max-width: ${breakpoint.mobile}) {
-		top: 5vh;
+	@media (orientation: portrait) and (min-width: ${breakpoint.tablet}) {
+		width: 100%;
+		left: auto;
+		text-align: center;
+		font-size: clamp(5rem, 12vw, 14rem);
+		&:last-of-type {
+			right: auto;
+			width: 100%;
+			text-align: center;
+			top: 1.5em;
+		}
 	}
-`
-
-const NoWrap = styled.span`
-	white-space: nowrap;
+	@media only screen and (max-width: ${breakpoint.tablet}) {
+		width: 100%;
+		left: auto;
+		text-align: center;
+		font-size: clamp(3.2rem, 12vw, 8rem);
+		&:last-of-type {
+			right: auto;
+			width: 100%;
+			text-align: center;
+			top: 1.5em;
+		}
+	}
 `
 
 const Portrait = styled.div`

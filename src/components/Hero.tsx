@@ -13,39 +13,48 @@ const Hero = () => {
 	const { scrollY } = useViewportScroll()
 	const headerPos = useTransform(
 		scrollY,
-		[windowH * 0.2, windowH * 0.3],
+		[windowH * 0.2, windowH * 0.5],
 		[0, -windowH * 0.5]
 	)
 
 	return (
-		<HeaderContainer id="header-container">
-			<Header style={{ y: headerPos }}>
-				Graphic Designer
-				<br />
-				Web Developer
-			</Header>
-			<PortraitIllustration>
-				<IllustrationEye />
-				<AnimatedEye />
-				<IllustrationForeground />
-			</PortraitIllustration>
-			<PortraitNodes>
-				<AnimatedNodes />
-			</PortraitNodes>
-		</HeaderContainer>
+		<HeaderWrapper>
+			<HeaderContainer id="header-container">
+				<Header style={{ y: headerPos }}>
+					Graphic Designer
+					<br />
+					Web Developer
+				</Header>
+				<PortraitIllustration>
+					<IllustrationEye />
+					<AnimatedEye />
+					<IllustrationForeground />
+				</PortraitIllustration>
+				<PortraitNodes>
+					<AnimatedNodes />
+				</PortraitNodes>
+			</HeaderContainer>
+		</HeaderWrapper>
 	)
 }
 
 export default Hero
 
-const HeaderContainer = styled.div`
+const HeaderWrapper = styled.div`
 	background-color: ${color.mainColorDark};
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	margin-bottom: 200vh;
+`
+
+const HeaderContainer = styled.div`
 	width: 100%;
 	height: 100vh;
 	display: flex;
 	align-items: flex-end;
 	justify-content: center;
-	margin-bottom: 200vh;
+	position: relative;
 `
 
 const Header = styled(motion.h1)`
@@ -55,7 +64,7 @@ const Header = styled(motion.h1)`
 	color: ${color.mainAccentColor};
 	font-family: ${font.headingsFont};
 	font-size: clamp(2.5rem, 5.8vw, 12rem);
-	font-weight: 550;
+	font-weight: 450;
 	text-transform: uppercase;
 	letter-spacing: 0.02rem;
 	line-height: 1.2;
@@ -64,7 +73,7 @@ const Header = styled(motion.h1)`
 		width: 100%;
 		left: auto;
 		text-align: center;
-		font-size: clamp(4.6rem, 9.5vw, 13rem);
+		font-size: clamp(4.2rem, 9.5vw, 13rem);
 	}
 `
 

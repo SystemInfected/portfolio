@@ -1,5 +1,5 @@
+import { useEffect } from 'react'
 import styled from 'styled-components'
-import { motion, useViewportScroll, useTransform } from 'framer-motion'
 import { color, font, breakpoint } from '../css/variables'
 import { ReactComponent as IllustrationForeground } from '../assets/images/portrait_illustration_foreground.svg'
 import { ReactComponent as IllustrationEye } from '../assets/images/portrait_illustration_eye.svg'
@@ -7,48 +7,73 @@ import AnimatedNodes from './AnimatedNodes'
 import AnimatedEye from './AnimatedEye'
 
 const Hero = () => {
-	const windowW = window.innerWidth
-	const windowH = window.innerHeight
-	console.log(windowW, windowH)
-	const { scrollY } = useViewportScroll()
-	const headerPos = useTransform(
-		scrollY,
-		[windowH * 0.2, windowH * 0.5],
-		[0, -windowH * 0.5]
-	)
+	useEffect(() => {
+		const headerContainer = document.querySelector('#headerContainer')
+		const graphicDesigner: HTMLElement | null = document.querySelector(
+			'#graphicDesigner'
+		)
+		const webDeveloper: HTMLElement | null = document.querySelector(
+			'#webDeveloper'
+		)
+		if (headerContainer && graphicDesigner && webDeveloper) {
+			window.addEventListener('scroll', (e) => {
+				let headerContainerPos = headerContainer.getBoundingClientRect()
+
+				if (
+					headerContainerPos.y < -80 &&
+					headerContainerPos.y > -headerContainerPos.height
+				) {
+					graphicDesigner.style.transform = `translateY(${
+						(headerContainerPos.y + 80) * 1.2
+					}px)`
+				} else if (headerContainerPos.y < -headerContainerPos.height) {
+					graphicDesigner.style.transform = 'translateY(-1000px)'
+				} else {
+					graphicDesigner.style.transform = 'translateY(0)'
+				}
+				if (
+					headerContainerPos.y < -140 &&
+					headerContainerPos.y > -headerContainerPos.height
+				) {
+					webDeveloper.style.transform = `translateY(${
+						(headerContainerPos.y + 140) * 1.5
+					}px)`
+				} else if (headerContainerPos.y < -headerContainerPos.height) {
+					webDeveloper.style.transform = 'translateY(-1000px)'
+				} else {
+					webDeveloper.style.transform = 'translateY(0)'
+				}
+				console.log(headerContainerPos.y, -headerContainerPos.height)
+			})
+		}
+	}, [])
 
 	return (
-		<HeaderWrapper>
-			<HeaderContainer id="header-container">
-				<Header style={{ y: headerPos }}>
+		<HeaderContainer id="headerContainer">
+			<Header>
+				<span id="graphicDesigner" style={{ transform: 'translateY(0px)' }}>
 					Graphic Designer
-					<br />
+				</span>
+				<span id="webDeveloper" style={{ transform: 'translateY(0px)' }}>
 					Web Developer
-				</Header>
-				<PortraitIllustration>
-					<IllustrationEye />
-					<AnimatedEye />
-					<IllustrationForeground />
-				</PortraitIllustration>
-				<PortraitNodes>
-					<AnimatedNodes />
-				</PortraitNodes>
-			</HeaderContainer>
-		</HeaderWrapper>
+				</span>
+			</Header>
+			<PortraitIllustration>
+				<IllustrationEye />
+				<AnimatedEye />
+				<IllustrationForeground />
+			</PortraitIllustration>
+			<PortraitNodes>
+				<AnimatedNodes />
+			</PortraitNodes>
+		</HeaderContainer>
 	)
 }
 
 export default Hero
 
-const HeaderWrapper = styled.div`
-	background-color: ${color.mainColorDark};
-	width: 100%;
-	display: flex;
-	justify-content: center;
-	margin-bottom: 200vh;
-`
-
 const HeaderContainer = styled.div`
+	background: ${color.mainColorDark};
 	width: 100%;
 	height: 100vh;
 	display: flex;
@@ -57,10 +82,8 @@ const HeaderContainer = styled.div`
 	position: relative;
 `
 
-const Header = styled(motion.h1)`
-	position: fixed;
-	top: 0.5em;
-	left: 0.5em;
+const Header = styled.h1`
+	position: absolute;
 	color: ${color.mainAccentColor};
 	font-family: ${font.headingsFont};
 	font-size: clamp(2.5rem, 5.8vw, 12rem);
@@ -74,6 +97,23 @@ const Header = styled(motion.h1)`
 		left: auto;
 		text-align: center;
 		font-size: clamp(4.2rem, 9.5vw, 13rem);
+	}
+	span {
+		position: fixed;
+		top: 0.5em;
+		left: 0.5em;
+		display: block;
+		&:nth-child(2) {
+			top: 1.7em;
+		}
+		@media (orientation: portrait) {
+			left: auto;
+			width: 100%;
+			top: 1.5em;
+			&:nth-child(2) {
+				top: 2.7em;
+			}
+		}
 	}
 `
 

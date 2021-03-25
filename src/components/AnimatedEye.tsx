@@ -66,7 +66,7 @@ const AnimatedEye = (props) => {
 			canvas.width = 900
 			canvas.height = 1700
 
-			const headerContainer = document.querySelector('#header-container')
+			const headerContainer = document.querySelector('#headerContainer')
 			if (headerContainer) {
 				headerContainer.addEventListener('mousemove', (event: any) => {
 					let canvasXMultiplier =

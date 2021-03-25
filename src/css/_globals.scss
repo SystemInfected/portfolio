@@ -12,8 +12,16 @@ html {
 	font-size: 62.5%;
 }
 body {
+	min-height: 260vh;
 	font-family: $standardFont;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	-webkit-overflow-scrolling: touch;
+}
+a {
+	text-decoration: none;
+}
+a:hover,
+a:focus {
+	text-decoration: underline;
 }

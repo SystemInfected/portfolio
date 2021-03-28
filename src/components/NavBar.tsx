@@ -40,7 +40,7 @@ const NavBar = () => {
 		<Nav id="navBar">
 			<LogoTitle>
 				<span>Sebastian</span>
-				<span>/</span>
+				<span aria-hidden="true">/</span>
 				<span>Widin</span>
 			</LogoTitle>
 			<ul>
@@ -63,11 +63,29 @@ export default NavBar
 const Nav = styled.nav`
 	position: relative;
 	display: flex;
-	padding: 1em;
+	padding: 1em 2em;
 	justify-content: space-between;
 	align-items: center;
 	width: 100%;
 	background: ${color.mainAccentColor};
 `
 
-const LogoTitle = styled.h1``
+const LogoTitle = styled.h1`
+	font-family: ${font.headingsFont};
+	color: ${color.mainColorDark};
+	font-size: 2.2rem;
+	text-transform: uppercase;
+	display: flex;
+	align-items: center;
+	line-height: 0.9;
+	span:nth-child(1),
+	span:nth-child(3) {
+		font-weight: 500;
+	}
+	span:nth-child(2) {
+		color: ${color.mainColorLight};
+		transform: scale(1.8, 1);
+		margin-left: 0.1em;
+		margin-right: 0.15em;
+	}
+`

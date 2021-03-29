@@ -1,3 +1,5 @@
+const isProd = process.env.NODE_ENV === 'production'
+
 module.exports = {
 	webpack(config) {
 		config.module.rules.push({
@@ -7,4 +9,5 @@ module.exports = {
 
 		return config
 	},
+	assetPrefix: isProd ? 'https://systeminfected.github.io/portfolio/' : '',
 }

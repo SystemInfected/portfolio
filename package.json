@@ -1,11 +1,13 @@
 {
 	"name": "portfolio",
-	"version": "0.1.0",
+	"homepage": "https://systeminfected.github.io/portfolio/",
+	"version": "7.0.0",
 	"private": true,
 	"scripts": {
 		"dev": "next dev",
 		"build": "next build",
-		"start": "next start"
+		"start": "next start",
+		"deploy": "next build && next export && touch ./out/.nojekyll && gh-pages -d out -t true"
 	},
 	"dependencies": {
 		"@material-ui/core": "^4.11.3",

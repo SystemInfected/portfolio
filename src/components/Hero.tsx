@@ -26,10 +26,13 @@ const Hero = () => {
 					graphicDesigner.style.transform = `translateY(${
 						(headerContainerPos.y + 80) * 1.2
 					}px)`
+					graphicDesigner.style.opacity = '1'
 				} else if (headerContainerPos.y < -headerContainerPos.height) {
 					graphicDesigner.style.transform = 'translateY(-1000px)'
+					graphicDesigner.style.opacity = '0'
 				} else {
 					graphicDesigner.style.transform = 'translateY(0)'
+					graphicDesigner.style.opacity = '1'
 				}
 				if (
 					headerContainerPos.y < -140 &&
@@ -38,12 +41,14 @@ const Hero = () => {
 					webDeveloper.style.transform = `translateY(${
 						(headerContainerPos.y + 140) * 1.5
 					}px)`
+					webDeveloper.style.opacity = '1'
 				} else if (headerContainerPos.y < -headerContainerPos.height) {
 					webDeveloper.style.transform = 'translateY(-1000px)'
+					webDeveloper.style.opacity = '0'
 				} else {
 					webDeveloper.style.transform = 'translateY(0)'
+					webDeveloper.style.opacity = '1'
 				}
-				console.log(headerContainerPos.y, -headerContainerPos.height)
 			})
 		}
 	}, [])

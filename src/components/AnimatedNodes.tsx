@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from 'react'
-import { color } from '../css/variables'
+import { color } from '../../styles/variables'
 
 const AnimatedNodes = (props) => {
 	const canvasRef = useRef<HTMLCanvasElement>(null)

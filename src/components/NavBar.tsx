@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import styled from 'styled-components'
-import { color, font, breakpoint } from '../css/variables'
+import { color, font, breakpoint } from '../../styles/variables'
 
 const NavBar = () => {
 	useEffect(() => {

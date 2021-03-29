@@ -1,8 +1,8 @@
 import { useEffect } from 'react'
 import styled from 'styled-components'
-import { color, font, breakpoint } from '../css/variables'
-import { ReactComponent as IllustrationForeground } from '../assets/images/portrait_illustration_foreground.svg'
-import { ReactComponent as IllustrationEye } from '../assets/images/portrait_illustration_eye.svg'
+import { color, font, breakpoint } from '../../styles/variables'
+import IllustrationForeground from '../assets/svg/portrait_illustration_foreground.svg'
+import IllustrationEye from '../assets/svg/portrait_illustration_eye.svg'
 import AnimatedNodes from './AnimatedNodes'
 import AnimatedEye from './AnimatedEye'
 

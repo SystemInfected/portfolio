@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { color, font, breakpoint } from '../../styles/variables'
 import IllustrationForeground from '../assets/svg/portrait_illustration_foreground.svg'
 import IllustrationEye from '../assets/svg/portrait_illustration_eye.svg'
+import LocationOnIcon from '@material-ui/icons/LocationOn'
 import AnimatedNodes from './AnimatedNodes'
 import AnimatedEye from './AnimatedEye'
 
@@ -15,7 +16,9 @@ const Hero = () => {
 		const webDeveloper: HTMLElement | null = document.querySelector(
 			'#webDeveloper'
 		)
-		if (headerContainer && graphicDesigner && webDeveloper) {
+		const location: HTMLElement | null = document.querySelector('#location')
+
+		if (headerContainer && graphicDesigner && webDeveloper && location) {
 			window.addEventListener('scroll', (e) => {
 				let headerContainerPos = headerContainer.getBoundingClientRect()
 
@@ -27,8 +30,7 @@ const Hero = () => {
 						(headerContainerPos.y + 80) * 1.2
 					}px)`
 					graphicDesigner.style.opacity = '1'
-				} else if (headerContainerPos.y < -headerContainerPos.height) {
-					graphicDesigner.style.transform = 'translateY(-1000px)'
+				} else if (headerContainerPos.y <= -headerContainerPos.height) {
 					graphicDesigner.style.opacity = '0'
 				} else {
 					graphicDesigner.style.transform = 'translateY(0)'
@@ -42,27 +44,46 @@ const Hero = () => {
 						(headerContainerPos.y + 140) * 1.5
 					}px)`
 					webDeveloper.style.opacity = '1'
-				} else if (headerContainerPos.y < -headerContainerPos.height) {
-					webDeveloper.style.transform = 'translateY(-1000px)'
+				} else if (headerContainerPos.y <= -headerContainerPos.height) {
 					webDeveloper.style.opacity = '0'
 				} else {
 					webDeveloper.style.transform = 'translateY(0)'
 					webDeveloper.style.opacity = '1'
+				}
+				if (
+					headerContainerPos.y < -160 &&
+					headerContainerPos.y > -headerContainerPos.height
+				) {
+					location.style.transform = `translateY(${
+						(headerContainerPos.y + 160) * 1.7
+					}px)`
+					location.style.opacity = '1'
+				} else if (headerContainerPos.y <= -headerContainerPos.height) {
+					location.style.opacity = '0'
+				} else {
+					location.style.transform = 'translateY(0)'
+					location.style.opacity = '1'
 				}
 			})
 		}
 	}, [])
 
 	return (
-		<HeaderContainer id="headerContainer">
-			<Header>
-				<span id="graphicDesigner" style={{ transform: 'translateY(0px)' }}>
-					Graphic Designer
-				</span>
-				<span id="webDeveloper" style={{ transform: 'translateY(0px)' }}>
-					Web Developer
-				</span>
-			</Header>
+		<HeaderContainer id='headerContainer'>
+			<HeaderWrapper>
+				<Header>
+					<span id='graphicDesigner' style={{ transform: 'translateY(0px)' }}>
+						Graphic Designer
+					</span>
+					<span id='webDeveloper' style={{ transform: 'translateY(0px)' }}>
+						Web Developer
+					</span>
+				</Header>
+				<Location id='location'>
+					<LocationOnIcon style={{ fontSize: 20 }} />
+					Stockholm, Sweden
+				</Location>
+			</HeaderWrapper>
 			<PortraitIllustration>
 				<IllustrationEye />
 				<AnimatedEye />
@@ -87,8 +108,19 @@ const HeaderContainer = styled.div`
 	position: relative;
 `
 
+const HeaderWrapper = styled.div`
+	width: auto;
+	position: fixed;
+	left: 5vw;
+	top: 5vw;
+	z-index: 20;
+	@media (orientation: portrait) {
+		width: 100%;
+		left: auto;
+	}
+`
+
 const Header = styled.h1`
-	position: absolute;
 	color: ${color.mainAccentColor};
 	font-family: ${font.headingsFont};
 	font-size: clamp(2.5rem, 5.8vw, 12rem);
@@ -96,29 +128,31 @@ const Header = styled.h1`
 	text-transform: uppercase;
 	letter-spacing: 0.02rem;
 	line-height: 1.2;
-	z-index: 20;
 	@media (orientation: portrait) {
-		width: 100%;
-		left: auto;
 		text-align: center;
 		font-size: clamp(4.2rem, 9.5vw, 13rem);
 	}
 	span {
-		position: fixed;
-		top: 0.5em;
-		left: 0.5em;
+		position: relative;
 		display: block;
-		&:nth-child(2) {
-			top: 1.7em;
-		}
-		@media (orientation: portrait) {
-			left: auto;
-			width: 100%;
-			top: 1.5em;
-			&:nth-child(2) {
-				top: 2.7em;
-			}
-		}
+	}
+`
+
+const Location = styled.h2`
+	color: ${color.mainColorLight};
+	font-family: ${font.headingsFont};
+	font-size: clamp(1.8rem, 6vw, 2.8rem);
+	font-weight: 200;
+	letter-spacing: 0.08rem;
+	line-height: 1.2;
+	margin-top: 2vw;
+	@media (orientation: portrait) {
+		width: 100%;
+		text-align: center;
+		margin-top: 4vw;
+	}
+	svg {
+		margin-right: 10px;
 	}
 `
 

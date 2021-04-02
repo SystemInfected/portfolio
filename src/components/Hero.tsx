@@ -1,5 +1,9 @@
 import { useEffect } from 'react'
 import styled from 'styled-components'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
+gsap.registerPlugin(ScrollTrigger)
+
 import { color, font, breakpoint } from '../../styles/variables'
 import IllustrationForeground from '../assets/svg/portrait_illustration_foreground.svg'
 import IllustrationEye from '../assets/svg/portrait_illustration_eye.svg'
@@ -9,7 +13,6 @@ import AnimatedEye from './AnimatedEye'
 
 const Hero = () => {
 	useEffect(() => {
-		const headerContainer = document.querySelector('#headerContainer')
 		const graphicDesigner: HTMLElement | null = document.querySelector(
 			'#graphicDesigner'
 		)
@@ -18,90 +21,134 @@ const Hero = () => {
 		)
 		const location: HTMLElement | null = document.querySelector('#location')
 
-		if (headerContainer && graphicDesigner && webDeveloper && location) {
-			window.addEventListener('scroll', (e) => {
-				let headerContainerPos = headerContainer.getBoundingClientRect()
+		if (graphicDesigner && webDeveloper && location) {
+			const graphicDesignerPos = graphicDesigner.getBoundingClientRect()
+			const webDeveloperPos = webDeveloper.getBoundingClientRect()
+			const locationPos = location.getBoundingClientRect()
 
-				if (
-					headerContainerPos.y < -80 &&
-					headerContainerPos.y > -headerContainerPos.height
-				) {
-					graphicDesigner.style.transform = `translateY(${
-						(headerContainerPos.y + 80) * 1.2
-					}px)`
-					graphicDesigner.style.opacity = '1'
-				} else if (headerContainerPos.y <= -headerContainerPos.height) {
-					graphicDesigner.style.opacity = '0'
-				} else {
-					graphicDesigner.style.transform = 'translateY(0)'
-					graphicDesigner.style.opacity = '1'
-				}
-				if (
-					headerContainerPos.y < -140 &&
-					headerContainerPos.y > -headerContainerPos.height
-				) {
-					webDeveloper.style.transform = `translateY(${
-						(headerContainerPos.y + 140) * 1.5
-					}px)`
-					webDeveloper.style.opacity = '1'
-				} else if (headerContainerPos.y <= -headerContainerPos.height) {
-					webDeveloper.style.opacity = '0'
-				} else {
-					webDeveloper.style.transform = 'translateY(0)'
-					webDeveloper.style.opacity = '1'
-				}
-				if (
-					headerContainerPos.y < -160 &&
-					headerContainerPos.y > -headerContainerPos.height
-				) {
-					location.style.transform = `translateY(${
-						(headerContainerPos.y + 160) * 1.7
-					}px)`
-					location.style.opacity = '1'
-				} else if (headerContainerPos.y <= -headerContainerPos.height) {
-					location.style.opacity = '0'
-				} else {
-					location.style.transform = 'translateY(0)'
-					location.style.opacity = '1'
-				}
+			gsap.defaults({
+				ease: 'power2.out',
+				duration: 0.8,
 			})
+			const tl = gsap.timeline()
+
+			tl.from(graphicDesigner, {
+				y: -(graphicDesignerPos.y + graphicDesignerPos.height),
+			})
+			tl.from(
+				webDeveloper,
+				{
+					y: -(webDeveloperPos.y + webDeveloperPos.height),
+				},
+				'-=0.5'
+			)
+			tl.from(
+				location,
+				{
+					y: -(locationPos.y + locationPos.height),
+				},
+				'-=0.5'
+			)
+
+			gsap.fromTo(
+				graphicDesigner,
+				{ y: 0, autoAlpha: 1 },
+				{
+					y: -(graphicDesignerPos.y + graphicDesignerPos.height),
+					autoAlpha: 0,
+					immediateRender: false,
+					scrollTrigger: {
+						trigger: '#headerContainer',
+						start: '10% top',
+						end: '50% 5%',
+						scrub: 1,
+					},
+				}
+			)
+			gsap.fromTo(
+				webDeveloper,
+				{ y: 0, autoAlpha: 1 },
+				{
+					y: -(webDeveloperPos.y + webDeveloperPos.height),
+					autoAlpha: 0,
+					immediateRender: false,
+					scrollTrigger: {
+						trigger: '#headerContainer',
+						start: '18% top',
+						end: '50% 5%',
+						scrub: 1,
+					},
+				}
+			)
+			gsap.fromTo(
+				location,
+				{ y: 0, autoAlpha: 1 },
+				{
+					y: -(locationPos.y + locationPos.height),
+					autoAlpha: 0,
+					immediateRender: false,
+					scrollTrigger: {
+						trigger: '#headerContainer',
+						start: '26% top',
+						end: '50% 5%',
+						scrub: 1,
+					},
+				}
+			)
 		}
+		gsap.from('#portraitIllustration svg, #portraitIllustration canvas', {
+			duration: 1.4,
+			yPercent: 10,
+		})
+		gsap.from('#portraitNodes canvas', {
+			duration: 1.4,
+			yPercent: 10,
+		})
 	}, [])
 
 	return (
-		<HeaderContainer id='headerContainer'>
-			<HeaderWrapper>
-				<Header>
-					<span id='graphicDesigner' style={{ transform: 'translateY(0px)' }}>
-						Graphic Designer
-					</span>
-					<span id='webDeveloper' style={{ transform: 'translateY(0px)' }}>
-						Web Developer
-					</span>
-				</Header>
-				<Location id='location'>
-					<LocationOnIcon style={{ fontSize: 20 }} />
-					Stockholm, Sweden
-				</Location>
-			</HeaderWrapper>
-			<PortraitIllustration>
-				<IllustrationEye />
-				<AnimatedEye />
-				<IllustrationForeground />
-			</PortraitIllustration>
-			<PortraitNodes>
-				<AnimatedNodes />
-			</PortraitNodes>
-		</HeaderContainer>
+		<HeaderBg>
+			<HeaderContainer id='headerContainer'>
+				<HeaderWrapper>
+					<Header>
+						<span id='graphicDesigner' style={{ transform: 'translateY(0px)' }}>
+							Graphic Designer
+						</span>
+						<span id='webDeveloper' style={{ transform: 'translateY(0px)' }}>
+							Web Developer
+						</span>
+					</Header>
+					<Location id='location'>
+						<LocationOnIcon fontSize='large' />
+						Stockholm, Sweden
+					</Location>
+				</HeaderWrapper>
+				<PortraitIllustration id='portraitIllustration'>
+					<IllustrationEye />
+					<AnimatedEye />
+					<IllustrationForeground />
+				</PortraitIllustration>
+				<PortraitNodes id='portraitNodes'>
+					<AnimatedNodes />
+				</PortraitNodes>
+			</HeaderContainer>
+		</HeaderBg>
 	)
 }
 
 export default Hero
 
-const HeaderContainer = styled.div`
-	background: ${color.mainColorDark};
+const HeaderBg = styled.section`
 	width: 100%;
-	height: 100vh;
+	display: flex;
+	justify-content: center;
+	background: ${color.mainColorDark};
+`
+
+const HeaderContainer = styled.div`
+	width: 100%;
+	max-width: ${breakpoint.maxWidth};
+	height: 100%;
 	display: flex;
 	align-items: flex-end;
 	justify-content: center;
@@ -109,28 +156,34 @@ const HeaderContainer = styled.div`
 `
 
 const HeaderWrapper = styled.div`
-	width: auto;
+	width: 100%;
+	max-width: ${breakpoint.maxWidth};
 	position: fixed;
-	left: 5vw;
-	top: 5vw;
+	left: 50%;
+	padding-left: 4rem;
+	top: 4rem;
+	transform: translateX(-50%);
 	z-index: 20;
+	pointer-events: none;
 	@media (orientation: portrait) {
 		width: 100%;
 		left: auto;
+		transform: none;
+		padding-left: 0;
 	}
 `
 
 const Header = styled.h1`
 	color: ${color.mainAccentColor};
 	font-family: ${font.headingsFont};
-	font-size: clamp(2.5rem, 5.8vw, 12rem);
+	font-size: clamp(2.5rem, 5.8vw, 8.4rem);
 	font-weight: 450;
 	text-transform: uppercase;
 	letter-spacing: 0.02rem;
 	line-height: 1.2;
 	@media (orientation: portrait) {
 		text-align: center;
-		font-size: clamp(4.2rem, 9.5vw, 13rem);
+		font-size: clamp(3.4rem, 10vw, 13rem);
 	}
 	span {
 		position: relative;
@@ -139,16 +192,18 @@ const Header = styled.h1`
 `
 
 const Location = styled.h2`
+	display: flex;
+	align-items: center;
 	color: ${color.mainColorLight};
 	font-family: ${font.headingsFont};
-	font-size: clamp(1.8rem, 6vw, 2.8rem);
+	font-size: clamp(2.5rem, 3vw, 4.6rem);
 	font-weight: 200;
 	letter-spacing: 0.08rem;
 	line-height: 1.2;
-	margin-top: 2vw;
+	margin-top: 1em;
 	@media (orientation: portrait) {
 		width: 100%;
-		text-align: center;
+		justify-content: center;
 		margin-top: 4vw;
 	}
 	svg {
@@ -157,7 +212,7 @@ const Location = styled.h2`
 `
 
 const Portrait = styled.div`
-	height: 100vh;
+	height: calc(100vh - 60px);
 	display: flex;
 	align-items: flex-end;
 	overflow: hidden;
@@ -170,12 +225,12 @@ const PortraitIllustration = styled(Portrait)`
 	position: relative;
 	-webkit-user-select: none;
 	svg {
-		height: clamp(85%, 70vw, 115%);
+		height: clamp(80%, 70vw, 115%);
 		flex-shrink: 0;
 		position: absolute;
 	}
 	canvas {
-		height: clamp(85%, 70vw, 115%);
+		height: clamp(80%, 70vw, 115%);
 		position: absolute;
 	}
 	@media (orientation: portrait) {
@@ -188,17 +243,17 @@ const PortraitNodes = styled(Portrait)`
 	justify-content: flex-start;
 	margin-left: 5px;
 	background: radial-gradient(
-		ellipse at left bottom,
+		ellipse at left 90%,
 		rgba(${color.mainColorLightRGB}, 0.25) 0%,
-		rgba(${color.mainColorLightRGB}, 0.2) 8%,
-		rgba(0, 0, 0, 0) 50%
+		rgba(${color.mainColorLightRGB}, 0.16) 6%,
+		rgba(0, 0, 0, 0) 38%
 	);
 	background-position: left bottom;
 	background-size: 170% 95%;
 	background-repeat: no-repeat;
 	-webkit-user-select: none;
 	canvas {
-		height: clamp(85%, 70vw, 115%);
+		height: clamp(80%, 70vw, 115%);
 		flex-shrink: 0;
 	}
 	@media (orientation: portrait) {

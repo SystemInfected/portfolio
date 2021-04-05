@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { color, font, breakpoint } from '../../styles/variables'
 import MoreVertIcon from '@material-ui/icons/MoreVert'
+import CloseIcon from '@material-ui/icons/Close'
 
 const NavBar = () => {
 	const [mobileMenuPos, setMobileMenuPos] = useState({ x: 0, y: 0 })
@@ -12,6 +13,7 @@ const NavBar = () => {
 		const headerContainer = document.querySelector('#headerContainer')
 		const menuToggle: HTMLElement | null = document.querySelector('#menuToggle')
 		const menuNav: HTMLElement | null = document.querySelector('#menuNav')
+		const closeMenu: HTMLElement | null = document.querySelector('#closeMenu')
 		let isNavBarFixed = false
 
 		const toogleNavBar = (toogle: boolean) => {
@@ -22,16 +24,6 @@ const NavBar = () => {
 				} else {
 					navBar.style.position = 'relative'
 					navBar.style.top = ''
-				}
-			}
-		}
-
-		const toggleMenu = () => {
-			if (menuNav) {
-				if (menuActive) {
-					setMenuActive(false)
-				} else {
-					setMenuActive(true)
 				}
 			}
 		}
@@ -70,7 +62,15 @@ const NavBar = () => {
 
 				setMobileMenuPos(mobileMenuPos)
 
-				toggleMenu()
+				setMenuActive(true)
+				document.body.classList.toggle('lock-scroll')
+			})
+		}
+
+		if (closeMenu) {
+			closeMenu.addEventListener('click', () => {
+				setMenuActive(false)
+				document.body.classList.toggle('lock-scroll')
 			})
 		}
 	}, [])
@@ -99,9 +99,28 @@ const NavBar = () => {
 			</Nav>
 			<MobileNav
 				id='menuNav'
-				active={menuActive}
-				position={mobileMenuPos}
-			></MobileNav>
+				style={{
+					pointerEvents: menuActive ? 'auto' : 'none',
+					clipPath: `circle(${menuActive ? '200%' : '0%'} at ${
+						mobileMenuPos.x
+					}px ${mobileMenuPos.y}px)`,
+				}}
+			>
+				<CloseMobileMenu id='closeMenu'>
+					<CloseIcon style={{ fontSize: '3rem' }} />
+				</CloseMobileMenu>
+				<MobileMenu>
+					<li>
+						<a href='#'>Work</a>
+					</li>
+					<li>
+						<a href='#'>Skills</a>
+					</li>
+					<li>
+						<a href='#'>Contact</a>
+					</li>
+				</MobileMenu>
+			</MobileNav>
 		</NavBg>
 	)
 }
@@ -186,6 +205,7 @@ const MenuToggle = styled.div`
 	display: none;
 	padding: 0.5em;
 	cursor: pointer;
+	color: ${color.mainColorDark};
 	svg {
 		margin-top: 0.1em;
 	}
@@ -194,22 +214,26 @@ const MenuToggle = styled.div`
 	}
 `
 
-interface MobileNav {
-	active: boolean
-	position: any
-}
-
-const MobileNav = styled.div<MobileNav>`
+const MobileNav = styled.div`
 	width: 100vw;
 	height: 100vh;
 	position: fixed;
 	top: 0;
 	left: 0;
 	z-index: 30;
+	padding: 3rem;
+	touch-action: none;
 	background: ${color.mainColorDark};
-	clip-path: circle(
-		${(props) => (props.active ? '200%' : '0%')} at
-			${(props) => props.position.x}px ${(props) => props.position.y}px
-	);
 	transition: clip-path ease-out 0.3s;
 `
+
+const CloseMobileMenu = styled.div`
+	position: absolute;
+	right: 1rem;
+	top: 1rem;
+	color: ${color.mainAccentColor};
+	padding: 0.5em;
+	cursor: pointer;
+`
+
+const MobileMenu = styled.div``

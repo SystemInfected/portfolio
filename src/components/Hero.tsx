@@ -13,6 +13,9 @@ import AnimatedEye from './AnimatedEye'
 
 const Hero = () => {
 	useEffect(() => {
+		const headerContainer: HTMLElement | null = document.querySelector(
+			'#headerContainer'
+		)
 		const graphicDesigner: HTMLElement | null = document.querySelector(
 			'#graphicDesigner'
 		)
@@ -21,7 +24,8 @@ const Hero = () => {
 		)
 		const location: HTMLElement | null = document.querySelector('#location')
 
-		if (graphicDesigner && webDeveloper && location) {
+		if (headerContainer && graphicDesigner && webDeveloper && location) {
+			const headerContainerPos = headerContainer.getBoundingClientRect()
 			const graphicDesignerPos = graphicDesigner.getBoundingClientRect()
 			const webDeveloperPos = webDeveloper.getBoundingClientRect()
 			const locationPos = location.getBoundingClientRect()
@@ -30,67 +34,65 @@ const Hero = () => {
 				ease: 'power2.out',
 				duration: 0.8,
 			})
-			const tl = gsap.timeline()
 
-			tl.from(graphicDesigner, {
+			gsap.from(graphicDesigner, {
 				y: -(graphicDesignerPos.y + graphicDesignerPos.height),
 			})
-			tl.from(
-				webDeveloper,
-				{
-					y: -(webDeveloperPos.y + webDeveloperPos.height),
-				},
-				'-=0.5'
-			)
-			tl.from(
-				location,
-				{
-					y: -(locationPos.y + locationPos.height),
-				},
-				'-=0.5'
-			)
+			gsap.from(webDeveloper, {
+				y: -(webDeveloperPos.y + webDeveloperPos.height),
+				delay: 0.3,
+			})
+			gsap.from(location, {
+				y: -(locationPos.y + locationPos.height),
+				delay: 0.6,
+			})
+			gsap.to('#headerWrapper', {
+				position: 'fixed',
+				delay: 1.4,
+				duration: 0,
+			})
 
 			gsap.fromTo(
 				graphicDesigner,
-				{ y: 0, autoAlpha: 1 },
+				{ y: 0 },
 				{
-					y: -(graphicDesignerPos.y + graphicDesignerPos.height),
+					y: -(headerContainerPos.height / 3),
 					autoAlpha: 0,
 					immediateRender: false,
 					scrollTrigger: {
 						trigger: '#headerContainer',
 						start: '10% top',
-						end: '50% 5%',
+						end: '35% 5%',
 						scrub: 1,
 					},
 				}
 			)
 			gsap.fromTo(
 				webDeveloper,
-				{ y: 0, autoAlpha: 1 },
+				{ y: 0 },
 				{
-					y: -(webDeveloperPos.y + webDeveloperPos.height),
+					y: -(headerContainerPos.height / 3),
 					autoAlpha: 0,
 					immediateRender: false,
 					scrollTrigger: {
 						trigger: '#headerContainer',
 						start: '18% top',
-						end: '50% 5%',
+						end: '35% 5%',
 						scrub: 1,
 					},
 				}
 			)
 			gsap.fromTo(
 				location,
-				{ y: 0, autoAlpha: 1 },
+				{ y: 0 },
 				{
-					y: -(locationPos.y + locationPos.height),
+					y: -(headerContainerPos.height / 3),
 					autoAlpha: 0,
 					immediateRender: false,
 					scrollTrigger: {
 						trigger: '#headerContainer',
 						start: '26% top',
-						end: '50% 5%',
+						end: '35% 5%',
 						scrub: 1,
 					},
 				}
@@ -109,7 +111,7 @@ const Hero = () => {
 	return (
 		<HeaderBg>
 			<HeaderContainer id='headerContainer'>
-				<HeaderWrapper>
+				<HeaderWrapper id='headerWrapper'>
 					<Header>
 						<span id='graphicDesigner' style={{ transform: 'translateY(0px)' }}>
 							Graphic Designer
@@ -158,7 +160,7 @@ const HeaderContainer = styled.div`
 const HeaderWrapper = styled.div`
 	width: 100%;
 	max-width: ${breakpoint.maxWidth};
-	position: fixed;
+	position: absolute;
 	left: 50%;
 	padding-left: 4rem;
 	top: 4rem;
@@ -204,7 +206,6 @@ const Location = styled.h2`
 	@media (orientation: portrait) {
 		width: 100%;
 		justify-content: center;
-		margin-top: 4vw;
 	}
 	svg {
 		margin-right: 10px;

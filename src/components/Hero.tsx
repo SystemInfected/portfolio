@@ -63,7 +63,7 @@ const Hero = () => {
 						trigger: '#headerContainer',
 						start: '10% top',
 						end: '35% 5%',
-						scrub: 1,
+						scrub: 1.5,
 					},
 				}
 			)
@@ -78,7 +78,7 @@ const Hero = () => {
 						trigger: '#headerContainer',
 						start: '18% top',
 						end: '35% 5%',
-						scrub: 1,
+						scrub: 1.5,
 					},
 				}
 			)
@@ -93,7 +93,7 @@ const Hero = () => {
 						trigger: '#headerContainer',
 						start: '26% top',
 						end: '35% 5%',
-						scrub: 1,
+						scrub: 1.5,
 					},
 				}
 			)
@@ -167,6 +167,10 @@ const HeaderWrapper = styled.div`
 	transform: translateX(-50%);
 	z-index: 20;
 	pointer-events: none;
+	@media screen and (max-width: ${breakpoint.tablet}) {
+		padding-left: 2.5em;
+		top: 2.5em;
+	}
 	@media (orientation: portrait) {
 		width: 100%;
 		left: auto;

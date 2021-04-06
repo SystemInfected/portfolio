@@ -85,29 +85,29 @@ const AnimatedEye = (props) => {
 				headerContainer.addEventListener('mouseout', (event: any) => {
 					newMousePos = { x: 0, y: 0 }
 				})
-				headerContainer.addEventListener('touchmove', (event: any) => {
-					let canvasXMultiplier =
-						canvas.width / canvas.getBoundingClientRect().width
-					let canvasYMultiplier =
-						canvas.height / canvas.getBoundingClientRect().height
-					let mouseX: any =
-						(event.touches[0].clientX - canvas.getBoundingClientRect().x) *
-						canvasXMultiplier
-					let mouseY: any =
-						(event.touches[0].clientY - canvas.getBoundingClientRect().y) *
-						canvasYMultiplier
+				headerContainer.addEventListener(
+					'touchstart touchmove',
+					(event: any) => {
+						let canvasXMultiplier =
+							canvas.width / canvas.getBoundingClientRect().width
+						let canvasYMultiplier =
+							canvas.height / canvas.getBoundingClientRect().height
+						let mouseX: any =
+							(event.touches[0].clientX - canvas.getBoundingClientRect().x) *
+							canvasXMultiplier
+						let mouseY: any =
+							(event.touches[0].clientY - canvas.getBoundingClientRect().y) *
+							canvasYMultiplier
 
-					newMousePos = { x: mouseX, y: mouseY }
-				})
-				headerContainer.addEventListener('touchend', (event: any) => {
-					newMousePos = { x: 0, y: 0 }
-				})
-				headerContainer.addEventListener('touchcancel', (event: any) => {
-					newMousePos = { x: 0, y: 0 }
-				})
-				headerContainer.addEventListener('touchleave', (event: any) => {
-					newMousePos = { x: 0, y: 0 }
-				})
+						newMousePos = { x: mouseX, y: mouseY }
+					}
+				)
+				headerContainer.addEventListener(
+					'touchend touchcancel touchleave',
+					(event: any) => {
+						newMousePos = { x: 0, y: 0 }
+					}
+				)
 			}
 		}
 

@@ -2,6 +2,7 @@ import Head from 'next/head'
 
 import Hero from '../src/components/Hero'
 import NavBar from '../src/components/NavBar'
+import Featured from '../src/components/Featured'
 
 const App = () => {
 	return (
@@ -14,7 +15,7 @@ const App = () => {
 			</Head>
 			<Hero />
 			<NavBar />
-			<div style={{ height: '120vh' }}></div>
+			<Featured />
 		</>
 	)
 }

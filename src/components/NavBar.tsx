@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import styled from 'styled-components'
+import { gsap } from 'gsap'
 import { color, font, breakpoint } from '../../styles/variables'
 import MoreVertIcon from '@material-ui/icons/MoreVert'
 import CloseIcon from '@material-ui/icons/Close'
@@ -10,6 +11,9 @@ const NavBar = () => {
 
 	useEffect(() => {
 		const navBar: HTMLElement | null = document.querySelector('#navBar')
+		const navBarSpacer: HTMLElement | null = document.querySelector(
+			'#navBarSpacer'
+		)
 		const headerContainer = document.querySelector('#headerContainer')
 		const menuToggle: HTMLElement | null = document.querySelector('#menuToggle')
 		const menuNav: HTMLElement | null = document.querySelector('#menuNav')
@@ -17,13 +21,15 @@ const NavBar = () => {
 		let isNavBarFixed = false
 
 		const toogleNavBar = (toogle: boolean) => {
-			if (navBar) {
+			if (navBar && navBarSpacer) {
 				if (toogle) {
 					navBar.style.position = 'fixed'
 					navBar.style.top = '0'
+					navBarSpacer.style.marginTop = '60px'
 				} else {
 					navBar.style.position = 'relative'
 					navBar.style.top = ''
+					navBarSpacer.style.marginTop = '0px'
 				}
 			}
 		}
@@ -64,6 +70,8 @@ const NavBar = () => {
 
 				setMenuActive(true)
 				document.body.classList.toggle('lock-scroll')
+
+				tl.play(0)
 			})
 		}
 
@@ -73,55 +81,69 @@ const NavBar = () => {
 				document.body.classList.toggle('lock-scroll')
 			})
 		}
+
+		const tl = gsap.timeline()
+		tl.from('.mobile-menu-li', {
+			y: -100,
+			autoAlpha: 0,
+			stagger: 0.3,
+		})
 	}, [])
 
 	return (
-		<NavBg id='navBar'>
-			<Nav>
-				<LogoTitle>
-					<span>Sebastian</span>
-					<span>Widin</span>
-				</LogoTitle>
-				<Menu>
-					<li>
-						<a href='#'>Work</a>
-					</li>
-					<li>
-						<a href='#'>Skills</a>
-					</li>
-					<li>
-						<a href='#'>Contact</a>
-					</li>
-				</Menu>
-				<MenuToggle id='menuToggle'>
-					<MoreVertIcon style={{ fontSize: '3rem' }} />
-				</MenuToggle>
-			</Nav>
-			<MobileNav
-				id='menuNav'
-				style={{
-					pointerEvents: menuActive ? 'auto' : 'none',
-					clipPath: `circle(${menuActive ? '200%' : '0%'} at ${
-						mobileMenuPos.x
-					}px ${mobileMenuPos.y}px)`,
-				}}
-			>
-				<CloseMobileMenu id='closeMenu'>
-					<CloseIcon style={{ fontSize: '3rem' }} />
-				</CloseMobileMenu>
-				<MobileMenu>
-					<li>
-						<a href='#'>Work</a>
-					</li>
-					<li>
-						<a href='#'>Skills</a>
-					</li>
-					<li>
-						<a href='#'>Contact</a>
-					</li>
-				</MobileMenu>
-			</MobileNav>
-		</NavBg>
+		<>
+			<NavBg id='navBar'>
+				<Nav>
+					<LogoTitle>
+						<span>Sebastian</span>
+						<span>Widin</span>
+					</LogoTitle>
+					<Menu>
+						<li>
+							<a href='#'>Work</a>
+						</li>
+						<li>
+							<a href='#'>Skills</a>
+						</li>
+						<li>
+							<a href='#'>Contact</a>
+						</li>
+					</Menu>
+					<MenuToggle id='menuToggle'>
+						<MoreVertIcon style={{ fontSize: '3rem' }} />
+					</MenuToggle>
+				</Nav>
+				<MobileNav
+					id='menuNav'
+					style={{
+						transition: menuActive
+							? 'clip-path ease-out 0.3s, opacity linear 0s 0s'
+							: 'clip-path ease-out 0.3s, opacity linear 0s 0.3s',
+						opacity: menuActive ? '1' : '0',
+						pointerEvents: menuActive ? 'auto' : 'none',
+						clipPath: `circle(${menuActive ? '200%' : '0%'} at ${
+							mobileMenuPos.x
+						}px ${mobileMenuPos.y}px)`,
+					}}
+				>
+					<CloseMobileMenu id='closeMenu'>
+						<CloseIcon style={{ fontSize: '3rem' }} />
+					</CloseMobileMenu>
+					<MobileMenu>
+						<li className='mobile-menu-li'>
+							<a href='#'>Work</a>
+						</li>
+						<li className='mobile-menu-li'>
+							<a href='#'>Skills</a>
+						</li>
+						<li className='mobile-menu-li'>
+							<a href='#'>Contact</a>
+						</li>
+					</MobileMenu>
+				</MobileNav>
+			</NavBg>
+			<NavBarSpacer id='navBarSpacer' />
+		</>
 	)
 }
 export default NavBar
@@ -132,6 +154,7 @@ const NavBg = styled.section`
 	justify-content: center;
 	background: ${color.mainAccentColor};
 	box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.1);
+	z-index: 25;
 `
 
 const Nav = styled.nav`
@@ -143,7 +166,7 @@ const Nav = styled.nav`
 	width: 100%;
 	max-width: ${breakpoint.maxWidth};
 	height: 60px;
-	@media (orientation: portrait) {
+	@media screen and (max-width: ${breakpoint.tablet}) {
 		padding: 0 1em 0 2.5em;
 	}
 `
@@ -224,7 +247,6 @@ const MobileNav = styled.div`
 	padding: 3rem;
 	touch-action: none;
 	background: ${color.mainColorDark};
-	transition: clip-path ease-out 0.3s;
 `
 
 const CloseMobileMenu = styled.div`
@@ -236,4 +258,40 @@ const CloseMobileMenu = styled.div`
 	cursor: pointer;
 `
 
-const MobileMenu = styled.div``
+const MobileMenu = styled.div`
+	list-style-type: none;
+	height: 100%;
+	width: 100%;
+	padding-top: 0;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	li {
+		font-size: clamp(2.4rem, 5vw, 3.2rem);
+		font-weight: 400;
+		margin-top: 0;
+		a {
+			display: block;
+			padding: 0.5em 1em;
+			color: ${color.mainAccentColor};
+			&:hover,
+			&:focus {
+				text-decoration: none;
+			}
+		}
+	}
+	@media (orientation: portrait) {
+		padding-top: 5vh;
+		flex-direction: column;
+		justify-content: flex-start;
+		li {
+			margin-top: 5vh;
+		}
+	}
+`
+
+const NavBarSpacer = styled.div`
+	display: block;
+	width: 100%;
+`

@@ -161,7 +161,7 @@ const HeaderWrapper = styled.div`
 	max-width: ${breakpoint.maxWidth};
 	position: absolute;
 	left: 50%;
-	padding-left: env(safe-area-inset-left, 4rem);
+	padding-left: max(4rem, env(safe-area-inset-left));
 	top: 4rem;
 	transform: translateX(-50%);
 	z-index: 20;

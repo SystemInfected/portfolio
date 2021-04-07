@@ -31,7 +31,7 @@ const FeatureSection = styled.div`
 	color: ${color.mainAccentColor};
 	width: 100%;
 	max-width: ${breakpoint.maxWidth};
-	padding: 0 env(safe-area-inset-left, 4rem);
+	padding: 0 max(4rem, env(safe-area-inset-left));
 	@media screen and (max-width: ${breakpoint.tablet}) {
 		padding: 0 2.5em;
 	}

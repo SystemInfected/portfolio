@@ -184,7 +184,7 @@ const NavBg = styled.section`
 const Nav = styled.nav`
 	position: relative;
 	display: flex;
-	padding: 0 env(safe-area-inset-left, 4rem);
+	padding: 0 max(4rem, env(safe-area-inset-left));
 	justify-content: space-between;
 	align-items: center;
 	width: 100%;

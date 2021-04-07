@@ -58,6 +58,30 @@ const NavBar = () => {
 			}
 		})
 
+		window.addEventListener('resize', function (event) {
+			if (navBar && headerContainer) {
+				let navBarPos = navBar.getBoundingClientRect()
+				let headerContainerPos = headerContainer.getBoundingClientRect()
+				let headerBottom = headerContainerPos.y + headerContainerPos.height
+				if (navBarPos.y <= 0 && headerBottom <= 0 && !isNavBarFixed) {
+					isNavBarFixed = true
+					toogleNavBar(true)
+				} else if (headerBottom > 0 && isNavBarFixed) {
+					isNavBarFixed = false
+					toogleNavBar(false)
+				}
+			}
+
+			if (menuToggle) {
+				let menuTogglePos = menuToggle.getBoundingClientRect()
+				let mobileMenuPos = { x: 0, y: 0 }
+				mobileMenuPos.x = menuTogglePos.x + menuTogglePos.width / 2
+				mobileMenuPos.y = menuTogglePos.y + menuTogglePos.height / 2
+
+				setMobileMenuPos(mobileMenuPos)
+			}
+		})
+
 		let mobileMenuPos = { x: 0, y: 0 }
 		if (menuToggle && menuNav) {
 			let menuTogglePos = menuToggle.getBoundingClientRect()
@@ -160,7 +184,7 @@ const NavBg = styled.section`
 const Nav = styled.nav`
 	position: relative;
 	display: flex;
-	padding: 0 4rem;
+	padding: 0 env(safe-area-inset-left, 4rem);
 	justify-content: space-between;
 	align-items: center;
 	width: 100%;

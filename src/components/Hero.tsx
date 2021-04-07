@@ -156,13 +156,12 @@ const HeaderContainer = styled.div`
 	justify-content: center;
 	position: relative;
 `
-
 const HeaderWrapper = styled.div`
 	width: 100%;
 	max-width: ${breakpoint.maxWidth};
 	position: absolute;
 	left: 50%;
-	padding-left: 4rem;
+	padding-left: env(safe-area-inset-left, 4rem);
 	top: 4rem;
 	transform: translateX(-50%);
 	z-index: 20;

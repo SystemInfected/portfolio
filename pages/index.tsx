@@ -10,7 +10,10 @@ const App = () => {
 			<Head>
 				<title>Portfolio</title>
 				<meta charSet='utf-8' />
-				<meta name='viewport' content='width=device-width, initial-scale=1' />
+				<meta
+					name='viewport'
+					content='width=device-width, initial-scale=1.0, viewport-fit=cover'
+				/>
 				<meta name='theme-color' content='#000000' />
 			</Head>
 			<Hero />

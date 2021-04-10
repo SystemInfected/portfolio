@@ -93,15 +93,19 @@ const NavBar = () => {
 				setMobileMenuPos(mobileMenuPos)
 
 				setMenuActive(true)
+				menuToggle.style.display = 'none'
 				document.body.classList.toggle('lock-scroll')
 
 				tl.play(0)
 			})
 		}
 
-		if (closeMenu) {
+		if (closeMenu && menuToggle) {
 			closeMenu.addEventListener('click', () => {
 				setMenuActive(false)
+				setTimeout(function () {
+					menuToggle.style.display = ''
+				}, 300)
 				document.body.classList.toggle('lock-scroll')
 			})
 		}
@@ -270,7 +274,7 @@ const MobileNav = styled.div`
 	z-index: 30;
 	padding: 3rem;
 	touch-action: none;
-	background: ${color.mainColorDark};
+	background: rgba(${color.mainColorDarkRGB}, 0.95);
 `
 
 const CloseMobileMenu = styled.div`

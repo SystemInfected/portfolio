@@ -24,11 +24,9 @@ const Section = styled.section`
 	display: flex;
 	justify-content: center;
 	background-color: rgba(${color.mainColorDarkRGB}, 0.75);
-	min-height: 100vh;
 `
 
 const FeatureSection = styled.div`
-	color: ${color.mainAccentColor};
 	width: 100%;
 	max-width: ${breakpoint.maxWidth};
 	padding: 0 max(4rem, env(safe-area-inset-left));
@@ -37,12 +35,14 @@ const FeatureSection = styled.div`
 	}
 	h2 {
 		font-family: ${font.headingsFont};
+		color: ${color.mainAccentColor};
 		text-transform: uppercase;
 		letter-spacing: 0.3em;
-		margin-top: 3em;
+		margin-top: 5em;
 		margin-bottom: 1em;
 		font-size: 1.6rem;
 		font-weight: 400;
+		text-align: center;
 	}
 `
 
@@ -50,8 +50,7 @@ const FeaturedContainer = styled.div`
 	width: 100%;
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
-	grid-gap: 4em;
-	@media (orientation: portrait) {
+	@media screen and (max-width: ${breakpoint.tablet}) {
 		grid-template-columns: auto;
 	}
 `

@@ -149,7 +149,6 @@ const HeaderBg = styled.section`
 
 const HeaderContainer = styled.div`
 	width: 100%;
-	max-width: ${breakpoint.maxWidth};
 	height: 100%;
 	display: flex;
 	align-items: flex-end;

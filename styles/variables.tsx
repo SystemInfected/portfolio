@@ -4,6 +4,7 @@ export const color = {
 	mainAccentColor: '#D4D379',
 	mainColorDarkRGB: '30, 31, 45',
 	mainColorLightRGB: '169, 176, 224',
+	textLight: '#e3e3e3',
 }
 
 export const font = {

@@ -49,8 +49,8 @@ const FeatureSection = styled.div`
 const FeaturedContainer = styled.div`
 	width: 100%;
 	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	@media screen and (max-width: ${breakpoint.tablet}) {
-		grid-template-columns: auto;
-	}
+	grid-template-columns: repeat(auto-fit, minmax(26em, 1fr));
+	justify-content: space-between;
+	grid-gap: 2.5em 6em;
+	margin-bottom: 6em;
 `

@@ -2,20 +2,22 @@ export const data = {
 	usab: [
 		{
 			title: 'US-AB.com',
-			tags: ['product site', 'e-commerce'],
-
+			tags: ['print-shop', 'e-commerce'],
 			images: [
 				{
-					image: 'us-ab_mac.png',
+					url: 'us-ab_mac.png',
 					position: 'center',
+					size: '90%',
 				},
 				{
-					image: 'us-ab_ipad.png',
-					position: '20%',
+					url: 'us-ab_ipad.png',
+					position: -260,
+					size: '35%',
 				},
 				{
-					image: 'us-ab_iphone.png',
-					position: '70%',
+					url: 'us-ab_iphone.png',
+					position: 40,
+					size: '18%',
 				},
 			],
 		},
@@ -26,12 +28,19 @@ export const data = {
 			tags: ['article site', 'community'],
 			images: [
 				{
-					image: 'us-ab_ipad.png',
-					position: '20%',
+					url: 'us-ab_mac.png',
+					position: 'center',
+					size: '90%',
 				},
 				{
-					image: 'us-ab_iphone.png',
-					position: '70%',
+					url: 'us-ab_ipad.png',
+					position: -260,
+					size: '35%',
+				},
+				{
+					url: 'us-ab_iphone.png',
+					position: 40,
+					size: '18%',
 				},
 			],
 		},
@@ -42,8 +51,9 @@ export const data = {
 			tags: ['illustrations', 'charity'],
 			images: [
 				{
-					image: 'us-ab_mac.png',
+					url: 'us-ab_mac.png',
 					position: 'center',
+					size: '90%',
 				},
 			],
 		},

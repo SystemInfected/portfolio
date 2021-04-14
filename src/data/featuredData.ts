@@ -28,17 +28,17 @@ export const data = {
 			tags: ['article site', 'community'],
 			images: [
 				{
-					url: 'us-ab_mac.png',
+					url: 'nodell_mac.png',
 					position: 'center',
 					size: '90%',
 				},
 				{
-					url: 'us-ab_ipad.png',
+					url: 'nodell_ipad.png',
 					position: -260,
 					size: '35%',
 				},
 				{
-					url: 'us-ab_iphone.png',
+					url: 'nodell_iphone.png',
 					position: 40,
 					size: '18%',
 				},
@@ -51,9 +51,9 @@ export const data = {
 			tags: ['illustrations', 'charity'],
 			images: [
 				{
-					url: 'us-ab_mac.png',
+					url: 'rosa_portratt.png',
 					position: 'center',
-					size: '90%',
+					size: '80%',
 				},
 			],
 		},

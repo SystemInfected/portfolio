@@ -123,8 +123,9 @@ const NavBar = () => {
 			<NavBg id='navBar'>
 				<Nav>
 					<LogoTitle>
+						<span>&lt;</span>
 						<span>Sebastian</span>
-						<span>Widin</span>
+						<span>Widin</span>/<span>&gt;</span>
 					</LogoTitle>
 					<Menu>
 						<li>
@@ -141,40 +142,55 @@ const NavBar = () => {
 						<MoreVertIcon style={{ fontSize: '3rem' }} />
 					</MenuToggle>
 				</Nav>
-				<MobileNav
-					id='menuNav'
-					style={{
-						transition: menuActive
-							? 'clip-path ease-out 0.3s, opacity linear 0s 0s'
-							: 'clip-path ease-out 0.3s, opacity linear 0s 0.3s',
-						opacity: menuActive ? '1' : '0',
-						pointerEvents: menuActive ? 'auto' : 'none',
-						clipPath: `circle(${menuActive ? '200%' : '0%'} at ${
-							mobileMenuPos.x
-						}px ${mobileMenuPos.y}px)`,
-					}}
-				>
-					<CloseMobileMenu id='closeMenu'>
-						<CloseIcon style={{ fontSize: '3rem' }} />
-					</CloseMobileMenu>
-					<MobileMenu>
-						<li className='mobile-menu-li'>
-							<a href='#'>Work</a>
-						</li>
-						<li className='mobile-menu-li'>
-							<a href='#'>Skills</a>
-						</li>
-						<li className='mobile-menu-li'>
-							<a href='#'>Contact</a>
-						</li>
-					</MobileMenu>
-				</MobileNav>
 			</NavBg>
 			<NavBarSpacer id='navBarSpacer' />
+			<MobileNav
+				id='menuNav'
+				style={{
+					transition: menuActive
+						? 'clip-path ease-out 0.3s, opacity linear 0s 0s'
+						: 'clip-path ease-out 0.3s, opacity linear 0s 0.3s',
+					opacity: menuActive ? '1' : '0',
+					pointerEvents: menuActive ? 'auto' : 'none',
+					clipPath: `circle(${menuActive ? '200%' : '0%'} at ${
+						mobileMenuPos.x
+					}px ${mobileMenuPos.y}px)`,
+				}}
+			>
+				<CloseMobileMenu id='closeMenu'>
+					<CloseIcon style={{ fontSize: '3rem' }} />
+				</CloseMobileMenu>
+				<MobileMenu>
+					<li className='mobile-menu-li'>
+						<a href='#'>Work</a>
+					</li>
+					<li className='mobile-menu-li'>
+						<a href='#'>Skills</a>
+					</li>
+					<li className='mobile-menu-li'>
+						<a href='#'>Contact</a>
+					</li>
+				</MobileMenu>
+			</MobileNav>
+			{/* <Debug>
+				x-rotate:<span id='xRotateDebug'></span>, y-rotate:
+				<span id='yRotateDebug'></span>
+			</Debug> */}
 		</>
 	)
 }
 export default NavBar
+
+// const Debug = styled.div`
+// 	position: fixed;
+// 	padding: 20px;
+// 	top: 60px;
+// 	left: 0;
+// 	font-size: 1.2rem;
+// 	z-index: 3500;
+// 	transform: translateZ(3500px);
+// 	background-color: rgba(255, 255, 255, 0.8);
+// `
 
 const NavBg = styled.section`
 	width: 100%;
@@ -182,7 +198,8 @@ const NavBg = styled.section`
 	justify-content: center;
 	background: ${color.mainAccentColor};
 	box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.1);
-	z-index: 25;
+	z-index: 2500;
+	transform: translateZ(2500px);
 `
 
 const Nav = styled.nav`
@@ -209,8 +226,15 @@ const LogoTitle = styled.h1`
 	line-height: 0.9;
 	font-weight: 250;
 	letter-spacing: 0.07em;
-	span:nth-child(2) {
+	span:nth-child(3) {
 		font-weight: 500;
+	}
+	span:nth-child(1),
+	span:nth-child(4) {
+		margin-top: -0.4em;
+		transform: scale(1, 1.72);
+		font-weight: 200;
+		line-height: 0.2;
 	}
 `
 
@@ -271,7 +295,8 @@ const MobileNav = styled.div`
 	position: fixed;
 	top: 0;
 	left: 0;
-	z-index: 30;
+	z-index: 3000;
+	transform: translateZ(3000px);
 	padding: 3rem;
 	touch-action: none;
 	background: rgba(${color.mainColorDarkRGB}, 0.95);

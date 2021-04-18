@@ -49,8 +49,20 @@ const FeatureSection = styled.div`
 const FeaturedContainer = styled.div`
 	width: 100%;
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(26em, 1fr));
+	grid-template-columns: repeat(3, minmax(0, 1fr));
 	justify-content: space-between;
 	grid-gap: 2.5em 6em;
 	margin-bottom: 6em;
+	@media screen and (max-width: 860px) {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		div:last-child {
+			margin-left: calc(50% + 2.5em);
+		}
+	}
+	@media screen and (max-width: 580px) {
+		grid-template-columns: 1fr;
+		div:last-child {
+			margin-left: 0;
+		}
+	}
 `

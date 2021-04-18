@@ -2,6 +2,9 @@ import { useRef, useEffect } from 'react'
 import styled from 'styled-components'
 import { font, color, breakpoint } from '../../styles/variables'
 import { data as featuredData } from '../data/featuredData'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
+gsap.registerPlugin(ScrollTrigger)
 
 const FeaturedCard = (props) => {
 	const featuredCardRef = useRef<HTMLDivElement>(null)
@@ -18,17 +21,70 @@ const FeaturedCard = (props) => {
 			imagePos[index].marginLeft = -50
 			imagePos[index].translateX = image.position
 		}
+		imagePos[index].zoomValue = image.zoomValue
 	})
 
-	const axisDivider = 15
+	const animateCard = (xRotate: number, yRotate: number, action?: string) => {
+		const xRotateDebug = document.querySelector<HTMLSpanElement>(
+			'#xRotateDebug'
+		)
+		const yRotateDebug = document.querySelector<HTMLSpanElement>(
+			'#yRotateDebug'
+		)
+		if (xRotateDebug && yRotateDebug) {
+			xRotateDebug.innerText = xRotate.toString()
+			yRotateDebug.innerText = yRotate.toString()
+		}
 
-	useEffect(() => {
 		if (featuredCardRef.current) {
 			const cardRef = featuredCardRef.current
 			const title = cardRef.querySelector('h3')
 			const tags = cardRef.querySelector('ul')
 			const button = cardRef.querySelector('button')
 			const images = cardRef.querySelectorAll('img')
+
+			switch (action) {
+				case 'start':
+					cardRef.style.transition = 'none'
+					break
+				case 'stop':
+					cardRef.style.transition = 'all 0.3s ease'
+					cardRef.style.transform = `rotateY(0deg) rotateX(0deg)`
+
+					if (title && tags && button && images) {
+						title.style.transform = 'translateZ(0)'
+						tags.style.transform = 'translateZ(0)'
+						button.style.transform = 'translateZ(0)'
+
+						images.forEach((image, i) => {
+							image.style.transform = `translateZ(0) translateX(${imagePos[i].translateX}%)`
+						})
+					}
+					break
+				default:
+					cardRef.style.transform = `rotateY(${-xRotate}deg) rotateX(${yRotate}deg)`
+
+					if (title && tags && button && images) {
+						title.style.transform = 'translateZ(90px)'
+						tags.style.transform = 'translateZ(50px)'
+						button.style.transform = 'translateZ(90px)'
+
+						images.forEach((image, i) => {
+							image.style.transform = `translateZ(${imagePos[i].zoomValue}px) translateX(${imagePos[i].translateX}%)`
+						})
+					}
+					break
+			}
+		}
+	}
+
+	const axisDivider = 15
+
+	useEffect(() => {
+		if (featuredCardRef.current) {
+			const cardRef = featuredCardRef.current
+
+			//WEB MOTION
 			cardRef.addEventListener('mousemove', (e) => {
 				let cardClientRect = cardRef.getBoundingClientRect()
 				let xAxis =
@@ -36,39 +92,66 @@ const FeaturedCard = (props) => {
 				let yAxis =
 					(cardClientRect.y + cardClientRect.height / 2 - e.y) / axisDivider
 
-				cardRef.style.transform = `rotateY(${-xAxis}deg) rotateX(${yAxis}deg)`
-
-				if (title && tags && button && images) {
-					title.style.transform = 'translateZ(90px)'
-					tags.style.transform = 'translateZ(50px)'
-					button.style.transform = 'translateZ(90px)'
-
-					let imageMultiplier = 30
-					images.forEach((image, i) => {
-						image.style.transform = `translateZ(${
-							40 + imageMultiplier * (i + 1)
-						}px) translateX(${imagePos[i].translateX}%)`
-					})
-				}
+				animateCard(xAxis, yAxis)
 			})
 
 			cardRef.addEventListener('mouseenter', (e) => {
-				cardRef.style.transition = 'none'
+				animateCard(0, 0, 'start')
 			})
 
 			cardRef.addEventListener('mouseleave', (e) => {
-				cardRef.style.transition = 'all 0.3s ease'
-				cardRef.style.transform = `rotateY(0deg) rotateX(0deg)`
+				animateCard(0, 0, 'stop')
+			})
 
-				if (title && tags && button && images) {
-					title.style.transform = 'translateZ(0)'
-					tags.style.transform = 'translateZ(0)'
-					button.style.transform = 'translateZ(0)'
-
-					images.forEach((image, i) => {
-						image.style.transform = `translateZ(0) translateX(${imagePos[i].translateX}%)`
+			//MOBILE MOTION
+			ScrollTrigger.create({
+				trigger: cardRef,
+				start: 'top 50%',
+				end: 'bottom 50%',
+				markers: true,
+				onEnter: () => {
+					document.body.addEventListener('click', () => {
+						if (
+							window.DeviceMotionEvent &&
+							typeof window.DeviceMotionEvent.requestPermission === 'function'
+						) {
+							DeviceMotionEvent.requestPermission()
+						}
 					})
-				}
+
+					const axisDivider = 4
+
+					if (typeof DeviceMotionEvent.requestPermission === 'function') {
+						DeviceMotionEvent.requestPermission()
+							.then((permissionState) => {
+								if (permissionState === 'granted') {
+									window.addEventListener('deviceorientation', (e) => {
+										if (e.gamma && e.beta) {
+											const xAxis = e.gamma / axisDivider
+											const yAxis = e.beta / axisDivider
+											cardRef.style.transition = 'none'
+
+											animateCard(xAxis, yAxis)
+										}
+									})
+								}
+							})
+							.catch(console.error)
+					} else {
+						window.addEventListener('deviceorientation', (e) => {
+							if (e.gamma && e.beta) {
+								const xAxis = e.gamma / axisDivider
+								const yAxis = e.beta / axisDivider
+								cardRef.style.transition = 'none'
+
+								animateCard(xAxis, yAxis)
+							}
+						})
+					}
+				},
+				onLeave: () => {
+					animateCard(0, 0, 'stop')
+				},
 			})
 		}
 	}, [])
@@ -107,6 +190,7 @@ const FeaturedCard = (props) => {
 export default FeaturedCard
 
 const CardWrapper = styled.div`
+	cursor: pointer;
 	transform-style: preserve-3d;
 	perspective: 1000px;
 	display: flex;
@@ -115,7 +199,7 @@ const CardWrapper = styled.div`
 	justify-content: space-between;
 	margin-top: 2.5em;
 	width: 100%;
-	min-height: min(65vh, 50em);
+	min-height: min(60vh, 45em);
 	border-radius: 2em;
 	background: linear-gradient(
 			rgba(0, 0, 0, 0.2) 0%,

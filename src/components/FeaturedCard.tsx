@@ -34,12 +34,12 @@ const FeaturedCard = (props: { work: string | number }) => {
 				{
 					y: 0,
 					autoAlpha: 1,
-					duration: 1.4,
+					duration: 1,
 					ease: 'power2.out',
 					scrollTrigger: {
 						trigger: cardRef,
 						//markers: true,
-						start: '-100px 85%',
+						start: '-100px 95%',
 						end: 'top bottom',
 					},
 				}

@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { font, color, breakpoint } from '../../styles/variables'
 import { data as featuredData } from '../data/featuredData'
@@ -6,9 +6,10 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)
 
-const FeaturedCard = (props) => {
+const FeaturedCard = (props: { work: string | number }) => {
 	const featuredCardRef = useRef<HTMLDivElement>(null)
 	const cardData = featuredData[props.work][0]
+	const [deviceMotion, setDeviceMotion] = useState(false)
 
 	let imagePos = {}
 
@@ -23,6 +24,28 @@ const FeaturedCard = (props) => {
 		}
 		imagePos[index].zoomValue = image.zoomValue
 	})
+
+	useEffect(() => {
+		if (featuredCardRef.current) {
+			const cardRef = featuredCardRef.current
+			gsap.fromTo(
+				cardRef,
+				{ y: 100, autoAlpha: 0 },
+				{
+					y: 0,
+					autoAlpha: 1,
+					duration: 1.4,
+					ease: 'power2.out',
+					scrollTrigger: {
+						trigger: cardRef,
+						//markers: true,
+						start: '-100px 85%',
+						end: 'top bottom',
+					},
+				}
+			)
+		}
+	}, [])
 
 	const animateCard = (xRotate: number, yRotate: number, action?: string) => {
 		const xRotateDebug = document.querySelector<HTMLSpanElement>(
@@ -102,59 +125,91 @@ const FeaturedCard = (props) => {
 			cardRef.addEventListener('mouseleave', (e) => {
 				animateCard(0, 0, 'stop')
 			})
+		}
+	}, [])
 
-			//MOBILE MOTION
-			ScrollTrigger.create({
-				trigger: cardRef,
-				start: 'top 50%',
-				end: 'bottom 50%',
-				markers: true,
-				onEnter: () => {
-					document.body.addEventListener('click', () => {
-						if (
-							window.DeviceMotionEvent &&
-							typeof window.DeviceMotionEvent.requestPermission === 'function'
-						) {
-							DeviceMotionEvent.requestPermission()
-						}
-					})
+	//MOBILE MOTION
+	useEffect(() => {
+		if (featuredCardRef.current) {
+			const cardRef = featuredCardRef.current
+			if (window.DeviceOrientationEvent) {
+				ScrollTrigger.create({
+					trigger: cardRef,
+					start: 'top 50%',
+					end: 'bottom 50%',
+					//markers: true,
+					onEnter: () => {
+						setDeviceMotion((currDeviceMotion) => true)
+					},
+					onLeave: () => {
+						setDeviceMotion((currDeviceMotion) => false)
+					},
+					onEnterBack: () => {
+						setDeviceMotion((currDeviceMotion) => true)
+					},
+					onLeaveBack: () => {
+						setDeviceMotion((currDeviceMotion) => false)
+					},
+				})
+				const axisDivider = 4
 
-					const axisDivider = 4
-
-					if (typeof DeviceMotionEvent.requestPermission === 'function') {
-						DeviceMotionEvent.requestPermission()
-							.then((permissionState) => {
-								if (permissionState === 'granted') {
-									window.addEventListener('deviceorientation', (e) => {
-										if (e.gamma && e.beta) {
-											const xAxis = e.gamma / axisDivider
-											const yAxis = e.beta / axisDivider
-											cardRef.style.transition = 'none'
-
-											animateCard(xAxis, yAxis)
-										}
-									})
+				const handleDeviceMotion = (event: DeviceOrientationEvent) => {
+					if (deviceMotion) {
+						if (event.gamma && event.beta) {
+							if (window.matchMedia('(orientation: portrait)').matches) {
+								let xAxis = event.gamma / axisDivider
+								if (xAxis > 20) {
+									xAxis = 20
+								} else if (xAxis < -20) {
+									xAxis = -20
 								}
-							})
-							.catch(console.error)
-					} else {
-						window.addEventListener('deviceorientation', (e) => {
-							if (e.gamma && e.beta) {
-								const xAxis = e.gamma / axisDivider
-								const yAxis = e.beta / axisDivider
+								let yAxis = event.beta / axisDivider
+								if (yAxis > 20) {
+									yAxis = 20
+								} else if (yAxis < -20) {
+									yAxis = -20
+								}
+								cardRef.style.transition = 'none'
+
+								animateCard(xAxis, yAxis)
+							} else {
+								let xAxis = event.gamma / axisDivider
+								if (xAxis > 20 || xAxis < -20) {
+									xAxis = event.gamma / (axisDivider * 5)
+								}
+								let yAxis = event.beta / axisDivider
+								if (yAxis > 20 || yAxis < -20) {
+									yAxis = event.beta / (axisDivider * 5)
+								}
 								cardRef.style.transition = 'none'
 
 								animateCard(xAxis, yAxis)
 							}
-						})
+						}
+					} else {
+						animateCard(0, 0, 'stop')
+						return () =>
+							window.removeEventListener(
+								'deviceorientation',
+								handleDeviceMotion
+							)
 					}
-				},
-				onLeave: () => {
-					animateCard(0, 0, 'stop')
-				},
-			})
+				}
+
+				if (typeof DeviceOrientationEvent.requestPermission === 'function') {
+					DeviceOrientationEvent.requestPermission()
+						.then((permissionState) => {
+							if (permissionState === 'granted') {
+								window.addEventListener('deviceorientation', handleDeviceMotion)
+							}
+						})
+						.catch(console.error)
+				} else {
+					window.addEventListener('deviceorientation', handleDeviceMotion)
+				}
+			}
 		}
-	}, [])
+	}, [deviceMotion])
 
 	return (
 		<CardWrapper ref={featuredCardRef}>

@@ -19,7 +19,7 @@ const FeaturedCard = (props: { work: string | number }) => {
 			imagePos[index].marginLeft = 50
 			imagePos[index].translateX = -50
 		} else {
-			imagePos[index].marginLeft = -50
+			imagePos[index].marginLeft = 0
 			imagePos[index].translateX = image.position
 		}
 		imagePos[index].zoomValue = image.zoomValue
@@ -80,7 +80,7 @@ const FeaturedCard = (props: { work: string | number }) => {
 						button.style.transform = 'translateZ(0)'
 
 						images.forEach((image, i) => {
-							image.style.transform = `translateZ(0) translateX(${imagePos[i].translateX}%)`
+							image.style.transform = `translateZ(0) translateX(${imagePos[i].translateX}%) rotate(0.01deg)`
 						})
 					}
 					break
@@ -93,7 +93,7 @@ const FeaturedCard = (props: { work: string | number }) => {
 						button.style.transform = 'translateZ(90px)'
 
 						images.forEach((image, i) => {
-							image.style.transform = `translateZ(${imagePos[i].zoomValue}px) translateX(${imagePos[i].translateX}%)`
+							image.style.transform = `translateZ(${imagePos[i].zoomValue}px) translateX(${imagePos[i].translateX}%) rotate(0.01deg)`
 						})
 					}
 					break
@@ -247,7 +247,7 @@ export default FeaturedCard
 const CardWrapper = styled.div`
 	cursor: pointer;
 	transform-style: preserve-3d;
-	perspective: 1000px;
+	perspective: 1200px;
 	display: flex;
 	align-items: center;
 	flex-direction: column;
@@ -256,6 +256,7 @@ const CardWrapper = styled.div`
 	width: 100%;
 	min-height: min(60vh, 45em);
 	border-radius: 2em;
+	backface-visibility: hidden;
 	background: linear-gradient(
 			rgba(0, 0, 0, 0.2) 0%,
 			rgba(0, 0, 0, 0.15) 40%,
@@ -287,6 +288,7 @@ const HeaderWrapper = styled.div`
 		font-weight: 400;
 		text-transform: uppercase;
 		letter-spacing: 0.15em;
+		backface-visibility: hidden;
 		transition: all 0.3s ease;
 		@media screen and (max-width: ${breakpoint.tablet}) {
 			font-size: clamp(2rem, 6vw, 2.6rem);
@@ -296,6 +298,7 @@ const HeaderWrapper = styled.div`
 		width: 100%;
 		text-align: center;
 		margin-top: 2em;
+		backface-visibility: hidden;
 		transition: transform 0.3s ease;
 		li {
 			color: ${color.textLight};
@@ -327,6 +330,7 @@ const CardButton = styled.button`
 	font-weight: 800;
 	text-transform: uppercase;
 	box-shadow: 0 0.2em 0.2em rgba(0, 0, 0, 0.5);
+	backface-visibility: hidden;
 	transition: transform ease-out 0.3s;
 	&:before {
 		left: 0;
@@ -338,6 +342,7 @@ const CardButton = styled.button`
 		height: 100%;
 		box-shadow: 0 0.4em 1em rgba(0, 0, 0, 0.3);
 		opacity: 0;
+		backface-visibility: hidden;
 		transition: opacity ease-out 0.15s;
 	}
 	&:hover,
@@ -350,13 +355,17 @@ const CardButton = styled.button`
 `
 
 const CardImages = styled.div`
-	display: flex;
-	justify-content: flex-start;
-	align-items: flex-end;
-	height: 100%;
+	height: auto;
 	width: calc(100% - 2em);
-	margin: 2em 0 1em;
+	position: relative;
+	margin: 0 1em;
 	img {
+		position: absolute;
+		bottom: 0;
+		backface-visibility: hidden;
 		transition: transform 0.3s ease;
+		&:first-child {
+			position: relative;
+		}
 	}
 `

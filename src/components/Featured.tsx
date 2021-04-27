@@ -28,6 +28,7 @@ const Section = styled.section`
 
 const FeatureSection = styled.div`
 	width: 100%;
+	overflow: hidden;
 	max-width: ${breakpoint.maxWidth};
 	padding: 0 max(4rem, env(safe-area-inset-left));
 	@media screen and (max-width: ${breakpoint.tablet}) {

@@ -180,7 +180,7 @@ const HeaderWrapper = styled.div`
 const Header = styled.h1`
 	color: ${color.mainAccentColor};
 	font-family: ${font.headingsFont};
-	font-size: clamp(2.5rem, 5.8vw, 8.4rem);
+	font-size: clamp(2.5rem, 5.2vw, 10.4rem);
 	font-weight: 450;
 	text-transform: uppercase;
 	letter-spacing: 0.02rem;
@@ -200,7 +200,7 @@ const Location = styled.h2`
 	align-items: center;
 	color: ${color.mainColorLight};
 	font-family: ${font.headingsFont};
-	font-size: clamp(2.5rem, 3vw, 4.6rem);
+	font-size: clamp(2.5rem, 3vw, 5.2rem);
 	font-weight: 200;
 	letter-spacing: 0.08rem;
 	line-height: 1.2;
@@ -216,9 +216,13 @@ const Location = styled.h2`
 
 const Portrait = styled.div`
 	height: calc(100vh - 60px);
+	max-height: 1080px;
 	display: flex;
 	align-items: flex-end;
 	overflow: hidden;
+	@media (orientation: portrait) {
+		max-height: none;
+	}
 `
 
 const PortraitIllustration = styled(Portrait)`

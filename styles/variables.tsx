@@ -17,3 +17,37 @@ export const breakpoint = {
 	tablet: `768px`,
 	mobile: `480px`,
 }
+
+export const components = {
+	mainButton: `border: none;
+		padding: 1em 2.5em;
+		font-size: 1.2rem;
+		letter-spacing: 0.1em;
+		cursor: pointer;
+		border-radius: 2em;
+		font-weight: 800;
+		text-transform: uppercase;
+		box-shadow: 0 0.2em 0.2em rgba(0, 0, 0, 0.5);
+		backface-visibility: hidden;
+		transition: transform ease-out 0.3s;
+		&:before {
+			left: 0;
+			top: 0;
+			position: absolute;
+			content: '';
+			border-radius: 2em;
+			width: 100%;
+			height: 100%;
+			box-shadow: 0 0.4em 1em rgba(0, 0, 0, 0.3);
+			opacity: 0;
+			backface-visibility: hidden;
+			transition: opacity ease-out 0.15s;
+		}
+		&:hover,
+		&:focus {
+			transform: scale(1.1);
+			&:before {
+				opacity: 1;
+			}
+		}`,
+}

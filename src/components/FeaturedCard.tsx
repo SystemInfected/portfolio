@@ -1,6 +1,6 @@
 import { useRef, useEffect, useState } from 'react'
 import styled from 'styled-components'
-import { font, color, breakpoint } from '../../styles/variables'
+import { font, color, breakpoint, components } from '../../styles/variables'
 import { data as featuredData } from '../data/featuredData'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
@@ -320,38 +320,8 @@ const CardButton = styled.button`
 	position: relative;
 	background-color: ${color.mainAccentColor};
 	color: ${color.mainColorDark};
-	border: none;
-	padding: 1em 2.5em;
 	margin: 2.5em 0;
-	font-size: 1.2rem;
-	letter-spacing: 0.1em;
-	cursor: pointer;
-	border-radius: 2em;
-	font-weight: 800;
-	text-transform: uppercase;
-	box-shadow: 0 0.2em 0.2em rgba(0, 0, 0, 0.5);
-	backface-visibility: hidden;
-	transition: transform ease-out 0.3s;
-	&:before {
-		left: 0;
-		top: 0;
-		position: absolute;
-		content: '';
-		border-radius: 2em;
-		width: 100%;
-		height: 100%;
-		box-shadow: 0 0.4em 1em rgba(0, 0, 0, 0.3);
-		opacity: 0;
-		backface-visibility: hidden;
-		transition: opacity ease-out 0.15s;
-	}
-	&:hover,
-	&:focus {
-		transform: scale(1.1);
-		&:before {
-			opacity: 1;
-		}
-	}
+	${components.mainButton}
 `
 
 const CardImages = styled.div`

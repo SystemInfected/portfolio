@@ -4,7 +4,7 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)
 
-import { color, font, breakpoint } from '../../styles/variables'
+import { color, font, breakpoint, components } from '../../styles/variables'
 import IllustrationForeground from '../assets/svg/portrait_illustration_foreground.svg'
 import IllustrationEye from '../assets/svg/portrait_illustration_eye.svg'
 import LocationOnIcon from '@material-ui/icons/LocationOn'
@@ -23,8 +23,9 @@ const Hero = () => {
 			'#webDeveloper'
 		)
 		const location: HTMLElement | null = document.querySelector('#location')
+		const cta: HTMLElement | null = document.querySelector('#cta')
 
-		if (headerContainer && graphicDesigner && webDeveloper && location) {
+		if (headerContainer && graphicDesigner && webDeveloper && location && cta) {
 			const headerContainerPos = headerContainer.getBoundingClientRect()
 			const graphicDesignerPos = graphicDesigner.getBoundingClientRect()
 			const webDeveloperPos = webDeveloper.getBoundingClientRect()
@@ -97,6 +98,21 @@ const Hero = () => {
 					},
 				}
 			)
+			gsap.fromTo(
+				cta,
+				{ y: 0 },
+				{
+					y: -(headerContainerPos.height / 3),
+					autoAlpha: 0,
+					immediateRender: false,
+					scrollTrigger: {
+						trigger: '#headerContainer',
+						start: '10% top',
+						end: '35% 5%',
+						scrub: 1.5,
+					},
+				}
+			)
 		}
 		gsap.from('#portraitIllustration svg, #portraitIllustration canvas', {
 			duration: 1.4,
@@ -125,6 +141,7 @@ const Hero = () => {
 						Stockholm, Sweden
 					</Location>
 				</HeaderWrapper>
+				<CTA id='cta'>See my work</CTA>
 				<PortraitIllustration id='portraitIllustration'>
 					<IllustrationEye />
 					<AnimatedEye />
@@ -212,6 +229,19 @@ const Location = styled.h2`
 	svg {
 		margin-right: 10px;
 	}
+`
+
+const CTA = styled.button`
+	position: fixed;
+	background-color: ${color.mainAccentColor};
+	color: ${color.mainColorDark};
+	top: 5rem;
+	right: max(4rem, env(safe-area-inset-left));
+	z-index: 20;
+	@media (orientation: portrait) {
+		display: none;
+	}
+	${components.mainButton}
 `
 
 const Portrait = styled.div`

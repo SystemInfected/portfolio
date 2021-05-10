@@ -23,13 +23,14 @@ const Hero = () => {
 			'#webDeveloper'
 		)
 		const location: HTMLElement | null = document.querySelector('#location')
-		const cta: HTMLElement | null = document.querySelector('#cta')
+		const ctaWrapper: HTMLElement | null = document.querySelector('#ctaWrapper')
 
 		if (headerContainer && graphicDesigner && webDeveloper && location && cta) {
 			const headerContainerPos = headerContainer.getBoundingClientRect()
 			const graphicDesignerPos = graphicDesigner.getBoundingClientRect()
 			const webDeveloperPos = webDeveloper.getBoundingClientRect()
 			const locationPos = location.getBoundingClientRect()
+			const ctaWrapperPos = cta.getBoundingClientRect()
 
 			gsap.defaults({
 				ease: 'power2.out',
@@ -46,6 +47,9 @@ const Hero = () => {
 			gsap.from(location, {
 				y: -(locationPos.y + locationPos.height),
 				delay: 0.6,
+			})
+			gsap.from(ctaWrapper, {
+				y: -(ctaWrapperPos.y + ctaWrapperPos.height),
 			})
 			gsap.to('#headerWrapper', {
 				position: 'fixed',
@@ -99,7 +103,7 @@ const Hero = () => {
 				}
 			)
 			gsap.fromTo(
-				cta,
+				ctaWrapper,
 				{ y: 0 },
 				{
 					y: -(headerContainerPos.height / 3),
@@ -140,8 +144,10 @@ const Hero = () => {
 						<LocationOnIcon fontSize='large' />
 						Stockholm, Sweden
 					</Location>
+					<CTAWrapper id='ctaWrapper'>
+						<CTA id='cta'>See my work</CTA>
+					</CTAWrapper>
 				</HeaderWrapper>
-				<CTA id='cta'>See my work</CTA>
 				<PortraitIllustration id='portraitIllustration'>
 					<IllustrationEye />
 					<AnimatedEye />
@@ -231,13 +237,16 @@ const Location = styled.h2`
 	}
 `
 
-const CTA = styled.button`
+const CTAWrapper = styled.div`
 	position: fixed;
-	background-color: ${color.mainAccentColor};
-	color: ${color.mainColorDark};
-	top: 5rem;
+	top: 1.4rem;
 	right: max(4rem, env(safe-area-inset-left));
 	z-index: 20;
+`
+
+const CTA = styled.button`
+	background-color: ${color.mainAccentColor};
+	color: ${color.mainColorDark};
 	@media (orientation: portrait) {
 		display: none;
 	}

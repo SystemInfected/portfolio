@@ -25,12 +25,18 @@ const Hero = () => {
 		const location: HTMLElement | null = document.querySelector('#location')
 		const ctaWrapper: HTMLElement | null = document.querySelector('#ctaWrapper')
 
-		if (headerContainer && graphicDesigner && webDeveloper && location && cta) {
+		if (
+			headerContainer &&
+			graphicDesigner &&
+			webDeveloper &&
+			location &&
+			ctaWrapper
+		) {
 			const headerContainerPos = headerContainer.getBoundingClientRect()
 			const graphicDesignerPos = graphicDesigner.getBoundingClientRect()
 			const webDeveloperPos = webDeveloper.getBoundingClientRect()
 			const locationPos = location.getBoundingClientRect()
-			const ctaWrapperPos = cta.getBoundingClientRect()
+			const ctaWrapperPos = ctaWrapper.getBoundingClientRect()
 
 			gsap.defaults({
 				ease: 'power2.out',
@@ -145,7 +151,7 @@ const Hero = () => {
 						Stockholm, Sweden
 					</Location>
 					<CTAWrapper id='ctaWrapper'>
-						<CTA id='cta'>See my work</CTA>
+						<CTA>See my work</CTA>
 					</CTAWrapper>
 				</HeaderWrapper>
 				<PortraitIllustration id='portraitIllustration'>
@@ -242,6 +248,7 @@ const CTAWrapper = styled.div`
 	top: 1.4rem;
 	right: max(4rem, env(safe-area-inset-left));
 	z-index: 20;
+	pointer-events: auto;
 `
 
 const CTA = styled.button`
@@ -270,6 +277,7 @@ const PortraitIllustration = styled(Portrait)`
 	margin-right: 5px;
 	position: relative;
 	-webkit-user-select: none;
+	user-select: none;
 	svg {
 		height: clamp(80%, 70vw, 115%);
 		flex-shrink: 0;
@@ -298,6 +306,7 @@ const PortraitNodes = styled(Portrait)`
 	background-size: 170% 95%;
 	background-repeat: no-repeat;
 	-webkit-user-select: none;
+	user-select: none;
 	canvas {
 		height: clamp(80%, 70vw, 115%);
 		flex-shrink: 0;

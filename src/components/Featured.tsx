@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { breakpoint, color, font } from '../../styles/variables'
+import { breakpoint, color, font, components } from '../../styles/variables'
 import FeaturedCard from './FeaturedCard'
 
 const Featured = () => {
@@ -12,6 +12,9 @@ const Featured = () => {
 					<FeaturedCard work='nodell' />
 					<FeaturedCard work='rosa' />
 				</FeaturedContainer>
+				<CenteredSection>
+					<ViewAllProjects>View more projects</ViewAllProjects>
+				</CenteredSection>
 			</FeatureSection>
 		</Section>
 	)
@@ -66,4 +69,18 @@ const FeaturedContainer = styled.div`
 			margin-left: 0;
 		}
 	}
+`
+
+const CenteredSection = styled.div`
+	width: 100%;
+	display: grid;
+	align-items: center;
+`
+
+const ViewAllProjects = styled.button`
+	${components.mainButton}
+	display: inline-block;
+	background-color: ${color.mainAccentColor};
+	color: ${color.mainColorDark};
+	margin: 0 auto 6em;
 `

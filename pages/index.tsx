@@ -3,12 +3,16 @@ import Head from 'next/head'
 import Hero from '../src/components/Hero'
 import NavBar from '../src/components/NavBar'
 import Featured from '../src/components/Featured'
+import SkillsAbout from '../src/components/SkillsAbout'
 
 const App = () => {
 	return (
 		<>
 			<Head>
-				<title>Portfolio</title>
+				<title>
+					Graphic designer &amp; web developer based in Stockholm, Sweden &bull;
+					Sebastian Widin's portfolio
+				</title>
 				<meta charSet='utf-8' />
 				<meta
 					name='viewport'
@@ -19,6 +23,7 @@ const App = () => {
 			<Hero />
 			<NavBar />
 			<Featured />
+			<SkillsAbout />
 		</>
 	)
 }

@@ -317,11 +317,11 @@ const HeaderWrapper = styled.div`
 `
 
 const CardButton = styled.button`
+	${components.secondaryButton}
 	position: relative;
-	background-color: ${color.mainAccentColor};
-	color: ${color.mainColorDark};
+	border-color: ${color.mainAccentColor};
+	color: ${color.mainAccentColor};
 	margin: 2.5em 0;
-	${components.mainButton}
 `
 
 const CardImages = styled.div`

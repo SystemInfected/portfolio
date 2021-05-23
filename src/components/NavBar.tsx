@@ -219,6 +219,7 @@ const Nav = styled.nav`
 const LogoTitle = styled.h1`
 	font-family: ${font.headingsFont};
 	color: ${color.mainColorDark};
+	cursor: pointer;
 	font-size: 2.2rem;
 	text-transform: uppercase;
 	display: flex;
@@ -235,6 +236,11 @@ const LogoTitle = styled.h1`
 		transform: scale(1, 1.72);
 		font-weight: 200;
 		line-height: 0.2;
+	}
+	transition: transform ease-in-out 0.2s;
+	&:hover,
+	&:focus {
+		transform: scale(1.05);
 	}
 `
 

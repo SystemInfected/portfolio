@@ -4,6 +4,7 @@ export const color = {
 	mainAccentColor: '#D4D379',
 	mainColorDarkRGB: '30, 31, 45',
 	mainColorLightRGB: '169, 176, 224',
+	mainAccentRGB: '212, 211, 121',
 	textLight: '#e3e3e3',
 }
 
@@ -19,7 +20,8 @@ export const breakpoint = {
 }
 
 export const components = {
-	mainButton: `border: none;
+	mainButton: `position: relative;
+		border: none;
 		padding: 1em 2.5em;
 		font-size: 1.2rem;
 		letter-spacing: 0.1em;
@@ -49,5 +51,21 @@ export const components = {
 			&:before {
 				opacity: 1;
 			}
+		}`,
+	secondaryButton: `position: relative;
+		border: 1px solid #fff;
+		background:none;
+		padding: 1em 2.5em;
+		font-size: 1.2rem;
+		letter-spacing: 0.1em;
+		cursor: pointer;
+		border-radius: 2em;
+		font-weight: 800;
+		text-transform: uppercase;
+		backface-visibility: hidden;
+		transition: transform ease-out 0.3s;
+		&:hover,
+		&:focus {
+			transform: scale(1.1);
 		}`,
 }

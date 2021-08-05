@@ -57,13 +57,13 @@ const FeaturedContainer = styled.div`
 	justify-content: space-between;
 	grid-gap: 2.5em 6em;
 	margin-bottom: 6em;
-	@media screen and (max-width: 860px) {
+	@media screen and (max-width: ${breakpoint.tabletBig}) {
 		grid-template-columns: repeat(2, minmax(0, 1fr));
 		div:last-child {
 			margin-left: calc(50% + 2.5em);
 		}
 	}
-	@media screen and (max-width: 580px) {
+	@media screen and (max-width: ${breakpoint.mobileBig}) {
 		grid-template-columns: 1fr;
 		div:last-child {
 			margin-left: 0;

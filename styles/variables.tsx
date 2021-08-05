@@ -15,7 +15,9 @@ export const font = {
 
 export const breakpoint = {
 	maxWidth: `1600px`,
+	tabletBig: `860px`,
 	tablet: `768px`,
+	mobileBig: `580px`,
 	mobile: `480px`,
 }
 

@@ -7,6 +7,15 @@ const SkillsAbout = () => {
 			<SkillsAboutSection>
 				<About>
 					<h2>My journey</h2>
+					<HistoryList>
+						<li id='year'>2012</li>
+						<li id='event'>
+							<span>new workplace</span>
+							Graphic designer
+							<i>US-AB Print Shop</i>
+						</li>
+						<li id='personal'>Got married</li>
+					</HistoryList>
 				</About>
 				<Skills>
 					<h2>My skills</h2>
@@ -33,7 +42,7 @@ const SkillsAboutSection = styled.div`
 	@media screen and (max-width: ${breakpoint.tablet}) {
 		padding: 0 2.5em;
 	}
-	@media screen and (max-width: ${breakpoint.mobile}) {
+	@media screen and (max-width: ${breakpoint.mobileBig}) {
 		flex-direction: column;
 	}
 	h2 {
@@ -51,14 +60,37 @@ const SkillsAboutSection = styled.div`
 
 const About = styled.div`
 	width: 60%;
-	@media screen and (max-width: ${breakpoint.mobile}) {
+	@media screen and (max-width: ${breakpoint.mobileBig}) {
 		width: 100%;
+	}
+`
+
+const HistoryList = styled.ul`
+	list-style: none;
+	color: ${color.mainColorLight};
+	font-size: clamp(1.3rem, 1.5vw, 1.6rem);
+	li {
+		width: calc(50% - 20px);
+		&#year {
+			text-align: center;
+			font-style: ${font.headingsFont};
+			color: ${color.mainAccentColor};
+			font-weight: bold;
+			margin-left: calc(25% + 10px);
+		}
+		&#event {
+			text-align: left;
+			margin-left: calc(50% + 20px);
+		}
+		&#personal {
+			text-align: right;
+		}
 	}
 `
 
 const Skills = styled.div`
 	width: 40%;
-	@media screen and (max-width: ${breakpoint.mobile}) {
+	@media screen and (max-width: ${breakpoint.mobileBig}) {
 		width: 100%;
 	}
 `

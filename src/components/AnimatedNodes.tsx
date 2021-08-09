@@ -674,8 +674,8 @@ const randPos = (
 	interact: boolean = true
 ) => {
 	let distance = 100
-	let newValueX = valueX + speedX * 0.6
-	let newValueY = valueY + speedY * 0.5
+	let newValueX = valueX + speedX * 0.7
+	let newValueY = valueY + speedY * 0.6
 
 	if (
 		mousePos.x - valueX < distance &&

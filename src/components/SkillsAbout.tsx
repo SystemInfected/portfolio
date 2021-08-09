@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { breakpoint, color, font } from '../../styles/variables'
+import HistoryListItems from './HistoryListItems'
 
 const SkillsAbout = () => {
 	return (
@@ -8,13 +9,7 @@ const SkillsAbout = () => {
 				<About>
 					<h2>My journey</h2>
 					<HistoryList>
-						<li id='year'>2012</li>
-						<li id='event'>
-							<span>new workplace</span>
-							Graphic designer
-							<i>US-AB Print Shop</i>
-						</li>
-						<li id='personal'>Got married</li>
+						<HistoryListItems />
 					</HistoryList>
 				</About>
 				<Skills>
@@ -68,22 +63,47 @@ const About = styled.div`
 const HistoryList = styled.ul`
 	list-style: none;
 	color: ${color.mainColorLight};
-	font-size: clamp(1.3rem, 1.5vw, 1.6rem);
+	font-size: clamp(1.5rem, 1.7vw, 1.8rem);
 	li {
-		width: calc(50% - 20px);
-		&#year {
-			text-align: center;
-			font-style: ${font.headingsFont};
+		list-style: none;
+		width: 100%;
+		h3 {
+			font-family: ${font.headingsFont};
 			color: ${color.mainAccentColor};
-			font-weight: bold;
-			margin-left: calc(25% + 10px);
+			font-size: clamp(1.8rem, 2vw, 2.2rem);
+			font-weight: 400;
+			text-transform: uppercase;
+			letter-spacing: 0.15em;
+			text-align: center;
+			margin-bottom: 1em;
 		}
-		&#event {
-			text-align: left;
-			margin-left: calc(50% + 20px);
-		}
-		&#personal {
-			text-align: right;
+	}
+	ul {
+		li {
+			width: calc(50% - 20px);
+			margin-bottom: 1em;
+
+			&#professional {
+				text-align: left;
+				margin-left: calc(50% + 20px);
+				span {
+					&:nth-of-type(1) {
+						display: block;
+						font-size: 0.7em;
+						color: ${color.mainAccentColor};
+						text-transform: uppercase;
+					}
+					&:nth-of-type(2) {
+						margin-top: 0.3em;
+						display: block;
+						font-size: 0.7em;
+						font-weight: bold;
+					}
+				}
+			}
+			&#personal {
+				text-align: right;
+			}
 		}
 	}
 `

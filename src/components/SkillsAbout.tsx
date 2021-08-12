@@ -38,7 +38,7 @@ const SkillsAboutSection = styled.div`
 		padding: 0 2.5em;
 	}
 	@media screen and (max-width: ${breakpoint.mobileBig}) {
-		flex-direction: column;
+		flex-direction: column-reverse;
 	}
 	h2 {
 		font-family: ${font.headingsFont};
@@ -75,35 +75,67 @@ const HistoryList = styled.ul`
 			text-transform: uppercase;
 			letter-spacing: 0.15em;
 			text-align: center;
+			margin-top: 2em;
 			margin-bottom: 1em;
 		}
-	}
-	ul {
-		li {
-			width: calc(50% - 20px);
-			margin-bottom: 1em;
-
-			&#professional {
-				text-align: left;
-				margin-left: calc(50% + 20px);
-				span {
-					&:nth-of-type(1) {
-						display: block;
-						font-size: 0.7em;
-						color: ${color.mainAccentColor};
-						text-transform: uppercase;
+		ul {
+			margin-bottom: 2em;
+			position: relative;
+			li {
+				position: relative;
+				width: calc(50% - 20px);
+				margin-bottom: 1em;
+				.event-dot {
+					position: absolute;
+					top: 50%;
+					margin-top: -8px;
+					width: 16px;
+					height: 16px;
+					border-radius: 50%;
+					background-color: ${color.mainAccentColor};
+				}
+				&#professional {
+					text-align: left;
+					margin-left: calc(50% + 20px);
+					span {
+						&:nth-of-type(1) {
+							display: block;
+							font-size: 0.7em;
+							color: ${color.mainAccentColor};
+							text-transform: uppercase;
+						}
+						&:nth-of-type(2) {
+							margin-top: 0.3em;
+							display: block;
+							font-size: 0.7em;
+							font-weight: bold;
+						}
 					}
-					&:nth-of-type(2) {
-						margin-top: 0.3em;
-						display: block;
-						font-size: 0.7em;
-						font-weight: bold;
+					.event-dot {
+						left: -28px;
+					}
+				}
+				&#personal {
+					text-align: right;
+					.event-dot {
+						right: -28px;
 					}
 				}
 			}
-			&#personal {
-				text-align: right;
+			&:before {
+				content: '';
+				display: block;
+				width: 5px;
+				height: calc(100% + 3em);
+				position: absolute;
+				top: calc(0px - 0.75em);
+				background-color: ${color.mainAccentColor};
+				margin-left: 50%;
+				left: -2.5px;
 			}
+		}
+		&:last-of-type ul:before {
+			height: calc(100% - 8px);
 		}
 	}
 `

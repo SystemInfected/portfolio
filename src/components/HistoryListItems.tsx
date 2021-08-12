@@ -39,10 +39,20 @@ const HistoryListItems = () => {
 			],
 		},
 		{
+			year: 2007,
+			yearEvents: [
+				{
+					data:
+						'<span>high school</span> Graphic design and media <span>3 years</span>',
+					type: 'professional',
+				},
+			],
+		},
+		{
 			year: 2005,
 			yearEvents: [
 				{
-					data: 'Started learning web development',
+					data: 'Started learning web development and graphic design',
 					type: 'professional',
 				},
 			],
@@ -51,11 +61,12 @@ const HistoryListItems = () => {
 	91
 	const historyItemsContent = Object.values(historyItems).map((yearContent) => {
 		const yearEvents = yearContent.yearEvents.map((event, index) => {
+			const data = `<div class="event-dot"></div>${event.data}`
 			return (
 				<li
 					key={yearContent.year + '_' + index}
 					id={event.type}
-					dangerouslySetInnerHTML={{ __html: event.data }}
+					dangerouslySetInnerHTML={{ __html: data }}
 				></li>
 			)
 		})

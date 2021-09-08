@@ -131,6 +131,7 @@ const HistoryList = styled.ul`
 	list-style: none;
 	color: ${color.mainColorLight};
 	font-size: clamp(1.5rem, 1.7vw, 1.8rem);
+	margin-bottom: 200px;
 	li {
 		list-style: none;
 		width: 100%;
@@ -202,7 +203,7 @@ const HistoryList = styled.ul`
 			}
 		}
 		&:last-of-type ul:before {
-			height: calc(100% - 16px);
+			height: calc(100% - 12px);
 		}
 	}
 `
@@ -215,5 +216,51 @@ const Skills = styled.div`
 `
 
 const SkillsList = styled.ul`
-	width: 100%;
+	list-style: none;
+	color: ${color.mainColorLight};
+	font-size: clamp(1.5rem, 1.7vw, 1.8rem);
+	li {
+		box-sizing: border-box;
+		list-style: none;
+		width: 100%;
+		background: linear-gradient(
+				120deg,
+				rgba(${color.mainColorDarkRGB}, 0.75),
+				rgba(${color.mainColorDarkRGB}, 0.75)
+			),
+			linear-gradient(
+				120deg,
+				${color.mainBackgroundColor},
+				${color.mainBackgroundColor}
+			);
+		padding: 1em;
+		border-radius: 0.5em;
+		margin-top: 3em;
+		margin-bottom: 1em;
+		h3 {
+			font-family: ${font.headingsFont};
+			color: ${color.mainAccentColor};
+			font-size: clamp(1.8rem, 2vw, 2.2rem);
+			font-weight: 400;
+			text-transform: uppercase;
+			letter-spacing: 0.15em;
+			text-align: center;
+			margin-bottom: 1em;
+		}
+		ul {
+			text-align: center;
+			li {
+				background: none;
+				display: inline-block;
+				margin: 0.5em;
+				width: auto;
+				font-size: 0.7em;
+				color: ${color.mainColorLight};
+				text-transform: uppercase;
+				border: 1px solid ${color.mainColorLight};
+				padding: 0.5em 1em;
+				border-radius: 0.5em;
+			}
+		}
+	}
 `

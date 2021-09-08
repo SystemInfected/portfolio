@@ -12,7 +12,7 @@ const SkillsListItems = () => {
 			],
 		},
 		{
-			type: 'programming',
+			type: 'development',
 			skills: [
 				'php',
 				'css',
@@ -39,7 +39,7 @@ const SkillsListItems = () => {
 			)
 		})
 		return (
-			<li key={skillContent.type} id='skill_type'>
+			<li key={skillContent.type} id={'skill_' + skillContent.type}>
 				<h3>{skillContent.type}</h3>
 				<ul>{skills}</ul>
 			</li>

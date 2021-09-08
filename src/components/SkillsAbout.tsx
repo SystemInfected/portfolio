@@ -131,7 +131,6 @@ const HistoryList = styled.ul`
 	list-style: none;
 	color: ${color.mainColorLight};
 	font-size: clamp(1.5rem, 1.7vw, 1.8rem);
-	margin-bottom: 200px;
 	li {
 		list-style: none;
 		width: 100%;
@@ -260,6 +259,13 @@ const SkillsList = styled.ul`
 				border: 1px solid ${color.mainColorLight};
 				padding: 0.5em 1em;
 				border-radius: 0.5em;
+				transition: transform ease-out 0.3s, color ease-out 0.3s,
+					border-color ease-out 0.3s;
+				&:hover {
+					color: ${color.mainAccentColor};
+					border-color: ${color.mainAccentColor};
+					transform: scale(1.05);
+				}
 			}
 		}
 	}

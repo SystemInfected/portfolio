@@ -1,19 +1,86 @@
+import { useEffect } from 'react'
 import styled from 'styled-components'
+import { gsap } from 'gsap'
 import { breakpoint, color, font } from '../../styles/variables'
 import HistoryListItems from './HistoryListItems'
+import SkillsListItems from './SkillsListItems'
 
 const SkillsAbout = () => {
+	useEffect(() => {
+		const professionalEvents = document.querySelectorAll('#professional')
+		const personalEvents = document.querySelectorAll('#personal')
+
+		gsap.defaults({
+			ease: 'power2.out',
+			duration: 0.8,
+		})
+
+		professionalEvents.forEach((event) => {
+			const eventDot = event.querySelector('.event-dot')
+			gsap.from(event, {
+				autoAlpha: 0,
+				x: '-20px',
+				duration: 0.4,
+				scrollTrigger: {
+					trigger: event,
+					start: '50% 85%',
+					//markers: true,
+				},
+			})
+			if (eventDot) {
+				gsap.from(eventDot, {
+					autoAlpha: 0,
+					scale: 0.5,
+					x: '20px',
+					duration: 0.4,
+					scrollTrigger: {
+						trigger: eventDot,
+						start: '50% 85%',
+					},
+				})
+			}
+		})
+		personalEvents.forEach((event) => {
+			const eventDot = event.querySelector('.event-dot')
+			gsap.from(event, {
+				autoAlpha: 0,
+				x: '20px',
+				duration: 0.4,
+				scrollTrigger: {
+					trigger: event,
+					start: '50% 85%',
+					//markers: true,
+				},
+			})
+			if (eventDot) {
+				gsap.from(eventDot, {
+					autoAlpha: 0,
+					scale: 0.5,
+					x: '-20px',
+					duration: 0.4,
+					scrollTrigger: {
+						trigger: eventDot,
+						start: '50% 85%',
+					},
+				})
+			}
+		})
+	}, [])
+
 	return (
 		<Section>
 			<SkillsAboutSection>
 				<About>
-					<h2>My journey</h2>
+					<h2>Milestones</h2>
 					<HistoryList>
 						<HistoryListItems />
 					</HistoryList>
 				</About>
 				<Skills>
 					<h2>My skills</h2>
+					<SkillsList>
+						<SkillsListItems />
+					</SkillsList>
 				</Skills>
 			</SkillsAboutSection>
 		</Section>
@@ -135,7 +202,7 @@ const HistoryList = styled.ul`
 			}
 		}
 		&:last-of-type ul:before {
-			height: calc(100% - 8px);
+			height: calc(100% - 16px);
 		}
 	}
 `
@@ -145,4 +212,8 @@ const Skills = styled.div`
 	@media screen and (max-width: ${breakpoint.mobileBig}) {
 		width: 100%;
 	}
+`
+
+const SkillsList = styled.ul`
+	width: 100%;
 `

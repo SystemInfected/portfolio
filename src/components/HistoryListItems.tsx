@@ -58,7 +58,7 @@ const HistoryListItems = () => {
 			],
 		},
 	]
-	91
+
 	const historyItemsContent = Object.values(historyItems).map((yearContent) => {
 		const yearEvents = yearContent.yearEvents.map((event, index) => {
 			const data = `<div class="event-dot"></div>${event.data}`

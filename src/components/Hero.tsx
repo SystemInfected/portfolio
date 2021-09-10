@@ -272,7 +272,10 @@ const Portrait = styled.div`
 `
 
 const PortraitIllustration = styled(Portrait)`
-	width: 65%;
+	width: 60%;
+	@media screen and (max-width: 3000px) {
+		width: 65%;
+	}
 	justify-content: flex-end;
 	margin-right: 5px;
 	position: relative;
@@ -293,7 +296,10 @@ const PortraitIllustration = styled(Portrait)`
 `
 
 const PortraitNodes = styled(Portrait)`
-	width: 35%;
+	width: 40%;
+	@media screen and (max-width: 3000px) {
+		width: 35%;
+	}
 	justify-content: flex-start;
 	margin-left: 5px;
 	background: radial-gradient(

@@ -9,6 +9,7 @@ const SkillsAbout = () => {
 	useEffect(() => {
 		const professionalEvents = document.querySelectorAll('#professional')
 		const personalEvents = document.querySelectorAll('#personal')
+		const skillsGroup = document.querySelectorAll('.skillsBox')
 
 		gsap.defaults({
 			ease: 'power2.out',
@@ -65,6 +66,39 @@ const SkillsAbout = () => {
 				})
 			}
 		})
+
+		skillsGroup.forEach((group) => {
+			gsap.fromTo(
+				group,
+				{ y: 100, autoAlpha: 0 },
+				{
+					y: 0,
+					autoAlpha: 1,
+					duration: 1,
+					ease: 'power2.out',
+					scrollTrigger: {
+						trigger: group,
+						//markers: true,
+						start: '-100px 95%',
+						end: 'top bottom',
+					},
+				}
+			)
+			gsap.fromTo(
+				group.querySelectorAll('.skill'),
+				{ autoAlpha: 0 },
+				{
+					autoAlpha: 1,
+					duration: 0.4,
+					stagger: 0.1,
+					scrollTrigger: {
+						trigger: group,
+						start: '-100px 86%',
+						end: 'top bottom',
+					},
+				}
+			)
+		})
 	}, [])
 
 	return (
@@ -93,12 +127,12 @@ const Section = styled.section`
 	width: 100%;
 	display: flex;
 	justify-content: center;
+	background-color: rgba(${color.mainColorLightRGB}, 0.2);
 `
 
 const SkillsAboutSection = styled.div`
 	display: flex;
 	width: 100%;
-	background-color: rgba(${color.mainColorLightRGB}, 0.2);
 	max-width: ${breakpoint.maxWidth};
 	padding: 0 max(4rem, env(safe-area-inset-left));
 	@media screen and (max-width: ${breakpoint.tablet}) {
@@ -121,9 +155,11 @@ const SkillsAboutSection = styled.div`
 `
 
 const About = styled.div`
-	width: 60%;
+	width: 50%;
+	padding-right: 2em;
 	@media screen and (max-width: ${breakpoint.mobileBig}) {
 		width: 100%;
+		padding-right: 0;
 	}
 `
 
@@ -208,9 +244,11 @@ const HistoryList = styled.ul`
 `
 
 const Skills = styled.div`
-	width: 40%;
+	width: 50%;
+	padding-left: 2em;
 	@media screen and (max-width: ${breakpoint.mobileBig}) {
 		width: 100%;
+		padding-left: 0;
 	}
 `
 
@@ -261,6 +299,7 @@ const SkillsList = styled.ul`
 				border-radius: 0.5em;
 				transition: transform ease-out 0.3s, color ease-out 0.3s,
 					border-color ease-out 0.3s;
+				cursor: default;
 				&:hover {
 					color: ${color.mainAccentColor};
 					border-color: ${color.mainAccentColor};

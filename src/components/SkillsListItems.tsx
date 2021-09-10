@@ -1,45 +1,24 @@
-const SkillsListItems = () => {
-	const skillsItems = [
-		{
-			type: 'software',
-			skills: [
-				'photoshop',
-				'illustrator',
-				'indesign',
-				'animate',
-				'after effects',
-				'premiere pro',
-			],
-		},
-		{
-			type: 'development',
-			skills: [
-				'php',
-				'css',
-				'html',
-				'javascript',
-				'jquery',
-				'ajax',
-				'sql/pdo',
-				'rwd',
-			],
-		},
-		{
-			type: 'audio',
-			skills: ['ableton live', 'logic pro', 'ni maschine', 'fl studio'],
-		},
-	]
+import { skillsData } from '../data/skillsData'
 
-	const skillsContent = Object.values(skillsItems).map((skillContent) => {
+const SkillsListItems = () => {
+	const skillsContent = Object.values(skillsData).map((skillContent) => {
 		const skills = skillContent.skills.map((skill, index) => {
 			return (
-				<li key={skillContent.type + '_' + index} id={skill}>
+				<li
+					key={skillContent.type + '_' + skill + '_' + index}
+					id={skill}
+					className='skill'
+				>
 					{skill}
 				</li>
 			)
 		})
 		return (
-			<li key={skillContent.type} id={'skill_' + skillContent.type}>
+			<li
+				key={skillContent.type}
+				id={'skill_' + skillContent.type}
+				className='skillsBox'
+			>
 				<h3>{skillContent.type}</h3>
 				<ul>{skills}</ul>
 			</li>

@@ -1,7 +1,7 @@
 import { useRef, useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { font, color, breakpoint, components } from '../../styles/variables'
-import { data as featuredData } from '../data/featuredData'
+import { featuredData } from '../data/featuredData'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)

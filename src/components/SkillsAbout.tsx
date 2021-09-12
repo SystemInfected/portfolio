@@ -4,6 +4,7 @@ import { gsap } from 'gsap'
 import { breakpoint, color, font } from '../../styles/variables'
 import HistoryListItems from './HistoryListItems'
 import SkillsListItems from './SkillsListItems'
+import SectionHeader from './SectionHeader'
 
 const SkillsAbout = () => {
 	useEffect(() => {
@@ -105,13 +106,13 @@ const SkillsAbout = () => {
 		<Section>
 			<SkillsAboutSection>
 				<About>
-					<h2>Milestones</h2>
+					<SectionHeader centered>Milestones</SectionHeader>
 					<HistoryList>
 						<HistoryListItems />
 					</HistoryList>
 				</About>
 				<Skills>
-					<h2>My skills</h2>
+					<SectionHeader>My skills</SectionHeader>
 					<SkillsList>
 						<SkillsListItems />
 					</SkillsList>
@@ -142,17 +143,6 @@ const SkillsAboutSection = styled.div`
 		flex-direction: column-reverse;
 	}
 	padding-bottom: 5em;
-	h2 {
-		font-family: ${font.headingsFont};
-		color: ${color.mainAccentColor};
-		text-transform: uppercase;
-		letter-spacing: 0.3em;
-		margin-top: 5em;
-		margin-bottom: 1em;
-		font-size: 1.6rem;
-		font-weight: 400;
-		text-align: center;
-	}
 `
 
 const About = styled.div`

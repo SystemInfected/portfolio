@@ -2,12 +2,13 @@ import { useEffect } from 'react'
 import styled from 'styled-components'
 import { gsap } from 'gsap'
 import { breakpoint, color, font } from '../../styles/variables'
+import SectionHeader from './SectionHeader'
 
 const Footer = () => {
 	return (
 		<Section>
 			<FooterSection>
-				<h2>Get in touch</h2>
+				<SectionHeader>Get in touch</SectionHeader>
 			</FooterSection>
 		</Section>
 	)
@@ -29,16 +30,5 @@ const FooterSection = styled.div`
 	padding: 0 max(4rem, env(safe-area-inset-left));
 	@media screen and (max-width: ${breakpoint.tablet}) {
 		padding: 0 2.5em;
-	}
-	h2 {
-		font-family: ${font.headingsFont};
-		color: ${color.mainAccentColor};
-		text-transform: uppercase;
-		letter-spacing: 0.3em;
-		margin-top: 5em;
-		margin-bottom: 1em;
-		font-size: 1.6rem;
-		font-weight: 400;
-		text-align: center;
 	}
 `

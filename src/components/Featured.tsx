@@ -1,12 +1,14 @@
+import React from 'react'
 import styled from 'styled-components'
 import { breakpoint, color, font, components } from '../../styles/variables'
 import FeaturedCard from './FeaturedCard'
+import SectionHeader from './SectionHeader'
 
 const Featured = () => {
 	return (
 		<Section>
 			<FeatureSection>
-				<h2>Featured projects</h2>
+				<SectionHeader>Featured projects</SectionHeader>
 				<FeaturedContainer>
 					<FeaturedCard work='usab' />
 					<FeaturedCard work='nodell' />
@@ -36,17 +38,6 @@ const FeatureSection = styled.div`
 	padding: 0 max(4rem, env(safe-area-inset-left));
 	@media screen and (max-width: ${breakpoint.tablet}) {
 		padding: 0 2.5em;
-	}
-	h2 {
-		font-family: ${font.headingsFont};
-		color: ${color.mainAccentColor};
-		text-transform: uppercase;
-		letter-spacing: 0.3em;
-		margin-top: 5em;
-		margin-bottom: 1em;
-		font-size: 1.6rem;
-		font-weight: 400;
-		text-align: center;
 	}
 `
 

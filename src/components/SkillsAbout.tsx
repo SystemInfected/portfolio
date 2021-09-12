@@ -141,6 +141,7 @@ const SkillsAboutSection = styled.div`
 	@media screen and (max-width: ${breakpoint.mobileBig}) {
 		flex-direction: column-reverse;
 	}
+	padding-bottom: 5em;
 	h2 {
 		font-family: ${font.headingsFont};
 		color: ${color.mainAccentColor};

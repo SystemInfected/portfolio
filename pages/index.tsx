@@ -4,6 +4,7 @@ import Hero from '../src/components/Hero'
 import NavBar from '../src/components/NavBar'
 import Featured from '../src/components/Featured'
 import SkillsAbout from '../src/components/SkillsAbout'
+import Footer from '../src/components/Footer'
 
 const App = () => {
 	return (
@@ -24,6 +25,7 @@ const App = () => {
 			<NavBar />
 			<Featured />
 			<SkillsAbout />
+			<Footer />
 		</>
 	)
 }

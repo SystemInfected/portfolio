@@ -72,7 +72,7 @@ const ClientContainer = styled.div`
 `
 const scrollAnimation = (distance: number) => keyframes`
  0% { transform: translateX(0)}
- 100% { transform: translateX(-${distance}px) }
+ 100% { transform: translateX(calc(-${distance}px - 2px)) }
 `
 
 const Client = styled.div<{ distance: number; speed: number }>`

@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { breakpoint, color, font, components } from '../../styles/variables'
+import ClientsList from './ClientsList'
 import FeaturedCard from './FeaturedCard'
 import SectionHeader from './SectionHeader'
 
@@ -17,6 +18,8 @@ const Featured = () => {
 				<CenteredSection>
 					<ViewAllProjects>View more projects</ViewAllProjects>
 				</CenteredSection>
+				<SectionHeader>Some clients I've worked with</SectionHeader>
+				<ClientsList />
 			</FeatureSection>
 		</Section>
 	)
@@ -36,8 +39,10 @@ const FeatureSection = styled.div`
 	overflow: hidden;
 	max-width: ${breakpoint.maxWidth};
 	padding: 0 max(4rem, env(safe-area-inset-left));
+	padding-bottom: 5em;
 	@media screen and (max-width: ${breakpoint.tablet}) {
 		padding: 0 2.5em;
+		padding-bottom: 5em;
 	}
 `
 
@@ -73,5 +78,5 @@ const ViewAllProjects = styled.button`
 	display: inline-block;
 	background-color: ${color.mainAccentColor};
 	color: ${color.mainColorDark};
-	margin: 0 auto 6em;
+	margin: 0 auto;
 `

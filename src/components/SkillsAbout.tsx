@@ -106,7 +106,7 @@ const SkillsAbout = () => {
 		<Section>
 			<SkillsAboutSection>
 				<About>
-					<SectionHeader centered>Milestones</SectionHeader>
+					<SectionHeader>Milestones</SectionHeader>
 					<HistoryList>
 						<HistoryListItems />
 					</HistoryList>
@@ -136,13 +136,14 @@ const SkillsAboutSection = styled.div`
 	width: 100%;
 	max-width: ${breakpoint.maxWidth};
 	padding: 0 max(4rem, env(safe-area-inset-left));
+	padding-bottom: 5em;
 	@media screen and (max-width: ${breakpoint.tablet}) {
 		padding: 0 2.5em;
+		padding-bottom: 5em;
 	}
 	@media screen and (max-width: ${breakpoint.mobileBig}) {
 		flex-direction: column-reverse;
 	}
-	padding-bottom: 5em;
 `
 
 const About = styled.div`

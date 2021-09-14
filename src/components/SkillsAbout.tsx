@@ -133,6 +133,7 @@ const Section = styled.section`
 
 const SkillsAboutSection = styled.div`
 	display: flex;
+	gap: 4em;
 	width: 100%;
 	max-width: ${breakpoint.maxWidth};
 	padding: 0 max(4rem, env(safe-area-inset-left));
@@ -148,7 +149,6 @@ const SkillsAboutSection = styled.div`
 
 const About = styled.div`
 	width: 50%;
-	padding-right: 2em;
 	@media screen and (max-width: ${breakpoint.mobileBig}) {
 		width: 100%;
 		padding-right: 0;
@@ -237,7 +237,6 @@ const HistoryList = styled.ul`
 
 const Skills = styled.div`
 	width: 50%;
-	padding-left: 2em;
 	@media screen and (max-width: ${breakpoint.mobileBig}) {
 		width: 100%;
 		padding-left: 0;

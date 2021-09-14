@@ -39,7 +39,7 @@ const ClientsList = () => {
 
 	const clientsItemsContent = Object.values(clientsData).map((client) => {
 		const distance = resized.scroll - resized.width
-		const speed = (resized.scroll / resized.width) * 5
+		const speed = (resized.scroll / resized.width) * 5 || 5
 		return (
 			<Client key={client.url} id='client' distance={distance} speed={speed}>
 				<img

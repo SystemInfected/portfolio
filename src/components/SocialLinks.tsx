@@ -12,6 +12,11 @@ const SocialLinks = () => {
 				target='_blank'
 			/>
 			<SocialIcon
+				url='https://github.com/SystemInfected'
+				bgColor={socialIconColor}
+				target='_blank'
+			/>
+			<SocialIcon
 				url='http://www.dribbble.com/SystemInfected'
 				bgColor={socialIconColor}
 				target='_blank'
@@ -42,7 +47,7 @@ const Container = styled.div`
 	margin: 4em 0;
 	display: flex;
 	justify-content: center;
-	gap: 3em;
+	gap: clamp(2em, 2.8vw, 3em);
 	align-items: center;
 	a {
 		height: clamp(3.4rem, 3.6vw, 4.6rem) !important;

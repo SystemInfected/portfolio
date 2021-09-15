@@ -143,6 +143,7 @@ const SkillsAboutSection = styled.div`
 		padding-bottom: 5em;
 	}
 	@media screen and (max-width: ${breakpoint.mobileBig}) {
+		gap: 0;
 		flex-direction: column-reverse;
 	}
 `

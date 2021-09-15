@@ -29,11 +29,11 @@ const ContactForm = () => {
 					name='email'
 					id='email'
 					label='Your e-mail'
-					type='text'
+					type='email'
 					variant='outlined'
 					required={true}
 				/>
-				<CTA>Send</CTA>
+				<CTA type='submit'>Send</CTA>
 			</FormContainer>
 		</Container>
 	)
@@ -41,7 +41,7 @@ const ContactForm = () => {
 
 export default ContactForm
 
-const Container = styled.div`
+const Container = styled.form`
 	width: 100%;
 	margin: 4em 0;
 	display: flex;
@@ -67,7 +67,7 @@ const FormContainer = styled.div`
 		input,
 		textarea {
 			font-size: clamp(1.4rem, 1.5vw, 1.6rem);
-			color: ${color.textLight};
+			color: ${color.mainColorLight};
 		}
 		&:hover .MuiOutlinedInput-notchedOutline {
 			border-color: rgba(${formColor}, 1);

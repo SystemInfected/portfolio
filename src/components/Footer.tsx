@@ -98,7 +98,7 @@ const FooterSection = styled.footer`
 		padding: 0 2.5em;
 	}
 	p {
-		color: ${color.textLight};
+		color: ${color.mainColorLight};
 		font-size: clamp(1.5rem, 1.7vw, 1.8rem);
 		text-align: center;
 		line-height: 2em;

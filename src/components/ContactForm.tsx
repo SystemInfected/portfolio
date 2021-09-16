@@ -76,62 +76,64 @@ const ContactForm = () => {
 	}
 
 	return (
-		<Container autoComplete='off' onSubmit={(e) => submitForm(e)}>
-			<FormContainer>
-				<TextField
-					name='message'
-					id='message'
-					label='Your message'
-					type='text'
-					multiline={true}
-					variant='outlined'
-					required={true}
-					value={mailData.message}
-					onChange={(e) =>
-						setMailData((mailData) => ({
-							...mailData,
-							message: e.target.value,
-						}))
-					}
-				/>
-			</FormContainer>
-			<FormContainer>
-				<TextField
-					name='name'
-					id='name'
-					label='Your name'
-					type='text'
-					variant='outlined'
-					required={true}
-					value={mailData.name}
-					onChange={(e) =>
-						setMailData((mailData) => ({
-							...mailData,
-							name: e.target.value,
-						}))
-					}
-				/>
-				<TextField
-					name='email'
-					id='email'
-					label='Your e-mail'
-					type='email'
-					variant='outlined'
-					required={true}
-					value={mailData.email}
-					onChange={(e) =>
-						setMailData((mailData) => ({
-							...mailData,
-							email: e.target.value,
-						}))
-					}
-				/>
-				<CTA type='submit' disabled={mailData.sending}>
-					{mailData.buttonText}
-				</CTA>
-			</FormContainer>
+		<>
+			<Container autoComplete='off' onSubmit={(e) => submitForm(e)}>
+				<FormContainer>
+					<TextField
+						name='message'
+						id='message'
+						label='Your message'
+						type='text'
+						multiline={true}
+						variant='outlined'
+						required={true}
+						value={mailData.message}
+						onChange={(e) =>
+							setMailData((mailData) => ({
+								...mailData,
+								message: e.target.value,
+							}))
+						}
+					/>
+				</FormContainer>
+				<FormContainer>
+					<TextField
+						name='name'
+						id='name'
+						label='Your name'
+						type='text'
+						variant='outlined'
+						required={true}
+						value={mailData.name}
+						onChange={(e) =>
+							setMailData((mailData) => ({
+								...mailData,
+								name: e.target.value,
+							}))
+						}
+					/>
+					<TextField
+						name='email'
+						id='email'
+						label='Your e-mail'
+						type='email'
+						variant='outlined'
+						required={true}
+						value={mailData.email}
+						onChange={(e) =>
+							setMailData((mailData) => ({
+								...mailData,
+								email: e.target.value,
+							}))
+						}
+					/>
+					<CTA type='submit' disabled={mailData.sending}>
+						{mailData.buttonText}
+					</CTA>
+				</FormContainer>
+			</Container>
 			<ToastContainer style={{ fontSize: '1.5rem' }} />
-		</Container>
+		</>
 	)
 }
 

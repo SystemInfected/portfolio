@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { TextField } from '@material-ui/core'
 import axios from 'axios'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 import styled from 'styled-components'
 import { breakpoint, color, components } from '../../styles/variables'
 
@@ -13,6 +15,21 @@ const ContactForm = () => {
 		sending: false,
 		buttonText: 'Send',
 	})
+
+	const notification = (message: string) => {
+		if (message === 'success') {
+			toast.success(
+				'🥳 Thank you for you email! I will get back to you as soon as possible.',
+				{
+					position: toast.POSITION.BOTTOM_RIGHT,
+				}
+			)
+		} else if (message === 'fail') {
+			toast.error('Oh no 😔 Something went wrong. Please try again.', {
+				position: toast.POSITION.BOTTOM_RIGHT,
+			})
+		}
+	}
 
 	const submitForm = (e: React.FormEvent) => {
 		e.preventDefault()
@@ -32,6 +49,7 @@ const ContactForm = () => {
 			.post('/api/contact', data)
 			.then((res) => {
 				setMailData((mailData) => ({ ...mailData, sent: true }))
+				notification('success')
 				resetForm()
 			})
 			.catch((e) => {
@@ -40,6 +58,7 @@ const ContactForm = () => {
 					sending: false,
 					buttonText: 'Send',
 				}))
+				notification('fail')
 				console.log('Message not sent')
 				console.error(e)
 			})
@@ -111,6 +130,7 @@ const ContactForm = () => {
 					{mailData.buttonText}
 				</CTA>
 			</FormContainer>
+			<ToastContainer style={{ fontSize: '1.5rem' }} />
 		</Container>
 	)
 }

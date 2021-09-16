@@ -29,14 +29,15 @@ const mailAPI = async (req: NextApiRequest, res: NextApiResponse) => {
 	}
 	await transporter.sendMail(mailData, function (err, info) {
 		if (err) {
-			console.log(err)
+			console.log('mailerror', err)
 			res.status(500)
+			res.end()
 		} else {
 			console.log(info)
+			res.status(200)
+			res.end()
 		}
 	})
-	res.status(200)
-	res.end()
 }
 
 export default mailAPI

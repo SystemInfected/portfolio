@@ -48,9 +48,20 @@ const ContactForm = () => {
 		axios
 			.post('/api/contact', data)
 			.then((res) => {
-				setMailData((mailData) => ({ ...mailData, sent: true }))
-				notification('success')
-				resetForm()
+				if (res.status === 200) {
+					setMailData((mailData) => ({ ...mailData, sent: true }))
+					notification('success')
+					resetForm()
+				} else {
+					setMailData((mailData) => ({
+						...mailData,
+						sending: false,
+						buttonText: 'Send',
+					}))
+					notification('fail')
+					console.log('Message not sent')
+					console.error(e)
+				}
 			})
 			.catch((e) => {
 				setMailData((mailData) => ({

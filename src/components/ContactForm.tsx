@@ -1,10 +1,63 @@
+import { useState } from 'react'
 import { TextField } from '@material-ui/core'
+import axios from 'axios'
 import styled from 'styled-components'
 import { breakpoint, color, components } from '../../styles/variables'
 
 const ContactForm = () => {
+	const [mailData, setMailData] = useState({
+		name: '',
+		email: '',
+		message: '',
+		sent: false,
+		sending: false,
+		buttonText: 'Send',
+	})
+
+	const submitForm = (e: React.FormEvent) => {
+		e.preventDefault()
+		setMailData((mailData) => ({
+			...mailData,
+			buttonText: 'Sending...',
+			sending: true,
+		}))
+
+		let data = {
+			name: mailData.name,
+			email: mailData.email,
+			message: mailData.message,
+		}
+
+		axios
+			.post('/api/contact', data)
+			.then((res) => {
+				setMailData((mailData) => ({ ...mailData, sent: true }))
+				resetForm()
+			})
+			.catch((e) => {
+				setMailData((mailData) => ({
+					...mailData,
+					sending: false,
+					buttonText: 'Send',
+				}))
+				console.log('Message not sent')
+				console.error(e)
+			})
+	}
+
+	const resetForm = () => {
+		setMailData({
+			name: '',
+			email: '',
+			message: '',
+			sent: true,
+			sending: false,
+			buttonText: 'Send',
+		})
+	}
+
 	return (
-		<Container>
+		<Container autoComplete='off' onSubmit={(e) => submitForm(e)}>
 			<FormContainer>
 				<TextField
 					name='message'
@@ -14,6 +67,13 @@ const ContactForm = () => {
 					multiline={true}
 					variant='outlined'
 					required={true}
+					value={mailData.message}
+					onChange={(e) =>
+						setMailData((mailData) => ({
+							...mailData,
+							message: e.target.value,
+						}))
+					}
 				/>
 			</FormContainer>
 			<FormContainer>
@@ -24,6 +84,13 @@ const ContactForm = () => {
 					type='text'
 					variant='outlined'
 					required={true}
+					value={mailData.name}
+					onChange={(e) =>
+						setMailData((mailData) => ({
+							...mailData,
+							name: e.target.value,
+						}))
+					}
 				/>
 				<TextField
 					name='email'
@@ -32,8 +99,17 @@ const ContactForm = () => {
 					type='email'
 					variant='outlined'
 					required={true}
+					value={mailData.email}
+					onChange={(e) =>
+						setMailData((mailData) => ({
+							...mailData,
+							email: e.target.value,
+						}))
+					}
 				/>
-				<CTA type='submit'>Send</CTA>
+				<CTA type='submit' disabled={mailData.sending}>
+					{mailData.buttonText}
+				</CTA>
 			</FormContainer>
 		</Container>
 	)
@@ -83,6 +159,7 @@ const FormContainer = styled.div`
 	}
 	#message {
 		min-height: 13em;
+		line-height: 1.5em;
 	}
 	.PrivateNotchedOutline-legendLabelled-3 {
 		font-size: calc(clamp(1.4rem, 1.5vw, 1.6rem) * 0.75);

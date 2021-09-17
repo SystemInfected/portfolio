@@ -5,7 +5,11 @@ import { color, font, breakpoint } from '../../styles/variables'
 import MoreVertIcon from '@material-ui/icons/MoreVert'
 import CloseIcon from '@material-ui/icons/Close'
 
-const NavBar = () => {
+interface NavBarProps {
+	locked: boolean
+}
+
+const NavBar = ({ locked }: NavBarProps) => {
 	const [mobileMenuPos, setMobileMenuPos] = useState({ x: 0, y: 0 })
 	const [menuActive, setMenuActive] = useState(false)
 
@@ -19,6 +23,15 @@ const NavBar = () => {
 		const menuNav: HTMLElement | null = document.querySelector('#menuNav')
 		const closeMenu: HTMLElement | null = document.querySelector('#closeMenu')
 		let isNavBarFixed = false
+
+		if (menuToggle) {
+			let menuTogglePos = menuToggle.getBoundingClientRect()
+			let mobileMenuPos = { x: 0, y: 0 }
+			mobileMenuPos.x = menuTogglePos.x + menuTogglePos.width / 2
+			mobileMenuPos.y = menuTogglePos.y + menuTogglePos.height / 2
+
+			setMobileMenuPos(mobileMenuPos)
+		}
 
 		const toogleNavBar = (toogle: boolean) => {
 			if (navBar && navBarSpacer) {
@@ -34,17 +47,22 @@ const NavBar = () => {
 			}
 		}
 
+		if (locked) {
+			toogleNavBar(true)
+		}
 		window.addEventListener('scroll', (e) => {
 			if (navBar && headerContainer) {
-				let navBarPos = navBar.getBoundingClientRect()
-				let headerContainerPos = headerContainer.getBoundingClientRect()
-				let headerBottom = headerContainerPos.y + headerContainerPos.height
-				if (navBarPos.y <= 0 && headerBottom <= 0 && !isNavBarFixed) {
-					isNavBarFixed = true
-					toogleNavBar(true)
-				} else if (headerBottom > 0 && isNavBarFixed) {
-					isNavBarFixed = false
-					toogleNavBar(false)
+				if (!locked) {
+					let navBarPos = navBar.getBoundingClientRect()
+					let headerContainerPos = headerContainer.getBoundingClientRect()
+					let headerBottom = headerContainerPos.y + headerContainerPos.height
+					if (navBarPos.y <= 0 && headerBottom <= 0 && !isNavBarFixed) {
+						isNavBarFixed = true
+						toogleNavBar(true)
+					} else if (headerBottom > 0 && isNavBarFixed) {
+						isNavBarFixed = false
+						toogleNavBar(false)
+					}
 				}
 			}
 
@@ -181,16 +199,16 @@ const NavBar = () => {
 }
 export default NavBar
 
-// const Debug = styled.div`
-// 	position: fixed;
-// 	padding: 20px;
-// 	top: 60px;
-// 	left: 0;
-// 	font-size: 1.2rem;
-// 	z-index: 3500;
-// 	transform: translateZ(3500px);
-// 	background-color: rgba(255, 255, 255, 0.8);
-// `
+/* const Debug = styled.div`
+	position: fixed;
+	padding: 20px;
+	top: 60px;
+	left: 0;
+	font-size: 1.2rem;
+	z-index: 3500;
+	transform: translateZ(3500px);
+	background-color: rgba(255, 255, 255, 0.8);
+` */
 
 const NavBg = styled.section`
 	width: 100%;

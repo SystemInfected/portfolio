@@ -27,17 +27,15 @@ const mailAPI = async (req: NextApiRequest, res: NextApiResponse) => {
 		html: `<div>${req.body.message.replace(/\n/g, '<br />')}</div><p>Sent from:
     ${req.body.name} (${req.body.email})</p>`,
 	}
-	await transporter.sendMail(mailData, function (err, info) {
-		if (err) {
-			console.log('mailerror', err)
-			res.status(500)
-			res.end()
-		} else {
-			console.log(info)
-			res.status(200)
-			res.end()
-		}
-	})
+	try {
+		await transporter.sendMail(mailData)
+		res.status(200)
+		res.end()
+	} catch (error) {
+		console.error(error)
+		res.status(error.response.status)
+		res.end()
+	}
 }
 
 export default mailAPI

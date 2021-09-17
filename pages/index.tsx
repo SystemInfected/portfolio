@@ -22,7 +22,7 @@ const App = () => {
 				<meta name='theme-color' content='#000000' />
 			</Head>
 			<Hero />
-			<NavBar />
+			<NavBar locked={false} />
 			<Featured />
 			<SkillsAbout />
 			<Footer />

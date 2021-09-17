@@ -14,6 +14,8 @@ const posts = [
 		title: 'Post #2',
 	},
 ]
+if (posts[0].id == posts[1].id) {
+}
 const Portfolio = () => {
 	return (
 		<>
@@ -36,3 +38,21 @@ const Portfolio = () => {
 }
 
 export default Portfolio
+
+{
+	/* <div>
+			<h1>Welcome to my blog</h1>
+			{posts.map((post) => (
+				<div key={`post-${post.id}`}>
+					<Link
+						href={{
+							pathname: ROUTE_POST_ID,
+							query: { id: post.id },
+						}}
+					>
+						<a>{post.title}</a>
+					</Link>
+				</div>
+			))}
+		</div> */
+}

@@ -1,7 +1,21 @@
 {
-	"extends": ["prettier"],
-	"plugins": ["prettier"],
+	"extends": [
+		"eslint:recommended",
+		"plugin:@typescript-eslint/recommended",
+		"airbnb",
+		"plugin:prettier/recommended",
+		"prettier/@typescript-eslint"
+	],
+	"parser": "@typescript-eslint/parser",
+	"plugins": ["@typescript-eslint", "prettier"],
 	"rules": {
-		"prettier/prettier": 2
+		"react/jsx-filename-extension": [
+			1,
+			{ "extensions": [".js", ".jsx", ".tsx", ".ts"] }
+		],
+		"prettier/prettier": "error",
+		"@typescript-eslint/indent": ["error", 2],
+		"@typescript-eslint/no-unused-vars": "error",
+		"@typescript-eslint/no-explicit-any": "error"
 	}
 }

@@ -1,11 +1,9 @@
 import React from 'react'
 import Head from 'next/head'
 
-import Hero from '../src/components/Hero'
 import NavBar from '../src/components/NavBar'
-import Featured from '../src/components/Featured'
-import SkillsAbout from '../src/components/SkillsAbout'
 import Footer from '../src/components/Footer'
+import { Hero, Featured, SkillsAbout } from '../src/components/Home'
 
 const App = () => {
 	return (

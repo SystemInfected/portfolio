@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from 'react'
-import { color } from '../../styles/variables'
+import { color } from '../../../styles/variables'
 
 const randPos = (
 	valueX: number,

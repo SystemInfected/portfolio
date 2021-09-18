@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
-import { breakpoint, color, components } from '../../styles/variables'
+import { breakpoint, color, components } from '../../../styles/variables'
 import ClientsList from './ClientsList'
 import FeaturedCard from './FeaturedCard'
-import SectionHeader from './SectionHeader'
+import SectionHeader from '../SectionHeader'
 
 const Featured = () => {
 	return (

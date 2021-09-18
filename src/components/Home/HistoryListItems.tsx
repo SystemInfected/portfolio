@@ -1,5 +1,5 @@
 import React from 'react'
-import historyData from '../data/historyData'
+import historyData from '../../data/historyData'
 
 const HistoryListItems = () => {
 	const historyItemsContent = Object.values(historyData).map((yearContent) => {

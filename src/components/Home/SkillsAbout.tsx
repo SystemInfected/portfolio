@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import { gsap } from 'gsap'
-import { breakpoint, color, font } from '../../styles/variables'
+import { breakpoint, color, font } from '../../../styles/variables'
 import HistoryListItems from './HistoryListItems'
 import SkillsListItems from './SkillsListItems'
-import SectionHeader from './SectionHeader'
+import SectionHeader from '../SectionHeader'
 
 const SkillsAbout = () => {
 	useEffect(() => {

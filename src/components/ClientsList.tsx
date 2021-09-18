@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styled, { keyframes } from 'styled-components'
-import { clientsData } from '../data/clientsData'
+import clientsData from '../data/clientsData'
 
 const ClientsList = () => {
 	const [resized, setResized] = useState({ scroll: 0, width: 0 })

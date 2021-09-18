@@ -3,17 +3,17 @@ import React, { useRef, useEffect } from 'react'
 const AnimatedEye = (props) => {
 	const canvasRef = useRef<HTMLCanvasElement>(null)
 
-	const draw = (ctx, eyePos, frameCount) => {
+	const draw = (ctx, eyePos) => {
 		ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height)
 
-		//Eye background
+		// Eye background
 		ctx.beginPath()
 		ctx.arc(eyePos.x + 729.29, eyePos.y + 815.36, 120, 0, 2 * Math.PI)
 		ctx.fillStyle = '#E9E8E9'
 		ctx.fill()
 		ctx.closePath()
 
-		//Iris
+		// Iris
 		ctx.beginPath()
 		ctx.arc(eyePos.x + 729.29, eyePos.y + 815.36, 35.29, 0, 2 * Math.PI)
 		ctx.fillStyle = '#6F7CDB'
@@ -23,14 +23,14 @@ const AnimatedEye = (props) => {
 		ctx.stroke()
 		ctx.closePath()
 
-		//Pupil
+		// Pupil
 		ctx.beginPath()
 		ctx.arc(eyePos.x + 729.29, eyePos.y + 815.36, 15.16, 0, 2 * Math.PI)
 		ctx.fillStyle = 'black'
 		ctx.fill()
 		ctx.closePath()
 
-		//Highlights
+		// Highlights
 		ctx.beginPath()
 		ctx.arc(
 			eyePos.x * 0.9 + 746.77,
@@ -69,33 +69,33 @@ const AnimatedEye = (props) => {
 			const headerContainer = document.querySelector('#headerContainer')
 			if (headerContainer) {
 				headerContainer.addEventListener('mousemove', (event: any) => {
-					let canvasXMultiplier =
+					const canvasXMultiplier =
 						canvas.width / canvas.getBoundingClientRect().width
-					let canvasYMultiplier =
+					const canvasYMultiplier =
 						canvas.height / canvas.getBoundingClientRect().height
-					let mouseX: any =
+					const mouseX: number =
 						(event.x - canvas.getBoundingClientRect().x) * canvasXMultiplier -
 						729.29
-					let mouseY: any =
+					const mouseY: number =
 						(event.y - canvas.getBoundingClientRect().y) * canvasYMultiplier -
 						815.36
 
 					newMousePos = { x: mouseX, y: mouseY }
 				})
-				headerContainer.addEventListener('mouseout', (event: any) => {
+				headerContainer.addEventListener('mouseout', () => {
 					newMousePos = { x: 0, y: 0 }
 				})
 				headerContainer.addEventListener(
 					'touchstart touchmove',
 					(event: any) => {
-						let canvasXMultiplier =
+						const canvasXMultiplier =
 							canvas.width / canvas.getBoundingClientRect().width
-						let canvasYMultiplier =
+						const canvasYMultiplier =
 							canvas.height / canvas.getBoundingClientRect().height
-						let mouseX: any =
+						const mouseX: number =
 							(event.touches[0].clientX - canvas.getBoundingClientRect().x) *
 							canvasXMultiplier
-						let mouseY: any =
+						const mouseY: number =
 							(event.touches[0].clientY - canvas.getBoundingClientRect().y) *
 							canvasYMultiplier
 
@@ -104,7 +104,7 @@ const AnimatedEye = (props) => {
 				)
 				headerContainer.addEventListener(
 					'touchend touchcancel touchleave',
-					(event: any) => {
+					() => {
 						newMousePos = { x: 0, y: 0 }
 					}
 				)
@@ -115,28 +115,28 @@ const AnimatedEye = (props) => {
 		let animationFrameId: number
 		let mousePosCheck = { x: 0, y: 0 }
 		let mousePosDoubleCheck = { x: 0, y: 0 }
-		let updatedEyePos = { x: 0, y: 0 }
+		const updatedEyePos = { x: 0, y: 0 }
 		const eyeSpeed = 3
 		const render = () => {
 			if (newMousePos) {
-				if (mousePosCheck == newMousePos && frameCount > 0) {
+				if (mousePosCheck === newMousePos && frameCount > 0) {
 					mousePosDoubleCheck = mousePosCheck
 					frameCount = -180
 				}
 				if (
-					mousePosDoubleCheck == newMousePos &&
+					mousePosDoubleCheck === newMousePos &&
 					frameCount > -50 &&
 					frameCount < 0
 				) {
 					if (updatedEyePos.x > 3) {
-						updatedEyePos.x = updatedEyePos.x - eyeSpeed
+						updatedEyePos.x -= eyeSpeed
 					} else if (updatedEyePos.x < -3) {
-						updatedEyePos.x = updatedEyePos.x + eyeSpeed
+						updatedEyePos.x += eyeSpeed
 					}
 					if (updatedEyePos.y > 3) {
-						updatedEyePos.y = updatedEyePos.y - eyeSpeed
+						updatedEyePos.y -= eyeSpeed
 					} else if (updatedEyePos.y < -3) {
-						updatedEyePos.y = updatedEyePos.y + eyeSpeed
+						updatedEyePos.y += eyeSpeed
 					}
 				} else {
 					frameCount++
@@ -147,7 +147,7 @@ const AnimatedEye = (props) => {
 						newMousePos.y > -500
 					) {
 						if (updatedEyePos.x < 20) {
-							updatedEyePos.x = updatedEyePos.x + eyeSpeed
+							updatedEyePos.x += eyeSpeed
 						}
 					} else if (
 						newMousePos.x < -50 &&
@@ -156,20 +156,18 @@ const AnimatedEye = (props) => {
 						newMousePos.y > -500
 					) {
 						if (updatedEyePos.x > -20) {
-							updatedEyePos.x = updatedEyePos.x - eyeSpeed
+							updatedEyePos.x -= eyeSpeed
 						}
-					} else if (newMousePos.x == 0) {
+					} else if (newMousePos.x === 0) {
 						if (updatedEyePos.x > 3) {
-							updatedEyePos.x = updatedEyePos.x - eyeSpeed
+							updatedEyePos.x -= eyeSpeed
 						} else if (updatedEyePos.x < -3) {
-							updatedEyePos.x = updatedEyePos.x + eyeSpeed
+							updatedEyePos.x += eyeSpeed
 						}
-					} else {
-						if (updatedEyePos.x > 3) {
-							updatedEyePos.x = updatedEyePos.x - eyeSpeed
-						} else if (updatedEyePos.x < -3) {
-							updatedEyePos.x = updatedEyePos.x + eyeSpeed
-						}
+					} else if (updatedEyePos.x > 3) {
+						updatedEyePos.x -= eyeSpeed
+					} else if (updatedEyePos.x < -3) {
+						updatedEyePos.x += eyeSpeed
 					}
 					if (
 						newMousePos.y > 50 &&
@@ -178,7 +176,7 @@ const AnimatedEye = (props) => {
 						newMousePos.x > -900
 					) {
 						if (updatedEyePos.y < 20) {
-							updatedEyePos.y = updatedEyePos.y + eyeSpeed
+							updatedEyePos.y += eyeSpeed
 						}
 					} else if (
 						newMousePos.y < -50 &&
@@ -187,26 +185,24 @@ const AnimatedEye = (props) => {
 						newMousePos.x > -900
 					) {
 						if (updatedEyePos.y > -10) {
-							updatedEyePos.y = updatedEyePos.y - eyeSpeed
+							updatedEyePos.y -= eyeSpeed
 						}
-					} else if (newMousePos.y == 0) {
+					} else if (newMousePos.y === 0) {
 						if (updatedEyePos.y > 3) {
-							updatedEyePos.y = updatedEyePos.y - eyeSpeed
+							updatedEyePos.y -= eyeSpeed
 						} else if (updatedEyePos.y < -3) {
-							updatedEyePos.y = updatedEyePos.y + eyeSpeed
+							updatedEyePos.y += eyeSpeed
 						}
-					} else {
-						if (updatedEyePos.y > 3) {
-							updatedEyePos.y = updatedEyePos.y - eyeSpeed
-						} else if (updatedEyePos.y < -3) {
-							updatedEyePos.y = updatedEyePos.y + eyeSpeed
-						}
+					} else if (updatedEyePos.y > 3) {
+						updatedEyePos.y -= eyeSpeed
+					} else if (updatedEyePos.y < -3) {
+						updatedEyePos.y += eyeSpeed
 					}
 					mousePosCheck = newMousePos
 				}
 			}
 
-			draw(context, updatedEyePos, frameCount)
+			draw(context, updatedEyePos)
 			animationFrameId = window.requestAnimationFrame(render)
 		}
 		render()

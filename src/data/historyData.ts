@@ -1,4 +1,4 @@
-export const historyData = [
+const historyData = [
 	{
 		year: 2021,
 		yearEvents: [
@@ -57,3 +57,5 @@ export const historyData = [
 		],
 	},
 ]
+
+export default historyData

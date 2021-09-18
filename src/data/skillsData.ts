@@ -1,4 +1,4 @@
-export const skillsData = [
+const skillsData = [
 	{
 		type: 'software',
 		skills: [
@@ -30,3 +30,5 @@ export const skillsData = [
 		skills: ['ableton live', 'logic pro', 'ni maschine'],
 	},
 ]
+
+export default skillsData

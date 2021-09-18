@@ -1,3 +1,4 @@
+import React from 'react'
 import styled from 'styled-components'
 import { SocialIcon } from 'react-social-icons'
 import { color } from '../../styles/variables'
@@ -43,17 +44,17 @@ const SocialLinks = () => {
 export default SocialLinks
 
 const Container = styled.div`
-	width: 100%;
-	margin: 4em 0;
-	display: flex;
-	justify-content: center;
-	gap: clamp(2em, 2.8vw, 3em);
 	align-items: center;
+	display: flex;
+	gap: clamp(2em, 2.8vw, 3em);
+	justify-content: center;
+	margin: 4em 0;
+	width: 100%;
 	a {
 		height: clamp(3.4rem, 3.6vw, 4.6rem) !important;
-		width: clamp(3.4rem, 3.6vw, 4.6rem) !important;
 		transform: scale(1);
 		transition: transform ease-out 0.2s;
+		width: clamp(3.4rem, 3.6vw, 4.6rem) !important;
 		&:hover {
 			transform: scale(1.1);
 			transform-origin: center;

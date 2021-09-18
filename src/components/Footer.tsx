@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import React, { useEffect } from 'react'
 import styled, { keyframes } from 'styled-components'
 import { gsap } from 'gsap'
 import { breakpoint, color } from '../../styles/variables'
@@ -41,22 +41,35 @@ const Footer = () => {
 				</FooterContent>
 				<p id='copy'>
 					Built with{' '}
-					<a href='https://www.npmjs.com/package/react' target='_blank'>
+					<a
+						href='https://www.npmjs.com/package/react'
+						target='_blank'
+						rel='noreferrer'
+					>
 						react
 					</a>
 					,{' '}
-					<a href='https://www.npmjs.com/package/next' target='_blank'>
+					<a
+						href='https://www.npmjs.com/package/next'
+						target='_blank'
+						rel='noreferrer'
+					>
 						next
 					</a>
 					,{' '}
 					<a
 						href='https://www.npmjs.com/package/styled-components'
 						target='_blank'
+						rel='noreferrer'
 					>
 						styled-components
 					</a>{' '}
 					&{' '}
-					<a href='https://www.npmjs.com/package/gsap' target='_blank'>
+					<a
+						href='https://www.npmjs.com/package/gsap'
+						target='_blank'
+						rel='noreferrer'
+					>
 						gsap
 					</a>
 					.
@@ -71,11 +84,11 @@ const Footer = () => {
 export default Footer
 
 const Section = styled.section`
-	width: 100%;
+	background-color: rgba(${color.mainColorDarkRGB}, 0.75);
 	display: flex;
 	justify-content: center;
-	background-color: rgba(${color.mainColorDarkRGB}, 0.75);
 	padding-bottom: 3em;
+	width: 100%;
 `
 
 const waveAnimation = keyframes`
@@ -90,18 +103,18 @@ const waveAnimation = keyframes`
 `
 
 const FooterSection = styled.footer`
-	width: 100%;
-	overflow: hidden;
 	max-width: ${breakpoint.maxWidth};
+	overflow: hidden;
 	padding: 0 max(4rem, env(safe-area-inset-left));
+	width: 100%;
 	@media screen and (max-width: ${breakpoint.tablet}) {
 		padding: 0 2.5em;
 	}
 	p {
 		color: ${color.mainColorLight};
 		font-size: clamp(1.5rem, 1.7vw, 1.8rem);
-		text-align: center;
 		line-height: 2em;
+		text-align: center;
 		@media screen and (max-width: ${breakpoint.mobileBig}) {
 			text-align: left;
 			&#copy {
@@ -109,12 +122,12 @@ const FooterSection = styled.footer`
 			}
 		}
 		span {
-			display: inline-block;
-			margin-left: 0.25em;
-			font-size: 1.4em;
-			animation-name: ${waveAnimation};
 			animation-duration: 2.3s;
 			animation-iteration-count: infinite;
+			animation-name: ${waveAnimation};
+			display: inline-block;
+			font-size: 1.4em;
+			margin-left: 0.25em;
 			transform-origin: 70% 70%;
 		}
 		&#copy {
@@ -134,6 +147,6 @@ const FooterSection = styled.footer`
 const FooterContent = styled.div`
 	display: flex;
 	flex-direction: column;
-	width: 100%;
 	max-width: ${breakpoint.maxWidth};
+	width: 100%;
 `

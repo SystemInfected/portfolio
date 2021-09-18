@@ -1,13 +1,40 @@
 import React, { useRef, useEffect } from 'react'
 import { color } from '../../styles/variables'
 
+const randPos = (
+	valueX: number,
+	valueY: number,
+	speedX: number,
+	speedY: number,
+	mousePos: { x: number; y: number },
+	interact = true
+) => {
+	const distance = 100
+	const newValueX = valueX + speedX * 0.7
+	const newValueY = valueY + speedY * 0.6
+
+	if (
+		mousePos.x - valueX < distance &&
+		mousePos.x - valueX > -distance &&
+		mousePos.y - valueY < distance &&
+		mousePos.y - valueY > -distance &&
+		interact
+	) {
+		const xPush = mousePos.x - valueX
+		const yPush = mousePos.y - valueY
+
+		return { x: valueX + xPush, y: valueY + yPush }
+	}
+	return { x: newValueX, y: newValueY }
+}
+
 const AnimatedNodes = (props) => {
 	const canvasRef = useRef<HTMLCanvasElement>(null)
 
 	const draw = (ctx, frameCount, mousePos) => {
 		ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height)
 
-		//circles
+		// circles
 		const nodeDots = [
 			randPos(
 				136,
@@ -276,7 +303,7 @@ const AnimatedNodes = (props) => {
 		ctx.lineCap = 'round'
 		ctx.lineJoin = 'round'
 
-		//Lines (bottom first)
+		// Lines (bottom first)
 		ctx.beginPath()
 		ctx.moveTo(nodeLines[14].x, nodeLines[14].y)
 		ctx.lineTo(nodeDots[49].x, nodeDots[49].y)
@@ -287,7 +314,7 @@ const AnimatedNodes = (props) => {
 		ctx.lineTo(nodeLines[17].x, nodeLines[17].y)
 		ctx.stroke()
 
-		//Lines (bottom second)
+		// Lines (bottom second)
 		ctx.beginPath()
 		ctx.moveTo(nodeLines[0].x, nodeLines[0].y)
 		ctx.lineTo(nodeDots[43].x, nodeDots[43].y)
@@ -296,7 +323,7 @@ const AnimatedNodes = (props) => {
 		ctx.lineTo(nodeDots[50].x, nodeDots[50].y)
 		ctx.stroke()
 
-		//Lines (bottom third)
+		// Lines (bottom third)
 		ctx.beginPath()
 		ctx.moveTo(nodeLines[0].x, nodeLines[0].y)
 		ctx.lineTo(nodeDots[49].x, nodeDots[49].y)
@@ -307,7 +334,7 @@ const AnimatedNodes = (props) => {
 		ctx.lineTo(nodeDots[49].x, nodeDots[49].y)
 		ctx.stroke()
 
-		//Lines (neck)
+		// Lines (neck)
 		ctx.beginPath()
 		ctx.moveTo(nodeLines[1].x, nodeLines[1].y)
 		ctx.lineTo(nodeDots[43].x, nodeDots[43].y)
@@ -318,7 +345,7 @@ const AnimatedNodes = (props) => {
 		ctx.lineTo(nodeLines[2].x, nodeLines[2].y)
 		ctx.stroke()
 
-		//Lines (chin first)
+		// Lines (chin first)
 		ctx.beginPath()
 		ctx.moveTo(nodeLines[3].x, nodeLines[3].y)
 		ctx.lineTo(nodeDots[43].x, nodeDots[43].y)
@@ -330,7 +357,7 @@ const AnimatedNodes = (props) => {
 		ctx.closePath()
 		ctx.stroke()
 
-		//Lines (chin second)
+		// Lines (chin second)
 		ctx.beginPath()
 		ctx.moveTo(nodeDots[43].x, nodeDots[43].y)
 		ctx.lineTo(nodeDots[44].x, nodeDots[44].y)
@@ -339,7 +366,7 @@ const AnimatedNodes = (props) => {
 		ctx.lineTo(nodeDots[47].x, nodeDots[47].y)
 		ctx.stroke()
 
-		//Lines (lips first)
+		// Lines (lips first)
 		ctx.beginPath()
 		ctx.moveTo(nodeLines[4].x, nodeLines[4].y)
 		ctx.lineTo(nodeDots[36].x, nodeDots[36].y)
@@ -348,7 +375,7 @@ const AnimatedNodes = (props) => {
 		ctx.lineTo(nodeLines[6].x, nodeLines[6].y)
 		ctx.stroke()
 
-		//Lines (lips second + nose)
+		// Lines (lips second + nose)
 		ctx.beginPath()
 		ctx.moveTo(nodeDots[36].x, nodeDots[36].y)
 		ctx.lineTo(nodeDots[37].x, nodeDots[37].y)
@@ -366,7 +393,7 @@ const AnimatedNodes = (props) => {
 		ctx.lineTo(nodeLines[9].x, nodeLines[9].y)
 		ctx.stroke()
 
-		//Lines (lips third)
+		// Lines (lips third)
 		ctx.beginPath()
 		ctx.moveTo(nodeLines[5].x, nodeLines[5].y)
 		ctx.lineTo(nodeDots[37].x, nodeDots[37].y)
@@ -377,7 +404,7 @@ const AnimatedNodes = (props) => {
 		ctx.lineTo(nodeDots[38].x, nodeDots[38].y)
 		ctx.stroke()
 
-		//Lines (nose second)
+		// Lines (nose second)
 		ctx.beginPath()
 		ctx.moveTo(nodeDots[32].x, nodeDots[32].y)
 		ctx.lineTo(nodeDots[33].x, nodeDots[33].y)
@@ -388,7 +415,7 @@ const AnimatedNodes = (props) => {
 		ctx.closePath()
 		ctx.stroke()
 
-		//Lines (nose third)
+		// Lines (nose third)
 		ctx.beginPath()
 		ctx.moveTo(nodeDots[39].x, nodeDots[39].y)
 		ctx.lineTo(nodeDots[41].x, nodeDots[41].y)
@@ -396,7 +423,7 @@ const AnimatedNodes = (props) => {
 		ctx.lineTo(nodeDots[33].x, nodeDots[33].y)
 		ctx.stroke()
 
-		//Lines (cheek first)
+		// Lines (cheek first)
 		ctx.beginPath()
 		ctx.moveTo(nodeDots[10].x, nodeDots[10].y)
 		ctx.lineTo(nodeDots[42].x, nodeDots[42].y)
@@ -409,7 +436,7 @@ const AnimatedNodes = (props) => {
 		ctx.lineTo(nodeDots[46].x, nodeDots[46].y)
 		ctx.stroke()
 
-		//Lines (cheek second + plug)
+		// Lines (cheek second + plug)
 		ctx.beginPath()
 		ctx.moveTo(nodeDots[20].x, nodeDots[20].y)
 		ctx.lineTo(nodeDots[14].x, nodeDots[14].y)
@@ -424,21 +451,21 @@ const AnimatedNodes = (props) => {
 		ctx.lineTo(nodeDots[17].x, nodeDots[17].y)
 		ctx.stroke()
 
-		//Lines (plug second)
+		// Lines (plug second)
 		ctx.beginPath()
 		ctx.moveTo(nodeDots[24].x, nodeDots[24].y)
 		ctx.lineTo(nodeDots[29].x, nodeDots[29].y)
 		ctx.lineTo(nodeDots[25].x, nodeDots[25].y)
 		ctx.stroke()
 
-		//Lines (plug third)
+		// Lines (plug third)
 		ctx.beginPath()
 		ctx.moveTo(nodeDots[31].x, nodeDots[31].y)
 		ctx.lineTo(nodeDots[29].x, nodeDots[29].y)
 		ctx.lineTo(nodeDots[26].x, nodeDots[26].y)
 		ctx.stroke()
 
-		//Lines (plug fourth)
+		// Lines (plug fourth)
 		ctx.beginPath()
 		ctx.moveTo(nodeDots[27].x, nodeDots[27].y)
 		ctx.lineTo(nodeDots[29].x, nodeDots[29].y)
@@ -447,7 +474,7 @@ const AnimatedNodes = (props) => {
 		ctx.lineTo(nodeDots[17].x, nodeDots[17].y)
 		ctx.stroke()
 
-		//Lines (ear first)
+		// Lines (ear first)
 		ctx.beginPath()
 		ctx.moveTo(nodeDots[17].x, nodeDots[17].y)
 		ctx.lineTo(nodeDots[15].x, nodeDots[15].y)
@@ -455,7 +482,7 @@ const AnimatedNodes = (props) => {
 		ctx.lineTo(nodeDots[18].x, nodeDots[18].y)
 		ctx.stroke()
 
-		//Lines (cheek + ear)
+		// Lines (cheek + ear)
 		ctx.beginPath()
 		ctx.moveTo(nodeDots[40].x, nodeDots[40].y)
 		ctx.lineTo(nodeDots[14].x, nodeDots[14].y)
@@ -465,7 +492,7 @@ const AnimatedNodes = (props) => {
 		ctx.lineTo(nodeDots[16].x, nodeDots[16].y)
 		ctx.stroke()
 
-		//Lines (ear second)
+		// Lines (ear second)
 		ctx.beginPath()
 		ctx.moveTo(nodeDots[11].x, nodeDots[11].y)
 		ctx.lineTo(nodeDots[12].x, nodeDots[12].y)
@@ -473,7 +500,7 @@ const AnimatedNodes = (props) => {
 		ctx.closePath()
 		ctx.stroke()
 
-		//Lines (cheek + eye)
+		// Lines (cheek + eye)
 		ctx.beginPath()
 		ctx.moveTo(nodeDots[14].x, nodeDots[14].y)
 		ctx.lineTo(nodeDots[8].x, nodeDots[8].y)
@@ -482,7 +509,7 @@ const AnimatedNodes = (props) => {
 		ctx.lineTo(nodeDots[20].x, nodeDots[20].y)
 		ctx.stroke()
 
-		//Lines (forehead first)
+		// Lines (forehead first)
 		ctx.beginPath()
 		ctx.moveTo(nodeDots[11].x, nodeDots[11].y)
 		ctx.lineTo(nodeDots[8].x, nodeDots[8].y)
@@ -490,7 +517,7 @@ const AnimatedNodes = (props) => {
 		ctx.closePath()
 		ctx.stroke()
 
-		//Lines (eye first)
+		// Lines (eye first)
 		ctx.beginPath()
 		ctx.moveTo(nodeDots[41].x, nodeDots[41].y)
 		ctx.lineTo(nodeDots[19].x, nodeDots[19].y)
@@ -499,7 +526,7 @@ const AnimatedNodes = (props) => {
 		ctx.lineTo(nodeLines[11].x, nodeLines[11].y)
 		ctx.stroke()
 
-		//Lines (eye second)
+		// Lines (eye second)
 		ctx.beginPath()
 		ctx.moveTo(nodeDots[23].x, nodeDots[23].y)
 		ctx.lineTo(nodeDots[21].x, nodeDots[21].y)
@@ -512,7 +539,7 @@ const AnimatedNodes = (props) => {
 		ctx.lineTo(nodeLines[10].x, nodeLines[10].y)
 		ctx.stroke()
 
-		//Lines (eye third)
+		// Lines (eye third)
 		ctx.beginPath()
 		ctx.moveTo(nodeDots[20].x, nodeDots[20].y)
 		ctx.lineTo(nodeDots[22].x, nodeDots[22].y)
@@ -521,14 +548,14 @@ const AnimatedNodes = (props) => {
 		ctx.lineTo(nodeDots[22].x, nodeDots[22].y)
 		ctx.stroke()
 
-		//Lines (forehead second)
+		// Lines (forehead second)
 		ctx.beginPath()
 		ctx.moveTo(nodeDots[8].x, nodeDots[8].y)
 		ctx.lineTo(nodeDots[7].x, nodeDots[7].y)
 		ctx.lineTo(nodeDots[10].x, nodeDots[10].y)
 		ctx.stroke()
 
-		//Lines (forehead third)
+		// Lines (forehead third)
 		ctx.beginPath()
 		ctx.moveTo(nodeDots[9].x, nodeDots[9].y)
 		ctx.lineTo(nodeDots[7].x, nodeDots[7].y)
@@ -543,7 +570,7 @@ const AnimatedNodes = (props) => {
 		ctx.lineTo(nodeDots[8].x, nodeDots[8].y)
 		ctx.stroke()
 
-		//Lines (forehead fourth)
+		// Lines (forehead fourth)
 		ctx.beginPath()
 		ctx.moveTo(nodeDots[3].x, nodeDots[3].y)
 		ctx.lineTo(nodeDots[5].x, nodeDots[5].y)
@@ -575,13 +602,13 @@ const AnimatedNodes = (props) => {
 			canvas.height = 1700
 
 			canvas.addEventListener('mousemove', (event) => {
-				let canvasXMultiplier =
+				const canvasXMultiplier =
 					canvas.width / canvas.getBoundingClientRect().width
-				let canvasYMultiplier =
+				const canvasYMultiplier =
 					canvas.height / canvas.getBoundingClientRect().height
-				let mouseX: any =
+				const mouseX: number =
 					(event.x - canvas.getBoundingClientRect().x) * canvasXMultiplier
-				let mouseY: any =
+				const mouseY: number =
 					(event.y - canvas.getBoundingClientRect().y) * canvasYMultiplier
 
 				mousePos = { x: mouseX, y: mouseY }
@@ -592,28 +619,28 @@ const AnimatedNodes = (props) => {
 			})
 
 			canvas.addEventListener('touchmove', (event) => {
-				let canvasXMultiplier =
+				const canvasXMultiplier =
 					canvas.width / canvas.getBoundingClientRect().width
-				let canvasYMultiplier =
+				const canvasYMultiplier =
 					canvas.height / canvas.getBoundingClientRect().height
-				let mouseX: any =
+				const mouseX: number =
 					(event.touches[0].clientX - canvas.getBoundingClientRect().x) *
 					canvasXMultiplier
-				let mouseY: any =
+				const mouseY: number =
 					(event.touches[0].clientY - canvas.getBoundingClientRect().y) *
 					canvasYMultiplier
 
 				mousePos = { x: mouseX, y: mouseY }
 			})
 			canvas.addEventListener('touchstart', (event) => {
-				let canvasXMultiplier =
+				const canvasXMultiplier =
 					canvas.width / canvas.getBoundingClientRect().width
-				let canvasYMultiplier =
+				const canvasYMultiplier =
 					canvas.height / canvas.getBoundingClientRect().height
-				let mouseX: any =
+				const mouseX: number =
 					(event.touches[0].clientX - canvas.getBoundingClientRect().x) *
 					canvasXMultiplier
-				let mouseY: any =
+				const mouseY: number =
 					(event.touches[0].clientY - canvas.getBoundingClientRect().y) *
 					canvasYMultiplier
 
@@ -639,7 +666,7 @@ const AnimatedNodes = (props) => {
 		let minFrameCount = -Math.floor(Math.random() * (70 - 6) + 6)
 		let maxFrameCount = Math.floor(Math.random() * (70 - 6) + 6)
 
-		const interval = setInterval(() => {
+		setInterval(() => {
 			minFrameCount = -Math.floor(Math.random() * (70 - 6) + 6)
 			maxFrameCount = Math.floor(Math.random() * (70 - 6) + 6)
 		}, 5000)
@@ -650,7 +677,7 @@ const AnimatedNodes = (props) => {
 			} else if (frameCount <= minFrameCount) {
 				iteration = 1
 			}
-			frameCount = frameCount + iteration
+			frameCount += iteration
 
 			draw(context, frameCount, mousePos)
 			animationFrameId = window.requestAnimationFrame(render)
@@ -663,33 +690,6 @@ const AnimatedNodes = (props) => {
 	}, [draw])
 
 	return <canvas ref={canvasRef} {...props} />
-}
-
-const randPos = (
-	valueX: number,
-	valueY: number,
-	speedX: number,
-	speedY: number,
-	mousePos: any,
-	interact: boolean = true
-) => {
-	let distance = 100
-	let newValueX = valueX + speedX * 0.7
-	let newValueY = valueY + speedY * 0.6
-
-	if (
-		mousePos.x - valueX < distance &&
-		mousePos.x - valueX > -distance &&
-		mousePos.y - valueY < distance &&
-		mousePos.y - valueY > -distance &&
-		interact
-	) {
-		let xPush = mousePos.x - valueX
-		let yPush = mousePos.y - valueY
-
-		return { x: valueX + xPush, y: valueY + yPush }
-	}
-	return { x: newValueX, y: newValueY }
 }
 
 export default AnimatedNodes

@@ -1,4 +1,4 @@
-export const clientsData = [
+const clientsData = [
 	{
 		url: 'clients/KTH.jpg',
 		name: 'KTH Royal Institute of Technology',
@@ -28,3 +28,5 @@ export const clientsData = [
 		name: 'Living Fastighetsmäkleri',
 	},
 ]
+
+export default clientsData

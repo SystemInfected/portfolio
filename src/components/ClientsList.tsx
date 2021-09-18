@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled, { keyframes } from 'styled-components'
 import { clientsData } from '../data/clientsData'
 
@@ -62,13 +62,13 @@ export default ClientsList
 
 const ClientContainer = styled.div`
 	box-sizing: border-box;
-	margin-top: 5em;
-	margin-bottom: 3em;
-	width: 100%;
 	display: flex;
-	justify-content: space-between;
 	gap: clamp(30px, 3vw, 60px);
+	justify-content: space-between;
+	margin-bottom: 3em;
+	margin-top: 5em;
 	overflow: hidden;
+	width: 100%;
 `
 const scrollAnimation = (distance: number) => keyframes`
  0% { transform: translateX(0)}
@@ -76,18 +76,18 @@ const scrollAnimation = (distance: number) => keyframes`
 `
 
 const Client = styled.div<{ distance: number; speed: number }>`
-	height: clamp(90px, 8vw, 140px);
-	width: clamp(90px, 8vw, 140px);
+	align-items: center;
 	background-color: white;
-	padding: 1em;
 	border-radius: 0.5em;
 	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-shrink: 0;
 	filter: grayscale(100%);
+	flex-shrink: 0;
+	height: clamp(90px, 8vw, 140px);
+	justify-content: center;
 	opacity: 0.5;
+	padding: 1em;
 	transition: filter ease-out 0.3s, opacity ease-out 0.3s;
+	width: clamp(90px, 8vw, 140px);
 	&:hover {
 		filter: grayscale(0);
 		opacity: 1;
@@ -96,10 +96,10 @@ const Client = styled.div<{ distance: number; speed: number }>`
 		height: 100%;
 	}
 	&.scroll {
-		animation-name: ${(props) => scrollAnimation(props.distance)};
+		animation-direction: alternate;
 		animation-duration: ${(props) => props.speed}s;
 		animation-iteration-count: infinite;
-		animation-direction: alternate;
+		animation-name: ${(props) => scrollAnimation(props.distance)};
 		animation-timing-function: ease-in-out;
 	}
 `

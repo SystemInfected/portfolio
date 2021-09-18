@@ -1,15 +1,16 @@
-import { useEffect } from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
-gsap.registerPlugin(ScrollTrigger)
 
+import LocationOnIcon from '@material-ui/icons/LocationOn'
 import { color, font, breakpoint, components } from '../../styles/variables'
 import IllustrationForeground from '../assets/svg/portrait_illustration_foreground.svg'
 import IllustrationEye from '../assets/svg/portrait_illustration_eye.svg'
-import LocationOnIcon from '@material-ui/icons/LocationOn'
 import AnimatedNodes from './AnimatedNodes'
 import AnimatedEye from './AnimatedEye'
+
+gsap.registerPlugin(ScrollTrigger)
 
 const Hero = () => {
 	useEffect(() => {
@@ -170,30 +171,30 @@ const Hero = () => {
 export default Hero
 
 const HeaderBg = styled.section`
-	width: 100%;
+	background: ${color.mainColorDark};
 	display: flex;
 	justify-content: center;
-	background: ${color.mainColorDark};
+	width: 100%;
 `
 
 const HeaderContainer = styled.div`
-	width: 100%;
-	height: 100%;
-	display: flex;
 	align-items: flex-end;
+	display: flex;
+	height: 100%;
 	justify-content: center;
 	position: relative;
+	width: 100%;
 `
 const HeaderWrapper = styled.div`
-	width: 100%;
-	max-width: ${breakpoint.maxWidth};
-	position: absolute;
 	left: 50%;
+	max-width: ${breakpoint.maxWidth};
 	padding-left: max(4rem, env(safe-area-inset-left));
+	pointer-events: none;
+	position: absolute;
 	top: 4rem;
 	transform: translateX(-50%);
+	width: 100%;
 	z-index: 20;
-	pointer-events: none;
 	@media screen and (max-width: ${breakpoint.tablet}) {
 		padding-left: 2.5em;
 		top: 2.5em;
@@ -211,23 +212,23 @@ const Header = styled.h1`
 	font-family: ${font.headingsFont};
 	font-size: clamp(2.5rem, 5.2vw, 10.4rem);
 	font-weight: 450;
-	text-transform: uppercase;
 	letter-spacing: 0.02rem;
 	line-height: 1.2;
+	text-transform: uppercase;
 	@media (orientation: portrait) {
 		text-align: center;
 		font-size: clamp(3.4rem, 10vw, 13rem);
 	}
 	span {
-		position: relative;
 		display: block;
+		position: relative;
 	}
 `
 
 const Location = styled.h2`
-	display: flex;
 	align-items: center;
 	color: ${color.mainColorLight};
+	display: flex;
 	font-family: ${font.headingsFont};
 	font-size: clamp(2.5rem, 3vw, 5.2rem);
 	font-weight: 200;
@@ -244,11 +245,11 @@ const Location = styled.h2`
 `
 
 const CTAWrapper = styled.div`
-	position: fixed;
-	top: 1.4rem;
-	right: max(4rem, env(safe-area-inset-left));
-	z-index: 20;
 	pointer-events: auto;
+	position: fixed;
+	right: max(4rem, env(safe-area-inset-left));
+	top: 1.4rem;
+	z-index: 20;
 `
 
 const CTA = styled.button`
@@ -261,10 +262,10 @@ const CTA = styled.button`
 `
 
 const Portrait = styled.div`
+	align-items: flex-end;
+	display: flex;
 	height: calc(100vh - 60px);
 	max-height: 1080px;
-	display: flex;
-	align-items: flex-end;
 	overflow: hidden;
 	@media (orientation: portrait) {
 		max-height: none;
@@ -272,18 +273,18 @@ const Portrait = styled.div`
 `
 
 const PortraitIllustration = styled(Portrait)`
-	width: 60%;
+	-webkit-user-select: none;
 	@media screen and (max-width: 3000px) {
 		width: 65%;
 	}
 	justify-content: flex-end;
 	margin-right: 5px;
 	position: relative;
-	-webkit-user-select: none;
 	user-select: none;
+	width: 60%;
 	svg {
-		height: clamp(80%, 70vw, 115%);
 		flex-shrink: 0;
+		height: clamp(80%, 70vw, 115%);
 		position: absolute;
 	}
 	canvas {
@@ -296,12 +297,10 @@ const PortraitIllustration = styled(Portrait)`
 `
 
 const PortraitNodes = styled(Portrait)`
-	width: 40%;
+	-webkit-user-select: none;
 	@media screen and (max-width: 3000px) {
 		width: 35%;
 	}
-	justify-content: flex-start;
-	margin-left: 5px;
 	background: radial-gradient(
 		ellipse at left 90%,
 		rgba(${color.mainColorLightRGB}, 0.25) 0%,
@@ -309,13 +308,15 @@ const PortraitNodes = styled(Portrait)`
 		rgba(0, 0, 0, 0) 38%
 	);
 	background-position: left bottom;
-	background-size: 170% 95%;
 	background-repeat: no-repeat;
-	-webkit-user-select: none;
+	background-size: 170% 95%;
+	justify-content: flex-start;
+	margin-left: 5px;
 	user-select: none;
+	width: 40%;
 	canvas {
-		height: clamp(80%, 70vw, 115%);
 		flex-shrink: 0;
+		height: clamp(80%, 70vw, 115%);
 	}
 	@media (orientation: portrait) {
 		width: 50%;

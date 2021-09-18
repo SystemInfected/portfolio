@@ -1,4 +1,4 @@
-export const featuredData = {
+const featuredData = {
 	usab: [
 		{
 			title: 'US-AB.com',
@@ -66,3 +66,5 @@ export const featuredData = {
 		},
 	],
 }
+
+export default featuredData

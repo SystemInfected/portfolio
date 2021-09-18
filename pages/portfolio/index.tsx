@@ -1,3 +1,4 @@
+import React from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 
@@ -14,8 +15,6 @@ const posts = [
 		title: 'Post #2',
 	},
 ]
-if (posts[0].id == posts[1].id) {
-}
 const Portfolio = () => {
 	return (
 		<>
@@ -31,8 +30,8 @@ const Portfolio = () => {
 				/>
 				<meta name='theme-color' content='#000000' />
 			</Head>
-			<NavBar locked={true} />
-			<div style={{ height: '200vh' }}></div>
+			<NavBar locked />
+			<div style={{ height: '200vh' }} />
 		</>
 	)
 }

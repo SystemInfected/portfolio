@@ -1,3 +1,4 @@
+import React from 'react'
 import { historyData } from '../data/historyData'
 
 const HistoryListItems = () => {
@@ -6,10 +7,10 @@ const HistoryListItems = () => {
 			const data = `<div class="event-dot"></div>${event.data}`
 			return (
 				<li
-					key={yearContent.year + '_' + index}
+					key={`${yearContent.year}_${index}`}
 					id={event.type}
 					dangerouslySetInnerHTML={{ __html: data }}
-				></li>
+				/>
 			)
 		})
 		return (

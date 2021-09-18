@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { TextField } from '@material-ui/core'
 import axios from 'axios'
 import { ToastContainer, toast } from 'react-toastify'
@@ -39,7 +39,7 @@ const ContactForm = () => {
 			sending: true,
 		}))
 
-		let data = {
+		const data = {
 			name: mailData.name,
 			email: mailData.email,
 			message: mailData.message,
@@ -59,7 +59,7 @@ const ContactForm = () => {
 						buttonText: 'Send',
 					}))
 					notification('fail')
-					console.log('Message not sent')
+					console.error('Message not sent')
 					console.error(e)
 				}
 			})
@@ -70,7 +70,7 @@ const ContactForm = () => {
 					buttonText: 'Send',
 				}))
 				notification('fail')
-				console.log('Message not sent')
+				console.error('Message not sent')
 				console.error(e)
 			})
 	}
@@ -95,9 +95,9 @@ const ContactForm = () => {
 						id='message'
 						label='Your message'
 						type='text'
-						multiline={true}
+						multiline
 						variant='outlined'
-						required={true}
+						required
 						value={mailData.message}
 						onChange={(e) =>
 							setMailData((mailData) => ({
@@ -114,7 +114,7 @@ const ContactForm = () => {
 						label='Your name'
 						type='text'
 						variant='outlined'
-						required={true}
+						required
 						value={mailData.name}
 						onChange={(e) =>
 							setMailData((mailData) => ({
@@ -129,7 +129,7 @@ const ContactForm = () => {
 						label='Your e-mail'
 						type='email'
 						variant='outlined'
-						required={true}
+						required
 						value={mailData.email}
 						onChange={(e) =>
 							setMailData((mailData) => ({
@@ -151,11 +151,11 @@ const ContactForm = () => {
 export default ContactForm
 
 const Container = styled.form`
-	width: 100%;
-	margin: 4em 0;
+	align-items: space-between;
 	display: flex;
 	gap: 3em;
-	align-items: space-between;
+	margin: 4em 0;
+	width: 100%;
 	@media screen and (max-width: ${breakpoint.mobileBig}) {
 		flex-direction: column;
 	}
@@ -163,11 +163,11 @@ const Container = styled.form`
 
 const formColor = color.mainAccentRGB
 const FormContainer = styled.div`
-	width: 100%;
 	display: flex;
 	flex-direction: column;
 	gap: 3em;
 	justify-content: space-between;
+	width: 100%;
 	@media screen and (max-width: ${breakpoint.mobileBig}) {
 		justify-content: flex-start;
 	}
@@ -175,8 +175,8 @@ const FormContainer = styled.div`
 		label,
 		input,
 		textarea {
-			font-size: clamp(1.4rem, 1.5vw, 1.6rem);
 			color: ${color.mainColorLight};
+			font-size: clamp(1.4rem, 1.5vw, 1.6rem);
 		}
 		&:hover .MuiOutlinedInput-notchedOutline {
 			border-color: rgba(${formColor}, 1);
@@ -191,8 +191,8 @@ const FormContainer = styled.div`
 		}
 	}
 	#message {
-		min-height: 13em;
 		line-height: 1.5em;
+		min-height: 13em;
 	}
 	.PrivateNotchedOutline-legendLabelled-3 {
 		font-size: calc(clamp(1.4rem, 1.5vw, 1.6rem) * 0.75);

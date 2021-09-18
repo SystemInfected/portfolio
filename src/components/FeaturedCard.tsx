@@ -1,29 +1,37 @@
-import { useRef, useEffect, useState } from 'react'
+import React, { useRef, useEffect, useState } from 'react'
 import styled from 'styled-components'
-import { font, color, breakpoint, components } from '../../styles/variables'
-import { featuredData } from '../data/featuredData'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
+import { font, color, breakpoint, components } from '../../styles/variables'
+import { featuredData } from '../data/featuredData'
+
 gsap.registerPlugin(ScrollTrigger)
 
 const FeaturedCard = (props: { work: string | number }) => {
+	const { work } = props
 	const featuredCardRef = useRef<HTMLDivElement>(null)
-	const cardData = featuredData[props.work][0]
+	const cardData = featuredData[work][0]
 	const [deviceMotion, setDeviceMotion] = useState(false)
 
-	let imagePos = {}
+	const imagePos = {}
 
-	cardData.images.map((image: any, index: number) => {
-		imagePos[index] = {}
-		if (image.position === 'center') {
-			imagePos[index].marginLeft = 50
-			imagePos[index].translateX = -50
-		} else {
-			imagePos[index].marginLeft = 0
-			imagePos[index].translateX = image.position
+	cardData.images.map(
+		(
+			image: { url: string; position: string; size: string; zoomValue: number },
+			index: number
+		) => {
+			imagePos[index] = {}
+			if (image.position === 'center') {
+				imagePos[index].marginLeft = 50
+				imagePos[index].translateX = -50
+			} else {
+				imagePos[index].marginLeft = 0
+				imagePos[index].translateX = image.position
+			}
+			imagePos[index].zoomValue = image.zoomValue
+			return null
 		}
-		imagePos[index].zoomValue = image.zoomValue
-	})
+	)
 
 	useEffect(() => {
 		if (featuredCardRef.current) {
@@ -38,7 +46,7 @@ const FeaturedCard = (props: { work: string | number }) => {
 					ease: 'power2.out',
 					scrollTrigger: {
 						trigger: cardRef,
-						//markers: true,
+						// markers: true,
 						start: '-100px 95%',
 						end: 'top bottom',
 					},
@@ -107,28 +115,28 @@ const FeaturedCard = (props: { work: string | number }) => {
 		if (featuredCardRef.current) {
 			const cardRef = featuredCardRef.current
 
-			//WEB MOTION
+			// WEB MOTION
 			cardRef.addEventListener('mousemove', (e) => {
-				let cardClientRect = cardRef.getBoundingClientRect()
-				let xAxis =
+				const cardClientRect = cardRef.getBoundingClientRect()
+				const xAxis =
 					(cardClientRect.x + cardClientRect.width / 2 - e.x) / axisDivider
-				let yAxis =
+				const yAxis =
 					(cardClientRect.y + cardClientRect.height / 2 - e.y) / axisDivider
 
 				animateCard(xAxis, yAxis)
 			})
 
-			cardRef.addEventListener('mouseenter', (e) => {
+			cardRef.addEventListener('mouseenter', () => {
 				animateCard(0, 0, 'start')
 			})
 
-			cardRef.addEventListener('mouseleave', (e) => {
+			cardRef.addEventListener('mouseleave', () => {
 				animateCard(0, 0, 'stop')
 			})
 		}
 	}, [])
 
-	//MOBILE MOTION
+	// MOBILE MOTION
 	useEffect(() => {
 		if (featuredCardRef.current) {
 			const cardRef = featuredCardRef.current
@@ -137,18 +145,18 @@ const FeaturedCard = (props: { work: string | number }) => {
 					trigger: cardRef,
 					start: 'top 50%',
 					end: 'bottom 50%',
-					//markers: true,
+					// markers: true,
 					onEnter: () => {
-						setDeviceMotion((currDeviceMotion) => true)
+						setDeviceMotion(() => true)
 					},
 					onLeave: () => {
-						setDeviceMotion((currDeviceMotion) => false)
+						setDeviceMotion(() => false)
 					},
 					onEnterBack: () => {
-						setDeviceMotion((currDeviceMotion) => true)
+						setDeviceMotion(() => true)
 					},
 					onLeaveBack: () => {
-						setDeviceMotion((currDeviceMotion) => false)
+						setDeviceMotion(() => false)
 					},
 				})
 				const axisDivider = 4
@@ -194,6 +202,7 @@ const FeaturedCard = (props: { work: string | number }) => {
 								handleDeviceMotion
 							)
 					}
+					return null
 				}
 
 				if (typeof DeviceOrientationEvent.requestPermission === 'function') {
@@ -222,20 +231,31 @@ const FeaturedCard = (props: { work: string | number }) => {
 				</ul>
 			</HeaderWrapper>
 			<CardImages>
-				{cardData.images.map((image: any, index: number) => {
-					return (
-						<img
-							key={index}
-							src={`images/${image.url}`}
-							style={{
-								width: `${image.size}`,
-								zIndex: 3 + index * 3,
-								marginLeft: `${imagePos[index].marginLeft}%`,
-								transform: `translateX(${imagePos[index].translateX}%)`,
-							}}
-						/>
-					)
-				})}
+				{cardData.images.map(
+					(
+						image: {
+							url: string
+							position: string
+							size: string
+							zoomValue: number
+						},
+						index: number
+					) => {
+						return (
+							<img
+								key={index}
+								src={`images/${image.url}`}
+								alt={cardData.title}
+								style={{
+									width: `${image.size}`,
+									zIndex: 3 + index * 3,
+									marginLeft: `${imagePos[index].marginLeft}%`,
+									transform: `translateX(${imagePos[index].translateX}%)`,
+								}}
+							/>
+						)
+					}
+				)}
 			</CardImages>
 			<CardButton>Read more</CardButton>
 		</CardWrapper>
@@ -245,17 +265,7 @@ const FeaturedCard = (props: { work: string | number }) => {
 export default FeaturedCard
 
 const CardWrapper = styled.div`
-	cursor: pointer;
-	transform-style: preserve-3d;
-	perspective: 1200px;
-	display: flex;
 	align-items: center;
-	flex-direction: column;
-	justify-content: space-between;
-	margin-top: 2.5em;
-	width: 100%;
-	min-height: min(60vh, 45em);
-	border-radius: 2em;
 	backface-visibility: hidden;
 	background: linear-gradient(
 			rgba(0, 0, 0, 0.2) 0%,
@@ -264,15 +274,25 @@ const CardWrapper = styled.div`
 			rgba(0, 0, 0, 0) 100%
 		),
 		rgba(${color.mainColorLightRGB}, 0.1);
+	border-radius: 2em;
 	box-shadow: 0 0.4em 0.4em rgba(0, 0, 0, 0.2), 0 2em 5em rgba(0, 0, 0, 0.3);
+	cursor: pointer;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	margin-top: 2.5em;
+	min-height: min(60vh, 45em);
+	perspective: 1200px;
+	transform-style: preserve-3d;
+	width: 100%;
 	p {
-		width: 100%;
-		font-size: 1.6rem;
-		padding: 2em 1em 1em;
-		line-height: 1.5;
-		letter-spacing: 0.03em;
 		color: ${color.textLight};
+		font-size: 1.6rem;
+		letter-spacing: 0.03em;
+		line-height: 1.5;
+		padding: 2em 1em 1em;
 		text-align: center;
+		width: 100%;
 	}
 `
 
@@ -280,35 +300,35 @@ const HeaderWrapper = styled.div`
 	padding: 2em 0;
 	width: 100%;
 	h3 {
-		width: 100%;
-		text-align: center;
+		backface-visibility: hidden;
 		color: ${color.mainAccentColor};
 		font-family: ${font.headingsFont};
 		font-size: clamp(1.8rem, 2vw, 2.4rem);
 		font-weight: 400;
-		text-transform: uppercase;
 		letter-spacing: 0.15em;
-		backface-visibility: hidden;
+		text-align: center;
+		text-transform: uppercase;
 		transition: all 0.3s ease;
+		width: 100%;
 		@media screen and (max-width: ${breakpoint.tablet}) {
 			font-size: clamp(2rem, 6vw, 2.6rem);
 		}
 	}
 	ul {
-		width: 100%;
-		text-align: center;
-		margin-top: 2em;
 		backface-visibility: hidden;
+		margin-top: 2em;
+		text-align: center;
 		transition: transform 0.3s ease;
+		width: 100%;
 		li {
 			color: ${color.textLight};
+			display: inline-block;
 			font-size: clamp(1rem, 1vw, 1.2rem);
 			font-weight: 700;
 			letter-spacing: 0.1em;
 			line-height: 1.6;
-			text-transform: uppercase;
 			margin: 0 0.5em;
-			display: inline-block;
+			text-transform: uppercase;
 			@media screen and (max-width: ${breakpoint.tablet}) {
 				font-size: 1.2rem;
 			}
@@ -318,21 +338,21 @@ const HeaderWrapper = styled.div`
 
 const CardButton = styled.button`
 	${components.secondaryButton}
-	position: relative;
 	border-color: ${color.mainAccentColor};
 	color: ${color.mainAccentColor};
 	margin: 2.5em 0;
+	position: relative;
 `
 
 const CardImages = styled.div`
 	height: auto;
-	width: calc(100% - 2em);
-	position: relative;
 	margin: 0 1em;
+	position: relative;
+	width: calc(100% - 2em);
 	img {
-		position: absolute;
-		bottom: 0;
 		backface-visibility: hidden;
+		bottom: 0;
+		position: absolute;
 		transition: transform 0.3s ease;
 		&:first-child {
 			position: relative;

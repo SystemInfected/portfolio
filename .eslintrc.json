@@ -8,7 +8,12 @@
 		"prettier"
 	],
 	"parser": "@typescript-eslint/parser",
-	"plugins": ["@typescript-eslint", "prettier", "react-hooks"],
+	"plugins": [
+		"@typescript-eslint",
+		"prettier",
+		"react-hooks",
+		"better-styled-components"
+	],
 	"rules": {
 		"react/jsx-filename-extension": [
 			1,
@@ -17,9 +22,26 @@
 		"prettier/prettier": "error",
 		"@typescript-eslint/indent": "off",
 		"no-use-before-define": "off",
-		"@typescript-eslint/no-use-before-define": ["error"],
+		"@typescript-eslint/no-use-before-define": [
+			"error",
+			{ "functions": true, "classes": true, "variables": false }
+		],
+		"no-unused-vars": "off",
 		"@typescript-eslint/no-unused-vars": "error",
-		"@typescript-eslint/no-explicit-any": "error"
+		"@typescript-eslint/no-explicit-any": "error",
+		"no-console": ["error", { "allow": ["warn", "error"] }],
+		"@typescript-eslint/explicit-module-boundary-types": "off",
+		"global-require": "off",
+		"@typescript-eslint/no-var-requires": "off",
+		"react/no-unescaped-entities": "off",
+		"import/extensions": "off",
+		"import/no-unresolved": "off",
+		"no-plusplus": "off",
+		"react/jsx-props-no-spreading": "off",
+		"better-styled-components/sort-declarations-alphabetically": 2,
+		"no-shadow": "off",
+		"no-param-reassign": "off",
+		"react/no-array-index-key": "off"
 	},
 	"overrides": [
 		{

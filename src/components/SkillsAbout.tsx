@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import { gsap } from 'gsap'
 import { breakpoint, color, font } from '../../styles/variables'
@@ -26,7 +26,7 @@ const SkillsAbout = () => {
 				scrollTrigger: {
 					trigger: event,
 					start: '50% 85%',
-					//markers: true,
+					// markers: true,
 				},
 			})
 			if (eventDot) {
@@ -51,7 +51,7 @@ const SkillsAbout = () => {
 				scrollTrigger: {
 					trigger: event,
 					start: '50% 85%',
-					//markers: true,
+					// markers: true,
 				},
 			})
 			if (eventDot) {
@@ -79,7 +79,7 @@ const SkillsAbout = () => {
 					ease: 'power2.out',
 					scrollTrigger: {
 						trigger: group,
-						//markers: true,
+						// markers: true,
 						start: '-100px 95%',
 						end: 'top bottom',
 					},
@@ -125,19 +125,19 @@ const SkillsAbout = () => {
 export default SkillsAbout
 
 const Section = styled.section`
-	width: 100%;
+	background-color: rgba(${color.mainColorLightRGB}, 0.2);
 	display: flex;
 	justify-content: center;
-	background-color: rgba(${color.mainColorLightRGB}, 0.2);
+	width: 100%;
 `
 
 const SkillsAboutSection = styled.div`
 	display: flex;
 	gap: 4em;
-	width: 100%;
 	max-width: ${breakpoint.maxWidth};
 	padding: 0 max(4rem, env(safe-area-inset-left));
 	padding-bottom: 5em;
+	width: 100%;
 	@media screen and (max-width: ${breakpoint.tablet}) {
 		padding: 0 2.5em;
 		padding-bottom: 5em;
@@ -157,54 +157,54 @@ const About = styled.div`
 `
 
 const HistoryList = styled.ul`
-	list-style: none;
 	color: ${color.mainColorLight};
 	font-size: clamp(1.5rem, 1.7vw, 1.8rem);
+	list-style: none;
 	li {
 		list-style: none;
 		width: 100%;
 		h3 {
-			font-family: ${font.headingsFont};
 			color: ${color.mainAccentColor};
+			font-family: ${font.headingsFont};
 			font-size: clamp(1.8rem, 2vw, 2.2rem);
 			font-weight: 400;
-			text-transform: uppercase;
 			letter-spacing: 0.15em;
-			text-align: center;
-			margin-top: 2em;
 			margin-bottom: 1em;
+			margin-top: 2em;
+			text-align: center;
+			text-transform: uppercase;
 		}
 		ul {
 			margin-bottom: 2em;
 			position: relative;
 			li {
+				margin-bottom: 1em;
 				position: relative;
 				width: calc(50% - 20px);
-				margin-bottom: 1em;
 				.event-dot {
+					background-color: ${color.mainAccentColor};
+					border-radius: 50%;
+					height: 16px;
+					margin-top: -8px;
 					position: absolute;
 					top: 50%;
-					margin-top: -8px;
 					width: 16px;
-					height: 16px;
-					border-radius: 50%;
-					background-color: ${color.mainAccentColor};
 				}
 				&#professional {
-					text-align: left;
 					margin-left: calc(50% + 20px);
+					text-align: left;
 					span {
 						&:nth-of-type(1) {
+							color: ${color.mainAccentColor};
 							display: block;
 							font-size: 0.7em;
-							color: ${color.mainAccentColor};
 							text-transform: uppercase;
 						}
 						&:nth-of-type(2) {
-							margin-top: 0.3em;
 							display: block;
 							font-size: 0.7em;
 							font-weight: bold;
+							margin-top: 0.3em;
 						}
 					}
 					.event-dot {
@@ -219,15 +219,15 @@ const HistoryList = styled.ul`
 				}
 			}
 			&:before {
+				background-color: ${color.mainAccentColor};
 				content: '';
 				display: block;
-				width: 5px;
 				height: calc(100% + 3em);
+				left: -2.5px;
+				margin-left: 50%;
 				position: absolute;
 				top: calc(0px - 0.75em);
-				background-color: ${color.mainAccentColor};
-				margin-left: 50%;
-				left: -2.5px;
+				width: 5px;
 			}
 		}
 		&:last-of-type ul:before {
@@ -245,13 +245,10 @@ const Skills = styled.div`
 `
 
 const SkillsList = styled.ul`
-	list-style: none;
 	color: ${color.mainColorLight};
 	font-size: clamp(1.5rem, 1.7vw, 1.8rem);
+	list-style: none;
 	li {
-		box-sizing: border-box;
-		list-style: none;
-		width: 100%;
 		background: linear-gradient(
 				120deg,
 				rgba(${color.mainColorDarkRGB}, 0.75),
@@ -262,39 +259,42 @@ const SkillsList = styled.ul`
 				${color.mainBackgroundColor},
 				${color.mainBackgroundColor}
 			);
-		padding: 1em;
 		border-radius: 0.5em;
-		margin-top: 3em;
+		box-sizing: border-box;
+		list-style: none;
 		margin-bottom: 1em;
+		margin-top: 3em;
+		padding: 1em;
+		width: 100%;
 		h3 {
-			font-family: ${font.headingsFont};
 			color: ${color.mainAccentColor};
+			font-family: ${font.headingsFont};
 			font-size: clamp(1.8rem, 2vw, 2.2rem);
 			font-weight: 400;
-			text-transform: uppercase;
 			letter-spacing: 0.15em;
-			text-align: center;
 			margin-bottom: 1em;
+			text-align: center;
+			text-transform: uppercase;
 		}
 		ul {
 			text-align: center;
 			li {
 				background: none;
-				display: inline-block;
-				margin: 0.5em;
-				width: auto;
-				font-size: 0.7em;
-				color: ${color.mainColorLight};
-				text-transform: uppercase;
 				border: 1px solid ${color.mainColorLight};
-				padding: 0.5em 1em;
 				border-radius: 0.5em;
+				color: ${color.mainColorLight};
+				cursor: default;
+				display: inline-block;
+				font-size: 0.7em;
+				margin: 0.5em;
+				padding: 0.5em 1em;
+				text-transform: uppercase;
 				transition: transform ease-out 0.3s, color ease-out 0.3s,
 					border-color ease-out 0.3s;
-				cursor: default;
+				width: auto;
 				&:hover {
-					color: ${color.mainAccentColor};
 					border-color: ${color.mainAccentColor};
+					color: ${color.mainAccentColor};
 					transform: scale(1.05);
 				}
 			}

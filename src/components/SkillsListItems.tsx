@@ -1,3 +1,4 @@
+import React from 'react'
 import { skillsData } from '../data/skillsData'
 
 const SkillsListItems = () => {
@@ -5,7 +6,7 @@ const SkillsListItems = () => {
 		const skills = skillContent.skills.map((skill, index) => {
 			return (
 				<li
-					key={skillContent.type + '_' + skill + '_' + index}
+					key={`${skillContent.type}_${skill}_${index}`}
 					id={skill}
 					className='skill'
 				>
@@ -16,7 +17,7 @@ const SkillsListItems = () => {
 		return (
 			<li
 				key={skillContent.type}
-				id={'skill_' + skillContent.type}
+				id={`skill_${skillContent.type}`}
 				className='skillsBox'
 			>
 				<h3>{skillContent.type}</h3>

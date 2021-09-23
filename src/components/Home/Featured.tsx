@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import Link from 'next/link'
 import { breakpoint, color, components } from '../../../styles/variables'
 import ClientsList from './ClientsList'
 import FeaturedCard from './FeaturedCard'
@@ -16,7 +17,11 @@ const Featured = () => {
 					<FeaturedCard work='rosa' />
 				</FeaturedContainer>
 				<CenteredSection>
-					<ViewAllProjects>View more projects</ViewAllProjects>
+					<Link href='/portfolio/'>
+						<a className='link-tag'>
+							<ViewAllProjects>View more projects</ViewAllProjects>
+						</a>
+					</Link>
 				</CenteredSection>
 				<SectionHeader>Some clients I've worked with</SectionHeader>
 				<ClientsList />
@@ -71,6 +76,9 @@ const CenteredSection = styled.div`
 	align-items: center;
 	display: grid;
 	width: 100%;
+	a {
+		margin: 0 auto;
+	}
 `
 
 const ViewAllProjects = styled.button`

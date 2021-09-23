@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 import { font, color, breakpoint, components } from '../../../styles/variables'
-import featuredData from '../../data/featuredData'
+import featuredData from '../../../data/featuredData.json'
 
 gsap.registerPlugin(ScrollTrigger)
 

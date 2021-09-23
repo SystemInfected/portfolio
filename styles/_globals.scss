@@ -23,7 +23,8 @@ body {
 		height: 100%;
 	}
 }
-a {
+a,
+a.link-tag:hover {
 	text-decoration: none;
 }
 a:hover,

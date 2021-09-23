@@ -41,7 +41,8 @@
 		"better-styled-components/sort-declarations-alphabetically": 2,
 		"no-shadow": "off",
 		"no-param-reassign": "off",
-		"react/no-array-index-key": "off"
+		"react/no-array-index-key": "off",
+		"jsx-a11y/anchor-is-valid": "off"
 	},
 	"overrides": [
 		{

@@ -1,10 +1,13 @@
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 import { breakpoint, color, font } from '../../../styles/variables'
 import HistoryListItems from './HistoryListItems'
 import SkillsListItems from './SkillsListItems'
 import SectionHeader from '../SectionHeader'
+
+gsap.registerPlugin(ScrollTrigger)
 
 const SkillsAbout = () => {
 	useEffect(() => {

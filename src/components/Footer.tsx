@@ -1,10 +1,13 @@
 import React, { useEffect } from 'react'
 import styled, { keyframes } from 'styled-components'
 import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 import { breakpoint, color } from '../../styles/variables'
 import SectionHeader from './SectionHeader'
 import SocialLinks from './SocialLinks'
 import ContactForm from './ContactForm'
+
+gsap.registerPlugin(ScrollTrigger)
 
 const Footer = () => {
 	useEffect(() => {

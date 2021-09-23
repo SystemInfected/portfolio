@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 import MoreVertIcon from '@material-ui/icons/MoreVert'
 import CloseIcon from '@material-ui/icons/Close'
+import Link from 'next/link'
 import { color, font, breakpoint } from '../../styles/variables'
+
+gsap.registerPlugin(ScrollTrigger)
 
 interface NavBarProps {
 	locked: boolean
@@ -140,14 +144,20 @@ const NavBar = ({ locked }: NavBarProps) => {
 		<>
 			<NavBg id='navBar'>
 				<Nav>
-					<LogoTitle>
-						<span>&lt;</span>
-						<span>Sebastian</span>
-						<span>Widin</span>/<span>&gt;</span>
-					</LogoTitle>
+					<Link href='/'>
+						<a className='link-tag'>
+							<LogoTitle>
+								<span>&lt;</span>
+								<span>Sebastian</span>
+								<span>Widin</span>/<span>&gt;</span>
+							</LogoTitle>
+						</a>
+					</Link>
 					<Menu>
 						<li>
-							<a href='#'>Work</a>
+							<Link href='portfolio'>
+								<a>Projects</a>
+							</Link>
 						</li>
 						<li>
 							<a href='#'>Skills</a>
@@ -180,7 +190,9 @@ const NavBar = ({ locked }: NavBarProps) => {
 				</CloseMobileMenu>
 				<MobileMenu>
 					<li className='mobile-menu-li'>
-						<a href='#'>Work</a>
+						<Link href='portfolio'>
+							<a>Projects</a>
+						</Link>
 					</li>
 					<li className='mobile-menu-li'>
 						<a href='#'>Skills</a>

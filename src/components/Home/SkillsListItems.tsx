@@ -1,5 +1,5 @@
 import React from 'react'
-import skillsData from '../../data/skillsData'
+import skillsData from '../../../data/skillsData.json'
 
 const SkillsListItems = () => {
 	const skillsContent = Object.values(skillsData).map((skillContent) => {

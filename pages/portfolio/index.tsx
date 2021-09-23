@@ -1,21 +1,14 @@
 import React from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
+import fs from 'fs'
+import path from 'path'
 
 import NavBar from '../../src/components/NavBar'
+import Footer from '../../src/components/Footer'
 
 const ROUTE_POST_ID = 'portfolio/[id]'
-const posts = [
-	{
-		id: 1,
-		title: 'Post #1',
-	},
-	{
-		id: 2,
-		title: 'Post #2',
-	},
-]
-const Portfolio = () => {
+const Portfolio = ({ slugs }) => {
 	return (
 		<>
 			<Head>
@@ -31,27 +24,33 @@ const Portfolio = () => {
 				<meta name='theme-color' content='#000000' />
 			</Head>
 			<NavBar locked />
+			<div>
+				{slugs.map((slug) => (
+					<div key={`post-${slug}`}>
+						<Link
+							href={{
+								pathname: ROUTE_POST_ID,
+								query: { id: slug },
+							}}
+						>
+							<a>{slug}</a>
+						</Link>
+					</div>
+				))}
+			</div>
 			<div style={{ height: '200vh' }} />
+			<Footer />
 		</>
 	)
 }
 
-export default Portfolio
-
-{
-	/* <div>
-			<h1>Welcome to my blog</h1>
-			{posts.map((post) => (
-				<div key={`post-${post.id}`}>
-					<Link
-						href={{
-							pathname: ROUTE_POST_ID,
-							query: { id: post.id },
-						}}
-					>
-						<a>{post.title}</a>
-					</Link>
-				</div>
-			))}
-		</div> */
+export const getStaticProps = async () => {
+	const files = fs.readdirSync(path.join('data', 'portfolio'))
+	return {
+		props: {
+			slugs: files.map((filename) => filename.replace('.md', '')),
+		},
+	}
 }
+
+export default Portfolio

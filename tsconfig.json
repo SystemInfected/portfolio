@@ -17,6 +17,6 @@
 		"jsx": "preserve",
 		"noImplicitAny": false
 	},
-	"include": ["src"],
+	"include": ["src", "data"],
 	"exclude": ["node_modules"]
 }

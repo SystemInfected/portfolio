@@ -24,7 +24,10 @@ body {
 	}
 }
 a,
-a.link-tag:hover {
+a.link-tag:hover,
+a.link-tag:active,
+a.link-tag:focus,
+a.link-tag:visited {
 	text-decoration: none;
 }
 a:hover,

@@ -3,12 +3,23 @@ import Head from 'next/head'
 import Link from 'next/link'
 import fs from 'fs'
 import path from 'path'
+import matter from 'gray-matter'
 
 import NavBar from '../../src/components/NavBar'
 import Footer from '../../src/components/Footer'
 
-const ROUTE_POST_ID = 'portfolio/[id]'
-const Portfolio = ({ slugs }) => {
+export interface PortfolioDataProps {
+	title: string
+	slug: string
+	url: string
+	tags: string
+}
+
+interface PortfolioProps {
+	data: [PortfolioDataProps]
+}
+
+const Portfolio = ({ data }: PortfolioProps) => {
 	return (
 		<>
 			<Head>
@@ -25,15 +36,10 @@ const Portfolio = ({ slugs }) => {
 			</Head>
 			<NavBar locked />
 			<div>
-				{slugs.map((slug) => (
-					<div key={`post-${slug}`}>
-						<Link
-							href={{
-								pathname: ROUTE_POST_ID,
-								query: { id: slug },
-							}}
-						>
-							<a>{slug}</a>
+				{data.map((d) => (
+					<div key={`post-${d.slug}`}>
+						<Link href={`/portfolio/${d.slug}`}>
+							<a>{d.title}</a>
 						</Link>
 					</div>
 				))}
@@ -46,9 +52,19 @@ const Portfolio = ({ slugs }) => {
 
 export const getStaticProps = async () => {
 	const files = fs.readdirSync(path.join('data', 'portfolio'))
+	const parsedData = await Promise.all(
+		files.map((file) => {
+			const markdownWithMetadata = fs
+				.readFileSync(path.join('data', 'portfolio', `${file}`))
+				.toString()
+			const parsedMarkdown = matter(markdownWithMetadata)
+			return parsedMarkdown.data
+		})
+	)
+
 	return {
 		props: {
-			slugs: files.map((filename) => filename.replace('.md', '')),
+			data: parsedData.map((data) => data),
 		},
 	}
 }

@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { gsap } from 'gsap'
+import Link from 'next/link'
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 import { font, color, breakpoint, components } from '../../../styles/variables'
 import featuredData from '../../../data/featuredData.json'
@@ -221,44 +222,48 @@ const FeaturedCard = (props: { work: string | number }) => {
 	}, [deviceMotion])
 
 	return (
-		<CardWrapper ref={featuredCardRef}>
-			<HeaderWrapper>
-				<h3>{cardData.title}</h3>
-				<ul>
-					{cardData.tags.map((tag: string, index: number) => (
-						<li key={index}>• {tag}</li>
-					))}
-				</ul>
-			</HeaderWrapper>
-			<CardImages>
-				{cardData.images.map(
-					(
-						image: {
-							url: string
-							position: string
-							size: string
-							zoomValue: number
-						},
-						index: number
-					) => {
-						return (
-							<img
-								key={index}
-								src={`images/${image.url}`}
-								alt={cardData.title}
-								style={{
-									width: `${image.size}`,
-									zIndex: 3 + index * 3,
-									marginLeft: `${imagePos[index].marginLeft}%`,
-									transform: `translateX(${imagePos[index].translateX}%)`,
-								}}
-							/>
-						)
-					}
-				)}
-			</CardImages>
-			<CardButton>Read more</CardButton>
-		</CardWrapper>
+		<Link href={`/portfolio/${cardData.slug}`}>
+			<a className='link-tag'>
+				<CardWrapper ref={featuredCardRef}>
+					<HeaderWrapper>
+						<h3>{cardData.title}</h3>
+						<ul>
+							{cardData.tags.map((tag: string, index: number) => (
+								<li key={index}>• {tag}</li>
+							))}
+						</ul>
+					</HeaderWrapper>
+					<CardImages>
+						{cardData.images.map(
+							(
+								image: {
+									url: string
+									position: string
+									size: string
+									zoomValue: number
+								},
+								index: number
+							) => {
+								return (
+									<img
+										key={index}
+										src={`images/${image.url}`}
+										alt={cardData.title}
+										style={{
+											width: `${image.size}`,
+											zIndex: 3 + index * 3,
+											marginLeft: `${imagePos[index].marginLeft}%`,
+											transform: `translateX(${imagePos[index].translateX}%)`,
+										}}
+									/>
+								)
+							}
+						)}
+					</CardImages>
+					<CardButton>Read more</CardButton>
+				</CardWrapper>
+			</a>
+		</Link>
 	)
 }
 

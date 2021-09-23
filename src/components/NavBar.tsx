@@ -155,7 +155,7 @@ const NavBar = ({ locked }: NavBarProps) => {
 					</Link>
 					<Menu>
 						<li>
-							<Link href='portfolio'>
+							<Link href='/portfolio/'>
 								<a>Projects</a>
 							</Link>
 						</li>
@@ -190,7 +190,7 @@ const NavBar = ({ locked }: NavBarProps) => {
 				</CloseMobileMenu>
 				<MobileMenu>
 					<li className='mobile-menu-li'>
-						<Link href='portfolio'>
+						<Link href='/portfolio/'>
 							<a>Projects</a>
 						</Link>
 					</li>

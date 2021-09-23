@@ -1,19 +1,26 @@
 import React from 'react'
 import Head from 'next/head'
-import { useRouter } from 'next/router'
+import fs from 'fs'
+import path from 'path'
+import marked from 'marked'
+import matter from 'gray-matter'
+
 import NavBar from '../../src/components/NavBar'
 import Footer from '../../src/components/Footer'
+import { PortfolioDataProps } from '.'
 
-const DetailedPortfolio = () => {
-	const router = useRouter()
-	const { id } = router.query
+interface DetailedPortfolioProps {
+	htmlString: string
+	data: PortfolioDataProps
+}
 
+const DetailedPortfolio = ({ htmlString, data }: DetailedPortfolioProps) => {
 	return (
 		<>
 			<Head>
 				<title>
-					{id} | Graphic designer &amp; web developer based in Stockholm, Sweden
-					&bull; Sebastian Widin's portfolio
+					{data.title} - A project by Sebastian Widin &bull; Graphic designer
+					&amp; web developer based in Stockholm, Sweden
 				</title>
 				<meta charSet='utf-8' />
 				<meta
@@ -23,11 +30,42 @@ const DetailedPortfolio = () => {
 				<meta name='theme-color' content='#000000' />
 			</Head>
 			<NavBar locked />
-			<p>Post: {id}</p>
+			<div dangerouslySetInnerHTML={{ __html: htmlString }} />
 			<div style={{ height: '200vh' }} />
 			<Footer />
 		</>
 	)
+}
+
+export const getStaticPaths = async () => {
+	const files = fs.readdirSync(path.join('data', 'portfolio'))
+	const paths = files.map((filename) => ({
+		params: {
+			portfolio: filename.replace('.md', ''),
+		},
+	}))
+
+	return {
+		paths,
+		fallback: false,
+	}
+}
+
+export const getStaticProps = async ({ params: { portfolio } }) => {
+	const markdownWithMetadata = fs
+		.readFileSync(path.join('data', 'portfolio', `${portfolio}.md`))
+		.toString()
+
+	const parsedMarkdown = matter(markdownWithMetadata)
+
+	const htmlString = marked(parsedMarkdown.content)
+
+	return {
+		props: {
+			htmlString,
+			data: parsedMarkdown.data,
+		},
+	}
 }
 
 export default DetailedPortfolio

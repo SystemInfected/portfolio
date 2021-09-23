@@ -3,6 +3,7 @@
 		{
 			"title": "US-AB.com",
 			"tags": ["print-shop", "e-commerce"],
+			"slug": "us-ab",
 			"images": [
 				{
 					"url": "us-ab_mac.png",
@@ -29,6 +30,7 @@
 		{
 			"title": "Nodell.se",
 			"tags": ["article site", "community"],
+			"slug": "nodell",
 			"images": [
 				{
 					"url": "nodell_mac.png",
@@ -55,6 +57,7 @@
 		{
 			"title": "Rosa porträtt",
 			"tags": ["illustrations", "charity"],
+			"slug": "rosa-porträtt",
 			"images": [
 				{
 					"url": "rosa_portratt.png",

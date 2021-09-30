@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 import Link from 'next/link'
@@ -18,25 +18,25 @@ const Hero = () => {
 		const headerContainer: HTMLElement | null = document.querySelector(
 			'#headerContainer'
 		)
-		const graphicDesigner: HTMLElement | null = document.querySelector(
-			'#graphicDesigner'
+		const headerRowOne: HTMLElement | null = document.querySelector(
+			'#headerRowOne'
 		)
-		const webDeveloper: HTMLElement | null = document.querySelector(
-			'#webDeveloper'
+		const headerRowTwo: HTMLElement | null = document.querySelector(
+			'#headerRowTwo'
 		)
 		const location: HTMLElement | null = document.querySelector('#location')
 		const ctaWrapper: HTMLElement | null = document.querySelector('#ctaWrapper')
 
 		if (
 			headerContainer &&
-			graphicDesigner &&
-			webDeveloper &&
+			headerRowOne &&
+			headerRowTwo &&
 			location &&
 			ctaWrapper
 		) {
 			const headerContainerPos = headerContainer.getBoundingClientRect()
-			const graphicDesignerPos = graphicDesigner.getBoundingClientRect()
-			const webDeveloperPos = webDeveloper.getBoundingClientRect()
+			const headerRowOnePos = headerRowOne.getBoundingClientRect()
+			const headerRowTwoPos = headerRowTwo.getBoundingClientRect()
 			const locationPos = location.getBoundingClientRect()
 			const ctaWrapperPos = ctaWrapper.getBoundingClientRect()
 
@@ -45,11 +45,11 @@ const Hero = () => {
 				duration: 0.8,
 			})
 
-			gsap.from(graphicDesigner, {
-				y: -(graphicDesignerPos.y + graphicDesignerPos.height),
+			gsap.from(headerRowOne, {
+				y: -(headerRowOnePos.y + headerRowOnePos.height),
 			})
-			gsap.from(webDeveloper, {
-				y: -(webDeveloperPos.y + webDeveloperPos.height),
+			gsap.from(headerRowTwo, {
+				y: -(headerRowTwoPos.y + headerRowTwoPos.height),
 				delay: 0.3,
 			})
 			gsap.from(location, {
@@ -66,7 +66,7 @@ const Hero = () => {
 			})
 
 			gsap.fromTo(
-				graphicDesigner,
+				headerRowOne,
 				{ y: 0 },
 				{
 					y: -(headerContainerPos.height / 3),
@@ -81,7 +81,7 @@ const Hero = () => {
 				}
 			)
 			gsap.fromTo(
-				webDeveloper,
+				headerRowTwo,
 				{ y: 0 },
 				{
 					y: -(headerContainerPos.height / 3),
@@ -141,12 +141,24 @@ const Hero = () => {
 			<HeaderContainer id='headerContainer'>
 				<HeaderWrapper id='headerWrapper'>
 					<Header>
-						<span id='graphicDesigner' style={{ transform: 'translateY(0px)' }}>
-							Graphic Designer
-						</span>
-						<span id='webDeveloper' style={{ transform: 'translateY(0px)' }}>
-							Web Developer
-						</span>
+						<HeaderText
+							id='headerRowOne'
+							style={{ transform: 'translateY(0px)' }}
+						>
+							<span>Graphic Designer</span>
+							<span>Aspiring full-stack</span>
+							<span>Hobby Blockchain</span>
+							<span>Graphic Designer</span>
+						</HeaderText>
+						<HeaderText
+							id='headerRowTwo'
+							style={{ transform: 'translateY(0px)' }}
+						>
+							<span>Web Developer</span>
+							<span>Software Developer</span>
+							<span>Crypto Developer</span>
+							<span>Web Developer</span>
+						</HeaderText>
 					</Header>
 					<Location id='location'>
 						<LocationOnIcon fontSize='large' />
@@ -224,10 +236,52 @@ const Header = styled.h1`
 		text-align: center;
 		font-size: clamp(3.4rem, 10vw, 13rem);
 	}
+`
+
+const HeaderText = styled.div`
+	display: block;
+	position: relative;
+	overflow: hidden;
+	height: 1.2em;
 	span {
 		display: block;
-		position: relative;
+		height: 100%;
+		animation: rotatingHeader 30s infinite;
+		animation-duration: 12s;
+		animation-delay: 4s;
+		animation-iteration-count: infinite;
+		animation-name: ${() => rotatingHeader()};
 	}
+`
+
+const rotatingHeader = () => keyframes`
+	5%{
+    transform: translateY(-112%);
+  }
+  15%{
+    transform: translateY(-100%);
+  }
+  35%{
+    transform: translateY(-100%);
+  }
+  40%{
+    transform: translateY(-212%);
+  }
+  50%{
+  	transform: translateY(-200%);
+  }
+  70%{
+  	transform: translateY(-200%);
+  }
+  75%{
+    transform: translateY(-312%);
+  }
+  80%{
+  	transform: translateY(-300%);
+  }
+  100%{
+  	transform: translateY(-300%);
+  }
 `
 
 const Location = styled.h2`

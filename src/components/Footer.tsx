@@ -58,14 +58,6 @@ const Footer = () => {
 						rel='noreferrer'
 					>
 						next
-					</a>
-					,{' '}
-					<a
-						href='https://www.npmjs.com/package/styled-components'
-						target='_blank'
-						rel='noreferrer'
-					>
-						styled-components
 					</a>{' '}
 					&{' '}
 					<a

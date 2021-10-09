@@ -12,7 +12,9 @@ export interface PortfolioDataProps {
 	title: string
 	slug: string
 	url: string
+	responsibilities: string
 	tags: string
+	headerImages: [string]
 }
 
 interface PortfolioProps {

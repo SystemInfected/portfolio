@@ -246,37 +246,50 @@ const HeaderText = styled.div`
 	span {
 		display: block;
 		height: 100%;
-		animation: rotatingHeader 30s infinite;
-		animation-duration: 12s;
-		animation-delay: 4s;
+		animation-duration: 16s;
 		animation-iteration-count: infinite;
 		animation-name: ${() => rotatingHeader()};
+		animation-delay: 6s;
+	}
+	&:nth-of-type(2) {
+		span {
+			animation-delay: 6.1s;
+		}
 	}
 `
 
 const rotatingHeader = () => keyframes`
-	5%{
+	3%{
     transform: translateY(-112%);
   }
-  15%{
+	4%{
+    transform: translateY(-112%);
+  }
+  13%{
     transform: translateY(-100%);
   }
   35%{
     transform: translateY(-100%);
   }
-  40%{
-    transform: translateY(-212%);
+  38%{
+		transform: translateY(-212%);
   }
-  50%{
-  	transform: translateY(-200%);
+  39%{
+		transform: translateY(-212%);
+  }
+  48%{
+		transform: translateY(-200%);
   }
   70%{
   	transform: translateY(-200%);
   }
-  75%{
+  73%{
     transform: translateY(-312%);
   }
-  80%{
+  74%{
+    transform: translateY(-312%);
+  }
+  78%{
   	transform: translateY(-300%);
   }
   100%{

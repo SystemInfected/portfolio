@@ -7,6 +7,7 @@ import matter from 'gray-matter'
 
 import NavBar from '../../src/components/NavBar'
 import Footer from '../../src/components/Footer'
+import { Header, Content } from '../../src/components/Portfolio'
 import { PortfolioDataProps } from '.'
 
 interface DetailedPortfolioProps {
@@ -30,8 +31,13 @@ const DetailedPortfolio = ({ htmlString, data }: DetailedPortfolioProps) => {
 				<meta name='theme-color' content='#000000' />
 			</Head>
 			<NavBar locked />
-			<div dangerouslySetInnerHTML={{ __html: htmlString }} />
-			<div style={{ height: '200vh' }} />
+			<Header
+				title={data.title}
+				responsibilities={data.responsibilities}
+				tags={data.tags}
+				headerImages={data.headerImages}
+			/>
+			<Content content={htmlString} />
 			<Footer />
 		</>
 	)

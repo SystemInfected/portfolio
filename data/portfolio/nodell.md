@@ -2,8 +2,10 @@
 title: Nodell.se
 slug: nodell
 url: https://www.nodell.se/
+source: null
 responsibilities: design, developement
 tags: article site, community, article editor
+tech: php, javascript, sql/pdo
 headerImages: [nodell_mac.png, nodell_iphone.png]
 ---
 

@@ -1,17 +1,45 @@
 import React from 'react'
 import styled from 'styled-components'
-import { breakpoint, color } from '../../../styles/variables'
+import { breakpoint, color, components } from '../../../styles/variables'
 
 interface ContentProps {
 	content: string
+	title: string
+	tech: string
+	url: string
+	source: string | null
 }
 
-const Content = ({ content }: ContentProps) => {
+const Content = ({ content, title, tech, url, source }: ContentProps) => {
+	const techArr = tech.split(', ')
 	return (
 		<Section>
 			<ContentSection>
 				<ContentWrapper dangerouslySetInnerHTML={{ __html: content }} />
-				<CTAWrapper>asd</CTAWrapper>
+				<CTAWrapper>
+					<ul>
+						<h3>Technologies used:</h3>
+						{techArr.map((tag, index) => {
+							return <li key={index}>{tag}</li>
+						})}
+					</ul>
+					<div>
+						{url ? (
+							<a href={url} target='_blank' rel='noreferrer'>
+								<CTA>Visit {title}</CTA>
+							</a>
+						) : (
+							<CTA disabled>{title} is no longer available</CTA>
+						)}
+						{source ? (
+							<a href={source} target='_blank' rel='noreferrer'>
+								<CTA>View source</CTA>
+							</a>
+						) : (
+							<CTA disabled>Source not available</CTA>
+						)}
+					</div>
+				</CTAWrapper>
 			</ContentSection>
 		</Section>
 	)
@@ -44,7 +72,7 @@ const ContentSection = styled.div`
 `
 
 const ContentWrapper = styled.div`
-	width: 70%;
+	width: 60%;
 	margin-top: clamp(12rem, 12vw, 15rem);
 	border-radius: 0.5em;
 	color: ${color.textLight};
@@ -52,12 +80,12 @@ const ContentWrapper = styled.div`
 	line-height: 1.8em;
 	word-spacing: 0.18em;
 	p {
-		margin-bottom: 1em;
+		margin-bottom: 1.5em;
 	}
 	ul,
 	ol {
 		margin-left: 1em;
-		margin-bottom: 1em 0;
+		margin-bottom: 1.5em;
 	}
 	em,
 	strong {
@@ -69,11 +97,86 @@ const ContentWrapper = styled.div`
 `
 
 const CTAWrapper = styled.div`
-	width: 30%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	gap: 2em;
+	width: 40%;
+	height: min-content;
 	margin-top: clamp(12rem, 12vw, 15rem);
-	font-size: 1.6rem;
+	font-size: clamp(1.5rem, 1.7vw, 1.8rem);
+	background: linear-gradient(
+			120deg,
+			rgba(${color.mainColorDarkRGB}, 0.75),
+			rgba(${color.mainColorDarkRGB}, 0.75)
+		),
+		linear-gradient(
+			120deg,
+			${color.mainBackgroundColor},
+			${color.mainBackgroundColor}
+		);
+	border-radius: 0.5em;
+	padding: 2em;
 	@media (orientation: portrait) {
 		width: 100%;
 		margin-top: 4em;
+	}
+	div {
+		width: 100%;
+		display: flex;
+		gap: 1em;
+		flex-wrap: wrap;
+	}
+	ul {
+		font-size: 0.7em;
+		text-transform: uppercase;
+		h3 {
+			font-size: 1em;
+			color: ${color.mainAccentColor};
+			display: block;
+			font-weight: 700;
+			letter-spacing: 0.1em;
+			line-height: 1.6;
+		}
+		li {
+			background: none;
+			border: 1px solid ${color.mainColorLight};
+			border-radius: 0.5em;
+			color: ${color.mainColorLight};
+			cursor: default;
+			display: inline-block;
+			margin: 0.5em 1em 0.5em 0;
+			padding: 0.5em 1em;
+			transition: transform ease-out 0.3s, color ease-out 0.3s,
+				border-color ease-out 0.3s;
+			width: auto;
+			&:hover {
+				border-color: ${color.mainAccentColor};
+				color: ${color.mainAccentColor};
+				transform: scale(1.05);
+			}
+		}
+	}
+`
+
+const CTA = styled.button`
+	background-color: ${color.mainAccentColor};
+	color: ${color.mainColorDark};
+	${components.mainButton}
+	&:disabled,
+	&[disabled] {
+		${components.secondaryButton}
+		background-color: rgba(${color.mainColorDarkRGB}, 0.75);
+		color: ${color.mainColorLight};
+		border-color: ${color.mainColorLight};
+		opacity: 0.5;
+		cursor: default;
+		&:hover,
+		&:focus {
+			transform: none;
+			&:before {
+				opacity: 0;
+			}
+		}
 	}
 `

@@ -106,6 +106,9 @@ const NavBar = ({ locked }: NavBarProps) => {
 
 		const mobileMenuPos = { x: 0, y: 0 }
 		if (menuToggle && menuNav) {
+			const menuNavLinks: NodeListOf<HTMLAnchorElement> | null = menuNav.querySelectorAll(
+				'a'
+			)
 			let menuTogglePos = menuToggle.getBoundingClientRect()
 			menuToggle.addEventListener('click', () => {
 				menuTogglePos = menuToggle.getBoundingClientRect()
@@ -119,6 +122,15 @@ const NavBar = ({ locked }: NavBarProps) => {
 				document.body.classList.toggle('lock-scroll')
 
 				tl.play(0)
+			})
+			menuNavLinks.forEach((link) => {
+				link.addEventListener('click', () => {
+					setMenuActive(false)
+					setTimeout(() => {
+						menuToggle.style.display = ''
+					}, 300)
+					document.body.classList.toggle('lock-scroll')
+				})
 			})
 		}
 

@@ -26,7 +26,7 @@ const Header = ({
 						{tagArr.map((tag, index) => {
 							return <li key={index}>• {tag}</li>
 						})}
-						<span>Responsibilities:</span>
+						<h3>Responsibilities:</h3>
 						{responsibilitiesArr.map((tag, index) => {
 							return <li key={index}>• {tag}</li>
 						})}
@@ -105,7 +105,8 @@ const HeaderWrapper = styled.div`
 		letter-spacing: 0.1em;
 		line-height: 1.6;
 		text-transform: uppercase;
-		span {
+		h3 {
+			font-size: 1em;
 			color: ${color.mainAccentColor};
 			margin-top: 2em;
 			display: block;

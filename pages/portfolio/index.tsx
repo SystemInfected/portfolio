@@ -11,9 +11,11 @@ import Footer from '../../src/components/Footer'
 export interface PortfolioDataProps {
 	title: string
 	slug: string
-	url: string
+	url: string | null
+	source: string | null
 	responsibilities: string
 	tags: string
+	tech: string
 	headerImages: [string]
 }
 

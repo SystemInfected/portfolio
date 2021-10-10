@@ -27,6 +27,7 @@ export const components = {
 		border: none;
 		padding: 1em 2.5em;
 		font-size: 1.2rem;
+		line-height: 1.6;
 		letter-spacing: 0.1em;
 		cursor: pointer;
 		border-radius: 2em;
@@ -60,6 +61,7 @@ export const components = {
 		background:none;
 		padding: 1em 2.5em;
 		font-size: 1.2rem;
+		line-height: 1.6;
 		letter-spacing: 0.1em;
 		cursor: pointer;
 		border-radius: 2em;

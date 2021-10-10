@@ -147,7 +147,6 @@ const Hero = () => {
 						>
 							<span>Graphic Designer</span>
 							<span>Aspiring full-stack</span>
-							<span>Hobby Blockchain</span>
 							<span>Graphic Designer</span>
 						</HeaderText>
 						<HeaderText
@@ -156,7 +155,6 @@ const Hero = () => {
 						>
 							<span>Web Developer</span>
 							<span>Software Developer</span>
-							<span>Crypto Developer</span>
 							<span>Web Developer</span>
 						</HeaderText>
 					</Header>
@@ -268,32 +266,20 @@ const rotatingHeader = () => keyframes`
   13%{
     transform: translateY(-100%);
   }
-  35%{
-    transform: translateY(-100%);
-  }
-  38%{
+  50%{ 
+		transform: translateY(-100%);
+	}
+  53%{
 		transform: translateY(-212%);
   }
-  39%{
+  54%{
 		transform: translateY(-212%);
   }
-  48%{
+  63%{
 		transform: translateY(-200%);
   }
-  70%{
-  	transform: translateY(-200%);
-  }
-  73%{
-    transform: translateY(-312%);
-  }
-  74%{
-    transform: translateY(-312%);
-  }
-  78%{
-  	transform: translateY(-300%);
-  }
   100%{
-  	transform: translateY(-300%);
+		transform: translateY(-200%);
   }
 `
 

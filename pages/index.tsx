@@ -21,7 +21,7 @@ const App = () => {
 				<meta name='theme-color' content='#000000' />
 			</Head>
 			<Hero />
-			<NavBar locked={false} />
+			<NavBar locked={false} startpage />
 			<Featured />
 			<SkillsAbout />
 			<Footer />

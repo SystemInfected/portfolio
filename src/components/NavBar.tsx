@@ -11,9 +11,25 @@ gsap.registerPlugin(ScrollTrigger)
 
 interface NavBarProps {
 	locked: boolean
+	startpage: boolean
 }
 
-const NavBar = ({ locked }: NavBarProps) => {
+export const scrollToElement = (element: string) => {
+	const titleElement = document.getElementById(element)
+	if (titleElement) {
+		titleElement.scrollIntoView({ behavior: 'smooth' })
+	}
+}
+
+const goToStartpagePart = (path: string, startpage: boolean) => {
+	if (startpage) {
+		scrollToElement(path)
+	} else {
+		window.location.href = `/#${path}`
+	}
+}
+
+const NavBar = ({ locked, startpage }: NavBarProps) => {
 	const [mobileMenuPos, setMobileMenuPos] = useState({ x: 0, y: 0 })
 	const [menuActive, setMenuActive] = useState(false)
 
@@ -172,10 +188,12 @@ const NavBar = ({ locked }: NavBarProps) => {
 							</Link>
 						</li>
 						<li>
-							<a href='#'>Skills</a>
+							<a onClick={() => goToStartpagePart('skills', startpage)}>
+								Skills
+							</a>
 						</li>
 						<li>
-							<a href='#'>Contact</a>
+							<a onClick={() => scrollToElement('contact')}>Contact</a>
 						</li>
 					</Menu>
 					<MenuToggle id='menuToggle'>
@@ -207,10 +225,10 @@ const NavBar = ({ locked }: NavBarProps) => {
 						</Link>
 					</li>
 					<li className='mobile-menu-li'>
-						<a href='#'>Skills</a>
+						<a onClick={() => goToStartpagePart('skills', startpage)}>Skills</a>
 					</li>
 					<li className='mobile-menu-li'>
-						<a href='#'>Contact</a>
+						<a onClick={() => scrollToElement('contact')}>Contact</a>
 					</li>
 				</MobileMenu>
 			</MobileNav>
@@ -221,6 +239,7 @@ const NavBar = ({ locked }: NavBarProps) => {
 		</>
 	)
 }
+
 export default NavBar
 
 /* const Debug = styled.div`
@@ -296,6 +315,7 @@ const Menu = styled.ul`
 		margin-left: 1em;
 		margin-top: 0.45em;
 		a {
+			cursor: pointer;
 			color: ${color.mainColorDark};
 			display: block;
 			padding: 0.5em 1em;

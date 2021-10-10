@@ -9,6 +9,7 @@ import SectionHeader from '../SectionHeader'
 const Featured = () => {
 	return (
 		<Section>
+			<a id='featured' />
 			<FeatureSection>
 				<SectionHeader>Featured projects</SectionHeader>
 				<FeaturedContainer>

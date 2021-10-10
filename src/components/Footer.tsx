@@ -32,6 +32,7 @@ const Footer = () => {
 
 	return (
 		<Section>
+			<a id='contact' />
 			<FooterSection>
 				<SectionHeader>Get in touch</SectionHeader>
 				<p>

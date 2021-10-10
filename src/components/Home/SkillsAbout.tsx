@@ -107,6 +107,7 @@ const SkillsAbout = () => {
 
 	return (
 		<Section>
+			<a id='skills' />
 			<SkillsAboutSection>
 				<About>
 					<SectionHeader>Milestones</SectionHeader>

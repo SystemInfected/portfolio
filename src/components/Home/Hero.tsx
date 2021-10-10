@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import styled, { keyframes } from 'styled-components'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
-import Link from 'next/link'
 
 import LocationOnIcon from '@material-ui/icons/LocationOn'
 import { color, font, breakpoint, components } from '../../../styles/variables'
@@ -10,6 +9,7 @@ import IllustrationForeground from '../../assets/svg/portrait_illustration_foreg
 import IllustrationEye from '../../assets/svg/portrait_illustration_eye.svg'
 import AnimatedNodes from './AnimatedNodes'
 import AnimatedEye from './AnimatedEye'
+import { scrollToElement } from '../NavBar'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -163,11 +163,9 @@ const Hero = () => {
 						Stockholm, Sweden
 					</Location>
 					<CTAWrapper id='ctaWrapper'>
-						<Link href='/portfolio/'>
-							<a>
-								<CTA>See my work</CTA>
-							</a>
-						</Link>
+						<a onClick={() => scrollToElement('featured')}>
+							<CTA>See my work</CTA>
+						</a>
 					</CTAWrapper>
 				</HeaderWrapper>
 				<PortraitIllustration id='portraitIllustration'>

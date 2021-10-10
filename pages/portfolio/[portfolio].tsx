@@ -30,7 +30,7 @@ const DetailedPortfolio = ({ htmlString, data }: DetailedPortfolioProps) => {
 				/>
 				<meta name='theme-color' content='#000000' />
 			</Head>
-			<NavBar locked />
+			<NavBar locked startpage={false} />
 			<Header
 				title={data.title}
 				responsibilities={data.responsibilities}

@@ -38,7 +38,7 @@ const Portfolio = ({ data }: PortfolioProps) => {
 				/>
 				<meta name='theme-color' content='#000000' />
 			</Head>
-			<NavBar locked />
+			<NavBar locked startpage={false} />
 			<div>
 				{data.map((d) => (
 					<div key={`post-${d.slug}`}>

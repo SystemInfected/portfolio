@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
+import { gsap } from 'gsap'
 import { breakpoint, color, font } from '../../../styles/variables'
 
 interface HeaderProps {
@@ -17,6 +18,26 @@ const Header = ({
 }: HeaderProps) => {
 	const tagArr = tags.split(', ')
 	const responsibilitiesArr = responsibilities.split(', ')
+
+	useEffect(() => {
+		gsap.defaults({
+			ease: 'power2.out',
+			duration: 1,
+		})
+
+		const images = document.querySelector('#headerImages')
+		if (images) {
+			gsap.from(images, {
+				opacity: 0,
+			})
+			gsap.from(images.querySelectorAll('img'), {
+				x: '200px',
+				delay: 0.1,
+				stagger: 0.2,
+			})
+		}
+	}, [])
+
 	return (
 		<Section>
 			<HeaderSection>
@@ -32,7 +53,7 @@ const Header = ({
 						})}
 					</ul>
 				</HeaderWrapper>
-				<HeaderImages>
+				<HeaderImages id='headerImages'>
 					{headerImages.map((img, index) => {
 						return <img key={index} src={`../images/${img}`} alt={title} />
 					})}

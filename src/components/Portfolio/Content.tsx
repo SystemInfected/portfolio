@@ -65,7 +65,7 @@ const ContentSection = styled.div`
 		padding: 0 2.5em;
 		padding-bottom: 5em;
 	}
-	@media screen and (max-width: ${breakpoint.mobileBig}) {
+	@media (orientation: portrait) {
 		gap: 0;
 		flex-direction: column;
 	}
@@ -76,7 +76,7 @@ const ContentWrapper = styled.div`
 	margin-top: clamp(12rem, 12vw, 15rem);
 	border-radius: 0.5em;
 	color: ${color.textLight};
-	font-size: 1.6rem;
+	font-size: clamp(1.4rem, 1vw, 1.6rem);
 	line-height: 1.8em;
 	word-spacing: 0.18em;
 	p {

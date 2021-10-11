@@ -7,15 +7,10 @@ interface HeaderProps {
 	title: string
 	tags: string
 	responsibilities: string
-	headerImages: [string]
+	images: [string]
 }
 
-const Header = ({
-	title,
-	responsibilities,
-	tags,
-	headerImages,
-}: HeaderProps) => {
+const Header = ({ title, responsibilities, tags, images }: HeaderProps) => {
 	const tagArr = tags.split(', ')
 	const responsibilitiesArr = responsibilities.split(', ')
 
@@ -25,7 +20,7 @@ const Header = ({
 			duration: 1,
 		})
 
-		const images = document.querySelector('#headerImages')
+		const images = document.querySelector('#images')
 		if (images) {
 			gsap.from(images, {
 				opacity: 0,
@@ -53,11 +48,11 @@ const Header = ({
 						})}
 					</ul>
 				</HeaderWrapper>
-				<HeaderImages id='headerImages'>
-					{headerImages.map((img, index) => {
+				<Images id='images'>
+					{images.map((img, index) => {
 						return <img key={index} src={`../images/${img}`} alt={title} />
 					})}
-				</HeaderImages>
+				</Images>
 			</HeaderSection>
 		</Section>
 	)
@@ -143,7 +138,7 @@ const HeaderWrapper = styled.div`
 	}
 `
 
-const HeaderImages = styled.div`
+const Images = styled.div`
 	width: 50%;
 	height: 60vh;
 	position: relative;

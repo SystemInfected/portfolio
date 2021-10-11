@@ -290,15 +290,6 @@ const CardWrapper = styled.div`
 	perspective: 1200px;
 	transform-style: preserve-3d;
 	width: 100%;
-	p {
-		color: ${color.textLight};
-		font-size: 1.6rem;
-		letter-spacing: 0.03em;
-		line-height: 1.5;
-		padding: 2em 1em 1em;
-		text-align: center;
-		width: 100%;
-	}
 `
 
 const HeaderWrapper = styled.div`

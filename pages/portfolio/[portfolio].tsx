@@ -35,7 +35,7 @@ const DetailedPortfolio = ({ htmlString, data }: DetailedPortfolioProps) => {
 				title={data.title}
 				responsibilities={data.responsibilities}
 				tags={data.tags}
-				headerImages={data.headerImages}
+				images={data.images}
 			/>
 			<Content
 				content={htmlString}

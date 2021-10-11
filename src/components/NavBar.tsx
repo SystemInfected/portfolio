@@ -17,7 +17,9 @@ interface NavBarProps {
 export const scrollToElement = (element: string) => {
 	const titleElement = document.getElementById(element)
 	if (titleElement) {
-		titleElement.scrollIntoView({ behavior: 'smooth' })
+		setTimeout(() => {
+			titleElement.scrollIntoView({ behavior: 'smooth' })
+		}, 300)
 	}
 }
 

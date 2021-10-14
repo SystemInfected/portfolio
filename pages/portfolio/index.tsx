@@ -8,7 +8,7 @@ import styled from 'styled-components'
 
 import NavBar from '../../src/components/NavBar'
 import Footer from '../../src/components/Footer'
-import PortfolioCard from '../../src/components/Portfolio/PortfolioCard'
+import { PortfolioCard } from '../../src/components/Portfolio'
 import { breakpoint, color } from '../../styles/variables'
 import SectionHeader from '../../src/components/SectionHeader'
 
@@ -86,7 +86,7 @@ export const getStaticProps = async () => {
 export default Portfolio
 
 const Section = styled.section`
-	background: rgba(${color.mainColorDarkRGB}, 0.25);
+	background: rgba(${color.mainColorDarkRGB}, 0.5);
 	display: flex;
 	justify-content: center;
 	width: 100%;

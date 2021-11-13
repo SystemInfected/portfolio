@@ -15,7 +15,7 @@ const Featured = () => {
 				<FeaturedContainer>
 					<FeaturedCard work='usab' />
 					<FeaturedCard work='nodell' />
-					<FeaturedCard work='rosa' />
+					<FeaturedCard work='crypto' />
 				</FeaturedContainer>
 				<CenteredSection>
 					<Link href='/portfolio/'>
@@ -61,13 +61,13 @@ const FeaturedContainer = styled.div`
 	width: 100%;
 	@media screen and (max-width: ${breakpoint.tabletBig}) {
 		grid-template-columns: repeat(2, minmax(0, 1fr));
-		div:last-child {
+		a:last-child > div {
 			margin-left: calc(50% + 2.5em);
 		}
 	}
 	@media screen and (max-width: ${breakpoint.mobileBig}) {
 		grid-template-columns: 1fr;
-		div:last-child {
+		a:last-child > div {
 			margin-left: 0;
 		}
 	}

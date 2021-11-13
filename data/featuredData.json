@@ -53,16 +53,22 @@
 			]
 		}
 	],
-	"rosa": [
+	"crypto": [
 		{
-			"title": "Rosa porträtt",
-			"tags": ["illustrations", "charity"],
-			"slug": "rosa-porträtt",
+			"title": "Crypto Bot",
+			"tags": ["trading bot", "algorithm-based"],
+			"slug": "grypto-bot",
 			"images": [
 				{
-					"url": "rosa_portratt.png",
+					"url": "crypto-bot_mac.png",
 					"position": "center",
-					"size": "80%",
+					"size": "90%",
+					"zoomValue": 70
+				},
+				{
+					"url": "crypto-bot_terminal.png",
+					"position": 110,
+					"size": "45%",
 					"zoomValue": 140
 				}
 			]

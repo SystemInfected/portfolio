@@ -12,26 +12,26 @@ const PortfolioCard = React.forwardRef<HTMLDivElement, PortfolioCardProps>(
 		const { data } = props
 		const tagArr = data.tags.split(', ').slice(0, 2)
 		return (
-			<CardWrapper ref={ref}>
+			<PortfolioCardWrapper ref={ref}>
 				<h3>{data.title}</h3>
 				<ul>
 					{tagArr.map((tag, index) => (
 						<li key={index}>• {tag}</li>
 					))}
 				</ul>
-				<Images>
+				<PortfolioImages>
 					{data.images.map((img, index) => {
 						return <img key={index} src={`../images/${img}`} alt={data.title} />
 					})}
-				</Images>
-			</CardWrapper>
+				</PortfolioImages>
+			</PortfolioCardWrapper>
 		)
 	}
 )
 
 export default PortfolioCard
 
-const CardWrapper = styled.div`
+const PortfolioCardWrapper = styled.div`
 	align-items: center;
 	background: linear-gradient(
 			rgba(0, 0, 0, 0.2) 0%,
@@ -106,7 +106,7 @@ const CardWrapper = styled.div`
 	}
 `
 
-const Images = styled.div`
+const PortfolioImages = styled.div`
 	position: relative;
 	width: 100%;
 	img {

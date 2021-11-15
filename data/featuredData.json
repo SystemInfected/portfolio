@@ -15,13 +15,13 @@
 					"url": "us-ab_ipad.png",
 					"position": 0,
 					"size": "35%",
-					"zoomValue": 140
+					"zoomValue": 100
 				},
 				{
 					"url": "us-ab_iphone.png",
 					"position": 460,
 					"size": "18%",
-					"zoomValue": 140
+					"zoomValue": 100
 				}
 			]
 		}
@@ -42,13 +42,13 @@
 					"url": "nodell_ipad.png",
 					"position": 0,
 					"size": "35%",
-					"zoomValue": 140
+					"zoomValue": 100
 				},
 				{
 					"url": "nodell_iphone.png",
 					"position": 460,
 					"size": "18%",
-					"zoomValue": 140
+					"zoomValue": 100
 				}
 			]
 		}
@@ -69,7 +69,7 @@
 					"url": "crypto-bot_terminal.png",
 					"position": 110,
 					"size": "45%",
-					"zoomValue": 140
+					"zoomValue": 100
 				}
 			]
 		}

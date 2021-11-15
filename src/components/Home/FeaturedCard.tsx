@@ -286,15 +286,17 @@ const CardWrapper = styled.div`
 	flex-direction: column;
 	justify-content: space-between;
 	margin-top: 2.5em;
-	min-height: min(60vh, 45em);
 	perspective: 1200px;
 	transform-style: preserve-3d;
+	min-height: min(60vh, 45em);
 	width: 100%;
 `
 
 const HeaderWrapper = styled.div`
 	padding: 2em 0;
 	width: 100%;
+	perspective: 1200px;
+	transform-style: preserve-3d;
 	h3 {
 		backface-visibility: hidden;
 		color: ${color.mainAccentColor};
@@ -341,12 +343,15 @@ const CardButton = styled.button`
 `
 
 const CardImages = styled.div`
+	perspective: 1200px;
+	transform-style: preserve-3d;
 	height: auto;
 	margin: 0 1em;
 	position: relative;
 	width: calc(100% - 2em);
 	img {
-		backface-visibility: hidden;
+		display: block;
+		backface-visibility: visible;
 		bottom: 0;
 		position: absolute;
 		transition: transform 0.3s ease;

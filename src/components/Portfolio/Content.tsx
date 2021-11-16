@@ -12,6 +12,20 @@ interface ContentProps {
 
 const Content = ({ content, title, tech, url, source }: ContentProps) => {
 	const techArr = tech.split(', ')
+	const renderURL = () => {
+		if (url) {
+			if (url === 'none') {
+				return ''
+			}
+			return (
+				<a href={url} target='_blank' rel='noreferrer'>
+					<CTA>Visit {title}</CTA>
+				</a>
+			)
+		}
+		return <CTA disabled>{title} is no longer available</CTA>
+	}
+
 	return (
 		<Section>
 			<ContentSection>
@@ -24,13 +38,7 @@ const Content = ({ content, title, tech, url, source }: ContentProps) => {
 						})}
 					</ul>
 					<div>
-						{url ? (
-							<a href={url} target='_blank' rel='noreferrer'>
-								<CTA>Visit {title}</CTA>
-							</a>
-						) : (
-							<CTA disabled>{title} is no longer available</CTA>
-						)}
+						{renderURL()}
 						{source ? (
 							<a href={source} target='_blank' rel='noreferrer'>
 								<CTA>View source</CTA>
@@ -90,6 +98,9 @@ const ContentWrapper = styled.div`
 	em,
 	strong {
 		color: ${color.mainAccentColor};
+	}
+	a {
+		color: inherit;
 	}
 	@media (orientation: portrait) {
 		width: 100%;

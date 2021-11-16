@@ -2,20 +2,20 @@
 order: 5
 title: US-AB.com
 slug: us-ab
-url: https://www.nodell.se/
+url: https://www.us-ab.com/
 source: null
-responsibilities: design, developement
-tags: article site, community, article editor
+responsibilities: design, developement, marketing
+tags: print-shop, e-commerce, custom cms, icon design, graphic profile
 tech: php, javascript, sql/pdo
-images: [nodell_mac.png, nodell_iphone.png]
+images: [us-ab_mac.png, us-ab_iphone.png]
 ---
 
-One of the biggest websites I've ever made and I'm really proud that it's finally launched. Nodell is a Swedish platform created to promote freedom of speech, social criticism and political debates. The site is a hybrid of citizen- and social-journalism which means that anyone can write and publish content.
+A complete rebuild of their previous website. I redesigned and rebuilt it from scratch with an up-to-date design and smart features to make updating the website easier and keep the website alive.
+I also created a new graphic profile for web and print including a new fresh logo and color scheme.
+All graphics and icons are custom made.
 
-Everything on the website is tailor-made by yours truly, some of the features are:
+Some of the features are:
 
-- WYSIWYG article editor.
-- User system where your account level up as you become more popular.
-- Admin control panel and comment moderation.
-- Algorithm for showing relevant content with fair popularity considerations.
-  Whats truly most popular is what will be listed as such... _cough_ youtube _cough_.
+- Custom CMS for easy management.
+- Quotation system for fast customer response.
+- Custom business area specific icons and illustrations.

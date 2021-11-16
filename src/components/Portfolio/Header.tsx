@@ -12,7 +12,9 @@ interface HeaderProps {
 
 const Header = ({ title, responsibilities, tags, images }: HeaderProps) => {
 	const tagArr = tags.split(', ')
-	const responsibilitiesArr = responsibilities.split(', ')
+	const responsibilitiesArr = responsibilities
+		? responsibilities.split(', ')
+		: []
 
 	useEffect(() => {
 		gsap.defaults({
@@ -26,7 +28,7 @@ const Header = ({ title, responsibilities, tags, images }: HeaderProps) => {
 				opacity: 0,
 			})
 			gsap.from(images.querySelectorAll('img'), {
-				x: '200px',
+				x: '300px',
 				delay: 0.1,
 				stagger: 0.2,
 			})
@@ -42,7 +44,8 @@ const Header = ({ title, responsibilities, tags, images }: HeaderProps) => {
 						{tagArr.map((tag, index) => {
 							return <li key={index}>• {tag}</li>
 						})}
-						<h3>Responsibilities:</h3>
+						{responsibilitiesArr.length > 0 ? <h3>Responsibilities:</h3> : ''}
+
 						{responsibilitiesArr.map((tag, index) => {
 							return <li key={index}>• {tag}</li>
 						})}

@@ -47,7 +47,7 @@ const Portfolio = ({ data }: PortfolioProps) => {
 			<NavBar locked startpage={false} />
 			<Section>
 				<PortfolioGridSection>
-					<SectionHeader>Projects</SectionHeader>
+					<SectionHeader>Selected projects</SectionHeader>
 					<PortfolioGrid>
 						{data.map((d) => (
 							<Link href={`/portfolio/${d.slug}`} key={`post-${d.slug}`}>

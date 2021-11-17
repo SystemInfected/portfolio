@@ -2,7 +2,7 @@
 order: 3
 title: Crypto Bot
 slug: crypto-bot
-url: none
+url: github
 source: https://github.com/SystemInfected/crypto-bot
 responsibilities: developement, design
 tags: trading bot, algorithm-based, open source

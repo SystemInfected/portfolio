@@ -6,7 +6,7 @@ interface ContentProps {
 	content: string
 	title: string
 	tech: string
-	url: string
+	url: string | null
 	source: string | null
 }
 
@@ -14,7 +14,7 @@ const Content = ({ content, title, tech, url, source }: ContentProps) => {
 	const techArr = tech.split(', ')
 	const renderURL = () => {
 		if (url) {
-			if (url === 'none') {
+			if (url === 'none' || url === 'github') {
 				return ''
 			}
 			return (
@@ -41,7 +41,7 @@ const Content = ({ content, title, tech, url, source }: ContentProps) => {
 						{renderURL()}
 						{source ? (
 							<a href={source} target='_blank' rel='noreferrer'>
-								<CTA>View source</CTA>
+								<CTA>View {url === 'github' ? 'on GitHub' : 'source'}</CTA>
 							</a>
 						) : (
 							<CTA disabled>Source not available</CTA>

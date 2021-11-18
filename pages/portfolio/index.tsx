@@ -34,9 +34,38 @@ const Portfolio = ({ data }: PortfolioProps) => {
 		<>
 			<Head>
 				<title>
-					My Portfolio | Graphic designer &amp; web developer based in
-					Stockholm, Sweden &bull; Sebastian Widin's portfolio
+					My Portfolio | Graphic designer & web developer based in Stockholm,
+					Sweden • Sebastian Widin's portfolio
 				</title>
+
+				<meta
+					name='description'
+					content='I am a graphic designer and web developer from Stockholm, Sweden. I love design but have a passion for functionality and user-friendly sites.'
+				/>
+				<meta
+					name='image'
+					content='https://sebastianwidin.se/images/og_header.jpg'
+				/>
+
+				<meta
+					name='og:title'
+					content="My Portfolio | Graphic designer & web developer based in Stockholm, Sweden • Sebastian Widin's portfolio"
+				/>
+				<meta
+					name='og:description'
+					content='I am a graphic designer and web developer from Stockholm, Sweden. I love design but have a passion for functionality and user-friendly sites.'
+				/>
+				<meta
+					name='og:image'
+					content='https://sebastianwidin.se/images/og_header.jpg'
+				/>
+				<meta name='og:url' content='https://sebastianwidin.se/' />
+				<meta
+					name='og:site_name'
+					content="My Portfolio | Graphic designer & web developer based in Stockholm, Sweden • Sebastian Widin's portfolio"
+				/>
+				<meta name='fb:admins' content='100041376167594' />
+				<meta name='og:type' content='website' />
 				<meta charSet='utf-8' />
 				<meta
 					name='viewport'

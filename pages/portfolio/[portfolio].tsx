@@ -20,9 +20,38 @@ const DetailedPortfolio = ({ htmlString, data }: DetailedPortfolioProps) => {
 		<>
 			<Head>
 				<title>
-					{data.title} - A project by Sebastian Widin &bull; Graphic designer
-					&amp; web developer based in Stockholm, Sweden
+					{data.title} - A project by Sebastian Widin • Graphic designer & web
+					developer based in Stockholm, Sweden
 				</title>
+
+				<meta
+					name='description'
+					content='I am a graphic designer and web developer from Stockholm, Sweden. I love design but have a passion for functionality and user-friendly sites.'
+				/>
+				<meta
+					name='image'
+					content='https://sebastianwidin.se/images/og_header.jpg'
+				/>
+
+				<meta
+					name='og:title'
+					content={`${data.title} - A project by Sebastian Widin • Graphic designer & web developer based in Stockholm, Sweden`}
+				/>
+				<meta
+					name='og:description'
+					content='I am a graphic designer and web developer from Stockholm, Sweden. I love design but have a passion for functionality and user-friendly sites.'
+				/>
+				<meta
+					name='og:image'
+					content='https://sebastianwidin.se/images/og_header.jpg'
+				/>
+				<meta name='og:url' content='https://sebastianwidin.se/' />
+				<meta
+					name='og:site_name'
+					content={`${data.title} - A project by Sebastian Widin • Graphic designer & web developer based in Stockholm, Sweden`}
+				/>
+				<meta name='fb:admins' content='100041376167594' />
+				<meta name='og:type' content='website' />
 				<meta charSet='utf-8' />
 				<meta
 					name='viewport'

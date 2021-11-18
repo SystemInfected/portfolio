@@ -39,16 +39,15 @@ const FeaturedCard = (props: { work: string | number }) => {
 			const cardRef = featuredCardRef.current
 			gsap.fromTo(
 				cardRef,
-				{ y: 100, autoAlpha: 0 },
+				{ autoAlpha: 0 },
 				{
-					y: 0,
 					autoAlpha: 1,
 					duration: 1,
 					ease: 'power2.out',
 					scrollTrigger: {
 						trigger: cardRef,
 						// markers: true,
-						start: '-100px 95%',
+						start: '50px 95%',
 						end: 'top bottom',
 					},
 				}

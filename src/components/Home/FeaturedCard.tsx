@@ -182,13 +182,13 @@ const FeaturedCard = (props: { work: string | number }) => {
 
 								animateCard(xAxis, yAxis)
 							} else {
-								let xAxis = event.gamma / axisDivider
+								let xAxis = event.beta / axisDivider
 								if (xAxis > 20 || xAxis < -20) {
-									xAxis = event.gamma / (axisDivider * 5)
+									xAxis = event.beta / (axisDivider * 5)
 								}
-								let yAxis = event.beta / axisDivider
+								let yAxis = event.gamma / axisDivider
 								if (yAxis > 20 || yAxis < -20) {
-									yAxis = event.beta / (axisDivider * 5)
+									yAxis = event.gamma / (axisDivider * 5)
 								}
 								cardRef.style.transition = 'none'
 

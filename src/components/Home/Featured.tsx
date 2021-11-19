@@ -1,53 +1,12 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import Link from 'next/link'
-import { toast } from 'react-toastify'
 import { breakpoint, color, components } from '../../../styles/variables'
 import ClientsList from './ClientsList'
 import FeaturedCard from './FeaturedCard'
 import SectionHeader from '../SectionHeader'
 
 const Featured = () => {
-	useEffect(() => {
-		if (
-			window.DeviceOrientationEvent &&
-			typeof DeviceOrientationEvent.requestPermission === 'function'
-		) {
-			DeviceOrientationEvent.requestPermission()
-				.then((permissionState) => {
-					if (permissionState !== 'granted') {
-						toast(
-							({ closeToast }) => (
-								<PermissionPromt>
-									This site use device orientation for cool effects 😎
-									<br />
-									<button
-										className='allow'
-										type='button'
-										onClick={() => DeviceOrientationEvent.requestPermission()}
-									>
-										Allow
-									</button>
-									<button className='close' type='button' onClick={closeToast}>
-										Close
-									</button>
-								</PermissionPromt>
-							),
-							{
-								position: toast.POSITION.TOP_CENTER,
-								autoClose: false,
-								style: {
-									backgroundColor: 'rgba(255,255,255,0.95)',
-									color: color.mainColorDark,
-								},
-							}
-						)
-					}
-				})
-				.catch(console.error)
-		}
-	}, [])
-
 	return (
 		<Section>
 			<a id='featured' />
@@ -129,26 +88,4 @@ const ViewAllProjects = styled.button`
 	color: ${color.mainColorDark};
 	display: inline-block;
 	margin: 0 auto;
-`
-
-const PermissionPromt = styled.div`
-	button {
-		&.allow {
-			${components.mainButton}
-			background-color: ${color.mainAccentColor};
-			color: ${color.mainColorDark};
-			font-size: 1rem;
-			display: inline-block;
-			margin-top: 1em;
-			margin-right: 1em;
-		}
-		&.close {
-			${components.secondaryButton}
-			border-color: ${color.mainColorDark};
-			color: ${color.mainColorDark};
-			font-size: 1rem;
-			display: inline-block;
-			margin-top: 1em;
-		}
-	}
 `

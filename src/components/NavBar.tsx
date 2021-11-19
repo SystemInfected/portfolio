@@ -173,7 +173,7 @@ const NavBar = ({ locked, startpage }: NavBarProps) => {
 
 	return (
 		<>
-			<ToastContainer style={{ fontSize: '1.5rem', top: '60px' }} />
+			<ToastContainer style={{ fontSize: '1.5rem' }} />
 			<NavBg id='navBar'>
 				<Nav>
 					<Link href='/'>

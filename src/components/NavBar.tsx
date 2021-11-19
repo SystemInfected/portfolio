@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { gsap } from 'gsap'
+import { ToastContainer } from 'react-toastify'
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 import MoreVertIcon from '@material-ui/icons/MoreVert'
 import CloseIcon from '@material-ui/icons/Close'
@@ -172,6 +173,7 @@ const NavBar = ({ locked, startpage }: NavBarProps) => {
 
 	return (
 		<>
+			<ToastContainer style={{ fontSize: '1.5rem', top: '60px' }} />
 			<NavBg id='navBar'>
 				<Nav>
 					<Link href='/'>

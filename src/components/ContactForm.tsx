@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { TextField } from '@material-ui/core'
 import axios from 'axios'
-import { ToastContainer, toast } from 'react-toastify'
+import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import styled from 'styled-components'
 import { breakpoint, color, components } from '../../styles/variables'
@@ -143,7 +143,6 @@ const ContactForm = () => {
 					</CTA>
 				</FormContainer>
 			</Container>
-			<ToastContainer style={{ fontSize: '1.5rem' }} />
 		</>
 	)
 }

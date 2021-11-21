@@ -39,15 +39,16 @@ const FeaturedCard = (props: { work: string | number }) => {
 			const cardRef = featuredCardRef.current
 			gsap.fromTo(
 				cardRef,
-				{ autoAlpha: 0 },
+				{ y: '200px', autoAlpha: 0 },
 				{
+					y: 0,
 					autoAlpha: 1,
 					duration: 1,
 					ease: 'power2.out',
 					scrollTrigger: {
 						trigger: cardRef,
-						// markers: true,
-						start: '50px 95%',
+						//markers: true,
+						start: '-100px 95%',
 						end: 'top bottom',
 					},
 				}
@@ -246,7 +247,7 @@ const FeaturedCard = (props: { work: string | number }) => {
 								return (
 									<img
 										key={index}
-										src={`images/${image.url}`}
+										src={`images/thumbs/${image.url}`}
 										alt={cardData.title}
 										style={{
 											width: `${image.size}`,

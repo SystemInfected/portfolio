@@ -21,7 +21,13 @@ const PortfolioCard = React.forwardRef<HTMLDivElement, PortfolioCardProps>(
 				</ul>
 				<PortfolioImages>
 					{data.images.map((img, index) => {
-						return <img key={index} src={`../images/${img}`} alt={data.title} />
+						return (
+							<img
+								key={index}
+								src={`../images/thumbs/${img}`}
+								alt={data.title}
+							/>
+						)
 					})}
 				</PortfolioImages>
 			</PortfolioCardWrapper>

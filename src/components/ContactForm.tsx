@@ -193,7 +193,7 @@ const FormContainer = styled.div`
 		line-height: 1.5em;
 		min-height: 13em;
 	}
-	.PrivateNotchedOutline-legendLabelled-3 {
+	legend {
 		font-size: calc(clamp(1.4rem, 1.5vw, 1.6rem) * 0.75);
 	}
 `

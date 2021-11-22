@@ -26,10 +26,16 @@ export interface PortfolioDataProps {
 
 interface PortfolioProps {
 	data: [PortfolioDataProps]
+	images: [string]
 }
 
-const Portfolio = ({ data }: PortfolioProps) => {
+const Portfolio = ({ data, images }: PortfolioProps) => {
 	data.sort((a, b) => (a.order < b.order ? 1 : -1))
+	const imagePreload = images
+		.filter((image) => image !== 'clients' && image !== 'thumbs')
+		.map((image) => (
+			<link rel='preload' as='image' href={`../images/${image}`} />
+		))
 	return (
 		<>
 			<Head>
@@ -72,6 +78,7 @@ const Portfolio = ({ data }: PortfolioProps) => {
 					content='width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover'
 				/>
 				<meta name='theme-color' content='#000000' />
+				{imagePreload}
 			</Head>
 			<NavBar locked startpage={false} />
 			<Section>
@@ -105,9 +112,12 @@ export const getStaticProps = async () => {
 		})
 	)
 
+	const images = fs.readdirSync(path.join('public', 'images'))
+
 	return {
 		props: {
 			data: parsedData.map((data) => data),
+			images,
 		},
 	}
 }

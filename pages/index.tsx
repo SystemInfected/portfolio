@@ -1,11 +1,23 @@
 import React from 'react'
 import Head from 'next/head'
+import fs from 'fs'
+import path from 'path'
 
 import NavBar from '../src/components/NavBar'
 import Footer from '../src/components/Footer'
 import { Hero, Featured, SkillsAbout } from '../src/components/Home'
 
-const App = () => {
+interface AppProps {
+	images: [string]
+}
+
+const App = ({ images }: AppProps) => {
+	const imagePreload = images
+		.filter((image) => image !== 'clients' && image !== 'thumbs')
+		.map((image) => (
+			<link rel='preload' as='image' href={`../images/${image}`} />
+		))
+
 	return (
 		<>
 			<Head>
@@ -48,6 +60,7 @@ const App = () => {
 					content='width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover'
 				/>
 				<meta name='theme-color' content='#000000' />
+				{imagePreload}
 			</Head>
 			<Hero />
 			<NavBar locked={false} startpage />
@@ -56,6 +69,16 @@ const App = () => {
 			<Footer />
 		</>
 	)
+}
+
+export const getStaticProps = async () => {
+	const images = fs.readdirSync(path.join('public', 'images'))
+
+	return {
+		props: {
+			images,
+		},
+	}
 }
 
 export default App

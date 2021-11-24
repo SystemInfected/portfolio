@@ -1,11 +1,15 @@
 import React from 'react'
 import Head from 'next/head'
+import dynamic from 'next/dynamic'
 import fs from 'fs'
 import path from 'path'
 
 import NavBar from '../src/components/NavBar'
 import Footer from '../src/components/Footer'
-import { Hero, Featured, SkillsAbout } from '../src/components/Home'
+
+const Hero = dynamic(() => import('../src/components/Home/Hero'))
+const Featured = dynamic(() => import('../src/components/Home/Featured'))
+const SkillsAbout = dynamic(() => import('../src/components/Home/SkillsAbout'))
 
 interface AppProps {
 	images: [string]

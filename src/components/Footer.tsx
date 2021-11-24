@@ -68,9 +68,16 @@ const Footer = () => {
 					>
 						gsap
 					</a>
-					.
 					<br />
-					Copyright &copy; 2021, All rights reserved.
+					<a
+						href='https://github.com/SystemInfected/portfolio'
+						target='_blank'
+						rel='noreferrer'
+					>
+						Source on GitHub
+					</a>
+					<br />
+					Copyright &copy; 2021, All rights reserved
 				</p>
 			</FooterSection>
 		</Section>

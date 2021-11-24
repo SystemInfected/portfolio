@@ -2,14 +2,16 @@ import React, { useEffect } from 'react'
 import styled, { keyframes } from 'styled-components'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
+import dynamic from 'next/dynamic'
 
 import LocationOnIcon from '@material-ui/icons/LocationOn'
 import { color, font, breakpoint, components } from '../../../styles/variables'
 import IllustrationForeground from '../../assets/svg/portrait_illustration_foreground.svg'
 import IllustrationEye from '../../assets/svg/portrait_illustration_eye.svg'
-import AnimatedNodes from './AnimatedNodes'
 import AnimatedEye from './AnimatedEye'
 import { scrollToElement } from '../NavBar'
+
+const AnimatedNodes = dynamic(() => import('./AnimatedNodes'))
 
 gsap.registerPlugin(ScrollTrigger)
 

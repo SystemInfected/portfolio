@@ -16,6 +16,8 @@ const AnimatedNodes = dynamic(() => import('./AnimatedNodes'))
 gsap.registerPlugin(ScrollTrigger)
 
 const Hero = () => {
+	const introDelay = 3
+
 	useEffect(() => {
 		const headerContainer: HTMLElement | null = document.querySelector(
 			'#headerContainer'
@@ -49,21 +51,23 @@ const Hero = () => {
 
 			gsap.from(headerRowOne, {
 				y: -(headerRowOnePos.y + headerRowOnePos.height),
+				delay: introDelay,
 			})
 			gsap.from(headerRowTwo, {
 				y: -(headerRowTwoPos.y + headerRowTwoPos.height),
-				delay: 0.3,
+				delay: 0.3 + introDelay,
 			})
 			gsap.from(location, {
 				y: -(locationPos.y + locationPos.height),
-				delay: 0.6,
+				delay: 0.6 + introDelay,
 			})
 			gsap.from(ctaWrapper, {
 				y: -(ctaWrapperPos.y + ctaWrapperPos.height),
+				delay: introDelay,
 			})
 			gsap.to('#headerWrapper', {
 				position: 'fixed',
-				delay: 1.4,
+				delay: 1.4 + introDelay,
 				duration: 0,
 			})
 
@@ -130,10 +134,12 @@ const Hero = () => {
 		}
 		gsap.from('#portraitIllustration svg, #portraitIllustration canvas', {
 			duration: 1.4,
+			delay: introDelay,
 			yPercent: 10,
 		})
 		gsap.from('#portraitNodes canvas', {
 			duration: 1.4,
+			delay: introDelay,
 			yPercent: 10,
 		})
 	}, [])

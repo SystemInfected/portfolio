@@ -7,6 +7,7 @@ import path from 'path'
 import NavBar from '../src/components/NavBar'
 import Footer from '../src/components/Footer'
 
+import Intro from '../src/components/Home/Intro'
 const Hero = dynamic(() => import('../src/components/Home/Hero'))
 const Featured = dynamic(() => import('../src/components/Home/Featured'))
 const SkillsAbout = dynamic(() => import('../src/components/Home/SkillsAbout'))
@@ -65,7 +66,38 @@ const App = ({ images }: AppProps) => {
 				/>
 				<meta name='theme-color' content='#000000' />
 				{imagePreload}
+				<link
+					rel='apple-touch-icon'
+					sizes='180x180'
+					href='/images/favicons/apple-touch-icon.png'
+				/>
+				<link
+					rel='icon'
+					type='image/png'
+					sizes='32x32'
+					href='/images/favicons/favicon-32x32.png'
+				/>
+				<link
+					rel='icon'
+					type='image/png'
+					sizes='16x16'
+					href='/images/favicons/favicon-16x16.png'
+				/>
+				<link rel='manifest' href='/images/favicons/site.webmanifest' />
+				<link
+					rel='mask-icon'
+					href='/images/favicons/safari-pinned-tab.svg'
+					color='#1e1f2d'
+				/>
+				<link rel='shortcut icon' href='/images/favicons/favicon.ico' />
+				<meta name='msapplication-TileColor' content='#1e1f2d' />
+				<meta
+					name='msapplication-config'
+					content='/images/favicons/browserconfig.xml'
+				/>
+				<meta name='theme-color' content='#1e1f2d' />
 			</Head>
+			<Intro />
 			<Hero />
 			<NavBar locked={false} startpage />
 			<Featured />

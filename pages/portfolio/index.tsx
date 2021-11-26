@@ -30,6 +30,7 @@ interface PortfolioProps {
 }
 
 const Portfolio = ({ data, images }: PortfolioProps) => {
+	data.sort((a, b) => (a.slug < b.slug ? 1 : -1))
 	data.sort((a, b) => (a.order < b.order ? 1 : -1))
 	const imagePreload = images
 		.filter((image) => image !== 'clients' && image !== 'thumbs')

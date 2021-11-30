@@ -11,13 +11,15 @@ import IllustrationEye from '../../assets/svg/portrait_illustration_eye.svg'
 import AnimatedEye from './AnimatedEye'
 import { scrollToElement } from '../NavBar'
 
+interface HeroProps {
+	introDelay: number
+}
+
 const AnimatedNodes = dynamic(() => import('./AnimatedNodes'))
 
 gsap.registerPlugin(ScrollTrigger)
 
-const Hero = () => {
-	const introDelay = 3
-
+const Hero = ({ introDelay }: HeroProps) => {
 	useEffect(() => {
 		const headerContainer: HTMLElement | null = document.querySelector(
 			'#headerContainer'
@@ -132,16 +134,6 @@ const Hero = () => {
 				}
 			)
 		}
-		gsap.from('#portraitIllustration svg, #portraitIllustration canvas', {
-			duration: 1.4,
-			delay: introDelay,
-			yPercent: 10,
-		})
-		gsap.from('#portraitNodes canvas', {
-			duration: 1.4,
-			delay: introDelay,
-			yPercent: 10,
-		})
 	}, [])
 
 	return (

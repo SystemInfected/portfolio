@@ -6,8 +6,8 @@ import path from 'path'
 
 import NavBar from '../src/components/NavBar'
 import Footer from '../src/components/Footer'
-
 import Intro from '../src/components/Home/Intro'
+
 const Hero = dynamic(() => import('../src/components/Home/Hero'))
 const Featured = dynamic(() => import('../src/components/Home/Featured'))
 const SkillsAbout = dynamic(() => import('../src/components/Home/SkillsAbout'))
@@ -22,6 +22,8 @@ const App = ({ images }: AppProps) => {
 		.map((image) => (
 			<link rel='preload' as='image' href={`../images/${image}`} />
 		))
+
+	const introDelay = 7
 
 	return (
 		<>
@@ -97,12 +99,12 @@ const App = ({ images }: AppProps) => {
 				/>
 				<meta name='theme-color' content='#1e1f2d' />
 			</Head>
-			<Intro />
-			<Hero />
+			<Hero introDelay={introDelay} />
 			<NavBar locked={false} startpage />
 			<Featured />
 			<SkillsAbout />
 			<Footer />
+			<Intro introDelay={introDelay} />
 		</>
 	)
 }

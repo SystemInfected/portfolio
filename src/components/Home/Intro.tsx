@@ -32,6 +32,7 @@ const Intro = ({ introDelay }: IntroProps) => {
 			ease: 'power2.out',
 			duration: 0.8,
 			stagger: 0.5,
+			immediateRender: false,
 		})
 
 		gsap.fromTo(

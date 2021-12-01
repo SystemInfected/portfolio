@@ -97,12 +97,14 @@ const IntroContainer = styled.div`
 	align-items: center;
 	justify-content: center;
 	svg {
+		opacity: 0;
 		flex-shrink: 0;
 		height: clamp(22%, 40vw, 35%);
 		margin-bottom: 5vh;
 	}
 	h2,
 	h1 {
+		opacity: 0;
 		text-align: center;
 		font-family: ${font.standardFont};
 		color: ${color.mainAccentColor};

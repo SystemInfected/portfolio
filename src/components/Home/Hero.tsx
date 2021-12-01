@@ -223,7 +223,7 @@ const rotatingHeader = () => keyframes`
 
 const Location = styled.h2`
 	align-items: center;
-	color: ${color.mainColorLight};
+	color: ${color.textLight};
 	display: flex;
 	font-family: ${font.headingsFont};
 	font-size: clamp(2.5rem, 3vw, 5.2rem);
@@ -237,6 +237,8 @@ const Location = styled.h2`
 	}
 	svg {
 		margin-right: 10px;
+		font-size: clamp(1.8rem, 2.2vw, 4.2rem);
+		align-self: center;
 	}
 `
 

@@ -114,7 +114,7 @@ const FooterSection = styled.footer`
 		padding: 0 2.5em;
 	}
 	p {
-		color: ${color.mainColorLight};
+		color: rgba(${color.textLightRGB}, 0.8);
 		font-size: clamp(1.5rem, 1.7vw, 1.8rem);
 		line-height: 2em;
 		text-align: center;
@@ -134,13 +134,13 @@ const FooterSection = styled.footer`
 			transform-origin: 70% 70%;
 		}
 		&#copy {
-			color: rgba(${color.mainColorLightRGB}, 0.5);
+			color: rgba(${color.textLightRGB}, 0.5);
 			font-size: clamp(1.1rem, 1.3vw, 1.4rem);
 			a {
-				color: rgba(${color.mainColorLightRGB}, 0.5);
+				color: rgba(${color.textLightRGB}, 0.5);
 				text-decoration: none;
 				&:hover {
-					color: rgba(${color.mainColorLightRGB}, 0.8);
+					color: rgba(${color.textLightRGB}, 0.8);
 				}
 			}
 		}

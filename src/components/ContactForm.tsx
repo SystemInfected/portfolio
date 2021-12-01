@@ -174,7 +174,7 @@ const FormContainer = styled.div`
 		label,
 		input,
 		textarea {
-			color: ${color.mainColorLight};
+			color: rgba(${color.textLightRGB}, 0.8);
 			font-size: clamp(1.4rem, 1.5vw, 1.6rem);
 		}
 		&:hover .MuiOutlinedInput-notchedOutline {

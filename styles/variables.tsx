@@ -7,6 +7,7 @@ export const color = {
 	mainColorLightRGB: '169, 176, 224',
 	mainAccentRGB: '212, 211, 121',
 	textLight: '#e3e3e3',
+	textLightRGB: '227, 227, 227',
 }
 
 export const font = {

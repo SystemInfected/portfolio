@@ -102,12 +102,12 @@ const App = ({ images }: AppProps) => {
 				/>
 				<meta name='theme-color' content='#1e1f2d' />
 			</Head>
+			{pageEnter ? <Intro introDelay={introDelay} /> : ''}
 			<Hero introDelay={introDelay} />
 			<NavBar locked={false} startpage />
 			<Featured />
 			<SkillsAbout />
 			<Footer />
-			{pageEnter ? <Intro introDelay={introDelay} /> : ''}
 		</>
 	)
 }

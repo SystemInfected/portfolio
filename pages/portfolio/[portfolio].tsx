@@ -32,8 +32,9 @@ const DetailedPortfolio = ({ htmlString, data }: DetailedPortfolioProps) => {
 		<>
 			<Head>
 				<title>
-					{data.title} - A project by Sebastian Widin • Graphic designer & web
-					developer based in Stockholm, Sweden
+					{data.title} - A project by Sebastian Widin • Graphic Designer, Web
+					Developer and aspiring Full-Stack Software Developer based in
+					Stockholm, Sweden
 				</title>
 
 				<meta

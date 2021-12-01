@@ -5,6 +5,8 @@ import path from 'path'
 import marked from 'marked'
 import matter from 'gray-matter'
 
+import { useMyContext } from '../../src/components/Context/ContextProvider'
+
 import NavBar from '../../src/components/NavBar'
 import Footer from '../../src/components/Footer'
 import { Header, Content } from '../../src/components/Portfolio'
@@ -16,6 +18,9 @@ interface DetailedPortfolioProps {
 }
 
 const DetailedPortfolio = ({ htmlString, data }: DetailedPortfolioProps) => {
+	const { setPageEnter } = useMyContext()
+	setPageEnter(false)
+
 	return (
 		<>
 			<Head>

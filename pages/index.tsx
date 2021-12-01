@@ -4,10 +4,12 @@ import dynamic from 'next/dynamic'
 import fs from 'fs'
 import path from 'path'
 
+import { useMyContext } from '../src/components/Context/ContextProvider'
+
 import NavBar from '../src/components/NavBar'
 import Footer from '../src/components/Footer'
-import Intro from '../src/components/Home/Intro'
 
+const Intro = dynamic(() => import('../src/components/Home/Intro'))
 const Hero = dynamic(() => import('../src/components/Home/Hero'))
 const Featured = dynamic(() => import('../src/components/Home/Featured'))
 const SkillsAbout = dynamic(() => import('../src/components/Home/SkillsAbout'))
@@ -17,13 +19,14 @@ interface AppProps {
 }
 
 const App = ({ images }: AppProps) => {
+	const { pageEnter } = useMyContext()
 	const imagePreload = images
 		.filter((image) => image !== 'clients' && image !== 'thumbs')
 		.map((image) => (
 			<link rel='preload' as='image' href={`../images/${image}`} />
 		))
 
-	const introDelay = 7
+	const introDelay = pageEnter ? 7 : 0
 
 	return (
 		<>
@@ -104,7 +107,7 @@ const App = ({ images }: AppProps) => {
 			<Featured />
 			<SkillsAbout />
 			<Footer />
-			<Intro introDelay={introDelay} />
+			{pageEnter ? <Intro introDelay={introDelay} /> : ''}
 		</>
 	)
 }

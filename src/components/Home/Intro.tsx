@@ -2,6 +2,8 @@ import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import { gsap } from 'gsap'
 
+import { useMyContext } from '../Context/ContextProvider'
+
 import PortraitRound from '../../assets/svg/portrait_round.svg'
 import { color, font } from '../../../styles/variables'
 
@@ -10,6 +12,8 @@ interface IntroProps {
 }
 
 const Intro = ({ introDelay }: IntroProps) => {
+	const { setPageEnter } = useMyContext()
+
 	useEffect(() => {
 		const container: HTMLElement | null = document.querySelector(
 			'#introContainer'
@@ -17,8 +21,10 @@ const Intro = ({ introDelay }: IntroProps) => {
 		const portrait: HTMLElement | null = document.querySelector(
 			'#introPortrait'
 		)
-		const header: HTMLElement | null = document.querySelector('#headerTagline')
-		const name: HTMLElement | null = document.querySelector('#headerName')
+		const header: HTMLElement | null = document.querySelector(
+			'#introHeaderTagline'
+		)
+		const name: HTMLElement | null = document.querySelector('#introHeaderName')
 
 		document.body.classList.toggle('lock-scroll')
 
@@ -55,17 +61,18 @@ const Intro = ({ introDelay }: IntroProps) => {
 		setTimeout(() => {
 			document.body.classList.toggle('lock-scroll')
 			container?.classList.add('hide')
+			setPageEnter(false)
 		}, introDelay * 1000)
 	}, [])
 
 	return (
 		<IntroContainer id='introContainer'>
 			<PortraitRound id='introPortrait' />
-			<h2 id='headerName'>My name is Sebastian</h2>
-			<h1 id='headerTagline'>
+			<h2 id='introHeaderName'>My name is Sebastian</h2>
+			<h1 id='introHeaderTagline'>
 				I bring <strong>sketches</strong> to life and{' '}
 				<span>
-					turn <strong>ideas</strong> into reality.
+					turn <strong>ideas</strong> into reality
 				</span>
 			</h1>
 		</IntroContainer>

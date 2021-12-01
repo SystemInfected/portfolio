@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react'
 import styled, { keyframes } from 'styled-components'
 import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 import dynamic from 'next/dynamic'
-
 import LocationOnIcon from '@material-ui/icons/LocationOn'
+
+import { useMyContext } from '../Context/ContextProvider'
+
 import { color, font, breakpoint, components } from '../../../styles/variables'
 import IllustrationForeground from '../../assets/svg/portrait_illustration_foreground.svg'
 import IllustrationEye from '../../assets/svg/portrait_illustration_eye.svg'
@@ -17,9 +18,9 @@ interface HeroProps {
 
 const AnimatedNodes = dynamic(() => import('./AnimatedNodes'))
 
-gsap.registerPlugin(ScrollTrigger)
-
 const Hero = ({ introDelay }: HeroProps) => {
+	const { pageEnter } = useMyContext()
+
 	useEffect(() => {
 		const headerContainer: HTMLElement | null = document.querySelector(
 			'#headerContainer'
@@ -40,7 +41,6 @@ const Hero = ({ introDelay }: HeroProps) => {
 			location &&
 			ctaWrapper
 		) {
-			const headerContainerPos = headerContainer.getBoundingClientRect()
 			const headerRowOnePos = headerRowOne.getBoundingClientRect()
 			const headerRowTwoPos = headerRowTwo.getBoundingClientRect()
 			const locationPos = location.getBoundingClientRect()
@@ -67,72 +67,6 @@ const Hero = ({ introDelay }: HeroProps) => {
 				y: -(ctaWrapperPos.y + ctaWrapperPos.height),
 				delay: introDelay,
 			})
-			gsap.to('#headerWrapper', {
-				position: 'fixed',
-				delay: 1.4 + introDelay,
-				duration: 0,
-			})
-
-			gsap.fromTo(
-				headerRowOne,
-				{ y: 0 },
-				{
-					y: -(headerContainerPos.height / 3),
-					autoAlpha: 0,
-					immediateRender: false,
-					scrollTrigger: {
-						trigger: '#headerContainer',
-						start: '10% top',
-						end: '35% 5%',
-						scrub: 1.5,
-					},
-				}
-			)
-			gsap.fromTo(
-				headerRowTwo,
-				{ y: 0 },
-				{
-					y: -(headerContainerPos.height / 3),
-					autoAlpha: 0,
-					immediateRender: false,
-					scrollTrigger: {
-						trigger: '#headerContainer',
-						start: '18% top',
-						end: '35% 5%',
-						scrub: 1.5,
-					},
-				}
-			)
-			gsap.fromTo(
-				location,
-				{ y: 0 },
-				{
-					y: -(headerContainerPos.height / 3),
-					autoAlpha: 0,
-					immediateRender: false,
-					scrollTrigger: {
-						trigger: '#headerContainer',
-						start: '26% top',
-						end: '35% 5%',
-						scrub: 1.5,
-					},
-				}
-			)
-			gsap.fromTo(
-				ctaWrapper,
-				{ y: 0 },
-				{
-					y: -(headerContainerPos.height / 3),
-					autoAlpha: 0,
-					immediateRender: false,
-					scrollTrigger: {
-						trigger: '#headerContainer',
-						start: '10% top',
-						end: '35% 5%',
-						scrub: 1.5,
-					},
-				}
-			)
 		}
 	}, [])
 
@@ -144,6 +78,7 @@ const Hero = ({ introDelay }: HeroProps) => {
 						<HeaderText
 							id='headerRowOne'
 							style={{ transform: 'translateY(0px)' }}
+							className={pageEnter ? '' : 'animated'}
 						>
 							<span>Graphic Designer</span>
 							<span>Aspiring full-stack</span>
@@ -152,6 +87,7 @@ const Hero = ({ introDelay }: HeroProps) => {
 						<HeaderText
 							id='headerRowTwo'
 							style={{ transform: 'translateY(0px)' }}
+							className={pageEnter ? '' : 'animated'}
 						>
 							<span>Web Developer</span>
 							<span>Software Developer</span>
@@ -242,14 +178,18 @@ const HeaderText = styled.div`
 	span {
 		display: block;
 		height: 100%;
-		animation-duration: 16s;
-		animation-iteration-count: infinite;
-		animation-name: ${() => rotatingHeader()};
-		animation-delay: 6s;
 	}
-	&:nth-of-type(2) {
+	&.animated {
 		span {
-			animation-delay: 6.1s;
+			animation-duration: 16s;
+			animation-iteration-count: infinite;
+			animation-name: ${() => rotatingHeader()};
+			animation-delay: 6s;
+		}
+		&:nth-of-type(2) {
+			span {
+				animation-delay: 6.1s;
+			}
 		}
 	}
 `

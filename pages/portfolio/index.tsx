@@ -6,6 +6,8 @@ import path from 'path'
 import matter from 'gray-matter'
 import styled from 'styled-components'
 
+import { useMyContext } from '../../src/components/Context/ContextProvider'
+
 import NavBar from '../../src/components/NavBar'
 import Footer from '../../src/components/Footer'
 import { PortfolioCard } from '../../src/components/Portfolio'
@@ -30,6 +32,9 @@ interface PortfolioProps {
 }
 
 const Portfolio = ({ data, images }: PortfolioProps) => {
+	const { setPageEnter } = useMyContext()
+	setPageEnter(false)
+
 	data.sort((a, b) => (a.slug < b.slug ? 1 : -1))
 	data.sort((a, b) => (a.order < b.order ? 1 : -1))
 	const imagePreload = images

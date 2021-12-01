@@ -32,13 +32,13 @@ const App = ({ images }: AppProps) => {
 		<>
 			<Head>
 				<title>
-					Graphic designer & web developer based in Stockholm, Sweden •
-					Sebastian Widin's portfolio
+					Graphic Designer, Web Developer and aspiring Full-Stack Software
+					Developer based in Stockholm, Sweden • Sebastian Widin's portfolio
 				</title>
 
 				<meta
 					name='description'
-					content='I am a graphic designer and web developer from Stockholm, Sweden. I love design but have a passion for functionality and user-friendly sites.'
+					content="I am a Graphic Designer, Web Developer and aspiring Full-Stack Software Developer from Stockholm, Sweden. I ❤️ to build & design stuff. If it's too easy it's boring 😄 🤙"
 				/>
 				<meta
 					name='image'
@@ -47,11 +47,11 @@ const App = ({ images }: AppProps) => {
 
 				<meta
 					name='og:title'
-					content="Graphic designer & web developer based in Stockholm, Sweden • Sebastian Widin's portfolio"
+					content="Graphic Designer, Web Developer and aspiring Full-Stack Software Developer based in Stockholm, Sweden • Sebastian Widin's portfolio"
 				/>
 				<meta
 					name='og:description'
-					content='I am a graphic designer and web developer from Stockholm, Sweden. I love design but have a passion for functionality and user-friendly sites.'
+					content="I am a Graphic Designer, Web Developer and aspiring Full-Stack Software Developer from Stockholm, Sweden. I ❤️ to build & design stuff. If it's too easy it's boring 😄 🤙"
 				/>
 				<meta
 					name='og:image'
@@ -60,7 +60,7 @@ const App = ({ images }: AppProps) => {
 				<meta name='og:url' content='https://sebastianwidin.se/' />
 				<meta
 					name='og:site_name'
-					content="Graphic designer & web developer based in Stockholm, Sweden • Sebastian Widin's portfolio"
+					content="Graphic Designer, Web Developer and aspiring Full-Stack Software Developer based in Stockholm, Sweden • Sebastian Widin's portfolio"
 				/>
 				<meta name='fb:admins' content='100041376167594' />
 				<meta name='og:type' content='website' />

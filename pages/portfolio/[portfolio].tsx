@@ -21,6 +21,13 @@ const DetailedPortfolio = ({ htmlString, data }: DetailedPortfolioProps) => {
 	const { setPageEnter } = useMyContext()
 	setPageEnter(false)
 
+	const renderDescription = (input: string, length: number) => {
+		const strippedInput = input.replace(/<\/?[^>]+(>|$)/g, '')
+		return strippedInput.length > length
+			? `${strippedInput.substring(0, length)}...`
+			: strippedInput
+	}
+
 	return (
 		<>
 			<Head>
@@ -31,7 +38,7 @@ const DetailedPortfolio = ({ htmlString, data }: DetailedPortfolioProps) => {
 
 				<meta
 					name='description'
-					content='I am a graphic designer and web developer from Stockholm, Sweden. I love design but have a passion for functionality and user-friendly sites.'
+					content={`${data.title} - ${renderDescription(htmlString, 140)}`}
 				/>
 				<meta
 					name='image'
@@ -40,11 +47,11 @@ const DetailedPortfolio = ({ htmlString, data }: DetailedPortfolioProps) => {
 
 				<meta
 					name='og:title'
-					content={`${data.title} - A project by Sebastian Widin • Graphic designer & web developer based in Stockholm, Sweden`}
+					content={`${data.title} - A project by Sebastian Widin • Graphic Designer, Web Developer and aspiring Full-Stack Software Developer based in Stockholm, Sweden`}
 				/>
 				<meta
 					name='og:description'
-					content='I am a graphic designer and web developer from Stockholm, Sweden. I love design but have a passion for functionality and user-friendly sites.'
+					content={`${data.title} - ${renderDescription(htmlString, 140)}`}
 				/>
 				<meta
 					name='og:image'
@@ -53,7 +60,7 @@ const DetailedPortfolio = ({ htmlString, data }: DetailedPortfolioProps) => {
 				<meta name='og:url' content='https://sebastianwidin.se/' />
 				<meta
 					name='og:site_name'
-					content={`${data.title} - A project by Sebastian Widin • Graphic designer & web developer based in Stockholm, Sweden`}
+					content={`${data.title} - A project by Sebastian Widin • Graphic Designer, Web Developer and aspiring Full-Stack Software Developer based in Stockholm, Sweden`}
 				/>
 				<meta name='fb:admins' content='100041376167594' />
 				<meta name='og:type' content='website' />

@@ -46,13 +46,14 @@ const Portfolio = ({ data, images }: PortfolioProps) => {
 		<>
 			<Head>
 				<title>
-					My Portfolio | Graphic designer & web developer based in Stockholm,
-					Sweden • Sebastian Widin's portfolio
+					My Portfolio | Graphic Designer, Web Developer and aspiring Full-Stack
+					Software Developer based in Stockholm, Sweden • Sebastian Widin's
+					portfolio
 				</title>
 
 				<meta
 					name='description'
-					content='I am a graphic designer and web developer from Stockholm, Sweden. I love design but have a passion for functionality and user-friendly sites.'
+					content="I am a Graphic Designer, Web Developer and aspiring Full-Stack Software Developer from Stockholm, Sweden. This is a selection of projects I'm proud of 😊"
 				/>
 				<meta
 					name='image'
@@ -61,11 +62,11 @@ const Portfolio = ({ data, images }: PortfolioProps) => {
 
 				<meta
 					name='og:title'
-					content="My Portfolio | Graphic designer & web developer based in Stockholm, Sweden • Sebastian Widin's portfolio"
+					content="My Portfolio | Graphic Designer, Web Developer and aspiring Full-Stack Software Developer based in Stockholm, Sweden • Sebastian Widin's portfolio"
 				/>
 				<meta
 					name='og:description'
-					content='I am a graphic designer and web developer from Stockholm, Sweden. I love design but have a passion for functionality and user-friendly sites.'
+					content="I am a Graphic Designer, Web Developer and aspiring Full-Stack Software Developer from Stockholm, Sweden. This is a selection of projects I'm proud of 😊"
 				/>
 				<meta
 					name='og:image'
@@ -74,7 +75,7 @@ const Portfolio = ({ data, images }: PortfolioProps) => {
 				<meta name='og:url' content='https://sebastianwidin.se/' />
 				<meta
 					name='og:site_name'
-					content="My Portfolio | Graphic designer & web developer based in Stockholm, Sweden • Sebastian Widin's portfolio"
+					content="My Portfolio | Graphic Designer, Web Developer and aspiring Full-Stack Software Developer based in Stockholm, Sweden • Sebastian Widin's portfolio"
 				/>
 				<meta name='fb:admins' content='100041376167594' />
 				<meta name='og:type' content='website' />

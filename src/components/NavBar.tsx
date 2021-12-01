@@ -24,14 +24,6 @@ export const scrollToElement = (element: string) => {
 	}
 }
 
-const goToStartpagePart = (path: string, startpage: boolean) => {
-	if (startpage) {
-		scrollToElement(path)
-	} else {
-		window.location.href = `/#${path}`
-	}
-}
-
 const NavBar = ({ locked, startpage }: NavBarProps) => {
 	const [mobileMenuPos, setMobileMenuPos] = useState({ x: 0, y: 0 })
 	const [menuActive, setMenuActive] = useState(false)
@@ -164,12 +156,28 @@ const NavBar = ({ locked, startpage }: NavBarProps) => {
 		}
 
 		const tl = gsap.timeline()
-		tl.from('.mobile-menu-li', {
-			y: -100,
-			autoAlpha: 0,
-			stagger: 0.3,
-		})
+		tl.fromTo(
+			'.mobile-menu-li',
+			{ y: -100, opacity: 0 },
+			{
+				y: 0,
+				opacity: 1,
+				stagger: 0.3,
+				immediateRender: false,
+			}
+		)
 	}, [])
+
+	const renderSkillsNavlink = (isOnStartpage) => {
+		if (isOnStartpage) {
+			return <a onClick={() => scrollToElement('skills')}>Skills</a>
+		}
+		return (
+			<Link href='/#skills'>
+				<a>Skills</a>
+			</Link>
+		)
+	}
 
 	return (
 		<>
@@ -191,11 +199,7 @@ const NavBar = ({ locked, startpage }: NavBarProps) => {
 								<a>Projects</a>
 							</Link>
 						</li>
-						<li>
-							<a onClick={() => goToStartpagePart('skills', startpage)}>
-								Skills
-							</a>
-						</li>
+						<li>{renderSkillsNavlink(startpage)}</li>
 						<li>
 							<a onClick={() => scrollToElement('contact')}>Contact</a>
 						</li>
@@ -228,9 +232,7 @@ const NavBar = ({ locked, startpage }: NavBarProps) => {
 							<a>Projects</a>
 						</Link>
 					</li>
-					<li className='mobile-menu-li'>
-						<a onClick={() => goToStartpagePart('skills', startpage)}>Skills</a>
-					</li>
+					<li className='mobile-menu-li'>{renderSkillsNavlink(startpage)}</li>
 					<li className='mobile-menu-li'>
 						<a onClick={() => scrollToElement('contact')}>Contact</a>
 					</li>
@@ -393,6 +395,7 @@ const MobileMenu = styled.div`
 	padding-top: 0;
 	width: 100%;
 	li {
+		opacity: 0;
 		font-size: clamp(2.4rem, 5vw, 3.2rem);
 		font-weight: 400;
 		margin-top: 0;

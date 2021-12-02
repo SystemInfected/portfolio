@@ -168,6 +168,31 @@ const NavBar = ({ locked, startpage }: NavBarProps) => {
 		)
 	}, [])
 
+	const renderHomeNavlink = (isOnStartpage) => {
+		if (isOnStartpage) {
+			return (
+				<a onClick={() => scrollToElement('hero')} className='link-tag'>
+					<LogoTitle>
+						<span>&lt;</span>
+						<span>Sebastian</span>
+						<span>Widin</span>/<span>&gt;</span>
+					</LogoTitle>
+				</a>
+			)
+		}
+		return (
+			<Link href='/'>
+				<a className='link-tag'>
+					<LogoTitle>
+						<span>&lt;</span>
+						<span>Sebastian</span>
+						<span>Widin</span>/<span>&gt;</span>
+					</LogoTitle>
+				</a>
+			</Link>
+		)
+	}
+
 	const renderSkillsNavlink = (isOnStartpage) => {
 		if (isOnStartpage) {
 			return <a onClick={() => scrollToElement('skills')}>Skills</a>
@@ -184,15 +209,7 @@ const NavBar = ({ locked, startpage }: NavBarProps) => {
 			<ToastContainer style={{ fontSize: '1.5rem' }} />
 			<NavBg id='navBar'>
 				<Nav>
-					<Link href='/'>
-						<a className='link-tag'>
-							<LogoTitle>
-								<span>&lt;</span>
-								<span>Sebastian</span>
-								<span>Widin</span>/<span>&gt;</span>
-							</LogoTitle>
-						</a>
-					</Link>
+					{renderHomeNavlink(startpage)}
 					<Menu>
 						<li>
 							<Link href='/portfolio/'>
@@ -238,26 +255,11 @@ const NavBar = ({ locked, startpage }: NavBarProps) => {
 					</li>
 				</MobileMenu>
 			</MobileNav>
-			{/* <Debug>
-				x-rotate:<span id='xRotateDebug'></span>, y-rotate:
-				<span id='yRotateDebug'></span>
-			</Debug> */}
 		</>
 	)
 }
 
 export default NavBar
-
-/* const Debug = styled.div`
-	position: fixed;
-	padding: 20px;
-	top: 60px;
-	left: 0;
-	font-size: 1.2rem;
-	z-index: 3500;
-	transform: translateZ(3500px);
-	background-color: rgba(255, 255, 255, 0.8);
-` */
 
 const NavBg = styled.section`
 	background: ${color.mainAccentColor};

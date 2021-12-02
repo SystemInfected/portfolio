@@ -72,6 +72,7 @@ const Hero = ({ introDelay }: HeroProps) => {
 
 	return (
 		<HeaderBg>
+			<a id='hero' />
 			<HeaderContainer id='headerContainer'>
 				<HeaderWrapper id='headerWrapper'>
 					<Header>

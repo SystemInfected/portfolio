@@ -1,14 +1,7 @@
 [
 	{
-		"type": "software",
-		"skills": [
-			"photoshop",
-			"illustrator",
-			"indesign",
-			"animate",
-			"after effects",
-			"premiere pro"
-		]
+		"type": "design",
+		"skills": ["photoshop", "illustrator", "indesign", "adobe xd"]
 	},
 	{
 		"type": "development",
@@ -28,5 +21,9 @@
 	{
 		"type": "audio",
 		"skills": ["ableton live", "logic pro", "ni maschine"]
+	},
+	{
+		"type": "video",
+		"skills": ["after effects", "premiere pro", "animate"]
 	}
 ]

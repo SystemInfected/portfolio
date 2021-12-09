@@ -1,7 +1,9 @@
-import React, { useEffect } from 'react'
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { gsap } from 'gsap'
 import { breakpoint, color, font } from '../../../styles/variables'
+import ImageHighlight from './ImageHighlight'
 
 interface HeaderProps {
 	title: string
@@ -11,6 +13,29 @@ interface HeaderProps {
 }
 
 const Header = ({ title, responsibilities, tags, images }: HeaderProps) => {
+	const [showImage, setShowImage] = useState('')
+
+	const renderImageHighlight = () => {
+		if (showImage) {
+			return (
+				<ImageHighlight
+					url={showImage}
+					title={title}
+					callback={() => setShowImage('')}
+				/>
+			)
+		}
+		return null
+	}
+
+	useEffect(() => {
+		if (showImage) {
+			document.body.classList.add('lock-scroll')
+		} else {
+			document.body.classList.remove('lock-scroll')
+		}
+	}, [showImage])
+
 	const tagArr = tags.split(', ')
 	const responsibilitiesArr = responsibilities
 		? responsibilities.split(', ')
@@ -20,6 +45,7 @@ const Header = ({ title, responsibilities, tags, images }: HeaderProps) => {
 		gsap.defaults({
 			ease: 'power2.out',
 			duration: 1,
+			immediateRender: false,
 		})
 
 		const images = document.querySelector('#images')
@@ -36,28 +62,38 @@ const Header = ({ title, responsibilities, tags, images }: HeaderProps) => {
 	}, [])
 
 	return (
-		<Section>
-			<HeaderSection>
-				<HeaderWrapper>
-					<h1>{title}</h1>
-					<ul>
-						{tagArr.map((tag, index) => {
-							return <li key={index}>• {tag}</li>
-						})}
-						{responsibilitiesArr.length > 0 ? <h3>Responsibilities:</h3> : ''}
+		<>
+			<Section>
+				<HeaderSection>
+					<HeaderWrapper>
+						<h1>{title}</h1>
+						<ul>
+							{tagArr.map((tag, index) => {
+								return <li key={index}>• {tag}</li>
+							})}
+							{responsibilitiesArr.length > 0 ? <h3>Responsibilities:</h3> : ''}
 
-						{responsibilitiesArr.map((tag, index) => {
-							return <li key={index}>• {tag}</li>
+							{responsibilitiesArr.map((tag, index) => {
+								return <li key={index}>• {tag}</li>
+							})}
+						</ul>
+					</HeaderWrapper>
+					<Images id='images'>
+						{images.map((img, index) => {
+							return (
+								<img
+									key={index}
+									src={`../images/${img}`}
+									alt={title}
+									onClick={() => setShowImage(`../images/${img}`)}
+								/>
+							)
 						})}
-					</ul>
-				</HeaderWrapper>
-				<Images id='images'>
-					{images.map((img, index) => {
-						return <img key={index} src={`../images/${img}`} alt={title} />
-					})}
-				</Images>
-			</HeaderSection>
-		</Section>
+					</Images>
+				</HeaderSection>
+			</Section>
+			{renderImageHighlight()}
+		</>
 	)
 }
 
@@ -150,6 +186,7 @@ const Images = styled.div`
 	}
 	img {
 		position: absolute;
+		cursor: pointer;
 		right: 10%;
 		bottom: -30%;
 		&:nth-of-type(1) {

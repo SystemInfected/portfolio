@@ -46,7 +46,7 @@ const Portfolio = ({ data, images }: PortfolioProps) => {
 		<>
 			<Head>
 				<title>
-					My Portfolio | Graphic Designer, Web Developer and aspiring Full-Stack
+					My Portfolio - Graphic Designer, Web Developer and aspiring Full-Stack
 					Software Developer based in Stockholm, Sweden • Sebastian Widin's
 					portfolio
 				</title>
@@ -62,7 +62,7 @@ const Portfolio = ({ data, images }: PortfolioProps) => {
 
 				<meta
 					name='og:title'
-					content="My Portfolio | Graphic Designer, Web Developer and aspiring Full-Stack Software Developer based in Stockholm, Sweden • Sebastian Widin's portfolio"
+					content="My Portfolio - Graphic Designer, Web Developer and aspiring Full-Stack Software Developer based in Stockholm, Sweden • Sebastian Widin's portfolio"
 				/>
 				<meta
 					name='og:description'
@@ -75,7 +75,7 @@ const Portfolio = ({ data, images }: PortfolioProps) => {
 				<meta name='og:url' content='https://sebastianwidin.se/' />
 				<meta
 					name='og:site_name'
-					content="My Portfolio | Graphic Designer, Web Developer and aspiring Full-Stack Software Developer based in Stockholm, Sweden • Sebastian Widin's portfolio"
+					content="My Portfolio - Graphic Designer, Web Developer and aspiring Full-Stack Software Developer based in Stockholm, Sweden • Sebastian Widin's portfolio"
 				/>
 				<meta name='fb:admins' content='100041376167594' />
 				<meta name='og:type' content='website' />

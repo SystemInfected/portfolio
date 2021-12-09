@@ -50,9 +50,15 @@ const Header = ({ title, responsibilities, tags, images }: HeaderProps) => {
 
 		const images = document.querySelector('#images')
 		if (images) {
-			gsap.from(images, {
-				opacity: 0,
-			})
+			gsap.fromTo(
+				images,
+				{
+					autoAlpha: 0,
+				},
+				{
+					autoAlpha: 1,
+				}
+			)
 			gsap.from(images.querySelectorAll('img'), {
 				x: '300px',
 				delay: 0.1,
@@ -181,6 +187,7 @@ const Images = styled.div`
 	width: 50%;
 	height: 60vh;
 	position: relative;
+	visibility: hidden;
 	@media (orientation: portrait) {
 		width: 100%;
 	}

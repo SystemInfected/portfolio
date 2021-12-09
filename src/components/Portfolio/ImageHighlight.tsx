@@ -20,7 +20,7 @@ const ImageHighlight = ({ url, title, callback }: ImageHighlightProps) => {
 		gsap.fromTo(
 			imageContainer,
 			{
-				autoAlpha: 0.1,
+				autoAlpha: 0,
 			},
 			{ autoAlpha: 1 }
 		)

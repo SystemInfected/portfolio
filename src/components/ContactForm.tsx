@@ -91,24 +91,6 @@ const ContactForm = () => {
 			<Container autoComplete='off' onSubmit={(e) => submitForm(e)}>
 				<FormContainer>
 					<TextField
-						name='message'
-						id='message'
-						label='Your message'
-						type='text'
-						multiline
-						variant='outlined'
-						required
-						value={mailData.message}
-						onChange={(e) =>
-							setMailData((mailData) => ({
-								...mailData,
-								message: e.target.value,
-							}))
-						}
-					/>
-				</FormContainer>
-				<FormContainer>
-					<TextField
 						name='name'
 						id='name'
 						label='Your name'
@@ -138,7 +120,28 @@ const ContactForm = () => {
 							}))
 						}
 					/>
-					<CTA type='submit' disabled={mailData.sending}>
+					<CTA id='desktop' type='submit' disabled={mailData.sending}>
+						{mailData.buttonText}
+					</CTA>
+				</FormContainer>
+				<FormContainer>
+					<TextField
+						name='message'
+						id='message'
+						label='Your message'
+						type='text'
+						multiline
+						variant='outlined'
+						required
+						value={mailData.message}
+						onChange={(e) =>
+							setMailData((mailData) => ({
+								...mailData,
+								message: e.target.value,
+							}))
+						}
+					/>
+					<CTA id='mobile' type='submit' disabled={mailData.sending}>
 						{mailData.buttonText}
 					</CTA>
 				</FormContainer>
@@ -151,12 +154,13 @@ export default ContactForm
 
 const Container = styled.form`
 	align-items: space-between;
-	display: flex;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
 	gap: 3em;
 	margin: 4em 0;
 	width: 100%;
 	@media screen and (max-width: ${breakpoint.mobileBig}) {
-		flex-direction: column;
+		grid-template-columns: 1fr;
 	}
 `
 
@@ -203,4 +207,18 @@ const CTA = styled.button`
 	color: ${color.mainColorDark};
 	${components.mainButton}
 	width: 160px;
+	&#desktop {
+		display: inline-block;
+	}
+	&#mobile {
+		display: none;
+	}
+	@media screen and (max-width: ${breakpoint.mobileBig}) {
+		&#desktop {
+			display: none;
+		}
+		&#mobile {
+			display: inline-block;
+		}
+	}
 `

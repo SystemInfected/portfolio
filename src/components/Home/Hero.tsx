@@ -65,7 +65,7 @@ const Hero = ({ introDelay }: HeroProps) => {
 			})
 			gsap.from(ctaWrapper, {
 				y: -(ctaWrapperPos.y + ctaWrapperPos.height),
-				delay: introDelay,
+				delay: 0.9 + introDelay,
 			})
 		}
 	}, [])
@@ -245,9 +245,7 @@ const Location = styled.h2`
 
 const CTAWrapper = styled.div`
 	pointer-events: auto;
-	position: fixed;
-	right: max(4rem, env(safe-area-inset-left));
-	top: 1.4rem;
+	margin-top: 4em;
 	z-index: 20;
 `
 
@@ -274,13 +272,13 @@ const Portrait = styled.div`
 const PortraitIllustration = styled(Portrait)`
 	-webkit-user-select: none;
 	@media screen and (max-width: 3000px) {
-		width: 65%;
+		width: 73%;
 	}
 	justify-content: flex-end;
 	margin-right: 5px;
 	position: relative;
 	user-select: none;
-	width: 60%;
+	width: 68%;
 	svg {
 		flex-shrink: 0;
 		height: clamp(80%, 70vw, 115%);
@@ -298,7 +296,7 @@ const PortraitIllustration = styled(Portrait)`
 const PortraitNodes = styled(Portrait)`
 	-webkit-user-select: none;
 	@media screen and (max-width: 3000px) {
-		width: 35%;
+		width: 27%;
 	}
 	background: radial-gradient(
 		ellipse at left 90%,
@@ -312,7 +310,7 @@ const PortraitNodes = styled(Portrait)`
 	justify-content: flex-start;
 	margin-left: 5px;
 	user-select: none;
-	width: 40%;
+	width: 32%;
 	canvas {
 		flex-shrink: 0;
 		height: clamp(80%, 70vw, 115%);

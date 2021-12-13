@@ -57,6 +57,9 @@ const AnimatedEye = (props) => {
 	}
 
 	let newMousePos = { y: 0, x: 0 }
+	const eyeMaxX = 900
+	const eyeMaxYTop = 500
+	const eyeMaxYBottom = 700
 
 	useEffect(() => {
 		const canvas = canvasRef.current
@@ -142,18 +145,18 @@ const AnimatedEye = (props) => {
 					frameCount++
 					if (
 						newMousePos.x > 50 &&
-						newMousePos.x < 900 &&
-						newMousePos.y < 700 &&
-						newMousePos.y > -500
+						newMousePos.x < eyeMaxX &&
+						newMousePos.y < eyeMaxYBottom &&
+						newMousePos.y > -eyeMaxYTop
 					) {
 						if (updatedEyePos.x < 20) {
 							updatedEyePos.x += eyeSpeed
 						}
 					} else if (
 						newMousePos.x < -50 &&
-						newMousePos.x > -900 &&
-						newMousePos.y < 700 &&
-						newMousePos.y > -500
+						newMousePos.x > -eyeMaxX &&
+						newMousePos.y < eyeMaxYBottom &&
+						newMousePos.y > -eyeMaxYTop
 					) {
 						if (updatedEyePos.x > -20) {
 							updatedEyePos.x -= eyeSpeed
@@ -171,18 +174,18 @@ const AnimatedEye = (props) => {
 					}
 					if (
 						newMousePos.y > 50 &&
-						newMousePos.y < 700 &&
-						newMousePos.x < 900 &&
-						newMousePos.x > -900
+						newMousePos.y < eyeMaxYBottom &&
+						newMousePos.x < eyeMaxX &&
+						newMousePos.x > -eyeMaxX
 					) {
 						if (updatedEyePos.y < 20) {
 							updatedEyePos.y += eyeSpeed
 						}
 					} else if (
 						newMousePos.y < -50 &&
-						newMousePos.y > -500 &&
-						newMousePos.x < 900 &&
-						newMousePos.x > -900
+						newMousePos.y > -eyeMaxYTop &&
+						newMousePos.x < eyeMaxX &&
+						newMousePos.x > -eyeMaxX
 					) {
 						if (updatedEyePos.y > -10) {
 							updatedEyePos.y -= eyeSpeed

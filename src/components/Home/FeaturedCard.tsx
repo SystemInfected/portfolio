@@ -347,6 +347,7 @@ const CardImages = styled.div`
 	transform-style: preserve-3d;
 	height: auto;
 	margin: 0 1em;
+	padding: 0 1em;
 	position: relative;
 	width: calc(100% - 2em);
 	img {

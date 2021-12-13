@@ -253,16 +253,7 @@ const SkillsList = styled.ul`
 	font-size: clamp(1.5rem, 1.7vw, 1.8rem);
 	list-style: none;
 	li {
-		background: linear-gradient(
-				120deg,
-				rgba(${color.mainColorDarkRGB}, 0.75),
-				rgba(${color.mainColorDarkRGB}, 0.75)
-			),
-			linear-gradient(
-				120deg,
-				${color.mainBackgroundColor},
-				${color.mainBackgroundColor}
-			);
+		background-color: rgba(${color.mainColorDarkRGB}, 0.5);
 		border-radius: 0.5em;
 		box-sizing: border-box;
 		list-style: none;

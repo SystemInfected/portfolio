@@ -116,16 +116,7 @@ const CTAWrapper = styled.div`
 	height: min-content;
 	margin-top: clamp(12rem, 12vw, 15rem);
 	font-size: clamp(1.5rem, 1.7vw, 1.8rem);
-	background: linear-gradient(
-			120deg,
-			rgba(${color.mainColorDarkRGB}, 0.75),
-			rgba(${color.mainColorDarkRGB}, 0.75)
-		),
-		linear-gradient(
-			120deg,
-			${color.mainBackgroundColor},
-			${color.mainBackgroundColor}
-		);
+	background-color: rgba(${color.mainColorDarkRGB}, 0.5);
 	border-radius: 0.5em;
 	padding: 2em;
 	@media (orientation: portrait) {

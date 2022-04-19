@@ -82,7 +82,7 @@ const Hero = ({ introDelay }: HeroProps) => {
 							className={pageEnter ? '' : 'animated'}
 						>
 							<span>Graphic Designer</span>
-							<span>Aspiring full-stack</span>
+							<span>Full-stack</span>
 							<span>Graphic Designer</span>
 						</HeaderText>
 						<HeaderText

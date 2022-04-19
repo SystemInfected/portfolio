@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import { gsap } from 'gsap'
 
 import { useMyContext } from '../Context/ContextProvider'
@@ -25,6 +25,7 @@ const Intro = ({ introDelay }: IntroProps) => {
 			'#introHeaderTagline'
 		)
 		const name: HTMLElement | null = document.querySelector('#introHeaderName')
+		const loader: HTMLElement | null = document.querySelector('#loader')
 
 		document.body.classList.toggle('lock-scroll')
 
@@ -36,7 +37,7 @@ const Intro = ({ introDelay }: IntroProps) => {
 		})
 
 		gsap.fromTo(
-			[portrait, name, header],
+			[portrait, name, header, loader],
 			{
 				scaleY: '200%',
 				scaleX: '200%',
@@ -76,6 +77,7 @@ const Intro = ({ introDelay }: IntroProps) => {
 					turn <strong>ideas</strong> into reality
 				</span>
 			</h1>
+			<Loader id='loader' />
 		</IntroContainer>
 	)
 }
@@ -128,4 +130,21 @@ const IntroContainer = styled.div`
 	&.hide {
 		display: none;
 	}
+`
+
+const loaderAnimation = keyframes`
+0% { transform: rotate(0deg); }
+100% { transform: rotate(360deg); }
+`
+
+const Loader = styled.div`
+	border: 4px solid rgba(${color.textLightRGB}, 0.3);
+	border-top: 4px solid ${color.mainAccentColor};
+	border-radius: 50%;
+	margin-top: 5em;
+	width: 32px;
+	height: 32px;
+	animation-duration: 2s;
+	animation-iteration-count: infinite;
+	animation-name: ${loaderAnimation};
 `

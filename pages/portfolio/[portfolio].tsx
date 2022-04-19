@@ -33,8 +33,7 @@ const DetailedPortfolio = ({ htmlString, data }: DetailedPortfolioProps) => {
 			<Head>
 				<title>
 					{data.title} - A project by Sebastian Widin • Graphic Designer, Web
-					Developer and aspiring Full-Stack Software Developer based in
-					Stockholm, Sweden
+					Developer & Full-Stack Software Developer based in Stockholm, Sweden
 				</title>
 
 				<meta
@@ -48,7 +47,7 @@ const DetailedPortfolio = ({ htmlString, data }: DetailedPortfolioProps) => {
 
 				<meta
 					name='og:title'
-					content={`${data.title} - A project by Sebastian Widin • Graphic Designer, Web Developer and aspiring Full-Stack Software Developer based in Stockholm, Sweden`}
+					content={`${data.title} - A project by Sebastian Widin • Graphic Designer, Web Developer & Full-Stack Software Developer based in Stockholm, Sweden`}
 				/>
 				<meta
 					name='og:description'
@@ -61,7 +60,7 @@ const DetailedPortfolio = ({ htmlString, data }: DetailedPortfolioProps) => {
 				<meta name='og:url' content='https://sebastianwidin.se/' />
 				<meta
 					name='og:site_name'
-					content={`${data.title} - A project by Sebastian Widin • Graphic Designer, Web Developer and aspiring Full-Stack Software Developer based in Stockholm, Sweden`}
+					content={`${data.title} - A project by Sebastian Widin • Graphic Designer, Web Developer & Full-Stack Software Developer based in Stockholm, Sweden`}
 				/>
 				<meta name='fb:admins' content='100041376167594' />
 				<meta name='og:type' content='website' />

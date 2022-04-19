@@ -138,6 +138,7 @@ const loaderAnimation = keyframes`
 `
 
 const Loader = styled.div`
+	opacity: 0;
 	border: 4px solid rgba(${color.textLightRGB}, 0.3);
 	border-top: 4px solid ${color.mainAccentColor};
 	border-radius: 50%;

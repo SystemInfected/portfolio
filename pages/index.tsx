@@ -8,9 +8,9 @@ import { useMyContext } from '../src/components/Context/ContextProvider'
 
 import NavBar from '../src/components/NavBar'
 import Footer from '../src/components/Footer'
+import Hero from '../src/components/Home/Hero'
+import Intro from '../src/components/Home/Intro'
 
-const Intro = dynamic(() => import('../src/components/Home/Intro'))
-const Hero = dynamic(() => import('../src/components/Home/Hero'))
 const Featured = dynamic(() => import('../src/components/Home/Featured'))
 const SkillsAbout = dynamic(() => import('../src/components/Home/SkillsAbout'))
 

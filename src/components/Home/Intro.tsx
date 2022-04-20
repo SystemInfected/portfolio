@@ -142,7 +142,7 @@ const Loader = styled.div`
 	border: 4px solid rgba(${color.textLightRGB}, 0.3);
 	border-top: 4px solid ${color.mainAccentColor};
 	border-radius: 50%;
-	margin-top: 5em;
+	margin-top: 8vh;
 	width: 32px;
 	height: 32px;
 	animation-duration: 2s;

@@ -45,11 +45,11 @@ const Hero = ({ introDelay }: HeroProps) => {
 			})
 			gsap.from(location, {
 				y: -(locationPos.y + locationPos.height),
-				delay: 0.6 + introDelay,
+				delay: 0.3 + introDelay,
 			})
 			gsap.from(ctaWrapper, {
 				y: -(ctaWrapperPos.y + ctaWrapperPos.height),
-				delay: 0.9 + introDelay,
+				delay: 0.6 + introDelay,
 			})
 		}
 	}, [])

@@ -25,24 +25,12 @@ const Hero = ({ introDelay }: HeroProps) => {
 		const headerContainer: HTMLElement | null = document.querySelector(
 			'#headerContainer'
 		)
-		const headerRowOne: HTMLElement | null = document.querySelector(
-			'#headerRowOne'
-		)
-		const headerRowTwo: HTMLElement | null = document.querySelector(
-			'#headerRowTwo'
-		)
+		const headerRow: HTMLElement | null = document.querySelector('#headerRow')
 		const location: HTMLElement | null = document.querySelector('#location')
 		const ctaWrapper: HTMLElement | null = document.querySelector('#ctaWrapper')
 
-		if (
-			headerContainer &&
-			headerRowOne &&
-			headerRowTwo &&
-			location &&
-			ctaWrapper
-		) {
-			const headerRowOnePos = headerRowOne.getBoundingClientRect()
-			const headerRowTwoPos = headerRowTwo.getBoundingClientRect()
+		if (headerContainer && headerRow && location && ctaWrapper) {
+			const headerRowPos = headerRow.getBoundingClientRect()
 			const locationPos = location.getBoundingClientRect()
 			const ctaWrapperPos = ctaWrapper.getBoundingClientRect()
 
@@ -51,13 +39,9 @@ const Hero = ({ introDelay }: HeroProps) => {
 				duration: 0.8,
 			})
 
-			gsap.from(headerRowOne, {
-				y: -(headerRowOnePos.y + headerRowOnePos.height),
+			gsap.from(headerRow, {
+				y: -(headerRowPos.y + headerRowPos.height),
 				delay: introDelay,
-			})
-			gsap.from(headerRowTwo, {
-				y: -(headerRowTwoPos.y + headerRowTwoPos.height),
-				delay: 0.3 + introDelay,
 			})
 			gsap.from(location, {
 				y: -(locationPos.y + locationPos.height),
@@ -77,22 +61,25 @@ const Hero = ({ introDelay }: HeroProps) => {
 				<HeaderWrapper id='headerWrapper'>
 					<Header>
 						<HeaderText
-							id='headerRowOne'
+							id='headerRow'
 							style={{ transform: 'translateY(0px)' }}
 							className={pageEnter ? '' : 'animated'}
 						>
-							<span>Graphic Designer</span>
-							<span>Full-stack</span>
-							<span>Graphic Designer</span>
-						</HeaderText>
-						<HeaderText
-							id='headerRowTwo'
-							style={{ transform: 'translateY(0px)' }}
-							className={pageEnter ? '' : 'animated'}
-						>
-							<span>Web Developer</span>
-							<span>Software Developer</span>
-							<span>Web Developer</span>
+							<span>
+								Graphic Designer
+								<br />
+								Web Developer
+							</span>
+							<span>
+								Full-stack
+								<br />
+								Software Developer
+							</span>
+							<span>
+								Graphic Designer
+								<br />
+								Web Developer
+							</span>
 						</HeaderText>
 					</Header>
 					<Location id='location'>
@@ -175,7 +162,7 @@ const HeaderText = styled.div`
 	display: block;
 	position: relative;
 	overflow: hidden;
-	height: 1.2em;
+	height: 2.4em;
 	span {
 		display: block;
 		height: 100%;
@@ -197,10 +184,10 @@ const HeaderText = styled.div`
 
 const rotatingHeader = () => keyframes`
 	3%{
-    transform: translateY(-112%);
+    transform: translateY(-105%);
   }
 	4%{
-    transform: translateY(-112%);
+    transform: translateY(-105%);
   }
   13%{
     transform: translateY(-100%);
@@ -209,10 +196,10 @@ const rotatingHeader = () => keyframes`
 		transform: translateY(-100%);
 	}
   53%{
-		transform: translateY(-212%);
+		transform: translateY(-205%);
   }
   54%{
-		transform: translateY(-212%);
+		transform: translateY(-205%);
   }
   63%{
 		transform: translateY(-200%);

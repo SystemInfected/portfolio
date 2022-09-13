@@ -2,7 +2,7 @@ import React from 'react'
 import Head from 'next/head'
 import fs from 'fs'
 import path from 'path'
-import marked from 'marked'
+import { marked } from 'marked'
 import matter from 'gray-matter'
 
 import { useMyContext } from '../../src/components/Context/ContextProvider'

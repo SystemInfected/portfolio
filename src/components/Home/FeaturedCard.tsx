@@ -47,7 +47,7 @@ const FeaturedCard = (props: { work: string | number }) => {
 					ease: 'power2.out',
 					scrollTrigger: {
 						trigger: cardRef,
-						//markers: true,
+						// markers: true,
 						start: '-100px 95%',
 						end: 'top bottom',
 					},

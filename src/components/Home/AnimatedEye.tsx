@@ -71,6 +71,7 @@ const AnimatedEye = (props) => {
 
 			const headerContainer = document.querySelector('#headerContainer')
 			if (headerContainer) {
+				// eslint-disable-next-line @typescript-eslint/no-explicit-any
 				headerContainer.addEventListener('mousemove', (event: any) => {
 					const canvasXMultiplier =
 						canvas.width / canvas.getBoundingClientRect().width
@@ -90,6 +91,7 @@ const AnimatedEye = (props) => {
 				})
 				headerContainer.addEventListener(
 					'touchstart touchmove',
+					// eslint-disable-next-line @typescript-eslint/no-explicit-any
 					(event: any) => {
 						const canvasXMultiplier =
 							canvas.width / canvas.getBoundingClientRect().width

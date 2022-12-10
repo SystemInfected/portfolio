@@ -3,6 +3,10 @@
 		"year": 2022,
 		"yearEvents": [
 			{
+				"data": "<span>certificate</span> Technia Consultancy Excellence <span>TECHNIA AB</span>",
+				"type": "professional"
+			},
+			{
 				"data": "<span>award</span> Rookie of The Year <span>TECHNIA AB</span>",
 				"type": "professional"
 			}

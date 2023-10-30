@@ -1,0 +1,36 @@
+@use 'variables' as *;
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+html {
+	font-family: sans-serif;
+	-ms-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+	font-size: 62.5%;
+}
+body {
+	background-color: $mainBackgroundColor;
+	min-height: 100vh;
+	font-family: $standardFont;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-overflow-scrolling: touch;
+	&.lock-scroll {
+		overflow: hidden;
+		height: 100%;
+	}
+}
+a,
+a.link-tag:hover,
+a.link-tag:active,
+a.link-tag:focus,
+a.link-tag:visited {
+	text-decoration: none;
+}
+a:hover,
+a:focus {
+	text-decoration: underline;
+}

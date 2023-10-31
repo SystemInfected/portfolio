@@ -1,9 +1,9 @@
 import React, { useRef, useEffect } from 'react'
 
-const AnimatedEye = (props) => {
+const AnimatedEye = () => {
 	const canvasRef = useRef<HTMLCanvasElement>(null)
 
-	const draw = (ctx, eyePos) => {
+	const draw = (ctx: any, eyePos: any) => {
 		ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height)
 
 		// Eye background
@@ -217,7 +217,7 @@ const AnimatedEye = (props) => {
 		}
 	}, [draw])
 
-	return <canvas ref={canvasRef} {...props} />
+	return <canvas ref={canvasRef} />
 }
 
 export default AnimatedEye

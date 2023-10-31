@@ -1,14 +1,12 @@
-'use client'
-
 import React, { useEffect, useState } from 'react'
+import styled from 'styled-components'
 import { gsap } from 'gsap'
 import { ToastContainer } from 'react-toastify'
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
-import MoreVertIcon from '@mui/icons-material/MoreVert'
-import CloseIcon from '@mui/icons-material/Close'
+import MoreVertIcon from '@material-ui/icons/MoreVert'
+import CloseIcon from '@material-ui/icons/Close'
 import Link from 'next/link'
-
-import styles from '@/styles/NavBar.module.scss'
+import { color, font, breakpoint } from '../../styles/variables'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -32,8 +30,9 @@ const NavBar = ({ locked, startpage }: NavBarProps) => {
 
 	useEffect(() => {
 		const navBar: HTMLElement | null = document.querySelector('#navBar')
-		const navBarSpacer: HTMLElement | null =
-			document.querySelector('#navBarSpacer')
+		const navBarSpacer: HTMLElement | null = document.querySelector(
+			'#navBarSpacer'
+		)
 		const headerContainer = document.querySelector('#headerContainer')
 		const menuToggle: HTMLElement | null = document.querySelector('#menuToggle')
 		const menuNav: HTMLElement | null = document.querySelector('#menuNav')
@@ -118,8 +117,9 @@ const NavBar = ({ locked, startpage }: NavBarProps) => {
 
 		const mobileMenuPos = { x: 0, y: 0 }
 		if (menuToggle && menuNav) {
-			const menuNavLinks: NodeListOf<HTMLAnchorElement> | null =
-				menuNav.querySelectorAll('a')
+			const menuNavLinks: NodeListOf<HTMLAnchorElement> | null = menuNav.querySelectorAll(
+				'a'
+			)
 			let menuTogglePos = menuToggle.getBoundingClientRect()
 			menuToggle.addEventListener('click', () => {
 				menuTogglePos = menuToggle.getBoundingClientRect()
@@ -168,59 +168,66 @@ const NavBar = ({ locked, startpage }: NavBarProps) => {
 		)
 	}, [])
 
-	const renderHomeNavlink = (isOnStartpage: boolean) => {
+	const renderHomeNavlink = (isOnStartpage) => {
 		if (isOnStartpage) {
 			return (
 				<a onClick={() => scrollToElement('hero')} className='link-tag'>
-					<h1 className={styles.logoTitle}>
+					<LogoTitle>
 						<span>&lt;</span>
 						<span>Sebastian</span>
 						<span>Widin</span>/<span>&gt;</span>
-					</h1>
+					</LogoTitle>
 				</a>
 			)
 		}
 		return (
-			<Link href='/' className='link-tag'>
-				<h1 className={styles.logoTitle}>
-					<span>&lt;</span>
-					<span>Sebastian</span>
-					<span>Widin</span>/<span>&gt;</span>
-				</h1>
+			<Link href='/'>
+				<a className='link-tag'>
+					<LogoTitle>
+						<span>&lt;</span>
+						<span>Sebastian</span>
+						<span>Widin</span>/<span>&gt;</span>
+					</LogoTitle>
+				</a>
 			</Link>
 		)
 	}
 
-	const renderSkillsNavlink = (isOnStartpage: boolean) => {
+	const renderSkillsNavlink = (isOnStartpage) => {
 		if (isOnStartpage) {
 			return <a onClick={() => scrollToElement('skills')}>Skills</a>
 		}
-		return <Link href='/#skills'>Skills</Link>
+		return (
+			<Link href='/#skills'>
+				<a>Skills</a>
+			</Link>
+		)
 	}
 
 	return (
 		<>
 			<ToastContainer style={{ fontSize: '1.5rem' }} />
-			<section className={styles.navBg} id='navBar'>
-				<nav className={styles.nav}>
+			<NavBg id='navBar'>
+				<Nav>
 					{renderHomeNavlink(startpage)}
-					<ul className={styles.menu}>
+					<Menu>
 						<li>
-							<Link href='/portfolio/'>Projects</Link>
+							<Link href='/portfolio/'>
+								<a>Projects</a>
+							</Link>
 						</li>
 						<li>{renderSkillsNavlink(startpage)}</li>
 						<li>
 							<a onClick={() => scrollToElement('contact')}>Contact</a>
 						</li>
-					</ul>
-					<div className={styles.menuToggle} id='menuToggle'>
+					</Menu>
+					<MenuToggle id='menuToggle'>
 						<MoreVertIcon style={{ fontSize: '3rem' }} />
-					</div>
-				</nav>
-			</section>
-			<div className={styles.navBarSpacer} id='navBarSpacer' />
-			<div
-				className={styles.mobileNav}
+					</MenuToggle>
+				</Nav>
+			</NavBg>
+			<NavBarSpacer id='navBarSpacer' />
+			<MobileNav
 				id='menuNav'
 				style={{
 					transition: menuActive
@@ -233,21 +240,188 @@ const NavBar = ({ locked, startpage }: NavBarProps) => {
 					}px ${mobileMenuPos.y}px)`,
 				}}
 			>
-				<div className={styles.closeMobileMenu} id='closeMenu'>
+				<CloseMobileMenu id='closeMenu'>
 					<CloseIcon style={{ fontSize: '3rem' }} />
-				</div>
-				<div className={styles.mobileMenu}>
+				</CloseMobileMenu>
+				<MobileMenu>
 					<li className='mobile-menu-li'>
-						<Link href='/portfolio/'>Projects</Link>
+						<Link href='/portfolio/'>
+							<a>Projects</a>
+						</Link>
 					</li>
 					<li className='mobile-menu-li'>{renderSkillsNavlink(startpage)}</li>
 					<li className='mobile-menu-li'>
 						<a onClick={() => scrollToElement('contact')}>Contact</a>
 					</li>
-				</div>
-			</div>
+				</MobileMenu>
+			</MobileNav>
 		</>
 	)
 }
 
 export default NavBar
+
+const NavBg = styled.section`
+	background: ${color.mainAccentColor};
+	box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.1);
+	display: flex;
+	justify-content: center;
+	transform: translateZ(2500px);
+	width: 100%;
+	z-index: 2500;
+`
+
+const Nav = styled.nav`
+	align-items: center;
+	display: flex;
+	height: 60px;
+	justify-content: space-between;
+	max-width: ${breakpoint.maxWidth};
+	padding: 0 max(4rem, env(safe-area-inset-left));
+	position: relative;
+	width: 100%;
+	@media screen and (max-width: ${breakpoint.tablet}) {
+		padding: 0 1em 0 2.5em;
+	}
+`
+
+const LogoTitle = styled.h1`
+	align-items: center;
+	color: ${color.mainColorDark};
+	cursor: pointer;
+	display: flex;
+	font-family: ${font.headingsFont};
+	font-size: 2.2rem;
+	font-weight: 250;
+	letter-spacing: 0.07em;
+	line-height: 0.9;
+	text-transform: uppercase;
+	span:nth-child(3) {
+		font-weight: 500;
+	}
+	span:nth-child(1),
+	span:nth-child(4) {
+		font-weight: 200;
+		line-height: 0.2;
+		margin-top: -0.4em;
+		transform: scale(1, 1.72);
+	}
+	transition: transform ease-in-out 0.2s;
+	&:hover,
+	&:focus {
+		transform: scale(1.05);
+	}
+`
+
+const Menu = styled.ul`
+	align-items: center;
+	display: flex;
+	list-style-type: none;
+	li {
+		font-size: clamp(1.4rem, 1.5vw, 1.8rem);
+		font-weight: 500;
+		margin-left: 1em;
+		margin-top: 0.45em;
+		a {
+			cursor: pointer;
+			color: ${color.mainColorDark};
+			display: block;
+			padding: 0.5em 1em;
+			&:hover,
+			&:focus {
+				outline: none;
+				text-decoration: none;
+				::after {
+					width: 100%;
+				}
+			}
+			&::after {
+				background: ${color.mainColorDark};
+				content: '';
+				display: block;
+				font-size: clamp(1.4rem, 1.5vw, 1.8rem);
+				height: 0.12em;
+				margin-top: 0.2em;
+				transition: width ease-out 0.2s;
+				width: 0;
+			}
+		}
+	}
+	@media screen and (max-width: ${breakpoint.tablet}) {
+		display: none;
+	}
+`
+
+const MenuToggle = styled.div`
+	color: ${color.mainColorDark};
+	cursor: pointer;
+	display: none;
+	padding: 0.5em;
+	svg {
+		margin-top: 0.1em;
+	}
+	@media screen and (max-width: ${breakpoint.tablet}) {
+		display: block;
+	}
+`
+
+const MobileNav = styled.div`
+	background: rgba(${color.mainColorDarkRGB}, 0.95);
+	height: 100vh;
+	left: 0;
+	padding: 3rem;
+	position: fixed;
+	top: 0;
+	touch-action: none;
+	transform: translateZ(3000px);
+	width: 100vw;
+	z-index: 3000;
+`
+
+const CloseMobileMenu = styled.div`
+	color: ${color.mainAccentColor};
+	cursor: pointer;
+	padding: 0.5em;
+	position: absolute;
+	right: 1rem;
+	top: 1rem;
+`
+
+const MobileMenu = styled.div`
+	align-items: center;
+	display: flex;
+	flex-direction: row;
+	height: 100%;
+	justify-content: center;
+	list-style-type: none;
+	padding-top: 0;
+	width: 100%;
+	li {
+		opacity: 0;
+		font-size: clamp(2.4rem, 5vw, 3.2rem);
+		font-weight: 400;
+		margin-top: 0;
+		a {
+			color: ${color.mainAccentColor};
+			display: block;
+			padding: 0.5em 1em;
+			&:hover,
+			&:focus {
+				text-decoration: none;
+			}
+		}
+	}
+	@media (orientation: portrait) {
+		padding-top: 5vh;
+		flex-direction: column;
+		justify-content: flex-start;
+		li {
+			margin-top: 5vh;
+		}
+	}
+`
+
+const NavBarSpacer = styled.div`
+	display: block;
+	width: 100%;
+`

@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from 'react'
-import { color } from '../../styles/variables'
+import { color } from '../../../styles/variables'
 
 const randPos = (
 	valueX: number,
@@ -28,10 +28,10 @@ const randPos = (
 	return { x: newValueX, y: newValueY }
 }
 
-const AnimatedNodes = () => {
+const AnimatedNodes = (props) => {
 	const canvasRef = useRef<HTMLCanvasElement>(null)
 
-	const draw = (ctx: any, frameCount: number, mousePos: any) => {
+	const draw = (ctx, frameCount, mousePos) => {
 		ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height)
 
 		// circles
@@ -689,7 +689,7 @@ const AnimatedNodes = () => {
 		}
 	}, [draw])
 
-	return <canvas ref={canvasRef} />
+	return <canvas ref={canvasRef} {...props} />
 }
 
 export default AnimatedNodes

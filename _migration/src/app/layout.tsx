@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { Oswald, Raleway } from 'next/font/google'
-import '../styles/Main.scss'
+import '@/styles/Main.scss'
 
 const oswald = Oswald({ subsets: ['latin'], variable: '--font-oswald' })
 const raleway = Raleway({ subsets: ['latin'], variable: '--font-raleway' })

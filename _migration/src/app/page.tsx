@@ -1,9 +1,13 @@
-import Image from 'next/image'
+import Hero from '@/components/Home/Hero'
+import NavBar from '@/components/NavBar'
 
-export default function Home() {
+const Home = () => {
 	return (
-		<main>
-			<h1>Hej!</h1>
-		</main>
+		<>
+			<Hero />
+			<NavBar locked={false} startpage />
+		</>
 	)
 }
+
+export default Home

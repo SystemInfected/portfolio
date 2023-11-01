@@ -1,0 +1,29 @@
+[
+	{
+		"type": "design",
+		"skills": ["photoshop", "illustrator", "indesign", "adobe xd", "figma"]
+	},
+	{
+		"type": "development",
+		"skills": [
+			"javascript",
+			"typescript",
+			"react",
+			"node",
+			"html",
+			"css",
+			"php",
+			"sql/pdo",
+			"agile workflow",
+			"git"
+		]
+	},
+	{
+		"type": "audio",
+		"skills": ["ableton live", "logic pro", "ni maschine"]
+	},
+	{
+		"type": "video",
+		"skills": ["after effects", "premiere pro", "animate"]
+	}
+]

@@ -24,13 +24,19 @@ body {
 	}
 }
 a,
-a.link-tag:hover,
-a.link-tag:active,
-a.link-tag:focus,
-a.link-tag:visited {
+.link-tag:hover,
+.link-tag:active,
+.link-tag:focus,
+.link-tag:visited {
 	text-decoration: none;
 }
 a:hover,
 a:focus {
 	text-decoration: underline;
+}
+
+section.section {
+	display: flex;
+	justify-content: center;
+	width: 100%;
 }

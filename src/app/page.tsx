@@ -1,4 +1,5 @@
-import Hero from '@/components/Home/Hero'
+import Featured from '@/components/Featured/Featured'
+import Hero from '@/components/Hero/Hero'
 import NavBar from '@/components/NavBar'
 
 const Home = () => {
@@ -6,6 +7,7 @@ const Home = () => {
 		<>
 			<Hero />
 			<NavBar locked={false} startpage />
+			<Featured />
 		</>
 	)
 }

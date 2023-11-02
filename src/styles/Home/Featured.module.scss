@@ -158,15 +158,6 @@
 	width: 100%;
 }
 
-@keyframes scrollAnimation {
-	0% {
-		transform: translateX(0);
-	}
-	100% {
-		transform: translateX(calc(var(--distance) px - 2px));
-	}
-}
-
 .client {
 	align-items: center;
 	background-color: white;
@@ -189,9 +180,18 @@
 	}
 	&.scroll {
 		animation-direction: alternate;
-		animation-duration: var(--speed) s;
+		animation-duration: calc(var(--speed) * 1s);
 		animation-iteration-count: infinite;
 		animation-name: scrollAnimation;
 		animation-timing-function: ease-in-out;
+	}
+}
+
+@keyframes scrollAnimation {
+	0% {
+		transform: translateX(0);
+	}
+	100% {
+		transform: translateX(calc(calc(var(--distance) * -1px) - 2px));
 	}
 }

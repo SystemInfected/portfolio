@@ -224,6 +224,7 @@ const FeaturedCard = (props: { work: string }) => {
 				if (iOS) {
 					requestPermission()
 						.then((permissionState) => {
+							alert(permissionState)
 							if (permissionState === 'granted') {
 								window.addEventListener('deviceorientation', handleDeviceMotion)
 							}

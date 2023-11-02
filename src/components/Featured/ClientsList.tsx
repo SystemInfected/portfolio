@@ -22,11 +22,11 @@ const ClientsList = () => {
 			const clients = clientContainer.querySelectorAll('#client')
 			if (clientContainer.scrollWidth - diff > clientContainer.clientWidth) {
 				clients.forEach((client) => {
-					client.classList.add('scroll')
+					client.classList.add(styles.scroll)
 				})
 			} else {
 				clients.forEach((client) => {
-					client.classList.remove('scroll')
+					client.classList.remove(styles.scroll)
 				})
 			}
 		}

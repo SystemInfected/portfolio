@@ -10,7 +10,7 @@
 .headerContainer {
 	align-items: flex-end;
 	display: flex;
-	height: 100%;
+	height: calc(100svh - 60px);
 	justify-content: center;
 	position: relative;
 	width: 100%;

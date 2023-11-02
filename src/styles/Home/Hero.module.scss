@@ -141,7 +141,7 @@
 @mixin portrait {
 	align-items: flex-end;
 	display: flex;
-	height: calc(100vh - 60px);
+	height: calc(100svh - 60px);
 	max-height: 1080px;
 	overflow: hidden;
 	@media (orientation: portrait) {

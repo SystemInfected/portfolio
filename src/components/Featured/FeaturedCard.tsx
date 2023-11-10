@@ -1,11 +1,11 @@
 'use client'
 
-import React, { useRef, useEffect, useState, useCallback, useMemo } from 'react'
 import { gsap } from 'gsap'
-import Link from 'next/link'
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
-import featuredData from '@/data/featuredData.json'
+import Link from 'next/link'
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
+import featuredData from '@/data/featuredData.json'
 import styles from '@/styles/Home/Featured.module.scss'
 
 gsap.registerPlugin(ScrollTrigger)

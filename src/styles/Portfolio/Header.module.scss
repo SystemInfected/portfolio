@@ -1,0 +1,133 @@
+@use '../variables' as *;
+
+.section {
+  background: linear-gradient(
+      320deg,
+      rgba(0, 0, 0, 0.4) 0%,
+      rgba(0, 0, 0, 0.35) 40%,
+      rgba(0, 0, 0, 0) 100%
+    ),
+    rgba($mainColorDarkRGB, 0.75);
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.headerSection {
+  max-width: $breakpointMaxWidth;
+  height: 70vh;
+  padding: 0 max(4rem, env(safe-area-inset-left));
+  padding-bottom: 5em;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  @media screen and (max-width: $breakpointTablet) {
+    padding: 0 2.5em;
+    padding-bottom: 5em;
+  }
+  @media (orientation: portrait) {
+    padding-top: 5em;
+    height: 75vh;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+.headerWrapper {
+  width: 40%;
+  @media (orientation: portrait) {
+    width: 100%;
+  }
+  h1 {
+    color: $mainAccentColor;
+    font-family: $headingsFont;
+    font-size: clamp(3.6rem, 4.8vw, 8rem);
+    font-weight: 450;
+    letter-spacing: 0.02rem;
+    line-height: 1.2;
+    text-transform: uppercase;
+    @media (orientation: portrait) {
+      font-size: clamp(3.8rem, 8vw, 10rem);
+    }
+  }
+  ul {
+    padding-top: 1em;
+    width: 80%;
+    color: $textLight;
+    display: inline-block;
+    font-size: clamp(1rem, 1vw, 1.2rem);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    line-height: 1.6;
+    text-transform: uppercase;
+    h3 {
+      font-size: 1em;
+      color: $mainAccentColor;
+      margin-top: 2em;
+      display: block;
+    }
+    @media (orientation: portrait) {
+      width: 100%;
+      font-size: 1.2rem;
+    }
+    li {
+      display: inline-block;
+      margin-right: 1em;
+    }
+  }
+}
+
+.images {
+  width: 50%;
+  height: 60vh;
+  position: relative;
+  visibility: hidden;
+  @media (orientation: portrait) {
+    width: 100%;
+  }
+  img {
+    position: absolute;
+    cursor: pointer;
+    right: 10%;
+    bottom: -30%;
+    &:nth-of-type(1) {
+      height: clamp(75%, 40vw, 100%);
+      @media (orientation: portrait) {
+        height: clamp(90%, 80vw, 120%);
+        //right: 20%;
+      }
+    }
+    &:nth-of-type(2) {
+      height: clamp(35%, 20vw, 50%);
+      right: -2%;
+      @media (orientation: portrait) {
+        height: clamp(65%, 40vw, 70%);
+        //right: -4%;
+      }
+    }
+  }
+}
+
+.imageContainer {
+  position: fixed;
+  z-index: 3000;
+  transform: translateZ(3000px);
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  visibility: hidden;
+  img {
+    object-fit: contain;
+    height: 80%;
+    width: 90%;
+  }
+}

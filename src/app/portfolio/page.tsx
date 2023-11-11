@@ -11,7 +11,7 @@ import styles from '@/styles/Portfolio/Portfolio.module.scss'
 
 export const metadata: Metadata = {
   title:
-    "My Portfolio - Full-Stack Software Developer, Graphic Designer & Web Developer based in Stockholm, Sweden - Sebastian Widin's portfolio",
+    "My Portfolio | Full-Stack Software Developer, Graphic Designer & Web Developer based in Stockholm, Sweden - Sebastian Widin's portfolio",
   description:
     "I am a Graphic Designer, Web Developer & Full-Stack Software Developer from Stockholm, Sweden. This is a selection of projects I'm proud of 😊",
   alternates: {
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   openGraph: {
     siteName: 'SebastianWidin.se',
     title:
-      "My Portfolio - Full-Stack Software Developer, Graphic Designer & Web Developer based in Stockholm, Sweden - Sebastian Widin's portfolio",
+      "My Portfolio | Full-Stack Software Developer, Graphic Designer & Web Developer based in Stockholm, Sweden - Sebastian Widin's portfolio",
     description:
       "I am a Graphic Designer, Web Developer & Full-Stack Software Developer from Stockholm, Sweden. This is a selection of projects I'm proud of 😊",
     images: '/images/og_header.jpg',

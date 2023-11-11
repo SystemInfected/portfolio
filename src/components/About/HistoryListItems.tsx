@@ -1,6 +1,6 @@
 import React from 'react'
 
-import historyData from '@/data/historyData.json'
+import historyData from '@/app/data/historyData.json'
 import styles from '@/styles/Home/About.module.scss'
 
 const HistoryListItems = () => {

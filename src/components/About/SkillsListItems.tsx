@@ -1,6 +1,6 @@
 import React from 'react'
 
-import skillsData from '@/data/skillsData.json'
+import skillsData from '@/app/data/skillsData.json'
 
 const SkillsListItems = () => {
   return (

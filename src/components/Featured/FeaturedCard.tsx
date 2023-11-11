@@ -5,7 +5,6 @@ import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 import Link from 'next/link'
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
-import featuredData from '@/data/featuredData.json'
 import styles from '@/styles/Home/Featured.module.scss'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -14,11 +13,8 @@ interface DeviceOrientationEventiOS extends DeviceOrientationEvent {
   requestPermission?: () => Promise<'granted' | 'denied'>
 }
 
-const FeaturedCard = (props: { work: string }) => {
-  const { work } = props
+const FeaturedCard = ({ cardData }: any) => {
   const featuredCardRef = useRef<HTMLDivElement>(null)
-  const data: any = featuredData
-  const cardData = data[work]
   const [deviceMotion, setDeviceMotion] = useState(false)
 
   const imagePos = useMemo(() => ({}), [])
@@ -265,7 +261,6 @@ const FeaturedCard = (props: { work: string }) => {
             ) => {
               const position: any = imagePos
               return (
-                // eslint-disable-next-line @next/next/no-img-element
                 <img
                   key={index}
                   src={`thumbs/${image.url}`}

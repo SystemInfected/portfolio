@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react'
 
-import clientsData from '@/data/clientsData.json'
+import clientsData from '@/app/data/clientsData.json'
 import styles from '@/styles/Home/Featured.module.scss'
 
 const ClientsList = () => {

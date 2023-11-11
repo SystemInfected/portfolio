@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
 
+import featuredData from '@/app/data/featuredData.json'
 import styles from '@/styles/Home/Featured.module.scss'
 
 import SectionHeader from '../SectionHeader'
@@ -14,9 +15,9 @@ const Featured = () => {
       <div className={styles.featureSection}>
         <SectionHeader>Featured projects</SectionHeader>
         <div className={styles.featuredContainer}>
-          <FeaturedCard work='usab' />
-          <FeaturedCard work='nodell' />
-          <FeaturedCard work='crypto' />
+          {Object.values(featuredData).map((data) => (
+            <FeaturedCard key={data.slug} cardData={data} />
+          ))}
         </div>
         <div className={styles.centeredSection}>
           <Link href='/portfolio/' className='link-tag'>

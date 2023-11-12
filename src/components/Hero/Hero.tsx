@@ -1,18 +1,17 @@
 'use client'
 
 import { gsap } from 'gsap'
-import React, { useEffect } from 'react'
+import Image from 'next/image'
+import { useEffect } from 'react'
 
+import portrait_illustration_foreground from '@/assets/hero/portrait_illustration_foreground.svg'
 import styles from '@/styles/Home/Hero.module.scss'
 import LocationOnIcon from '@mui/icons-material/LocationOn'
 
 import IllustrationEye from '../../assets/hero/IllustrationEye'
-import IllustrationForeground from '../../assets/hero/IllustrationForeground'
-import portrait_illustration_foreground from '@/assets/hero/portrait_illustration_foreground.svg'
 import { scrollToElement } from '../NavBar'
 import AnimatedEye from './AnimatedEye'
 import AnimatedNodes from './AnimatedNodes'
-import Image from 'next/image'
 
 const Hero = () => {
   useEffect(() => {

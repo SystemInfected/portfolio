@@ -82,9 +82,12 @@ const Hero = () => {
             Stockholm, Sweden
           </h2>
           <div className={styles.ctaWrapper} id='ctaWrapper'>
-            <a onClick={() => scrollToElement('featured')}>
-              <button className={styles.cta}>See my work</button>
-            </a>
+            <button
+              className={styles.cta}
+              onClick={() => scrollToElement('featured')}
+            >
+              See my work
+            </button>
           </div>
         </div>
         <div className={styles.portraitIllustration} id='portraitIllustration'>

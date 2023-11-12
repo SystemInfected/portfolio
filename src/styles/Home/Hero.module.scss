@@ -130,6 +130,7 @@
 }
 
 .cta {
+  cursor: pointer;
   background-color: $mainAccentColor;
   color: $mainColorDark;
   @media (orientation: portrait) {

@@ -1,42 +1,42 @@
 @use 'variables' as *;
 
 * {
-	padding: 0;
-	margin: 0;
-	box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 html {
-	font-family: sans-serif;
-	-ms-text-size-adjust: 100%;
-	-webkit-text-size-adjust: 100%;
-	font-size: 62.5%;
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  font-size: 62.5%;
 }
 body {
-	background-color: $mainBackgroundColor;
-	min-height: 100vh;
-	font-family: $standardFont;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	-webkit-overflow-scrolling: touch;
-	&.lock-scroll {
-		overflow: hidden;
-		height: 100%;
-	}
+  background-color: $mainBackgroundColor;
+  min-height: 100vh;
+  font-family: $standardFont;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-overflow-scrolling: touch;
+  &.lock-scroll {
+    overflow: hidden;
+    height: 100%;
+  }
 }
 a,
 .link-tag:hover,
 .link-tag:active,
 .link-tag:focus,
 .link-tag:visited {
-	text-decoration: none;
+  text-decoration: none;
 }
 a:hover,
 a:focus {
-	text-decoration: underline;
+  text-decoration: underline;
 }
 
 section.section {
-	display: flex;
-	justify-content: center;
-	width: 100%;
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }

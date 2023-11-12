@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  maximumScale: 1,
+  maximumScale: 5,
   viewportFit: 'cover',
 }
 
@@ -31,11 +31,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en'>
-      <meta charSet='utf-8' />
-      <meta
-        name='viewport'
-        content='width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover'
-      />
       <body className={`${oswald.variable} ${raleway.variable}`}>
         {children}
         <Footer />

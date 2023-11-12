@@ -22,7 +22,7 @@ export const scrollToElement = (element: string) => {
   if (titleElement) {
     setTimeout(() => {
       titleElement.scrollIntoView({ behavior: 'smooth' })
-    }, 300)
+    }, 50)
   }
 }
 
@@ -171,13 +171,13 @@ const NavBar = ({ locked, startpage }: NavBarProps) => {
   const renderHomeNavlink = (isOnStartpage: boolean) => {
     if (isOnStartpage) {
       return (
-        <a onClick={() => scrollToElement('hero')} className='link-tag'>
+        <span onClick={() => scrollToElement('hero')} className='link-tag'>
           <h1 className={styles.logoTitle}>
             <span>&lt;</span>
             <span>Sebastian</span>
             <span>Widin</span>/<span>&gt;</span>
           </h1>
-        </a>
+        </span>
       )
     }
     return (
@@ -193,7 +193,11 @@ const NavBar = ({ locked, startpage }: NavBarProps) => {
 
   const renderSkillsNavlink = (isOnStartpage: boolean) => {
     if (isOnStartpage) {
-      return <a onClick={() => scrollToElement('skills')}>Skills</a>
+      return (
+        <span tabIndex={0} onClick={() => scrollToElement('skills')}>
+          Skills
+        </span>
+      )
     }
     return <Link href='/#skills'>Skills</Link>
   }
@@ -210,7 +214,9 @@ const NavBar = ({ locked, startpage }: NavBarProps) => {
             </li>
             <li>{renderSkillsNavlink(startpage)}</li>
             <li>
-              <a onClick={() => scrollToElement('contact')}>Contact</a>
+              <span tabIndex={0} onClick={() => scrollToElement('contact')}>
+                Contact
+              </span>
             </li>
           </ul>
           <div className={styles.menuToggle} id='menuToggle'>
@@ -236,15 +242,17 @@ const NavBar = ({ locked, startpage }: NavBarProps) => {
         <div className={styles.closeMobileMenu} id='closeMenu'>
           <CloseIcon style={{ fontSize: '3rem' }} />
         </div>
-        <div className={styles.mobileMenu}>
+        <ul className={styles.mobileMenu}>
           <li className='mobile-menu-li'>
             <Link href='/portfolio/'>Projects</Link>
           </li>
           <li className='mobile-menu-li'>{renderSkillsNavlink(startpage)}</li>
           <li className='mobile-menu-li'>
-            <a onClick={() => scrollToElement('contact')}>Contact</a>
+            <span tabIndex={0} onClick={() => scrollToElement('contact')}>
+              Contact
+            </span>
           </li>
-        </div>
+        </ul>
       </div>
     </>
   )

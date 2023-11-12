@@ -109,7 +109,6 @@ const ContactForm = () => {
                 name: e.target.value,
               }))
             }
-            tabIndex={1}
           />
           <TextField
             name='email'
@@ -125,14 +124,12 @@ const ContactForm = () => {
                 email: e.target.value,
               }))
             }
-            tabIndex={2}
           />
           <button
             className={`${styles.cta} ${styles.desktop}`}
             id='desktop'
             type='submit'
             disabled={mailData.sending}
-            tabIndex={4}
           >
             {mailData.buttonText}
           </button>
@@ -153,14 +150,12 @@ const ContactForm = () => {
                 message: e.target.value,
               }))
             }
-            tabIndex={3}
           />
           <button
             className={`${styles.cta} ${styles.mobile}`}
             id='mobile'
             type='submit'
             disabled={mailData.sending}
-            tabIndex={4}
           >
             {mailData.buttonText}
           </button>

@@ -58,8 +58,8 @@ const ClientsList = () => {
             src={`/${client.url}`}
             alt={client.name}
             title={client.name}
-            sizes='(min-width: 60em) 24vw, (min-width: 28em) 45vw, 100vw'
-            quality={80}
+            sizes='(max-width: 768px) 300px, (max-width: 1200px) 150px, 120px'
+            quality={70}
             fill
             style={{ objectFit: 'contain' }}
             loading='lazy'

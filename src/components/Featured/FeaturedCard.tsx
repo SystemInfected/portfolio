@@ -247,7 +247,11 @@ const FeaturedCard = ({ cardData }: any) => {
   }, [animateCard, deviceMotion])
 
   return (
-    <Link href={`/portfolio/${cardData.slug}`} className='link-tag'>
+    <Link
+      href={`/portfolio/${cardData.slug}`}
+      className='link-tag'
+      title={`Click here to more about the ${cardData.title} project!`}
+    >
       <div className={styles.cardWrapper} ref={featuredCardRef}>
         <div className={styles.headerWrapper}>
           <h3>{cardData.title}</h3>

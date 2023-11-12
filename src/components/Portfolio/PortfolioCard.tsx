@@ -32,7 +32,7 @@ const PortfolioCard = React.forwardRef<HTMLDivElement, PortfolioCardProps>(
                   src={`/thumbs/${img.src}`}
                   alt={data.title}
                   sizes='(min-width: 60em) 24vw, (min-width: 28em) 45vw, 100vw'
-                  quality={70}
+                  quality={80}
                   fill
                   priority
                 />

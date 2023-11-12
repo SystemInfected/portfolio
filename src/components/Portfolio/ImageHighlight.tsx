@@ -35,7 +35,14 @@ const ImageHighlight = ({ url, title, callback }: ImageHighlightProps) => {
       onClick={() => callback()}
     >
       <div className={styles.image}>
-        <Image src={url} alt={title} fill style={{ objectFit: 'contain' }} />
+        <Image
+          src={url}
+          alt={title}
+          fill
+          style={{ objectFit: 'contain' }}
+          sizes='(min-width: 60em) 24vw, (min-width: 28em) 45vw, 100vw'
+          quality={80}
+        />
       </div>
     </div>
   )

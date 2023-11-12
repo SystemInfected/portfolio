@@ -166,6 +166,12 @@
     height: clamp(80%, 70vw, 115%);
     position: absolute;
   }
+  img {
+    height: clamp(80%, 70vw, 115%);
+    width: auto;
+    position: absolute;
+    aspect-ratio: 79/150;
+  }
   canvas {
     height: clamp(80%, 70vw, 115%);
     position: absolute;

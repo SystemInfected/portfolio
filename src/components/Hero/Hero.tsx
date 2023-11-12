@@ -8,9 +8,11 @@ import LocationOnIcon from '@mui/icons-material/LocationOn'
 
 import IllustrationEye from '../../assets/hero/IllustrationEye'
 import IllustrationForeground from '../../assets/hero/IllustrationForeground'
+import portrait_illustration_foreground from '@/assets/hero/portrait_illustration_foreground.svg'
 import { scrollToElement } from '../NavBar'
 import AnimatedEye from './AnimatedEye'
 import AnimatedNodes from './AnimatedNodes'
+import Image from 'next/image'
 
 const Hero = () => {
   useEffect(() => {
@@ -93,7 +95,11 @@ const Hero = () => {
         <div className={styles.portraitIllustration} id='portraitIllustration'>
           <IllustrationEye />
           <AnimatedEye />
-          <IllustrationForeground />
+          <Image
+            src={portrait_illustration_foreground}
+            priority
+            alt='illustration foreground'
+          />
         </div>
         <div className={styles.portraitNodes} id='portraitNodes'>
           <AnimatedNodes />

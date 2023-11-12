@@ -619,34 +619,42 @@ const AnimatedNodes = () => {
         mousePos.current = { x: undefined, y: undefined }
       })
 
-      canvas.addEventListener('touchmove', (event) => {
-        const canvasXMultiplier =
-          canvas.width / canvas.getBoundingClientRect().width
-        const canvasYMultiplier =
-          canvas.height / canvas.getBoundingClientRect().height
-        const mouseX: number =
-          (event.touches[0].clientX - canvas.getBoundingClientRect().x) *
-          canvasXMultiplier
-        const mouseY: number =
-          (event.touches[0].clientY - canvas.getBoundingClientRect().y) *
-          canvasYMultiplier
+      canvas.addEventListener(
+        'touchmove',
+        (event) => {
+          const canvasXMultiplier =
+            canvas.width / canvas.getBoundingClientRect().width
+          const canvasYMultiplier =
+            canvas.height / canvas.getBoundingClientRect().height
+          const mouseX: number =
+            (event.touches[0].clientX - canvas.getBoundingClientRect().x) *
+            canvasXMultiplier
+          const mouseY: number =
+            (event.touches[0].clientY - canvas.getBoundingClientRect().y) *
+            canvasYMultiplier
 
-        mousePos.current = { x: mouseX, y: mouseY }
-      })
-      canvas.addEventListener('touchstart', (event) => {
-        const canvasXMultiplier =
-          canvas.width / canvas.getBoundingClientRect().width
-        const canvasYMultiplier =
-          canvas.height / canvas.getBoundingClientRect().height
-        const mouseX: number =
-          (event.touches[0].clientX - canvas.getBoundingClientRect().x) *
-          canvasXMultiplier
-        const mouseY: number =
-          (event.touches[0].clientY - canvas.getBoundingClientRect().y) *
-          canvasYMultiplier
+          mousePos.current = { x: mouseX, y: mouseY }
+        },
+        { passive: true }
+      )
+      canvas.addEventListener(
+        'touchstart',
+        (event) => {
+          const canvasXMultiplier =
+            canvas.width / canvas.getBoundingClientRect().width
+          const canvasYMultiplier =
+            canvas.height / canvas.getBoundingClientRect().height
+          const mouseX: number =
+            (event.touches[0].clientX - canvas.getBoundingClientRect().x) *
+            canvasXMultiplier
+          const mouseY: number =
+            (event.touches[0].clientY - canvas.getBoundingClientRect().y) *
+            canvasYMultiplier
 
-        mousePos.current = { x: mouseX, y: mouseY }
-      })
+          mousePos.current = { x: mouseX, y: mouseY }
+        },
+        { passive: true }
+      )
       canvas.addEventListener('touchend', (event) => {
         event.preventDefault()
         mousePos.current = { x: undefined, y: undefined }

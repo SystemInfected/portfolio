@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react'
 
 import clientsData from '@/app/data/clientsData.json'
 import styles from '@/styles/Home/Featured.module.scss'
+import Image from 'next/image'
 
 const ClientsList = () => {
   const [resized, setResized] = useState({ scroll: 0, width: 0 })
@@ -52,8 +53,18 @@ const ClientsList = () => {
           { '--distance': distance, '--speed': speed } as React.CSSProperties
         }
       >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={`${client.url}`} alt={client.name} title={client.name} />
+        <div className={styles.image}>
+          <Image
+            src={`/${client.url}`}
+            alt={client.name}
+            title={client.name}
+            sizes='(min-width: 60em) 24vw, (min-width: 28em) 45vw, 100vw'
+            quality={70}
+            fill
+            style={{ objectFit: 'contain' }}
+            loading='lazy'
+          />
+        </div>
       </div>
     )
   })

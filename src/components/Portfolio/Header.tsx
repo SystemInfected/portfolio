@@ -1,6 +1,7 @@
 'use client'
 
 import { gsap } from 'gsap'
+import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
 
 import styles from '@/styles/Portfolio/Header.module.scss'
@@ -11,7 +12,7 @@ interface HeaderProps {
   title: string
   tags: string
   responsibilities: string
-  images: [string]
+  images: [{ src: string; aspectRatio: string }]
 }
 
 const Header = ({ title, responsibilities, tags, images }: HeaderProps) => {
@@ -93,12 +94,21 @@ const Header = ({ title, responsibilities, tags, images }: HeaderProps) => {
           <div className={styles.images} id='images'>
             {images.map((img, index) => {
               return (
-                <img
+                <div
                   key={index}
-                  src={`/${img}`}
-                  alt={title}
-                  onClick={() => setShowImage(`/${img}`)}
-                />
+                  className={styles.image}
+                  style={{ aspectRatio: img.aspectRatio }}
+                >
+                  <Image
+                    src={`/${img.src}`}
+                    alt={title}
+                    onClick={() => setShowImage(`/${img.src}`)}
+                    sizes='(min-width: 60em) 24vw, (min-width: 28em) 45vw, 100vw'
+                    quality={80}
+                    fill
+                    priority
+                  />
+                </div>
               )
             })}
           </div>

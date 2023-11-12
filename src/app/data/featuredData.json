@@ -11,19 +11,22 @@
 				"url": "us-ab_mac.png",
 				"position": "center",
 				"size": "90%",
-				"zoomValue": 70
+				"zoomValue": 70,
+				"aspectRatio": "1579/1191"
 			},
 			{
 				"url": "us-ab_ipad.png",
 				"position": 0,
 				"size": "35%",
-				"zoomValue": 130
+				"zoomValue": 130,
+				"aspectRatio": "97/133"
 			},
 			{
 				"url": "us-ab_iphone.png",
 				"position": 420,
 				"size": "18%",
-				"zoomValue": 130
+				"zoomValue": 130,
+				"aspectRatio": "421/795"
 			}
 		]
 	},
@@ -39,19 +42,22 @@
 				"url": "nodell_mac.png",
 				"position": "center",
 				"size": "90%",
-				"zoomValue": 70
+				"zoomValue": 70,
+				"aspectRatio": "1579/1191"
 			},
 			{
 				"url": "nodell_ipad.png",
 				"position": 0,
 				"size": "35%",
-				"zoomValue": 130
+				"zoomValue": 130,
+				"aspectRatio": "97/133"
 			},
 			{
 				"url": "nodell_iphone.png",
 				"position": 420,
 				"size": "18%",
-				"zoomValue": 130
+				"zoomValue": 130,
+				"aspectRatio": "421/795"
 			}
 		]
 	},
@@ -67,13 +73,15 @@
 				"url": "crypto-bot_mac.png",
 				"position": "center",
 				"size": "90%",
-				"zoomValue": 70
+				"zoomValue": 70,
+				"aspectRatio": "1579/1191"
 			},
 			{
 				"url": "crypto-bot_terminal.png",
 				"position": 104,
 				"size": "45%",
-				"zoomValue": 130
+				"zoomValue": 130,
+				"aspectRatio": "411/319"
 			}
 		]
 	}

@@ -7,7 +7,11 @@ source: https://github.com/SystemInfected/crypto-bot
 responsibilities: developement, design
 tags: trading bot, algorithm-based, open source
 tech: node, typescript
-images: [crypto-bot_mac.png, crypto-bot_terminal.png]
+images:
+  [
+    { src: crypto-bot_mac.png, aspectRatio: 3840/2897 },
+    { src: crypto-bot_terminal.png, aspectRatio: 822/637 },
+  ]
 ---
 
 This is an open source trading bot for trading cryptocurrency.

@@ -2,6 +2,7 @@
 
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
+import Image from 'next/image'
 import Link from 'next/link'
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
@@ -21,7 +22,13 @@ const FeaturedCard = ({ cardData }: any) => {
 
   cardData.images.map(
     (
-      image: { url: string; position: string; size: string; zoomValue: number },
+      image: {
+        url: string
+        position: string
+        size: string
+        zoomValue: number
+        aspectRatio: string
+      },
       index: number
     ) => {
       const position: any = imagePos
@@ -76,7 +83,9 @@ const FeaturedCard = ({ cardData }: any) => {
         const title = cardRef.querySelector('h3')
         const tags = cardRef.querySelector('ul')
         const button = cardRef.querySelector('button')
-        const images = cardRef.querySelectorAll('img')
+        const images: NodeListOf<HTMLDivElement> = cardRef.querySelectorAll(
+          '#featured-card-image'
+        )
 
         switch (action) {
           case 'start':
@@ -256,22 +265,33 @@ const FeaturedCard = ({ cardData }: any) => {
                 position: string
                 size: string
                 zoomValue: number
+                aspectRatio: string
               },
               index: number
             ) => {
               const position: any = imagePos
               return (
-                <img
+                <div
                   key={index}
-                  src={`thumbs/${image.url}`}
-                  alt={cardData.title}
+                  className={styles.image}
+                  id='featured-card-image'
                   style={{
                     width: `${image.size}`,
                     zIndex: 3 + index * 3,
                     marginLeft: `${position[index].marginLeft}%`,
                     transform: `translateX(${position[index].translateX}%)`,
+                    aspectRatio: image.aspectRatio,
                   }}
-                />
+                >
+                  <Image
+                    src={`/thumbs/${image.url}`}
+                    alt={cardData.title}
+                    sizes='(min-width: 60em) 24vw, (min-width: 28em) 45vw, 100vw'
+                    quality={70}
+                    fill
+                    priority
+                  />
+                </div>
               )
             }
           )}

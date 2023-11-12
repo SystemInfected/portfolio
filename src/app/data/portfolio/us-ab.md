@@ -7,7 +7,11 @@ source: null
 responsibilities: design, developement, marketing
 tags: print-shop, e-commerce, custom cms, icon design, graphic profile
 tech: php, javascript, sql/pdo
-images: [us-ab_mac.png, us-ab_iphone.png]
+images:
+  [
+    { src: us-ab_mac.png, aspectRatio: 3840/2897 },
+    { src: us-ab_iphone.png, aspectRatio: 842/1589 },
+  ]
 ---
 
 A complete rebuild of their previous website. I redesigned and rebuilt it from scratch with an up-to-date design and smart features to make updating the website easier and keep the website alive.

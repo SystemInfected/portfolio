@@ -7,7 +7,11 @@ source: null
 responsibilities: null
 tags: charity, illustrations, portraits
 tech: php, javascript, sql/pdo
-images: [rosa_portratt_mac.png, rosa_portratt.png]
+images:
+  [
+    { src: rosa_portratt_mac.png, aspectRatio: 3840/2897 },
+    { src: rosa_portratt.png, aspectRatio: 818/683 },
+  ]
 ---
 
 Rosa porträtt or "Pink portraits" is a charity I run every October.

@@ -166,8 +166,7 @@ const NavBar = ({ locked, startpage }: NavBarProps) => {
         immediateRender: false,
       }
     )
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [locked])
 
   const renderHomeNavlink = (isOnStartpage: boolean) => {
     if (isOnStartpage) {

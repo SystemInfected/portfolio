@@ -78,7 +78,8 @@
 .portfolioImages {
   position: relative;
   width: 100%;
-  img {
+  .image {
+    position: relative;
     &:nth-of-type(1) {
       width: 100%;
     }

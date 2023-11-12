@@ -7,7 +7,11 @@ source: null
 responsibilities: design, developement
 tags: e-commerce, order management, cms
 tech: php, javascript, sql/pdo
-images: [hemfisk_mac.png, hemfisk_iphone.png]
+images:
+  [
+    { src: hemfisk_mac.png, aspectRatio: 3840/2897 },
+    { src: hemfisk_iphone.png, aspectRatio: 842/1589 },
+  ]
 ---
 
 This is a webshop I made for a Swedish company called Hemfisk (Home fish) who delivers fresh fish and sea food straight to your doorstep.

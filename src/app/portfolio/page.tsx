@@ -37,7 +37,7 @@ export interface PortfolioDataProps {
   responsibilities: string
   tags: string
   tech: string
-  images: [string]
+  images: [{ src: string; aspectRatio: string }]
 }
 
 const getStaticProps = async () => {

@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import React from 'react'
 
 import { PortfolioDataProps } from '@/app/portfolio/page'
@@ -21,7 +22,22 @@ const PortfolioCard = React.forwardRef<HTMLDivElement, PortfolioCardProps>(
         </ul>
         <div className={styles.portfolioImages}>
           {data.images.map((img, index) => {
-            return <img key={index} src={`/thumbs/${img}`} alt={data.title} />
+            return (
+              <div
+                key={index}
+                className={styles.image}
+                style={{ aspectRatio: img.aspectRatio }}
+              >
+                <Image
+                  src={`/thumbs/${img.src}`}
+                  alt={data.title}
+                  sizes='(min-width: 60em) 24vw, (min-width: 28em) 45vw, 100vw'
+                  quality={70}
+                  fill
+                  priority
+                />
+              </div>
+            )
           })}
         </div>
       </div>

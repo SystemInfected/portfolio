@@ -86,7 +86,7 @@
   @media (orientation: portrait) {
     width: 100%;
   }
-  img {
+  .image {
     position: absolute;
     cursor: pointer;
     right: 10%;
@@ -125,8 +125,8 @@
   align-items: center;
   cursor: pointer;
   visibility: hidden;
-  img {
-    object-fit: contain;
+  .image {
+    position: relative;
     height: 80%;
     width: 90%;
   }

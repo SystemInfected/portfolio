@@ -1,4 +1,5 @@
 import { gsap } from 'gsap'
+import Image from 'next/image'
 import React, { useEffect } from 'react'
 
 import styles from '@/styles/Portfolio/Header.module.scss'
@@ -33,7 +34,9 @@ const ImageHighlight = ({ url, title, callback }: ImageHighlightProps) => {
       id='image-highlight-container'
       onClick={() => callback()}
     >
-      <img src={url} alt={title} />
+      <div className={styles.image}>
+        <Image src={url} alt={title} fill style={{ objectFit: 'contain' }} />
+      </div>
     </div>
   )
 }

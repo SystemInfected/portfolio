@@ -1,7 +1,7 @@
 import fs from 'fs'
 import matter from 'gray-matter'
 import { marked } from 'marked'
-import { Metadata } from 'next'
+import { Metadata, ResolvingMetadata } from 'next'
 import path from 'path'
 
 import NavBar from '@/components/NavBar'
@@ -16,19 +16,36 @@ const renderDescription = (input: string, length: number) => {
     : strippedInput
 }
 
-export const metadata: Metadata = {
-  title: `${'data.title'} - A project by Sebastian Widin | Full-Stack Software Developer, Graphic Designer & Web Developer based in Stockholm, Sweden`,
-  description: `${'data.title'} - ${renderDescription('htmlString', 140)}`,
-  alternates: {
-    canonical: '/portfolio/URL',
-  },
-  openGraph: {
-    siteName: 'SebastianWidin.se',
-    title: `${'data.title'} - A project by Sebastian Widin | Full-Stack Software Developer, Graphic Designer & Web Developer based in Stockholm, Sweden`,
-    description: `${'data.title'} - ${renderDescription('htmlString', 140)}`,
-    images: '/images/og_header.jpg',
-    type: 'website',
-  },
+export async function generateMetadata({ params }: any): Promise<Metadata> {
+  const filesDirectory = path.join(process.cwd(), 'src/app/data/portfolio')
+  const markdownWithMetadata = fs
+    .readFileSync(path.join(filesDirectory, `${params.portfolio}.md`))
+    .toString()
+
+  const parsedMarkdown = matter(markdownWithMetadata)
+
+  const htmlString = marked(parsedMarkdown.content)
+
+  return {
+    title: `${parsedMarkdown.data.title} - A project by Sebastian Widin | Full-Stack Software Developer, Graphic Designer & Web Developer based in Stockholm, Sweden`,
+    description: `${parsedMarkdown.data.title} - ${renderDescription(
+      htmlString,
+      140
+    )}`,
+    alternates: {
+      canonical: '/portfolio/URL',
+    },
+    openGraph: {
+      siteName: 'SebastianWidin.se',
+      title: `${parsedMarkdown.data.title} - A project by Sebastian Widin | Full-Stack Software Developer, Graphic Designer & Web Developer based in Stockholm, Sweden`,
+      description: `${parsedMarkdown.data.title} - ${renderDescription(
+        htmlString,
+        140
+      )}`,
+      images: '/images/og_header.jpg',
+      type: 'website',
+    },
+  }
 }
 
 interface DetailedPortfolioProps {

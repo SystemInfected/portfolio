@@ -273,6 +273,13 @@ const FeaturedCard = ({ cardData }: any) => {
               },
               index: number
             ) => {
+              const imgWidth = parseInt(image.size.replace('%', ''))
+              const sizes =
+                imgWidth > 60
+                  ? '(max-width: 768px) 200px, (max-width: 1200px) 300px, 500px'
+                  : imgWidth > 30
+                  ? '(max-width: 768px) 100px, (max-width: 1200px) 150px, 250px'
+                  : '(max-width: 768px) 60px, (max-width: 1200px) 90px, 120px'
               const position: any = imagePos
               return (
                 <div
@@ -290,7 +297,7 @@ const FeaturedCard = ({ cardData }: any) => {
                   <Image
                     src={`/thumbs/${image.url}`}
                     alt={cardData.title}
-                    sizes='(max-width: 768px) 200px, (max-width: 1200px) 300px, 500px'
+                    sizes={sizes}
                     quality={80}
                     fill
                     priority

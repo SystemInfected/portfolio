@@ -1,0 +1,133 @@
+@use '../variables' as *;
+
+.section {
+  background-color: rgba($mainColorLightRGB, 0.2);
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.contentSection {
+  max-width: $breakpointMaxWidth;
+  padding: 0 max(4rem, env(safe-area-inset-left));
+  padding-bottom: 5em;
+  width: 100%;
+  display: flex;
+  gap: 4em;
+  @media screen and (max-width: $breakpointTablet) {
+    padding: 0 2.5em;
+    padding-bottom: 5em;
+  }
+  @media (orientation: portrait) {
+    gap: 0;
+    flex-direction: column;
+  }
+}
+
+.contentWrapper {
+  width: 60%;
+  margin-top: clamp(12rem, 12vw, 15rem);
+  border-radius: 0.5em;
+  color: $textLight;
+  //font-size: clamp(1.4rem, 1vw, 1.6rem);
+  line-height: 1.8em;
+  word-spacing: 0.18em;
+  p {
+    margin-bottom: 1.5em;
+  }
+  ul,
+  ol {
+    margin-left: 1em;
+    margin-bottom: 1.5em;
+  }
+  em,
+  strong {
+    color: $mainAccentColor;
+  }
+  a {
+    color: inherit;
+  }
+  @media (orientation: portrait) {
+    width: 100%;
+  }
+}
+
+.ctaWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2em;
+  width: 40%;
+  height: min-content;
+  margin-top: clamp(12rem, 12vw, 15rem);
+  font-size: clamp(1.5rem, 1.7vw, 1.8rem);
+  background-color: rgba($mainColorDarkRGB, 0.5);
+  border-radius: 0.5em;
+  padding: 2em;
+  @media (orientation: portrait) {
+    width: 100%;
+    margin-top: 4em;
+  }
+  div {
+    width: 100%;
+    display: flex;
+    gap: 1em;
+    flex-wrap: wrap;
+  }
+  .noGap {
+    gap: 0;
+  }
+  h3 {
+    text-transform: uppercase;
+    font-size: clamp(1rem, 1vw, 1.2rem);
+    color: $mainAccentColor;
+    display: block;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    line-height: 1.6;
+  }
+  ul {
+    font-size: 0.7em;
+    text-transform: uppercase;
+    li {
+      background: none;
+      border: 1px solid $mainColorLight;
+      border-radius: 0.5em;
+      color: $mainColorLight;
+      cursor: default;
+      display: inline-block;
+      margin: 0.5em 1em 0.5em 0;
+      padding: 0.5em 1em;
+      transition: transform ease-out 0.3s, color ease-out 0.3s,
+        border-color ease-out 0.3s;
+      width: auto;
+      &:hover {
+        border-color: $mainAccentColor;
+        color: $mainAccentColor;
+        transform: scale(1.05);
+      }
+    }
+  }
+}
+
+.cta {
+  background-color: $mainAccentColor;
+  color: $mainColorDark;
+  @include mainButton;
+  &:disabled,
+  &[disabled] {
+    @include secondaryButton;
+    background-color: rgba($mainColorDarkRGB, 0.75);
+    color: $mainColorLight;
+    border-color: $mainColorLight;
+    opacity: 0.5;
+    cursor: default;
+    &:hover,
+    &:focus {
+      transform: none;
+      &:before {
+        opacity: 0;
+      }
+    }
+  }
+}

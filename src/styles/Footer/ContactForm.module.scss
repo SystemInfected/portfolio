@@ -1,0 +1,72 @@
+@use '../variables' as *;
+
+.container {
+  align-items: space-between;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3em;
+  margin: 4em 0;
+  width: 100%;
+  @media screen and (max-width: $breakpointMobileBig) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 3em;
+  justify-content: space-between;
+  width: 100%;
+
+  @media screen and (max-width: $breakpointMobileBig) {
+    justify-content: flex-start;
+  }
+  :global(.MuiTextField-root) {
+    label,
+    input,
+    textarea {
+      color: rgba($textLightRGB, 0.8);
+      font-size: 16px;
+    }
+    &:hover :global(.MuiOutlinedInput-notchedOutline) {
+      border-color: rgba($mainAccentRGB, 1);
+      border-width: 1px;
+    }
+    :global(.MuiOutlinedInput-notchedOutline) {
+      border-color: rgba($mainAccentRGB, 0.75);
+    }
+    :global(.Mui-focused .MuiOutlinedInput-notchedOutline) {
+      border-color: rgba($mainAccentRGB, 1);
+      border-width: 1px;
+    }
+  }
+  #message {
+    line-height: 1.5em;
+    min-height: 13em;
+  }
+  legend {
+    font-size: calc(clamp(1.4rem, 1.5vw, 1.6rem) * 0.75);
+  }
+}
+
+.cta {
+  background-color: $mainAccentColor;
+  color: $mainColorDark;
+  @include mainButton;
+  width: 160px;
+  &.desktop {
+    display: inline-block;
+  }
+  &.mobile {
+    display: none;
+  }
+  @media screen and (max-width: $breakpointMobileBig) {
+    &.desktop {
+      display: none;
+    }
+    &.mobile {
+      display: inline-block;
+    }
+  }
+}

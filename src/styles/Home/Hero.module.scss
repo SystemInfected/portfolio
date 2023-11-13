@@ -225,5 +225,6 @@
     height: 100%;
     background: $mainColorDark;
     opacity: var(--animate-opacity);
+    pointer-events: none;
   }
 }

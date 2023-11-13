@@ -22,6 +22,11 @@ const Hero = () => {
       const location: HTMLElement | null = document.querySelector('#location')
       const ctaWrapper: HTMLElement | null =
         document.querySelector('#ctaWrapper')
+      const portraitIllustration: HTMLElement | null = document.querySelector(
+        '#portraitIllustration'
+      )
+      const portraitNodes: HTMLElement | null =
+        document.querySelector('#portraitNodes')
 
       if (headerContainer && headerRow && location && ctaWrapper) {
         const headerRowPos = headerRow.getBoundingClientRect()
@@ -43,6 +48,29 @@ const Hero = () => {
         gsap.from(ctaWrapper, {
           y: -(ctaWrapperPos.y + ctaWrapperPos.height),
           delay: 0.6,
+        })
+      }
+
+      if (portraitIllustration && portraitNodes) {
+        gsap.to(portraitIllustration, {
+          '--animate-opacity': 0,
+          duration: 0.5,
+          delay: 0.5,
+        })
+        gsap.to(portraitNodes, {
+          '--animate-opacity': 0,
+          duration: 0.5,
+          delay: 0.5,
+        })
+        gsap.to(portraitIllustration, {
+          y: 0,
+          duration: 0.4,
+          delay: 0.5,
+        })
+        gsap.to(portraitNodes, {
+          y: 0,
+          duration: 0.4,
+          delay: 0.5,
         })
       }
     })
@@ -91,7 +119,17 @@ const Hero = () => {
             </button>
           </div>
         </div>
-        <div className={styles.portraitIllustration} id='portraitIllustration'>
+        <div
+          className={styles.portraitIllustration}
+          id='portraitIllustration'
+          style={
+            {
+              transformOrigin: 'bottom right',
+              transform: 'translateY(3%)',
+              '--animate-opacity': 1,
+            } as React.CSSProperties
+          }
+        >
           <IllustrationEye />
           <AnimatedEye />
           <Image
@@ -100,7 +138,17 @@ const Hero = () => {
             alt='illustration foreground'
           />
         </div>
-        <div className={styles.portraitNodes} id='portraitNodes'>
+        <div
+          className={styles.portraitNodes}
+          id='portraitNodes'
+          style={
+            {
+              transformOrigin: 'bottom left',
+              transform: 'translateY(3%)',
+              '--animate-opacity': 1,
+            } as React.CSSProperties
+          }
+        >
           <AnimatedNodes />
         </div>
       </div>

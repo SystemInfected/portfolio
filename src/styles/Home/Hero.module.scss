@@ -179,6 +179,13 @@
   @media (orientation: portrait) {
     width: 50%;
   }
+  &:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
 }
 
 .portraitNodes {
@@ -206,5 +213,17 @@
   }
   @media (orientation: portrait) {
     width: 50%;
+  }
+}
+
+.portraitIllustration,
+.portraitNodes {
+  &:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: $mainColorDark;
+    opacity: var(--animate-opacity);
   }
 }

@@ -51,6 +51,20 @@
       font-size: clamp(3.8rem, 8vw, 10rem);
     }
   }
+  h3 {
+    font-size: 1em;
+    color: $mainAccentColor;
+    margin-top: 2em;
+    display: block;
+    font-size: clamp(1rem, 1vw, 1.2rem);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    line-height: 1.6;
+    text-transform: uppercase;
+    + ul {
+      padding-top: 0;
+    }
+  }
   ul {
     padding-top: 1em;
     width: 80%;
@@ -61,12 +75,6 @@
     letter-spacing: 0.1em;
     line-height: 1.6;
     text-transform: uppercase;
-    h3 {
-      font-size: 1em;
-      color: $mainAccentColor;
-      margin-top: 2em;
-      display: block;
-    }
     @media (orientation: portrait) {
       width: 100%;
       font-size: 1.2rem;

@@ -84,12 +84,19 @@ const Header = ({ title, responsibilities, tags, images }: HeaderProps) => {
               {tagArr.map((tag, index) => {
                 return <li key={index}>• {tag}</li>
               })}
-              {responsibilitiesArr.length > 0 ? <h3>Responsibilities:</h3> : ''}
-
-              {responsibilitiesArr.map((tag, index) => {
-                return <li key={index}>• {tag}</li>
-              })}
             </ul>
+            {responsibilitiesArr.length > 0 ? (
+              <>
+                <h3>Responsibilities:</h3>
+                <ul>
+                  {responsibilitiesArr.map((tag, index) => {
+                    return <li key={index}>• {tag}</li>
+                  })}
+                </ul>
+              </>
+            ) : (
+              ''
+            )}
           </div>
           <div className={styles.images} id='images'>
             {images.map((img, index) => {

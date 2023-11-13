@@ -29,7 +29,7 @@
   margin-top: clamp(12rem, 12vw, 15rem);
   border-radius: 0.5em;
   color: $textLight;
-  font-size: clamp(1.4rem, 1vw, 1.6rem);
+  //font-size: clamp(1.4rem, 1vw, 1.6rem);
   line-height: 1.8em;
   word-spacing: 0.18em;
   p {
@@ -79,7 +79,7 @@
   }
   h3 {
     text-transform: uppercase;
-    font-size: 0.7em;
+    font-size: clamp(1rem, 1vw, 1.2rem);
     color: $mainAccentColor;
     display: block;
     font-weight: 700;

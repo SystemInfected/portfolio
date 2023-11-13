@@ -38,12 +38,14 @@ const Content = ({ content, title, tech, url, source }: ContentProps) => {
           dangerouslySetInnerHTML={{ __html: content }}
         />
         <div className={styles.ctaWrapper}>
-          <ul>
+          <div className={styles.noGap}>
             <h3>Technologies used:</h3>
-            {techArr.map((tag, index) => {
-              return <li key={index}>{tag}</li>
-            })}
-          </ul>
+            <ul>
+              {techArr.map((tag, index) => {
+                return <li key={index}>{tag}</li>
+              })}
+            </ul>
+          </div>
           <div>
             {renderURL()}
             {source ? (

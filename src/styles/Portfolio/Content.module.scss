@@ -74,17 +74,21 @@
     gap: 1em;
     flex-wrap: wrap;
   }
+  .noGap {
+    gap: 0;
+  }
+  h3 {
+    text-transform: uppercase;
+    font-size: 0.7em;
+    color: $mainAccentColor;
+    display: block;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    line-height: 1.6;
+  }
   ul {
     font-size: 0.7em;
     text-transform: uppercase;
-    h3 {
-      font-size: 1em;
-      color: $mainAccentColor;
-      display: block;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      line-height: 1.6;
-    }
     li {
       background: none;
       border: 1px solid $mainColorLight;

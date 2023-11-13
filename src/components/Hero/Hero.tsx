@@ -16,8 +16,8 @@ import AnimatedNodes from './AnimatedNodes'
 const Hero = () => {
   useEffect(() => {
     let ctx = gsap.context(() => {
-      const headerContainer: HTMLElement | null =
-        document.querySelector('#headerContainer')
+      const headerWrapper: HTMLElement | null =
+        document.querySelector('#headerWrapper')
       const headerRow: HTMLElement | null = document.querySelector('#headerRow')
       const location: HTMLElement | null = document.querySelector('#location')
       const ctaWrapper: HTMLElement | null =
@@ -28,7 +28,14 @@ const Hero = () => {
       const portraitNodes: HTMLElement | null =
         document.querySelector('#portraitNodes')
 
-      if (headerContainer && headerRow && location && ctaWrapper) {
+      if (
+        headerWrapper &&
+        headerRow &&
+        location &&
+        ctaWrapper &&
+        portraitIllustration &&
+        portraitNodes
+      ) {
         const headerRowPos = headerRow.getBoundingClientRect()
         const locationPos = location.getBoundingClientRect()
         const ctaWrapperPos = ctaWrapper.getBoundingClientRect()
@@ -38,6 +45,9 @@ const Hero = () => {
           duration: 0.8,
         })
 
+        gsap.to(headerWrapper, {
+          opacity: 1,
+        })
         gsap.from(headerRow, {
           y: -(headerRowPos.y + headerRowPos.height),
         })
@@ -49,9 +59,7 @@ const Hero = () => {
           y: -(ctaWrapperPos.y + ctaWrapperPos.height),
           delay: 0.6,
         })
-      }
 
-      if (portraitIllustration && portraitNodes) {
         gsap.to(portraitIllustration, {
           '--animate-opacity': 0,
           duration: 0.5,
@@ -64,12 +72,12 @@ const Hero = () => {
         })
         gsap.to(portraitIllustration, {
           y: '0px',
-          duration: 0.4,
+          duration: 0.3,
           delay: 0.5,
         })
         gsap.to(portraitNodes, {
           y: '0px',
-          duration: 0.4,
+          duration: 0.3,
           delay: 0.5,
         })
       }

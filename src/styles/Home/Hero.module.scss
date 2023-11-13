@@ -24,6 +24,7 @@
   position: absolute;
   top: 4rem;
   transform: translateX(-50%);
+  opacity: 0;
   width: 100%;
   z-index: 20;
   @media screen and (max-width: $breakpointTablet) {

@@ -63,12 +63,12 @@ const Hero = () => {
           delay: 0.5,
         })
         gsap.to(portraitIllustration, {
-          y: 0,
+          y: '0px',
           duration: 0.4,
           delay: 0.5,
         })
         gsap.to(portraitNodes, {
-          y: 0,
+          y: '0px',
           duration: 0.4,
           delay: 0.5,
         })

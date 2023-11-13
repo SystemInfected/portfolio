@@ -85,15 +85,16 @@
   .socialLinksContainer {
     align-items: center;
     display: flex;
-    gap: clamp(2em, 2.8vw, 3em);
+    gap: clamp(1.4em, 2.8vw, 3em);
     justify-content: center;
     margin: 4em 0;
     width: 100%;
     a {
-      height: clamp(3.4rem, 3.6vw, 4.6rem) !important;
+      flex-shrink: 0;
+      height: clamp(3rem, 3.6vw, 4.6rem) !important;
       transform: scale(1);
       transition: transform ease-out 0.2s;
-      width: clamp(3.4rem, 3.6vw, 4.6rem) !important;
+      width: clamp(3rem, 3.6vw, 4.6rem) !important;
       &:hover {
         transform: scale(1.1);
         transform-origin: center;

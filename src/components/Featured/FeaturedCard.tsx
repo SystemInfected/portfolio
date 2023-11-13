@@ -290,7 +290,7 @@ const FeaturedCard = ({ cardData }: any) => {
                   <Image
                     src={`/thumbs/${image.url}`}
                     alt={cardData.title}
-                    sizes='(max-width: 768px) 400px, (max-width: 1200px) 600px, 900px'
+                    sizes='(max-width: 768px) 300px, (max-width: 1200px) 400px, 600px'
                     quality={80}
                     fill
                     priority

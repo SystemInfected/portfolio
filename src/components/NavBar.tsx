@@ -119,7 +119,7 @@ const NavBar = ({ locked, startpage }: NavBarProps) => {
     const mobileMenuPos = { x: 0, y: 0 }
     if (menuToggle && menuNav) {
       const menuNavLinks: NodeListOf<HTMLAnchorElement> | null =
-        menuNav.querySelectorAll('a')
+        menuNav.querySelectorAll('a, span')
       let menuTogglePos = menuToggle.getBoundingClientRect()
       menuToggle.addEventListener('click', () => {
         menuTogglePos = menuToggle.getBoundingClientRect()

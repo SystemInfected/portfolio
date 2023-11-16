@@ -65,7 +65,6 @@ const Header = ({ title, responsibilities, tags, images }: HeaderProps) => {
         )
         gsap.from(images.querySelectorAll('img'), {
           x: '300px',
-          delay: 0.1,
           stagger: 0.2,
         })
       }

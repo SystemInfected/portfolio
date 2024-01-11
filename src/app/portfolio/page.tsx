@@ -58,6 +58,9 @@ const getStaticProps = async () => {
 
 const Portfolio = async () => {
   const data: PortfolioDataProps[] = await getStaticProps()
+  const sortedData: PortfolioDataProps[] = data.sort(
+    (a, b) => a.order - b.order
+  )
   return (
     <>
       <NavBar locked startpage={false} />
@@ -65,7 +68,7 @@ const Portfolio = async () => {
         <div className={styles.portfolioGridSection}>
           <SectionHeader>Selected projects</SectionHeader>
           <div className={styles.portfolioGrid}>
-            {data.map((d) => (
+            {sortedData.map((d) => (
               <Link href={`/portfolio/${d.slug}`} key={`post-${d.slug}`}>
                 <PortfolioCard data={d} />
               </Link>

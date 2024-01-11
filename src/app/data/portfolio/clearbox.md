@@ -1,5 +1,5 @@
 ---
-order: 2
+order: 5
 title: Clearbox.se
 slug: clearbox
 url: null

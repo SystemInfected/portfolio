@@ -1,5 +1,5 @@
 ---
-order: 1
+order: 7
 title: Hemfisk.se
 slug: hemfisk
 url: https://www.hemfisk.se/

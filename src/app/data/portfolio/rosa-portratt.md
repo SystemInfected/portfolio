@@ -1,5 +1,5 @@
 ---
-order: 2
+order: 6
 title: Rosa porträtt
 slug: rosa-portratt
 url: none

@@ -31,29 +31,29 @@
 		]
 	},
 	"nodell": {
-		"title": "Nodell.se",
+		"title": "Dalafisk.se",
 		"tags": [
-			"article site",
-			"community"
+			"shopify storfront",
+			"hydrogen"
 		],
-		"slug": "nodell",
+		"slug": "dalafisk",
 		"images": [
 			{
-				"url": "nodell_mac.png",
+				"url": "dalafisk_mac.png",
 				"position": "center",
 				"size": "90%",
 				"zoomValue": 70,
 				"aspectRatio": "1579/1191"
 			},
 			{
-				"url": "nodell_ipad.png",
+				"url": "dalafisk_ipad.png",
 				"position": 0,
 				"size": "35%",
 				"zoomValue": 130,
 				"aspectRatio": "97/133"
 			},
 			{
-				"url": "nodell_iphone.png",
+				"url": "dalafisk_iphone.png",
 				"position": 420,
 				"size": "18%",
 				"zoomValue": 130,

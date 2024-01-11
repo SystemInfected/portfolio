@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: any): Promise<Metadata> {
       140
     )}`,
     alternates: {
-      canonical: '/portfolio/URL',
+      canonical: `/portfolio/${params.portfolio}`,
     },
     openGraph: {
       siteName: 'SebastianWidin.se',

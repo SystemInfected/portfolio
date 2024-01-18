@@ -19,7 +19,7 @@ export const metadata: Metadata = {
       "Full-Stack Software Developer, Graphic Designer & Web Developer based in Stockholm, Sweden - Sebastian Widin's portfolio",
     description:
       "I am a Graphic Designer, Web Developer & Full-Stack Software Developer from Stockholm, Sweden. I ❤️ to build & design stuff. If it's too easy it's boring 😄 🤙",
-    images: '/images/og_header.jpg',
+    images: '/og_header.jpg',
     type: 'website',
   },
 }

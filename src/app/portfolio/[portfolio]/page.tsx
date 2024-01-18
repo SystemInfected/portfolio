@@ -42,7 +42,7 @@ export async function generateMetadata({ params }: any): Promise<Metadata> {
         htmlString,
         140
       )}`,
-      images: '/images/og_header.jpg',
+      images: '/og_header.jpg',
       type: 'website',
     },
   }

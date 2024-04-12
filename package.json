@@ -5,36 +5,37 @@
   "scripts": {
     "build": "next build",
     "check-packages": "npm outdated --include=dev",
+    "update-packages": "npm update --save",
     "dev": "next dev",
     "lint": "next lint",
     "start": "next start"
   },
   "dependencies": {
-    "@emotion/react": "^11.11.1",
-    "@emotion/styled": "^11.11.0",
-    "@mui/icons-material": "^5.14.15",
-    "@mui/material": "^5.14.15",
-    "axios": "^1.6.1",
-    "gsap": "^3.12.2",
-    "next": "^14.0.1",
-    "nodemailer": "^6.9.7",
-    "react": "^18",
-    "react-dom": "^18",
-    "react-social-icons": "^6.6.0",
-    "react-toastify": "^9.1.3",
-    "sharp": "^0.32.6"
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
+    "@mui/icons-material": "^5.15.15",
+    "@mui/material": "^5.15.15",
+    "axios": "^1.6.8",
+    "gsap": "^3.12.5",
+    "next": "^14.2.1",
+    "nodemailer": "^6.9.13",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-social-icons": "^6.16.0",
+    "react-toastify": "^10.0.5",
+    "sharp": "^0.33.3"
   },
   "devDependencies": {
-    "@types/node": "^20",
+    "@types/node": "^20.12.7",
     "@types/nodemailer": "^6.4.14",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "eslint": "^8",
-    "eslint-config-next": "^14.0.1",
+    "@types/react": "^18.2.77",
+    "@types/react-dom": "^18.2.25",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "^14.2.1",
     "gray-matter": "^4.0.3",
-    "marked": "^10.0.0",
-    "sass": "^1.69.5",
-    "typescript": "^5"
+    "marked": "^12.0.1",
+    "sass": "^1.75.0",
+    "typescript": "^5.4.5"
   },
   "volta": {
     "node": "18.18.2"

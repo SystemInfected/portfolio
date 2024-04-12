@@ -44,6 +44,7 @@ const SocialLinks = () => {
         bgColor={socialIconColor}
         fgColor='transparent'
         target='_blank'
+        network='x'
       />
     </div>
   )

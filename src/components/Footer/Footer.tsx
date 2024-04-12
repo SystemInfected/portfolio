@@ -84,7 +84,7 @@ const Footer = () => {
             Source on GitHub
           </a>
           <br />
-          Copyright &copy; 2023, All rights reserved
+          {`Copyright &copy; ${new Date().getFullYear()}, All rights reserved`}
         </p>
       </footer>
     </section>

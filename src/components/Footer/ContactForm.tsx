@@ -22,12 +22,12 @@ const ContactForm = () => {
       toast.success(
         '🥳 Thank you for you email! I will get back to you as soon as possible.',
         {
-          position: toast.POSITION.BOTTOM_RIGHT,
+          position: 'bottom-right',
         }
       )
     } else if (message === 'fail') {
       toast.error('Oh no 😔 Something went wrong. Please try again.', {
-        position: toast.POSITION.BOTTOM_RIGHT,
+        position: 'bottom-right',
       })
     }
   }

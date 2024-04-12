@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: any): Promise<Metadata> {
 
   const parsedMarkdown = matter(markdownWithMetadata)
 
-  const htmlString = marked(parsedMarkdown.content)
+  const htmlString = await marked(parsedMarkdown.content)
 
   return {
     title: `${parsedMarkdown.data.title} - A project by Sebastian Widin | Full-Stack Software Developer, Graphic Designer & Web Developer based in Stockholm, Sweden`,

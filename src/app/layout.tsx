@@ -4,7 +4,7 @@ import '@/styles/Main.scss'
 import { Oswald, Raleway } from 'next/font/google'
 
 import Footer from '@/components/Footer/Footer'
-import { Analytics } from '@vercel/analytics/react'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 
 const oswald = Oswald({ subsets: ['latin'], variable: '--font-oswald' })
 const raleway = Raleway({ subsets: ['latin'], variable: '--font-raleway' })
@@ -35,7 +35,7 @@ export default function RootLayout({
       <body className={`${oswald.variable} ${raleway.variable}`}>
         {children}
         <Footer />
-        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   )

@@ -1,7 +1,7 @@
-@use '../variables' as *;
+@use '../variables';
 
 .headerBg {
-  background: $mainColorDark;
+  background: variables.$mainColorDark;
   display: flex;
   justify-content: center;
   width: 100%;
@@ -18,7 +18,7 @@
 
 .headerWrapper {
   left: 50%;
-  max-width: $breakpointMaxWidth;
+  max-width: variables.$breakpointMaxWidth;
   padding-left: max(4rem, env(safe-area-inset-left));
   pointer-events: none;
   position: absolute;
@@ -27,7 +27,7 @@
   opacity: 0;
   width: 100%;
   z-index: 20;
-  @media screen and (max-width: $breakpointTablet) {
+  @media screen and (max-width: variables.$breakpointTablet) {
     padding-left: 2.5em;
     top: 2.5em;
   }
@@ -40,8 +40,8 @@
 }
 
 .header {
-  color: $mainAccentColor;
-  font-family: $headingsFont;
+  color: variables.$mainAccentColor;
+  font-family: variables.$headingsFont;
   font-size: min(clamp(2.5rem, 5.2vw, 10.4rem), clamp(2.5rem, 12vh, 10.4rem));
   font-weight: 450;
   letter-spacing: 0.02rem;
@@ -104,9 +104,9 @@
 
 .location {
   align-items: center;
-  color: $textLight;
+  color: variables.$textLight;
   display: flex;
-  font-family: $headingsFont;
+  font-family: variables.$headingsFont;
   font-size: min(clamp(2.5rem, 3vw, 5.2rem), clamp(2.5rem, 8vh, 5.2rem));
   font-weight: 200;
   letter-spacing: 0.08rem;
@@ -133,12 +133,12 @@
 
 .cta {
   cursor: pointer;
-  background-color: $mainAccentColor;
-  color: $mainColorDark;
+  background-color: variables.$mainAccentColor;
+  color: variables.$mainColorDark;
+  @include variables.mainButton;
   @media (orientation: portrait) {
     display: none;
   }
-  @include mainButton;
 }
 
 @mixin portrait {
@@ -152,16 +152,16 @@
 }
 
 .portraitIllustration {
-  @include portrait;
-  -webkit-user-select: none;
-  @media screen and (max-width: 3000px) {
-    width: 73%;
-  }
   justify-content: flex-end;
   margin-right: 5px;
   position: relative;
   user-select: none;
+  -webkit-user-select: none;
   width: 68%;
+  @include portrait;
+  @media screen and (max-width: 3000px) {
+    width: 73%;
+  }
   svg {
     flex-shrink: 0;
     height: clamp(80%, 70vw, 115%);
@@ -190,16 +190,11 @@
 }
 
 .portraitNodes {
-  @include portrait;
   padding-top: 0.4%;
-  -webkit-user-select: none;
-  @media screen and (max-width: 3000px) {
-    width: 27%;
-  }
   background: radial-gradient(
     ellipse at left 90%,
-    rgba($mainColorLightRGB, 0.25) 0%,
-    rgba($mainColorLightRGB, 0.16) 6%,
+    rgba(variables.$mainColorLightRGB, 0.25) 0%,
+    rgba(variables.$mainColorLightRGB, 0.16) 6%,
     rgba(0, 0, 0, 0) 38%
   );
   background-position: left bottom;
@@ -208,7 +203,12 @@
   justify-content: flex-start;
   margin-left: 5px;
   user-select: none;
+  -webkit-user-select: none;
   width: 32%;
+  @include portrait;
+  @media screen and (max-width: 3000px) {
+    width: 27%;
+  }
   canvas {
     flex-shrink: 0;
     height: clamp(80%, 70vw, 115%);
@@ -225,7 +225,7 @@
     position: absolute;
     width: 100%;
     height: 100vh;
-    background: $mainColorDark;
+    background: variables.$mainColorDark;
     opacity: var(--animate-opacity);
     pointer-events: none;
   }

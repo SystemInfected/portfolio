@@ -1,19 +1,19 @@
-@use '../variables' as *;
+@use '../variables';
 
 .section {
-  background: rgba($mainColorDarkRGB, 0.5);
+  background: rgba(variables.$mainColorDarkRGB, 0.5);
   display: flex;
   justify-content: center;
   width: 100%;
 }
 
 .portfolioGridSection {
-  max-width: $breakpointMaxWidth;
+  max-width: variables.$breakpointMaxWidth;
   overflow: hidden;
   padding: 0 max(4rem, env(safe-area-inset-left));
   padding-bottom: 5em;
   width: 100%;
-  @media screen and (max-width: $breakpointTablet) {
+  @media screen and (max-width: variables.$breakpointTablet) {
     padding: 0 2.5em;
     padding-bottom: 5em;
   }
@@ -26,10 +26,10 @@
   justify-content: space-between;
   margin-bottom: 6em;
   width: 100%;
-  @media screen and (max-width: $breakpointTabletBig) {
+  @media screen and (max-width: variables.$breakpointTabletBig) {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-  @media screen and (max-width: $breakpointMobileBig) {
+  @media screen and (max-width: variables.$breakpointMobileBig) {
     grid-template-columns: 1fr;
   }
   a:hover,

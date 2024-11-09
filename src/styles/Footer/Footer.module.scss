@@ -1,7 +1,7 @@
-@use '../variables' as *;
+@use '../variables';
 
 .section {
-  background-color: rgba($mainColorDarkRGB, 0.75);
+  background-color: rgba(variables.$mainColorDarkRGB, 0.75);
   display: flex;
   justify-content: center;
   padding-bottom: 3em;
@@ -36,18 +36,18 @@
 }
 
 .footerSection {
-  max-width: $breakpointMaxWidth;
+  max-width: variables.$breakpointMaxWidth;
   overflow: hidden;
   padding: 0 max(4rem, env(safe-area-inset-left));
   width: 100%;
-  @media screen and (max-width: $breakpointTablet) {
+  @media screen and (max-width: variables.$breakpointTablet) {
     padding: 0 2.5em;
   }
   p {
-    color: rgba($textLightRGB, 0.8);
+    color: rgba(variables.$textLightRGB, 0.8);
     line-height: 2em;
     text-align: center;
-    @media screen and (max-width: $breakpointMobileBig) {
+    @media screen and (max-width: variables.$breakpointMobileBig) {
       text-align: left;
       &.copy {
         text-align: center;
@@ -63,13 +63,13 @@
       transform-origin: 70% 70%;
     }
     &.copy {
-      color: rgba($textLightRGB, 0.8);
+      color: rgba(variables.$textLightRGB, 0.8);
       font-size: clamp(1.4rem, 1.3vw, 1.6rem);
       a {
-        color: rgba($textLightRGB, 0.8);
+        color: rgba(variables.$textLightRGB, 0.8);
         text-decoration: none;
         &:hover {
-          color: rgba($textLightRGB, 1);
+          color: rgba(variables.$textLightRGB, 1);
         }
       }
     }
@@ -79,7 +79,7 @@
 .footerContent {
   display: flex;
   flex-direction: column;
-  max-width: $breakpointMaxWidth;
+  max-width: variables.$breakpointMaxWidth;
   width: 100%;
 
   .socialLinksContainer {

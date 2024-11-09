@@ -1,7 +1,7 @@
-@use '../variables' as *;
+@use '../variables';
 
 .section {
-  background-color: rgba($mainColorLightRGB, 0.2);
+  background-color: rgba(variables.$mainColorLightRGB, 0.2);
   display: flex;
   justify-content: center;
   width: 100%;
@@ -10,15 +10,15 @@
 .skillsAboutSection {
   display: flex;
   gap: 4em;
-  max-width: $breakpointMaxWidth;
+  max-width: variables.$breakpointMaxWidth;
   padding: 0 max(4rem, env(safe-area-inset-left));
   padding-bottom: 5em;
   width: 100%;
-  @media screen and (max-width: $breakpointTablet) {
+  @media screen and (max-width: variables.$breakpointTablet) {
     padding: 0 2.5em;
     padding-bottom: 5em;
   }
-  @media screen and (max-width: $breakpointMobileBig) {
+  @media screen and (max-width: variables.$breakpointMobileBig) {
     gap: 0;
     flex-direction: column-reverse;
   }
@@ -26,22 +26,22 @@
 
 .about {
   width: 50%;
-  @media screen and (max-width: $breakpointMobileBig) {
+  @media screen and (max-width: variables.$breakpointMobileBig) {
     width: 100%;
     padding-right: 0;
   }
 }
 
 .historyList {
-  color: $mainColorLight;
+  color: variables.$mainColorLight;
   font-size: 1.6rem;
   list-style: none;
   li {
     list-style: none;
     width: 100%;
     h3 {
-      color: $mainAccentColor;
-      font-family: $headingsFont;
+      color: variables.$mainAccentColor;
+      font-family: variables.$headingsFont;
       font-size: clamp(1.8rem, 2vw, 2.2rem);
       font-weight: 400;
       letter-spacing: 0.15em;
@@ -58,7 +58,7 @@
         position: relative;
         width: calc(50% - 20px);
         .event-dot {
-          background-color: $mainAccentColor;
+          background-color: variables.$mainAccentColor;
           border-radius: 50%;
           height: 16px;
           margin-top: -8px;
@@ -71,7 +71,7 @@
           text-align: left;
           span {
             &:nth-of-type(1) {
-              color: $mainAccentColor;
+              color: variables.$mainAccentColor;
               display: block;
               font-size: 0.7em;
               text-transform: uppercase;
@@ -95,7 +95,7 @@
         }
       }
       &:before {
-        background-color: $mainAccentColor;
+        background-color: variables.$mainAccentColor;
         content: '';
         display: block;
         height: calc(100% + 3em);
@@ -114,18 +114,18 @@
 
 .skills {
   width: 50%;
-  @media screen and (max-width: $breakpointMobileBig) {
+  @media screen and (max-width: variables.$breakpointMobileBig) {
     width: 100%;
     padding-left: 0;
   }
 }
 
 .skillsList {
-  color: $mainColorLight;
+  color: variables.$mainColorLight;
   font-size: clamp(1.5rem, 1.7vw, 1.8rem);
   list-style: none;
   li {
-    background-color: rgba($mainColorDarkRGB, 0.5);
+    background-color: rgba(variables.$mainColorDarkRGB, 0.5);
     border-radius: 0.5em;
     box-sizing: border-box;
     list-style: none;
@@ -134,8 +134,8 @@
     padding: 1em;
     width: 100%;
     h3 {
-      color: $mainAccentColor;
-      font-family: $headingsFont;
+      color: variables.$mainAccentColor;
+      font-family: variables.$headingsFont;
       font-size: clamp(1.8rem, 2vw, 2.2rem);
       font-weight: 400;
       letter-spacing: 0.15em;
@@ -147,9 +147,9 @@
       text-align: center;
       li {
         background: none;
-        border: 1px solid $mainColorLight;
+        border: 1px solid variables.$mainColorLight;
         border-radius: 0.5em;
-        color: $mainColorLight;
+        color: variables.$mainColorLight;
         cursor: default;
         display: inline-block;
         font-size: 0.7em;
@@ -160,8 +160,8 @@
           border-color ease-out 0.3s;
         width: auto;
         &:hover {
-          border-color: $mainAccentColor;
-          color: $mainAccentColor;
+          border-color: variables.$mainAccentColor;
+          color: variables.$mainAccentColor;
           transform: scale(1.05);
         }
       }

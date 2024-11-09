@@ -1,4 +1,4 @@
-@use 'variables' as *;
+@use 'variables';
 
 * {
   padding: 0;
@@ -12,9 +12,9 @@ html {
   font-size: 62.5%;
 }
 body {
-  background-color: $mainBackgroundColor;
+  background-color: variables.$mainBackgroundColor;
   min-height: 100vh;
-  font-family: $standardFont;
+  font-family: variables.$standardFont;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-overflow-scrolling: touch;

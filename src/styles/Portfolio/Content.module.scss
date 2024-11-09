@@ -1,20 +1,20 @@
-@use '../variables' as *;
+@use '../variables';
 
 .section {
-  background-color: rgba($mainColorLightRGB, 0.2);
+  background-color: rgba(variables.$mainColorLightRGB, 0.2);
   display: flex;
   justify-content: center;
   width: 100%;
 }
 
 .contentSection {
-  max-width: $breakpointMaxWidth;
+  max-width: variables.$breakpointMaxWidth;
   padding: 0 max(4rem, env(safe-area-inset-left));
   padding-bottom: 5em;
   width: 100%;
   display: flex;
   gap: 4em;
-  @media screen and (max-width: $breakpointTablet) {
+  @media screen and (max-width: variables.$breakpointTablet) {
     padding: 0 2.5em;
     padding-bottom: 5em;
   }
@@ -28,7 +28,7 @@
   width: 60%;
   margin-top: clamp(12rem, 12vw, 15rem);
   border-radius: 0.5em;
-  color: $textLight;
+  color: variables.$textLight;
   //font-size: clamp(1.4rem, 1vw, 1.6rem);
   line-height: 1.8em;
   word-spacing: 0.18em;
@@ -42,7 +42,7 @@
   }
   em,
   strong {
-    color: $mainAccentColor;
+    color: variables.$mainAccentColor;
   }
   a {
     color: inherit;
@@ -61,7 +61,7 @@
   height: min-content;
   margin-top: clamp(12rem, 12vw, 15rem);
   font-size: clamp(1.5rem, 1.7vw, 1.8rem);
-  background-color: rgba($mainColorDarkRGB, 0.5);
+  background-color: rgba(variables.$mainColorDarkRGB, 0.5);
   border-radius: 0.5em;
   padding: 2em;
   @media (orientation: portrait) {
@@ -71,6 +71,7 @@
   div {
     width: 100%;
     display: flex;
+    flex-direction: column;
     gap: 1em;
     flex-wrap: wrap;
   }
@@ -80,7 +81,7 @@
   h3 {
     text-transform: uppercase;
     font-size: clamp(1rem, 1vw, 1.2rem);
-    color: $mainAccentColor;
+    color: variables.$mainAccentColor;
     display: block;
     font-weight: 700;
     letter-spacing: 0.1em;
@@ -91,9 +92,9 @@
     text-transform: uppercase;
     li {
       background: none;
-      border: 1px solid $mainColorLight;
+      border: 1px solid variables.$mainColorLight;
       border-radius: 0.5em;
-      color: $mainColorLight;
+      color: variables.$mainColorLight;
       cursor: default;
       display: inline-block;
       margin: 0.5em 1em 0.5em 0;
@@ -102,8 +103,8 @@
         border-color ease-out 0.3s;
       width: auto;
       &:hover {
-        border-color: $mainAccentColor;
-        color: $mainAccentColor;
+        border-color: variables.$mainAccentColor;
+        color: variables.$mainAccentColor;
         transform: scale(1.05);
       }
     }
@@ -111,15 +112,15 @@
 }
 
 .cta {
-  background-color: $mainAccentColor;
-  color: $mainColorDark;
-  @include mainButton;
+  background-color: variables.$mainAccentColor;
+  color: variables.$mainColorDark;
+  @include variables.mainButton;
   &:disabled,
   &[disabled] {
-    @include secondaryButton;
-    background-color: rgba($mainColorDarkRGB, 0.75);
-    color: $mainColorLight;
-    border-color: $mainColorLight;
+    @include variables.secondaryButton;
+    background-color: rgba(variables.$mainColorDarkRGB, 0.75);
+    color: variables.$mainColorLight;
+    border-color: variables.$mainColorLight;
     opacity: 0.5;
     cursor: default;
     &:hover,

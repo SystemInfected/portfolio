@@ -1,4 +1,4 @@
-@use '../variables' as *;
+@use '../variables';
 
 .container {
   align-items: space-between;
@@ -7,7 +7,7 @@
   gap: 3em;
   margin: 4em 0;
   width: 100%;
-  @media screen and (max-width: $breakpointMobileBig) {
+  @media screen and (max-width: variables.$breakpointMobileBig) {
     grid-template-columns: 1fr;
   }
 }
@@ -19,25 +19,25 @@
   justify-content: space-between;
   width: 100%;
 
-  @media screen and (max-width: $breakpointMobileBig) {
+  @media screen and (max-width: variables.$breakpointMobileBig) {
     justify-content: flex-start;
   }
   :global(.MuiTextField-root) {
     label,
     input,
     textarea {
-      color: rgba($textLightRGB, 0.8);
+      color: rgba(variables.$textLightRGB, 0.8);
       font-size: 16px;
     }
     &:hover :global(.MuiOutlinedInput-notchedOutline) {
-      border-color: rgba($mainAccentRGB, 1);
+      border-color: rgba(variables.$mainAccentRGB, 1);
       border-width: 1px;
     }
     :global(.MuiOutlinedInput-notchedOutline) {
-      border-color: rgba($mainAccentRGB, 0.75);
+      border-color: rgba(variables.$mainAccentRGB, 0.75);
     }
     :global(.Mui-focused .MuiOutlinedInput-notchedOutline) {
-      border-color: rgba($mainAccentRGB, 1);
+      border-color: rgba(variables.$mainAccentRGB, 1);
       border-width: 1px;
     }
   }
@@ -51,9 +51,9 @@
 }
 
 .cta {
-  background-color: $mainAccentColor;
-  color: $mainColorDark;
-  @include mainButton;
+  background-color: variables.$mainAccentColor;
+  color: variables.$mainColorDark;
+  @include variables.mainButton;
   width: 160px;
   &.desktop {
     display: inline-block;
@@ -61,7 +61,7 @@
   &.mobile {
     display: none;
   }
-  @media screen and (max-width: $breakpointMobileBig) {
+  @media screen and (max-width: variables.$breakpointMobileBig) {
     &.desktop {
       display: none;
     }

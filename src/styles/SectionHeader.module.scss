@@ -1,28 +1,28 @@
-@use './variables' as *;
+@use './variables';
 
 .header {
-	color: $mainAccentColor;
-	font-family: $headingsFont;
-	font-size: 1.6rem;
-	font-weight: 400;
-	letter-spacing: 0.3em;
-	margin-bottom: 1em;
-	margin-top: 5em;
-	text-align: center;
-	text-transform: uppercase;
-	@media screen and (max-width: $breakpointMobileBig) {
-		text-align: left;
-	}
+  color: variables.$mainAccentColor;
+  font-family: variables.$headingsFont;
+  font-size: 1.6rem;
+  font-weight: 400;
+  letter-spacing: 0.3em;
+  margin-bottom: 1em;
+  margin-top: 5em;
+  text-align: center;
+  text-transform: uppercase;
+  @media screen and (max-width: variables.$breakpointMobileBig) {
+    text-align: left;
+  }
 }
 
 .headerCentered {
-	color: $mainAccentColor;
-	font-family: $headingsFont;
-	font-size: 1.6rem;
-	font-weight: 400;
-	letter-spacing: 0.3em;
-	margin-bottom: 1em;
-	margin-top: 5em;
-	text-align: center;
-	text-transform: uppercase;
+  color: variables.$mainAccentColor;
+  font-family: variables.$headingsFont;
+  font-size: 1.6rem;
+  font-weight: 400;
+  letter-spacing: 0.3em;
+  margin-bottom: 1em;
+  margin-top: 5em;
+  text-align: center;
+  text-transform: uppercase;
 }

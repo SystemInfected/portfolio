@@ -1,4 +1,4 @@
-@use '../variables' as *;
+@use '../variables';
 
 .section {
   background: linear-gradient(
@@ -7,14 +7,14 @@
       rgba(0, 0, 0, 0.35) 40%,
       rgba(0, 0, 0, 0) 100%
     ),
-    rgba($mainColorDarkRGB, 0.75);
+    rgba(variables.$mainColorDarkRGB, 0.75);
   display: flex;
   justify-content: center;
   width: 100%;
 }
 
 .headerSection {
-  max-width: $breakpointMaxWidth;
+  max-width: variables.$breakpointMaxWidth;
   height: 70vh;
   padding: 0 max(4rem, env(safe-area-inset-left));
   padding-bottom: 5em;
@@ -22,7 +22,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  @media screen and (max-width: $breakpointTablet) {
+  @media screen and (max-width: variables.$breakpointTablet) {
     padding: 0 2.5em;
     padding-bottom: 5em;
   }
@@ -40,8 +40,8 @@
     width: 100%;
   }
   h1 {
-    color: $mainAccentColor;
-    font-family: $headingsFont;
+    color: variables.$mainAccentColor;
+    font-family: variables.$headingsFont;
     font-size: clamp(3.6rem, 4.8vw, 8rem);
     font-weight: 450;
     letter-spacing: 0.02rem;
@@ -53,7 +53,7 @@
   }
   h3 {
     font-size: 1em;
-    color: $mainAccentColor;
+    color: variables.$mainAccentColor;
     margin-top: 2em;
     display: block;
     font-size: clamp(1rem, 1vw, 1.2rem);
@@ -68,7 +68,7 @@
   ul {
     padding-top: 1em;
     width: 80%;
-    color: $textLight;
+    color: variables.$textLight;
     display: inline-block;
     font-size: clamp(1rem, 1vw, 1.2rem);
     font-weight: 700;

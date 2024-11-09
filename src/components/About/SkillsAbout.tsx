@@ -25,7 +25,7 @@ const SkillsAbout = () => {
       })
 
       professionalEvents.forEach((event) => {
-        const eventDot = event.querySelector('.event-dot')
+        const eventDot = event.querySelector('#event-dot')
         gsap.from(event, {
           autoAlpha: 0,
           x: '-20px',
@@ -50,7 +50,7 @@ const SkillsAbout = () => {
         }
       })
       personalEvents.forEach((event) => {
-        const eventDot = event.querySelector('.event-dot')
+        const eventDot = event.querySelector('#event-dot')
         gsap.from(event, {
           autoAlpha: 0,
           x: '20px',

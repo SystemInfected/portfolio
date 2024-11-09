@@ -8,7 +8,7 @@ const HistoryListItems = () => {
     <>
       {Object.values(historyData).map((yearContent) => {
         const yearEvents = yearContent.yearEvents.map((event, index) => {
-          const data = `<div class="event-dot"></div>${event.data}`
+          const data = `<i id="event-dot"></i>${event.data}`
           return (
             <li
               key={`${yearContent.year}_${index}`}

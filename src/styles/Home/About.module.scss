@@ -57,7 +57,7 @@
         margin-bottom: 1em;
         position: relative;
         width: calc(50% - 20px);
-        .event-dot {
+        i {
           background-color: variables.$mainAccentColor;
           border-radius: 50%;
           height: 16px;
@@ -83,13 +83,13 @@
               margin-top: 0.3em;
             }
           }
-          .event-dot {
+          i {
             left: -28px;
           }
         }
         &.personal {
           text-align: right;
-          .event-dot {
+          i {
             right: -28px;
           }
         }

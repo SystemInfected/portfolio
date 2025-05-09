@@ -26,10 +26,6 @@
 		"yearEvents": [{ "data": "My son was born", "type": "personal" }]
 	},
 	{
-		"year": 2019,
-		"yearEvents": [{ "data": "Got married", "type": "personal" }]
-	},
-	{
 		"year": 2012,
 		"yearEvents": [
 			{

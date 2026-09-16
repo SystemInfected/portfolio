@@ -38,6 +38,8 @@ const ClientsList = () => {
   })
 
   useEffect(() => {
+    // scrollWidth/clientWidth only exist post-layout, so this can't be derived at render time
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     handleResize()
   }, [])
 

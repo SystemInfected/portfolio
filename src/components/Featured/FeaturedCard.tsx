@@ -18,31 +18,19 @@ const FeaturedCard = ({ cardData }: any) => {
   const featuredCardRef = useRef<HTMLDivElement>(null)
   const [deviceMotion, setDeviceMotion] = useState(false)
 
-  const imagePos = useMemo(() => ({}), [])
-
-  cardData.images.map(
-    (
-      image: {
-        url: string
-        position: string
-        size: string
-        zoomValue: number
-        aspectRatio: string
-      },
-      index: number
-    ) => {
-      const position: any = imagePos
-      position[index] = {}
-      if (image.position === 'center') {
-        position[index].marginLeft = 50
-        position[index].translateX = -50
-      } else {
-        position[index].marginLeft = 0
-        position[index].translateX = image.position
-      }
-      position[index].zoomValue = image.zoomValue
-      return null
-    }
+  const imagePos = useMemo(
+    () =>
+      cardData.images.map(
+        (image: { position: string; zoomValue: number }) =>
+          image.position === 'center'
+            ? { marginLeft: 50, translateX: -50, zoomValue: image.zoomValue }
+            : {
+                marginLeft: 0,
+                translateX: image.position,
+                zoomValue: image.zoomValue,
+              }
+      ),
+    [cardData.images]
   )
 
   useEffect(() => {
@@ -101,8 +89,7 @@ const FeaturedCard = ({ cardData }: any) => {
               button.style.transform = 'translateZ(0)'
 
               images.forEach((image, i) => {
-                const position: any = imagePos
-                image.style.transform = `translateZ(0) translateX(${position[i].translateX}%) rotate(0.01deg)`
+                image.style.transform = `translateZ(0) translateX(${imagePos[i].translateX}%) rotate(0.01deg)`
               })
             }
             break
@@ -115,8 +102,7 @@ const FeaturedCard = ({ cardData }: any) => {
               button.style.transform = 'translateZ(90px)'
 
               images.forEach((image, i) => {
-                const position: any = imagePos
-                image.style.transform = `translateZ(${position[i].zoomValue}px) translateX(${position[i].translateX}%) rotate(0.01deg)`
+                image.style.transform = `translateZ(${imagePos[i].zoomValue}px) translateX(${imagePos[i].translateX}%) rotate(0.01deg)`
               })
             }
             break
@@ -280,7 +266,6 @@ const FeaturedCard = ({ cardData }: any) => {
                   : imgWidth > 30
                   ? '(max-width: 768px) 100px, (max-width: 1200px) 150px, 250px'
                   : '(max-width: 768px) 60px, (max-width: 1200px) 90px, 120px'
-              const position: any = imagePos
               return (
                 <div
                   key={index}
@@ -289,8 +274,8 @@ const FeaturedCard = ({ cardData }: any) => {
                   style={{
                     width: `${image.size}`,
                     zIndex: 3 + index * 3,
-                    marginLeft: `${position[index].marginLeft}%`,
-                    transform: `translateX(${position[index].translateX}%)`,
+                    marginLeft: `${imagePos[index].marginLeft}%`,
+                    transform: `translateX(${imagePos[index].translateX}%)`,
                     aspectRatio: image.aspectRatio,
                   }}
                 >

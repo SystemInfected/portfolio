@@ -6,8 +6,8 @@
     "build": "next build",
     "check-packages": "pnpm outdated",
     "update-packages": "pnpm update --latest",
-    "dev": "next dev --turbopack",
-    "lint": "next lint",
+    "dev": "next dev",
+    "lint": "eslint .",
     "start": "next start"
   },
   "dependencies": {
@@ -19,21 +19,21 @@
     "@vercel/speed-insights": "^1.1.0",
     "axios": "^1.7.7",
     "gsap": "^3.12.5",
-    "next": "15.0.7",
+    "next": "^16.3.5",
     "nodemailer": "^6.9.16",
-    "react": "18.x.x",
-    "react-dom": "18.x.x",
-    "react-social-icons": "^6.18.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "react-social-icons": "^6.26.0",
     "react-toastify": "^10.0.6",
     "sharp": "^0.33.5"
   },
   "devDependencies": {
-    "@types/node": "^22.9.0",
+    "@types/node": "^24.13.5",
     "@types/nodemailer": "^6.4.16",
-    "@types/react": "npm:types-react@19.0.0-rc.1",
-    "@types/react-dom": "npm:types-react-dom@19.0.0-rc.1",
-    "eslint": "^9.14.0",
-    "eslint-config-next": "15.0.3",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "eslint": "^9.39.5",
+    "eslint-config-next": "^16.3.5",
     "gray-matter": "^4.0.3",
     "marked": "^15.0.0",
     "sass": "^1.80.6",
@@ -41,6 +41,6 @@
   },
   "packageManager": "pnpm@9.12.2",
   "volta": {
-    "node": "20.18.0"
+    "node": "24.21.0"
   }
 }

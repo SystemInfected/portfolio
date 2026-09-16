@@ -46,6 +46,8 @@ const NavBar = ({ locked, startpage }: NavBarProps) => {
       mobileMenuPos.x = menuTogglePos.x + menuTogglePos.width / 2
       mobileMenuPos.y = menuTogglePos.y + menuTogglePos.height / 2
 
+      // getBoundingClientRect only exists post-layout, so this can't be derived at render time
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setMobileMenuPos(mobileMenuPos)
     }
 

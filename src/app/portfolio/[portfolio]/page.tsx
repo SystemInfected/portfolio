@@ -16,8 +16,10 @@ const renderDescription = (input: string, length: number) => {
     : strippedInput
 }
 
-export async function generateMetadata(props: any): Promise<Metadata> {
-  const params = await props.params;
+export async function generateMetadata(
+  props: PageProps<'/portfolio/[portfolio]'>
+): Promise<Metadata> {
+  const params = await props.params
   const filesDirectory = path.join(process.cwd(), 'src/app/data/portfolio')
   const markdownWithMetadata = fs
     .readFileSync(path.join(filesDirectory, `${params.portfolio}.md`))
@@ -86,8 +88,8 @@ const getStaticProps = async (
   } as DetailedPortfolioProps
 }
 
-const PortfolioPage = async (props: any) => {
-  const params = await props.params;
+const PortfolioPage = async (props: PageProps<'/portfolio/[portfolio]'>) => {
+  const params = await props.params
   const portfolioData: DetailedPortfolioProps = await getStaticProps(
     params.portfolio
   )
